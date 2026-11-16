@@ -1,0 +1,330 @@
+/* A storybook world around a generous, quiet place to make a mark. */
+:root { --btn: clamp(64px, 8.5vmin, 86px); --btn-icon: calc(var(--btn) * .51); --gutter: clamp(12px, 2.2vmin, 24px); }
+.btn { min-width: 64px; min-height: 64px; outline-width: 3px; }
+button:focus-visible { outline: 5px solid #7459a2; outline-offset: 5px; }
+.screen { overflow: hidden; }
+.world-scene { isolation: isolate; }
+.scene-backdrop { position: absolute; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; background: var(--sky-gradient); }
+.scene-layer { position: absolute; width: 100%; height: 100%; inset: 0; object-fit: cover; object-position: center bottom; user-select: none; }
+.scene-layer--0 { object-position: center top; }
+.scene-backdrop--garden::after, .scene-backdrop--meadow::after { content: ''; position: absolute; inset: 0; background: rgba(255,253,248,.15); }
+.game-recovery { position: absolute; inset: 0; display: flex; gap: 28px; justify-content: center; align-items: center; flex-direction: column; background: #fff4f9; padding: 24px; text-align: center; }
+
+.valley-map .map-regions { display: grid; grid-template-columns: repeat(var(--region-count, 4), minmax(0, 1fr)); gap: clamp(16px, 3vw, 44px); width: min(94%, 1120px); left: 50%; right: auto; transform: translateX(-50%); bottom: 10%; padding: 0; align-items: end; }
+.valley-map .region { width: 100%; height: min(42vh, 23vw); min-height: 140px; border-radius: 45%; isolation: isolate; }
+.valley-map .region-friend { position: absolute; inset: 0 3% 5%; display: grid; place-items: center; }
+.valley-map .region .char { --char-size: 100%; width: 100%; height: 100%; }
+.valley-map .region-plinth { bottom: 0; height: 12%; width: 88%; opacity: .8; }
+.valley-map .activity-symbol { position: absolute; right: 0; bottom: -6px; width: clamp(44px, 6.6vmin, 62px); height: clamp(44px, 6.6vmin, 62px); display: grid; place-items: center; background: #fff9eb; border: 3px solid #826655; border-radius: 50%; box-shadow: 0 4px 0 #aa89724d; }
+.activity-symbol > svg { width: 74%; height: 74%; }
+.region.is-suggested::after { content: ''; position: absolute; inset: -6% -3% 0; z-index: -1; border-radius: 50%; background: radial-gradient(ellipse at center, #fff7abcf 0%, #fff7ab55 48%, transparent 71%); animation: valley-invite 3.8s ease-in-out infinite; }
+@keyframes valley-invite { 0%,100% { opacity: .45; transform: scale(.98); } 50% { opacity: .88; transform: scale(1.03); } }
+.valley-title { position: absolute; top: 2.5%; left: 50%; transform: translateX(-50%); width: min(37vw, 330px); height: min(23vh, 186px); display: grid; place-items: center; pointer-events: none; }
+.valley-title > img { position: relative; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
+.title-fallback { position: absolute; text-align: center; font-size: clamp(32px, 5vw, 58px); font-weight: 900; letter-spacing: -.04em; color: #a96097; line-height: .9; }
+.title-fallback > span { display: block; color: #8564b5; }
+.has-logo .title-fallback { display: none; }
+.journey-bud { position: absolute; top: 28%; right: 9%; width: clamp(64px, 11vmin, 108px); height: clamp(76px, 13vmin, 125px); padding: 5px; background: #fff8eccc; border: 2px solid #fffaf2; border-radius: 46%; box-shadow: 0 6px 18px #775a6420; }
+.journey-bud svg { width: 100%; height: 100%; }
+.valley-grown { position: absolute; bottom: -.5%; left: 12%; right: 12%; height: 12%; display: flex; justify-content: space-evenly; align-items: end; pointer-events: none; }
+.grown-flower { display: block; width: min(7vw, 74px); height: 100%; transform: rotate(var(--flower-tilt, 0deg)); transform-origin: center bottom; }
+.grown-flower svg { width: 100%; height: 100%; }
+
+.welcome-world { position: absolute; inset: 0; overflow: hidden; }
+.welcome-title { position: absolute; width: min(49vw, 540px); height: 43%; top: 4%; left: 50%; transform: translateX(-50%); }
+.welcome-title img { width: 100%; height: 100%; object-fit: contain; }
+.welcome-unicorn, .welcome-caterpillar, .welcome-pip { position: absolute; }
+.welcome-unicorn { left: 12%; bottom: 11%; width: min(25vw, 51vh); height: min(25vw, 51vh); }
+.welcome-caterpillar { right: 12%; bottom: 11%; width: min(25vw, 48vh); height: min(25vw, 48vh); }
+.welcome-pip { right: 21%; top: 21%; width: min(11vw, 21vh); height: min(11vw, 21vh); transform: rotate(8deg); }
+.welcome-world .char { --char-size: 100%; width: 100%; height: 100%; }
+.welcome-play { position: absolute; left: 50%; top: 62%; transform: translate(-50%, -50%); }
+.welcome-play-button { width: clamp(92px, 16vmin, 144px); height: clamp(92px, 16vmin, 144px); border-radius: 42%; outline: 4px solid #785346; background: #ffc2d8; box-shadow: 0 7px 0 #bf84955e, 0 14px 22px #96746738, inset 0 4px 0 #fff4f799; }
+.welcome-play-button > svg { width: 57%; height: 57%; color: #77528a; }
+
+#parent-entry { position: fixed; top: max(var(--gutter), env(safe-area-inset-top)); left: max(var(--gutter), env(safe-area-inset-left)); z-index: 61; }
+#parent-entry[hidden] { display: none; }
+.parent-entry-button { width: 58px; height: 58px; min-width: 58px; min-height: 58px; background: #fffaf0df; color: #826b80; outline: 2px solid #b198aa; box-shadow: 0 3px 0 #7f5f7420; }
+#boot-cover { position: fixed; inset: 0; z-index: 90; display: grid; place-items: center; background: #eef7ff; transition: opacity .18s linear; }
+#boot-cover img { width: min(38vw, 160px); height: auto; }
+#boot-cover.is-ready { opacity: 0; pointer-events: none; }
+
+@media (orientation: portrait) {
+  .valley-map .map-regions { width: min(88%, 680px); grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 8%; row-gap: 3.4vh; bottom: 8%; }
+  .valley-map .region { height: min(20vh, 33vw); min-height: 124px; }
+  .valley-title { width: min(74vw, 410px); height: 20%; top: 7%; }
+  .journey-bud { top: 31%; right: 11%; width: min(17vw, 94px); height: min(21vw, 114px); }
+  .valley-grown { height: 9%; left: 5%; right: 5%; }
+  .grown-flower { width: min(9vw, 66px); }
+  .welcome-title { top: 9%; width: 83%; height: 28%; }
+  .welcome-unicorn { width: 40vw; height: 40vw; left: 5%; bottom: 12%; }
+  .welcome-caterpillar { width: 40vw; height: 40vw; right: 5%; bottom: 12%; }
+  .welcome-pip { top: 36%; right: 16%; width: 20vw; height: 20vw; }
+  .welcome-play { top: 52%; }
+  .welcome-play-button { width: clamp(100px, 26vw, 152px); height: clamp(100px, 26vw, 152px); }
+}
+@media (max-height: 390px) and (orientation: landscape) {
+  :root { --btn: 60px; --gutter: 10px; }
+  .btn { min-width: 60px; min-height: 60px; }
+  .valley-map .region { min-height: 110px; }
+  .valley-title { height: 29%; }
+  .parent-entry-button { width: 54px; height: 54px; min-width: 54px; min-height: 54px; }
+}
+@media (prefers-reduced-motion: reduce) { .region.is-suggested::after { animation: none; opacity: .65; } }
+html.reduced-motion .region.is-suggested::after { animation: none; opacity: .65; }
+
+/* The welcome is an invitation; activity progress appears inside the game. */
+.welcome-world .char-progress, .valley-map .char-progress { display: none; }
+
+/* Five roomy places keep the larger game readable without a dashboard of tiny icons. */
+.valley-map .map-regions[data-count="5"] { gap: clamp(10px, 2vw, 24px); width: min(96%, 1340px); }
+.valley-map .map-regions[data-count="5"] .region { height: min(36vh, 19vw); min-height: 114px; }
+@media (orientation: portrait) {
+  .valley-map .map-regions[data-count="5"] { width: min(84%, 670px); bottom: 6%; row-gap: 2vh; }
+  .valley-map .map-regions[data-count="5"] .region { height: min(16vh, 30vw); min-height: 102px; }
+  .valley-map .map-regions[data-count="5"] .region:last-child { grid-column: 1 / -1; width: 46%; justify-self: center; }
+}
+
+.grandma-action > svg { width:64px; height:64px; display:block; max-width:100%; }
+.grandma-heart > svg { width:100%; height:100%; color:#ee88ab; }
+.pip[role="button"] { cursor:pointer; }
+.pip[role="button"]:focus-visible { outline:4px solid #7856ac; border-radius:50%; }
+
+/* Grandma's room is one family vignette. Higher scoped specificity deliberately
+   replaces the early scrapbook prototype without touching the shared family rules. */
+.grandma-house .grandma-room {
+  inset: clamp(8px,2vh,18px) clamp(82px,8vw,108px);
+  display:grid;
+  grid-template-columns:minmax(190px,.68fr) minmax(360px,1.32fr);
+  grid-template-rows:minmax(0,1fr) auto;
+  gap:clamp(9px,1.4vw,18px);
+  overflow:hidden;
+  padding:clamp(10px,1.4vw,18px);
+  border:5px solid #71564d;
+  border-radius:34px;
+  background:linear-gradient(180deg,#fff8e8 0 70%,#f3d8b6 70%);
+  box-shadow:0 12px 30px #513b3033;
+}
+.grandma-house .grandma-hearth {
+  position:relative;
+  grid-row:1 / 3;
+  min-width:0;
+  min-height:0;
+  overflow:hidden;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 24% 18%,#fff6bd 0 5%,transparent 5.5%),
+    linear-gradient(180deg,#efd8c7 0 67%,#cda97e 67%);
+}
+.grandma-house .grandma-hearth::before {
+  content:"";
+  position:absolute;
+  left:7%; top:7%;
+  width:28%; aspect-ratio:1;
+  border:5px solid #8c6657;
+  border-radius:50% 50% 44% 44%;
+  background:radial-gradient(circle,#fff6cf 0 46%,#e9b895 47% 100%);
+  box-shadow:0 5px 0 #76534a2e;
+}
+.grandma-house .grandma-rug {
+  position:absolute;
+  z-index:0;
+  left:7%; right:7%; bottom:2%;
+  height:25%;
+  border:4px solid #76534a;
+  border-radius:50%;
+  background:repeating-radial-gradient(ellipse at center,#e9a7bd 0 12%,#f9ddaa 13% 23%,#a9d6c2 24% 34%);
+  opacity:.9;
+}
+.grandma-house .grandma-chair {
+  position:absolute;
+  z-index:1;
+  left:16%; right:16%; bottom:10%;
+  height:62%;
+  border:5px solid #76534a;
+  border-radius:44% 44% 24% 24%;
+  background:linear-gradient(90deg,#be7996,#e5a3bd 14% 86%,#be7996);
+  box-shadow:inset 0 -18px 0 #a96e88,0 8px 0 #76534a33;
+}
+.grandma-house .grandma-hug {
+  position:absolute;
+  z-index:3;
+  left:50%; bottom:7%;
+  width:min(86%,330px);
+  height:84%;
+  min-height:0;
+  padding:0;
+  overflow:visible;
+  border:0;
+  border-radius:30px;
+  background:transparent;
+  box-shadow:none;
+  transform:translateX(-50%);
+}
+.grandma-house .grandma-hug:focus-visible { outline:5px solid #7656a8; outline-offset:-3px; }
+.grandma-house .grandma-hug>span,
+.grandma-house .grandma-hug .char { width:100%; height:100%; }
+.grandma-house .grandma-hug .char-img { max-height:100%; max-width:100%; object-position:50% 100%; }
+.grandma-house .grandma-heart { top:12%; right:6%; width:clamp(58px,8vmin,92px); height:clamp(58px,8vmin,92px); }
+
+.grandma-house .grandma-album {
+  position:relative;
+  min-width:0;
+  min-height:0;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) auto;
+  gap:8px;
+  overflow:hidden;
+  padding:clamp(10px,1.2vw,16px);
+  border:5px solid #76534a;
+  border-radius:28px;
+  background:linear-gradient(135deg,#f8e0b7,#d7a675 48%,#bd855e);
+  box-shadow:inset 0 0 0 5px #fff2d077;
+}
+.grandma-house .grandma-keepsakes {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  grid-template-rows:1fr;
+  align-items:center;
+  gap:clamp(8px,1vw,14px);
+  min-width:0;
+  min-height:0;
+  padding:clamp(8px,1.2vw,14px);
+  overflow:hidden;
+  border:0;
+  border-radius:20px;
+  background:#fffaf0;
+  box-shadow:inset 0 0 0 3px #9b71514a;
+}
+.grandma-house .today-keepsake {
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:100%;
+  max-height:100%;
+  aspect-ratio:4/5;
+  min-width:0;
+  min-height:0;
+  margin:0;
+  overflow:hidden;
+  border:4px solid #73564d;
+  border-radius:18px;
+  background:#fffef8;
+  box-shadow:0 6px 0 #60453a2b;
+  transform:rotate(-1deg);
+}
+.grandma-house .today-keepsake:nth-child(2) { transform:rotate(1.2deg); }
+.grandma-house .today-keepsake:nth-child(3) { transform:rotate(-.6deg); }
+.grandma-house .today-keepsake:only-child { grid-column:1 / -1; width:min(72%,360px); justify-self:center; aspect-ratio:4/3; }
+.grandma-house .today-drawing { display:grid; }
+.grandma-house .today-drawing img { width:100%; height:100%; object-fit:contain; background:#fff; }
+.grandma-house .today-story { grid-template-rows:25% 75%; padding:5%; background:linear-gradient(#fdf1bd,#fff9e5); }
+.grandma-house .today-keepsake-ribbon { width:52%; height:100%; color:#71564d; }
+.grandma-house .today-keepsake-ribbon svg { width:100%; height:100%; }
+.grandma-house .today-story-scene { display:flex; align-items:center; justify-content:center; gap:2%; width:100%; height:100%; min-height:0; }
+.grandma-house .today-story-picture { display:grid; place-items:center; width:32%; aspect-ratio:1; overflow:hidden; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 3px #dabf99; }
+.grandma-house .today-story-picture img,
+.grandma-house .today-story-picture svg { width:88%; height:88%; object-fit:contain; }
+.grandma-house .today-discovery { grid-template-rows:56% 44%; padding:8%; background:linear-gradient(#dff4e8,#fff8cf); }
+.grandma-house .today-discovery--sort { background:linear-gradient(#dceeff,#f8e7ff); }
+.grandma-house .today-discovery--quantity { background:linear-gradient(#ffe7d0,#fff8cf); }
+.grandma-house .today-discovery-glass { width:70%; height:100%; }
+.grandma-house .today-discovery-glass svg { width:100%; height:100%; }
+.grandma-house .today-discovery-tray { display:flex; align-items:center; justify-content:center; gap:7%; width:100%; height:100%; }
+.grandma-house .today-discovery-tray i { display:block; width:25%; aspect-ratio:1; border:3px solid #665047; border-radius:50%; background:#ef9ab6; }
+.grandma-house .today-discovery-tray i:nth-child(2) { border-radius:22%; background:#8fd1ae; }
+.grandma-house .today-discovery-tray i:nth-child(3) { clip-path:polygon(50% 2%,98% 94%,2% 94%); border:0; background:#f2ca6f; }
+.grandma-house .grandma-empty-album { grid-column:1 / -1; display:grid; place-items:center; width:min(82%,430px); height:90%; justify-self:center; }
+.grandma-house .grandma-empty-album svg { width:100%; height:100%; }
+.grandma-house .today-rewards { min-height:48px; display:flex; align-items:center; justify-content:center; gap:4px; padding:2px 10px; border-radius:16px; background:#fff8e8cc; }
+.grandma-house .today-reward { display:grid; width:clamp(38px,5.5vmin,56px); height:clamp(38px,5.5vmin,56px); }
+.grandma-house .today-reward svg { width:100%; height:100%; }
+
+.grandma-house .grandma-choices {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(10px,1.5vw,20px);
+  min-height:96px;
+}
+.grandma-house .grandma-action {
+  display:grid;
+  place-items:center;
+  width:clamp(86px,9vw,116px);
+  height:clamp(86px,9vw,116px);
+  min-width:0;
+  min-height:0;
+  padding:10px;
+  border:4px solid #76534a;
+  border-radius:28px;
+  background:#fff7d6;
+  box-shadow:0 6px 0 #62473e42;
+}
+.grandma-house .grandma-action>svg { width:100%; height:100%; max-width:82px; max-height:82px; }
+.grandma-house .grandma-story { background:#fff0b8; }
+.grandma-house .grandma-book { background:#eadfff; }
+.grandma-house .grandma-make { align-self:auto; justify-self:auto; width:clamp(86px,9vw,116px); min-height:0; font-size:inherit; background:#dff3e4; }
+.grandma-house .grandma-rest { width:clamp(150px,18vw,220px); background:#e5e0f7; }
+.grandma-house .grandma-quiet-mark { display:grid; place-items:center; width:clamp(108px,13vw,156px); height:clamp(78px,9vw,112px); }
+.grandma-house .grandma-quiet-mark svg { width:100%; height:100%; }
+.grandma-house .grandma-room.is-settled { background:linear-gradient(180deg,#eee6e7 0 70%,#d9c4b1 70%); }
+.grandma-house .grandma-room.is-settled .grandma-hearth { background:linear-gradient(180deg,#d9d6e6 0 67%,#b9a6a0 67%); }
+.grandma-house .grandma-room.is-settled .grandma-album { filter:saturate(.65); opacity:.86; }
+.grandma-house .grandma-room.is-settled .grandma-rug { opacity:.55; }
+
+@media (orientation:portrait) {
+  .grandma-house .grandma-room {
+    inset:86px 10px 10px;
+    grid-template-columns:1fr;
+    grid-template-rows:minmax(180px,.72fr) minmax(250px,1.12fr) auto;
+    gap:9px;
+    padding:9px;
+    border-radius:28px;
+  }
+  .grandma-house .grandma-hearth { grid-row:1; min-height:0; }
+  .grandma-house .grandma-hearth::before { width:18%; left:8%; top:7%; }
+  .grandma-house .grandma-rug { left:22%; right:22%; height:25%; }
+  .grandma-house .grandma-chair { left:31%; right:31%; height:69%; bottom:6%; }
+  .grandma-house .grandma-hug { width:min(52%,245px); height:96%; bottom:1%; }
+  .grandma-house .grandma-heart { top:8%; right:18%; }
+  .grandma-house .grandma-album { grid-row:2; padding:8px; border-radius:22px; }
+  .grandma-house .grandma-keepsakes { padding:8px; gap:6px; }
+  .grandma-house .today-keepsake { border-width:3px; border-radius:14px; }
+  .grandma-house .today-rewards { min-height:38px; }
+  .grandma-house .today-reward { width:36px; height:36px; }
+  .grandma-house .grandma-choices { grid-row:3; min-height:78px; gap:12px; }
+  .grandma-house .grandma-action,
+  .grandma-house .grandma-make { width:78px; height:78px; padding:8px; border-radius:23px; }
+  .grandma-house .grandma-rest { width:150px; }
+  .grandma-house .grandma-action>svg { max-width:62px; max-height:62px; }
+}
+
+@media (orientation:landscape) and (max-height:520px) {
+  .grandma-house .grandma-room { inset:7px 82px; padding:8px; gap:8px; border-radius:26px; }
+  .grandma-house .grandma-hearth { grid-row:1 / 3; }
+  .grandma-house .grandma-album { padding:7px; border-radius:21px; }
+  .grandma-house .grandma-keepsakes { padding:6px; gap:6px; }
+  .grandma-house .today-keepsake { border-width:3px; border-radius:13px; }
+  .grandma-house .today-rewards { min-height:32px; }
+  .grandma-house .today-reward { width:30px; height:30px; }
+  .grandma-house .grandma-choices { min-height:70px; gap:9px; }
+  .grandma-house .grandma-action,
+  .grandma-house .grandma-make { width:68px; height:68px; padding:7px; border-radius:20px; }
+  .grandma-house .grandma-rest { width:132px; }
+  .grandma-house .grandma-action>svg { max-width:52px; max-height:52px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .grandma-house .grandma-room,
+  .grandma-house .grandma-heart { transition:none; animation:none; }
+}
+
+.grandma-halloween .grandma-hearth{background:linear-gradient(#fff0da 0 67%,#decbaa 67%)}
+.grandma-season-child{position:absolute;left:0;bottom:4%;width:31%;height:55%;object-fit:contain;z-index:3;pointer-events:none}
+.grandma-season-friends{position:absolute;right:3%;top:7%;display:flex;width:38%;height:28%;gap:4px;pointer-events:none;z-index:3}
+.grandma-season-friends img{width:48%;height:100%;object-fit:contain;filter:drop-shadow(0 0 3px #fffdfa) drop-shadow(0 0 2px #80656b)}
+
+/* Keep Ba, the keepsake and every exit within the existing short-screen room. */
+@media(orientation:portrait){.grandma-house .grandma-room{grid-template-rows:minmax(0,.72fr) minmax(0,1.12fr) 78px}}
+@media(orientation:landscape) and (max-height:520px){.grandma-house .grandma-room{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr) 70px}.grandma-house .grandma-hearth{grid-row:1}.grandma-house .grandma-choices{grid-column:1/-1;grid-row:2}}
+.grandma-season-friends{height:42%}.grandma-season-friends img:only-child{width:100%}

@@ -1,0 +1,632 @@
+/* screens.css - layout for the map, the Caterpillar Garden and the Unicorn Meadow,
+   plus the shared character / chip / box furniture. Every layout is verified at
+   883x412 (landscape) and 412x883 (portrait); nothing scrolls, nothing clips. */
+
+/* ======================================================================
+   Characters (js/world/characters.js)
+   Four nested transform layers so nothing clobbers anything:
+   .char (place) > .char-breathe (idle) > .char-lean (lookAt) > .char-squash (beats)
+   ====================================================================== */
+
+.char {
+  position: relative;
+  display: block;
+  width: var(--char-size, 160px);
+  height: var(--char-size, 160px);
+  flex: none;
+}
+
+.char-breathe,
+.char-lean,
+.char-squash {
+  width: 100%;
+  height: 100%;
+  transform-origin: 50% 88%;
+  will-change: transform;
+}
+
+.char-breathe {
+  animation: breathe var(--t-breathe) var(--ease-breathe) infinite;
+}
+
+.char-lean {
+  transition: transform var(--t-look) var(--ease-out);
+}
+
+.char-svg,
+.char-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.char-img {
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity var(--t-crossfade) linear;
+}
+
+.char-img.is-shown {
+  opacity: 1;
+}
+
+.char-eye {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform var(--t-blink) linear;
+}
+
+.char-eye.is-blinking {
+  transform: scaleY(0.08);
+}
+
+.char-pupil {
+  transition: transform var(--t-look) var(--ease-out);
+}
+
+.char-mouth-happy,
+.char-mouth-cheer,
+.char-mouth-sleepy {
+  display: none;
+}
+
+.char[data-state="happy"] .char-mouth-idle,
+.char[data-state="cheer"] .char-mouth-idle,
+.char[data-state="sleepy"] .char-mouth-idle {
+  display: none;
+}
+.char[data-state="happy"] .char-mouth-happy,
+.char[data-state="cheer"] .char-mouth-cheer,
+.char[data-state="sleepy"] .char-mouth-sleepy {
+  display: block;
+}
+
+.char[data-state="sleepy"] .char-breathe {
+  animation-duration: 4200ms;
+}
+
+.char-wing {
+  transform-box: fill-box;
+  transform-origin: 50% 60%;
+  animation: flap 520ms var(--ease-breathe) infinite alternate;
+}
+
+.char.is-flying .char-wing {
+  animation-duration: 170ms;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes flap {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.72);
+  }
+}
+
+html.reduced-motion .char-wing,
+html.reduced-motion .char-breathe {
+  animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char-wing,
+  .char-breathe {
+    animation: none;
+  }
+}
+
+/* ======================================================================
+   Shared furniture
+   ====================================================================== */
+
+.glow {
+  position: relative;
+}
+
+.glow::after {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  border-radius: var(--r-circle);
+  background: radial-gradient(
+    circle,
+    rgba(255, 242, 168, 0.85) 0%,
+    rgba(255, 242, 168, 0.35) 55%,
+    rgba(255, 242, 168, 0) 72%
+  );
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -1;
+  animation: softpulse 2600ms var(--ease-breathe) infinite;
+}
+
+@keyframes softpulse {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.06);
+  }
+}
+
+html.reduced-motion .glow::after {
+  animation: none;
+  opacity: 0.5;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow::after {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+.card {
+  background: var(--paper);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-warm);
+  outline: var(--outline) solid var(--ink);
+  outline-offset: calc(var(--outline) * -1);
+}
+
+.tap {
+  transition: transform var(--t-release) var(--ease-overshoot);
+  touch-action: manipulation;
+}
+
+.tap.is-down {
+  transform: scale(0.96);
+  transition: none;
+}
+
+.chip {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--chip, clamp(76px, 13vmin, 116px));
+  height: var(--chip, clamp(76px, 13vmin, 116px));
+  border-radius: var(--r-circle);
+  background: var(--paper);
+  outline: var(--outline) solid var(--ink);
+  outline-offset: calc(var(--outline) * -1);
+  box-shadow: var(--shadow-warm);
+}
+
+.chip > svg {
+  width: 78%;
+  height: 78%;
+  overflow: visible;
+}
+
+/* ======================================================================
+   Map
+   ====================================================================== */
+
+.map {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.map-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--sky-gradient);
+}
+
+.cloud {
+  position: absolute;
+  width: var(--w, 180px);
+  height: calc(var(--w, 180px) * 0.42);
+  border-radius: var(--r-pill);
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow: 0 10px 0 rgba(191, 227, 255, 0.35);
+  opacity: 0.9;
+  animation: drift var(--dur, 90s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform;
+}
+
+.cloud::before,
+.cloud::after {
+  content: "";
+  position: absolute;
+  border-radius: var(--r-circle);
+  background: inherit;
+}
+
+.cloud::before {
+  width: 52%;
+  height: 118%;
+  left: 14%;
+  bottom: 28%;
+}
+
+.cloud::after {
+  width: 40%;
+  height: 92%;
+  right: 12%;
+  bottom: 32%;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-24vw);
+  }
+  to {
+    transform: translateX(124vw);
+  }
+}
+
+.map-hills {
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -1%;
+  width: 104%;
+  height: 62%;
+  pointer-events: none;
+}
+
+.map-rainbow {
+  position: absolute;
+  left: 50%;
+  top: 2%;
+  width: min(52vw, 92vh);
+  height: min(26vw, 46vh);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.map-regions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--gutter) * 1.2);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(8px, 2.4vmin, 26px);
+  padding: 0 var(--gutter);
+}
+
+.region {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  background: none;
+  padding: 0;
+}
+
+.region .char {
+  --char-size: var(--friend);
+}
+
+/* A soft ground shadow so a friend sits on the hill instead of floating over it. */
+.region-plinth {
+  position: absolute;
+  left: 50%;
+  bottom: 1%;
+  width: 76%;
+  height: 11%;
+  transform: translateX(-50%);
+  border-radius: var(--r-circle);
+  background: radial-gradient(closest-side, rgba(74, 59, 52, 0.22), rgba(74, 59, 52, 0));
+  z-index: 0;
+}
+
+/* Landscape: a single row of five friends across the meadow floor. */
+.map-regions {
+  --friend: min(17vw, 38vh);
+}
+
+@media (orientation: portrait) {
+  .map-regions {
+    --friend: min(32vw, 17vh);
+    bottom: 8%;
+  }
+  .map-rainbow {
+    top: 6%;
+    width: min(92vw, 60vh);
+    height: min(46vw, 30vh);
+  }
+  .map-hills {
+    height: 48%;
+  }
+}
+
+/* ======================================================================
+   Garden
+   ====================================================================== */
+
+.garden,
+.meadow {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: var(--gutter);
+  padding: var(--gutter);
+  overflow: hidden;
+}
+
+.garden {
+  grid-template-columns: minmax(120px, 21%) 1fr minmax(96px, 15%);
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.garden-friend {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  padding-top: calc(var(--btn) * 0.9);
+}
+
+.garden-friend .char {
+  --char-size: min(19vw, 46vh);
+}
+
+.garden-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* The Tracer mounts three 88 px tool buttons in a column inside this box, so it must
+   never be shorter than 336 px or they clip. */
+.trace-box {
+  position: relative;
+  width: min(46vw, 84vh);
+  height: min(46vw, 84vh);
+  min-width: min(336px, 100%);
+  min-height: min(336px, 100%);
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--r-card);
+  background: var(--paper);
+  outline: var(--outline) solid var(--ink);
+  outline-offset: calc(var(--outline) * -1);
+  box-shadow: var(--shadow-warm);
+  overflow: hidden;
+  touch-action: none;
+}
+
+.trace-box > * {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.model-letter {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  width: min(13vw, 22vh);
+  height: min(13vw, 22vh);
+  border-radius: var(--r-small);
+  background: rgba(255, 253, 248, 0.85);
+  outline: 3px dashed var(--ink-faint);
+  padding: 6%;
+  pointer-events: none;
+}
+
+.garden-next {
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  align-self: center;
+  padding-top: calc(var(--btn) * 0.9);
+}
+
+.sticker-corner {
+  position: absolute;
+  right: var(--gutter);
+  bottom: var(--gutter);
+  width: clamp(56px, 9vmin, 88px);
+  height: clamp(56px, 9vmin, 88px);
+  border-radius: var(--r-card);
+  background: var(--lemon);
+  outline: var(--outline) solid var(--ink);
+  outline-offset: calc(var(--outline) * -1);
+  box-shadow: var(--shadow-warm);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 12;
+}
+
+.sticker-corner svg {
+  width: 84%;
+  height: 84%;
+  overflow: hidden;
+}
+
+@media (orientation: portrait) {
+  .garden {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    padding-top: calc(var(--btn) + var(--gutter) * 1.4);
+    justify-items: center;
+  }
+  .garden-friend {
+    padding-top: 0;
+  }
+  .garden-friend .char {
+    --char-size: min(42vw, 20vh);
+  }
+  .garden-next {
+    padding-top: 0;
+  }
+  .trace-box {
+    width: min(86vw, 52vh);
+    height: min(86vw, 52vh);
+  }
+  .model-letter {
+    width: min(24vw, 14vh);
+    height: min(24vw, 14vh);
+  }
+}
+
+/* ======================================================================
+   Meadow
+   ====================================================================== */
+
+/* The word always reads left to right: she is learning to write her name, not to stack
+   letters. Landscape is short, so the strip shrinks rather than turning. */
+.meadow {
+  grid-template-columns: minmax(120px, 22%) 1fr;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+}
+
+.meadow-unicorn {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  padding-top: calc(var(--btn) * 0.9);
+}
+
+.meadow-unicorn .char {
+  --char-size: min(22vw, 52vh);
+}
+
+.word-row {
+  --wbox: clamp(34px, 7vmin, 54px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1.4vmin, 16px);
+  min-width: 0;
+}
+
+.wbox {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--wbox, clamp(42px, 8vmin, 76px));
+  height: var(--wbox, clamp(42px, 8vmin, 76px));
+  flex: none;
+  border-radius: var(--r-small);
+  background: var(--paper);
+  outline: 3px solid var(--ink-faint);
+  transition: outline-color var(--t-look) linear, transform var(--t-look) var(--ease-out);
+}
+
+.wbox > svg,
+.wbox > canvas {
+  width: 84%;
+  height: 84%;
+}
+
+.wbox.is-active {
+  outline: var(--outline) solid var(--ink);
+  transform: scale(1.08);
+}
+
+.wbox.is-done {
+  background: var(--mint);
+  outline-color: var(--mint-deep);
+}
+
+.meadow-stage {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.meadow-stage .trace-box {
+  width: min(38vw, 82vh);
+  height: min(38vw, 82vh);
+}
+
+@media (orientation: portrait) {
+  .meadow {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    padding-top: calc(var(--btn) + var(--gutter) * 1.4);
+    justify-items: center;
+  }
+  .meadow-unicorn {
+    grid-row: auto;
+    padding-top: 0;
+  }
+  .meadow-unicorn .char {
+    --char-size: min(46vw, 22vh);
+  }
+  .word-row {
+    --wbox: clamp(42px, 9vmin, 76px);
+  }
+  .meadow-stage .trace-box {
+    width: min(84vw, 48vh);
+    height: min(84vw, 48vh);
+  }
+}
+
+/* ======================================================================
+   Pip's layer
+   ====================================================================== */
+
+.pip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--pip-size, clamp(64px, 10vmin, 108px));
+  height: var(--pip-size, clamp(64px, 10vmin, 108px));
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.pip .char {
+  --char-size: 100%;
+}
+
+.ripple {
+  position: absolute;
+  width: 18vmin;
+  height: 18vmin;
+  margin: -9vmin 0 0 -9vmin;
+  border-radius: var(--r-circle);
+  border: var(--outline) solid var(--lemon-deep);
+  opacity: 0.9;
+  pointer-events: none;
+  animation: ripple 620ms var(--ease-out) forwards;
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(0.25);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+html.reduced-motion .ripple {
+  animation-duration: 320ms;
+}

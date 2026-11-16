@@ -1,0 +1,178 @@
+.picnic-screen{position:relative;width:100%;height:100%;display:flex;flex-direction:column;gap:10px;padding:max(10px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));background:#e6f5e9;color:#4a3b34;overflow:auto;overscroll-behavior:contain;box-sizing:border-box;touch-action:pan-y}
+.picnic-nav{display:flex;justify-content:space-between;align-items:center;gap:5px;flex-shrink:0;position:sticky;top:-10px;background:#e6f5e9f5;padding:5px 0;z-index:8}
+.picnic-button{display:grid;place-items:center;position:relative;border:3px solid #675047;border-radius:18px;background:#fffdf8;color:#5b463e;min-width:48px;min-height:48px;padding:5px;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;box-shadow:0 3px 0 #67504730}
+.picnic-button svg{width:30px;height:30px}.picnic-button img{max-width:100%;max-height:100%;object-fit:contain}.picnic-button:disabled{opacity:.45;box-shadow:none;cursor:default}.picnic-button:focus-visible{outline:4px solid #956acc;outline-offset:3px}
+.picnic-nav>.picnic-button,.picnic-nav>.mute{width:50px;height:50px;min-width:0;position:relative;inset:auto;margin:0;flex:0 0 50px}
+.picnic-play{display:grid;grid-template-rows:auto auto 50px;gap:12px;width:100%;max-width:1100px;margin:auto;flex:1 0 auto;align-content:center}
+.picnic-family{display:flex;gap:12px;justify-content:center;align-items:flex-start}.picnic-person{display:flex;flex-direction:column;width:48%;max-width:340px;position:relative;align-items:center;gap:4px;min-width:0}
+.picnic-recipient{background:none;border:0;box-shadow:none;width:100%;height:clamp(110px,17vh,180px);padding:0}.picnic-portrait{width:100%;height:100%;object-fit:contain;pointer-events:none}.picnic-name-row{display:flex;align-items:center;justify-content:center;gap:8px;width:100%}.picnic-name{font-weight:800;font-size:17px}.picnic-change-guest{min-width:48px;min-height:48px;width:48px;height:48px;border-width:2px;background:#ffffff88}.picnic-change-guest svg{width:24px;height:24px}
+.picnic-plate{position:relative;width:100%;min-height:135px;padding:17px 9px 13px;isolation:isolate}.picnic-plate-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;z-index:-1}.picnic-plate-target{position:absolute;inset:0;width:100%;height:100%;border:0;background:none;box-shadow:none;z-index:0}.picnic-plate-food{position:relative;display:grid;grid-template-columns:repeat(3,48px);grid-auto-rows:48px;align-content:center;justify-content:center;gap:4px;pointer-events:none;min-height:100px}.picnic-plate-food:empty{min-height:100px}
+.picnic-portions{display:flex;justify-content:center;align-items:center;gap:3px;flex-wrap:wrap;min-height:14px;max-width:100%;padding:1px 5px}.picnic-portions i{width:12px;height:12px;border:1.5px solid #846845;border-radius:50%;background:#d3ab61;flex:0 0 12px}.picnic-portions i.is-half{background:linear-gradient(90deg,#d3ab61 0 50%,#fffdf4 50%)}
+.picnic-held-fruit{position:absolute!important;right:27%;top:57%;width:40px!important;height:40px!important;filter:drop-shadow(0 2px 1px #72513233)}.picnic-enjoy-heart{position:absolute;right:15%;top:25%;width:35px;height:35px;color:#c9718a;animation:picnic-hello 900ms ease-in-out 1}.picnic-enjoy-heart svg{width:35px;height:35px}.picnic-enjoyed-food{display:flex;gap:3px;flex-wrap:wrap;justify-content:center;max-width:100%;padding:4px 8px;border-radius:14px;background:#cce5c7;min-height:32px}.picnic-enjoyed-piece{width:26px!important;height:26px!important;opacity:.6;filter:saturate(.7)}
+.picnic-table{position:relative;border:4px solid #b58f77;border-radius:26px;background:repeating-linear-gradient(0deg,#fff6df,#fff6df 24px,#f9ddb5 24px,#f9ddb5 26px);display:flex;flex-direction:column;padding:9px;isolation:isolate;gap:8px;align-self:center;min-width:0;overflow:visible}.picnic-own-cloth{position:absolute;inset:4%;width:92%;height:92%;object-fit:contain;z-index:-1;pointer-events:none}
+.picnic-board{min-height:60px;display:flex;align-items:center;gap:7px}.picnic-return-food{flex:0 0 48px;background:#fffdf8dc}.picnic-food-tray{display:grid;grid-template-columns:repeat(auto-fit,48px);grid-auto-rows:48px;justify-content:center;gap:6px;flex:1;min-width:0;padding:4px;background:#fffdf42b;border-radius:14px}.picnic-piece{border:0;box-shadow:none;background:#fffdf8b0;border-radius:13px;min-width:48px;min-height:48px;width:48px;height:48px;padding:3px;pointer-events:auto;touch-action:none;z-index:2}
+.picnic-piece.is-selected{outline:4px solid #9464c6;background:#ffe6b2}.picnic-fruit-picture{display:block;width:100%;height:100%;position:relative;pointer-events:none}.picnic-fruit-picture>img{width:100%;height:100%;object-fit:contain}.picnic-half-fallback{position:absolute;inset:0;display:block}.picnic-half-fallback[hidden],.picnic-fruit-picture>img[hidden]{display:none}.picnic-half-fallback svg{width:100%;height:100%}.picnic-fruit-picture.is-salad:after{content:'';position:absolute;inset:3%;border-radius:50%;border:2px dashed #70a366;pointer-events:none}
+.picnic-fruit-picture.is-salad{display:flex;align-items:center;justify-content:center;gap:0;background:#e0edc7;border-radius:50%}.picnic-salad-bite{width:52%;height:82%;flex:1;transform:rotate(-12deg)}.picnic-salad-bite+ .picnic-salad-bite{transform:rotate(15deg)}.picnic-salad-bite:only-child{width:75%;flex:0 0 75%}
+.picnic-bowl{min-height:190px}.picnic-bowl-food{min-height:135px}.picnic-bowl-target:after{content:'↗';position:absolute;bottom:12px;left:calc(50% - 22px);width:44px;height:44px;display:grid;place-items:center;border:2px dashed #42678d;border-radius:50%;color:#345978;background:#fffdf499;font-size:28px}.picnic-bowl.is-selected .picnic-bowl-target:after{background:#fff0bc;border-color:#9464c6}
+.picnic-invitation{width:120px;height:84px;align-self:center;border-color:#a58361;transform:rotate(-3deg);background:#fffdf4;padding:3px}.picnic-invitation img{width:100%;height:100%;object-fit:contain}.picnic-preview-invitation{position:absolute;right:3px;bottom:5px;width:42px;height:29px;object-fit:contain;background:#fffdf4;border:2px solid #af916b;z-index:3;transform:rotate(-5deg)}
+.picnic-empty-place{display:block;width:48px;height:48px;border:1.5px dashed #aa997455;border-radius:50%;pointer-events:none;background:#fffdf411}.picnic-bowl .picnic-empty-place{border-color:#5d83a655}
+.picnic-preparing{display:flex;align-items:center;justify-content:center;gap:10px;flex-shrink:0}.picnic-preparing>.picnic-button{width:50px;height:55px;font-size:30px;background:#ffe6b7}.picnic-bowl{width:220px;min-height:160px;position:relative;border-radius:22px;isolation:isolate}.picnic-bowl-art{position:absolute;inset:0;width:100%;height:100%;object-fit:fill;pointer-events:none;z-index:-1}.picnic-bowl-target{position:absolute;inset:0;border:0;background:none;box-shadow:none;width:100%;height:100%;z-index:0}.picnic-bowl-food{position:relative;padding:10px 5px 25px;display:grid;grid-template-columns:repeat(4,48px);grid-auto-rows:48px;justify-content:center;align-content:start;gap:3px;pointer-events:none;min-height:150px}.picnic-bowl.is-selected{outline:4px solid #9464c6;outline-offset:3px}.picnic-bowl.is-mixed .picnic-piece{background:#dcecc780;border-radius:50%}.picnic-bowl.is-mixed .picnic-piece:nth-child(2n){transform:translateY(5px) rotate(12deg)}.picnic-bowl.is-mixed .picnic-piece:nth-child(2n+1){transform:rotate(-9deg)}.picnic-bowl-info{display:flex;flex-direction:column;align-items:center;gap:2px;order:3;font-size:14px;font-weight:700;min-height:18px;text-align:center}
+.picnic-footer{display:flex;justify-content:center;gap:18px}.picnic-footer>.picnic-button{width:62px;height:50px}.picnic-footer>.picnic-button img{height:36px}.picnic-status{flex-shrink:0;text-align:center;font-size:15px;line-height:1.3;background:#fffdf4e8;border-radius:14px;position:sticky;bottom:-12px;z-index:9;padding:7px}.picnic-status:empty{display:none}
+.picnic-saved-pages{flex-basis:100%;display:flex;align-items:center;justify-content:center;gap:16px;position:sticky;top:0;background:#fffdf8;z-index:2}.picnic-saved-pages>.picnic-button{width:48px;height:48px;min-width:48px}.picnic-next-page>svg{transform:rotate(180deg)}.picnic-storage-notice{flex-basis:100%;font-size:17px;line-height:1.4;margin:4px}.picnic-picker .picnic-saved-choice{width:min(205px,calc(50% - 6px));height:180px;min-width:120px}@media(max-height:430px){.picnic-picker .picnic-saved-choice{width:150px;height:145px}}
+.picnic-picker{position:absolute;inset:8px;background:#fffdf8f5;border:4px solid #675047;border-radius:26px;z-index:15;padding:12px;display:flex;flex-wrap:wrap;align-content:start;justify-content:center;gap:12px;overflow:auto;overscroll-behavior:contain;touch-action:pan-y}.picnic-picker>.picnic-button:first-child{flex-basis:100%;height:48px}.picnic-guest-choice{width:100px;height:145px}.picnic-cloth-choice{width:140px;height:140px}.picnic-saved-choice{width:205px;height:215px;padding:5px}
+.picnic-saved-preview{display:block;position:relative;height:100%;width:100%;border:2px solid #c3a886;border-radius:14px;background:repeating-linear-gradient(0deg,#fff3d7 0 17px,#e7cea1 18px 20px);overflow:hidden;isolation:isolate;pointer-events:none}.picnic-preview-cloth{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:-1}.picnic-preview-people{display:flex;justify-content:space-around;height:60%;width:100%;gap:5px}.picnic-preview-people>span{width:47%;display:flex;flex-direction:column;align-items:center;height:100%}.picnic-preview-people .picnic-portrait{height:65%;width:70%;object-fit:contain}.picnic-preview-plate{position:relative;display:block;width:100%;height:38%;min-height:40px}.picnic-preview-plate>img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.picnic-preview-food{position:relative;display:flex;gap:1px;flex-wrap:wrap;justify-content:center;align-content:center;width:100%;height:100%}.picnic-preview-food .picnic-fruit-picture{width:21px;height:21px}.picnic-preview-food .was-enjoyed{opacity:.45}.picnic-preview-table{display:flex;width:100%;height:40%;align-items:center;gap:5px;padding:4px}.picnic-preview-board{display:flex;flex:1;gap:1px;flex-wrap:wrap;justify-content:center;align-content:center}.picnic-preview-board .picnic-fruit-picture{width:16px;height:16px}.picnic-preview-bowl{width:43%;height:100%;position:relative}.picnic-preview-bowl>img{position:absolute;inset:0;width:100%;height:100%;object-fit:fill}.picnic-preview-bowl .picnic-preview-food{align-content:flex-start;padding-top:5px}.picnic-preview-bowl .picnic-fruit-picture{width:17px;height:17px}
+.picnic-drag-ghost{position:fixed;width:92px;height:92px;transform:translate(-50%,-50%);z-index:40;filter:drop-shadow(0 4px 2px #67452c40);pointer-events:none}
+/* Replaced images must not contribute an intrinsic minimum to a grid button. */
+.picnic-recipient{display:block;position:relative}
+.picnic-recipient>.picnic-portrait{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:contain}
+.picnic-table .picnic-invitation{position:absolute;right:14px;top:12px;width:105px;height:72px;z-index:4}
+.picnic-has-invitation .picnic-board{padding-right:120px}
+.picnic-plate{width:190px;max-width:100%;height:190px;min-height:190px;padding:20px 0;display:grid;place-items:center}
+.picnic-plate-art,.picnic-bowl-art{object-fit:contain}
+.picnic-plate-food{padding:0;min-height:0;width:100%}
+.picnic-bowl{width:218px;height:218px;min-height:218px;display:grid;place-items:center}
+.picnic-bowl-food{min-height:0;grid-template-columns:repeat(3,48px);grid-auto-rows:48px;padding:0;align-content:center}
+.picnic-recipient{height:115px}
+@media(orientation:landscape) and (min-width:700px){.picnic-recipient{height:clamp(100px,24vh,170px)}}
+@keyframes picnic-hello{50%{transform:scale(1.16)}}.reduced-motion .picnic-enjoy-heart{animation:none}@media(prefers-reduced-motion:reduce){.picnic-enjoy-heart{animation:none}}
+@media(orientation:landscape) and (min-width:700px){.picnic-play{grid-template-columns:minmax(320px,1fr) minmax(330px,1fr);grid-template-rows:auto 50px;align-items:center}.picnic-family{grid-column:1;grid-row:1/3}.picnic-table{grid-column:2;grid-row:1}.picnic-footer{grid-column:2;grid-row:2}.picnic-recipient{height:clamp(110px,28vh,210px)}.picnic-table{padding:7px}.picnic-preparing{gap:6px}.picnic-bowl{width:220px}}
+@media(max-width:380px){.picnic-screen{padding-left:8px;padding-right:8px}.picnic-family{gap:6px}.picnic-plate{padding-left:4px;padding-right:4px}.picnic-plate-food{gap:1px}.picnic-nav>.picnic-button,.picnic-nav>.mute{width:47px;height:48px;flex-basis:47px}.picnic-preparing{gap:4px}.picnic-bowl{width:210px}.picnic-name{font-size:15px}}
+@media(max-height:430px){.picnic-screen{gap:6px;padding-top:6px;padding-bottom:6px}.picnic-nav>.picnic-button,.picnic-nav>.mute{height:48px;flex-basis:48px}.picnic-recipient{height:105px}.picnic-play{gap:7px}.picnic-name-row{gap:4px}.picnic-name{font-size:14px}.picnic-status{font-size:13px}}
+
+/* The play surface fits the measured host. Choosers and a long food row scroll
+   independently; friends, preparation tools and navigation never scroll away. */
+.picnic-screen{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:44px minmax(0,1fr) 44px 24px;padding:var(--picnic-padding,6px);gap:var(--picnic-gap,4px);overflow:hidden;touch-action:manipulation}
+/* These are screen children. Legacy landscape placements belonged to the old
+   inner play grid and must not create an implicit second screen column. */
+.picnic-screen>.picnic-nav{grid-column:1;grid-row:1}
+.picnic-screen>.picnic-play{grid-column:1;grid-row:2}
+.picnic-screen>.picnic-footer{grid-column:1;grid-row:3}
+.picnic-screen>.picnic-status{grid-column:1;grid-row:4}
+.picnic-nav{position:static;padding:0;gap:4px;min-width:0;height:44px}.picnic-nav>.picnic-button,.picnic-nav>.mute{width:44px;height:44px;min-width:44px;min-height:44px;flex-basis:44px;margin:0;padding:3px;border-radius:14px}.picnic-nav .mute{max-width:44px}
+.picnic-play{min-width:0;min-height:0;width:100%;max-width:none;margin:0;flex:none;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:var(--picnic-family-height,196px) minmax(0,1fr);gap:var(--picnic-gap,4px);align-content:stretch;align-items:stretch}
+.picnic-family{display:grid;grid-column:1;grid-row:1;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--picnic-gap,4px);min-width:0;min-height:0;align-items:stretch}
+.picnic-person{display:grid;grid-template-columns:44px minmax(0,1fr);grid-template-rows:var(--picnic-friend-header,44px) minmax(0,1fr) 16px;gap:2px;width:100%;max-width:none;min-width:0;min-height:0;align-items:center;justify-items:center;position:relative}
+.picnic-recipient{grid-column:1;grid-row:1;width:44px;height:var(--picnic-friend-header,44px);min-width:44px;min-height:44px}.picnic-name-row{grid-column:2;grid-row:1;gap:2px;min-width:0;justify-content:center}.picnic-name{font-size:13px;line-height:14px;max-width:55px;overflow-wrap:anywhere}.picnic-change-guest{width:44px;height:44px;min-width:44px;min-height:44px;padding:3px;border-radius:13px}.picnic-change-guest svg{width:24px;height:24px}
+.picnic-plate{grid-column:1/3;grid-row:2;width:var(--picnic-plate-size,136px);height:var(--picnic-plate-size,136px);min-height:0;max-width:100%;padding:0;align-self:center}.picnic-plate-food{grid-template-columns:repeat(3,44px);grid-auto-rows:44px;gap:2px;min-height:0;padding:0;width:100%;max-height:100%;overflow-y:auto;overflow-x:visible;overscroll-behavior:contain;touch-action:pan-y}.picnic-plate-target{min-width:44px;min-height:44px}.picnic-plate-food>.picnic-piece{background:transparent}.picnic-plate-food>.picnic-piece>.picnic-fruit-picture{width:32px;height:32px;margin:auto}
+.picnic-piece,.picnic-empty-place{width:44px;height:44px;min-width:44px;min-height:44px;padding:3px}.picnic-person>.picnic-portions{grid-column:1/3;grid-row:3;min-height:12px;height:14px;padding:0;gap:2px;flex-wrap:nowrap;overflow:hidden}.picnic-portions i{width:8px;height:8px;flex-basis:8px;border-width:1px}.picnic-person.has-enjoyed>.picnic-portions{justify-self:start;max-width:48%}.picnic-enjoyed-food{position:absolute;bottom:0;right:0;max-width:48%;height:16px;min-height:0;padding:0;gap:1px;flex-wrap:nowrap;overflow-x:auto;touch-action:pan-x;background:transparent;border-radius:0}.picnic-enjoyed-piece{width:14px!important;height:14px!important;flex:0 0 14px}.picnic-held-fruit{width:22px!important;height:22px!important;right:0;top:50%}.picnic-enjoy-heart{width:18px;height:18px;right:-4px;top:5px}.picnic-enjoy-heart svg{width:18px;height:18px}
+.picnic-table{grid-column:1;grid-row:2;display:grid;grid-template-rows:44px minmax(0,1fr) 12px;align-self:stretch;gap:4px;min-width:0;min-height:0;padding:2px;border-width:2px;border-radius:22px;overflow:hidden}.picnic-board{grid-row:1;min-height:0;min-width:0;display:block;padding:0!important}.picnic-food-tray{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:0;min-width:0;height:44px;padding:0;overflow-x:auto;overflow-y:hidden;touch-action:pan-x;overscroll-behavior:contain}.picnic-food-tray>.picnic-piece{flex:0 0 44px}.picnic-food-tray>.picnic-piece>.picnic-fruit-picture{width:38px;height:38px}.picnic-own-cloth{inset:0;width:100%;height:100%;object-fit:contain}
+.picnic-preparing{grid-row:2;display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:2px;min-width:0;min-height:0;align-items:center;justify-items:center}.picnic-preparing>.picnic-button{width:44px;height:52px;min-width:44px;min-height:44px;padding:3px;font-size:27px}.picnic-bowl{width:var(--picnic-bowl-size,148px);height:var(--picnic-bowl-size,148px);min-height:0;max-width:100%;border-radius:50%;display:grid;place-items:center}.picnic-bowl-food{display:grid;grid-template-columns:repeat(3,24px);grid-auto-rows:24px;gap:2px;padding:0;min-height:0;align-content:center;justify-content:center;pointer-events:none}.picnic-bowl-food>.picnic-fruit-picture,.picnic-bowl-slot{width:24px;height:24px}.picnic-bowl-slot{border:1px dashed #5d83a644;border-radius:50%}.picnic-bowl-target{min-width:44px;min-height:44px}.picnic-bowl-target:after{width:22px;height:22px;min-width:0;left:calc(50% - 11px);bottom:5px;font-size:18px;border-width:1px}.picnic-bowl-info{grid-row:3;order:0;display:flex;flex-direction:row;justify-content:center;gap:3px;height:12px;min-height:0;font-size:10px;line-height:12px;white-space:nowrap;overflow:hidden}.picnic-bowl-info>.picnic-portions{padding:0;min-height:0;flex-wrap:nowrap}
+.picnic-footer{min-width:0;height:44px;gap:8px;align-items:center}.picnic-footer>.picnic-button{position:relative!important;width:44px!important;height:44px!important;min-width:44px;min-height:44px;flex:0 0 44px;padding:3px;border-radius:14px;inset:auto!important;transform:none}.picnic-footer>.picnic-button img{height:36px;max-width:36px}.picnic-status{display:block!important;position:static;min-height:24px;height:24px;max-height:24px;margin:0;padding:2px;font-size:11px;line-height:12px;overflow:hidden;border-radius:8px}.picnic-status:empty{background:transparent}
+.picnic-screen[data-layout=landscape] .picnic-play{grid-template-columns:var(--picnic-friend-width,136px) minmax(0,1fr) var(--picnic-friend-width,136px);grid-template-rows:minmax(0,1fr);gap:var(--picnic-gap,4px)}.picnic-screen[data-layout=landscape] .picnic-family{display:contents}.picnic-screen[data-layout=landscape] .picnic-person:first-child{grid-column:1;grid-row:1}.picnic-screen[data-layout=landscape] .picnic-person:last-child{grid-column:3;grid-row:1}.picnic-screen[data-layout=landscape] .picnic-table{grid-column:2;grid-row:1}
+.picnic-ingredient-choice{width:64px;height:64px}.picnic-ingredient-choice>.picnic-fruit-picture{width:44px;height:44px}.picnic-picker{touch-action:pan-y}
+.picnic-next-fruit>svg{transform:rotate(180deg)}
+.picnic-plate{width:max(136px,var(--picnic-plate-size,136px))}.picnic-screen[data-layout=landscape] .picnic-plate-food>.picnic-piece>.picnic-fruit-picture{width:26px;height:26px}
+
+/* Keep the authored cut faces readable. Preparation is conveyed by real halves
+   and the bowl caption, without a badge obscuring those original pictures. */
+.picnic-fruit-picture.is-salad{background:transparent;border-radius:0}.picnic-fruit-picture.is-salad:after{display:none}.picnic-salad-bite{height:100%;transform:rotate(-6deg)}.picnic-salad-bite+.picnic-salad-bite{transform:rotate(6deg)}.picnic-salad-bite:only-child{width:100%;height:100%;flex-basis:100%;transform:none}
+.picnic-bowl-food{grid-template-columns:repeat(3,var(--picnic-bowl-fruit-size,24px));grid-auto-rows:var(--picnic-bowl-fruit-size,24px)}.picnic-bowl-food>.picnic-fruit-picture,.picnic-bowl-slot{width:var(--picnic-bowl-fruit-size,24px);height:var(--picnic-bowl-fruit-size,24px)}
+.picnic-plate-food>.picnic-piece>.picnic-fruit-picture,.picnic-screen[data-layout=landscape] .picnic-plate-food>.picnic-piece>.picnic-fruit-picture{width:var(--picnic-plate-fruit-size,32px);height:var(--picnic-plate-fruit-size,32px)}
+.picnic-person{grid-template-columns:var(--picnic-portrait-width,44px) minmax(0,1fr)}.picnic-recipient{width:var(--picnic-portrait-width,44px)}
+
+/* People, food and the child's actual cloth form one reachable picnic scene. */
+.picnic-play { position:relative;isolation:isolate;border:3px solid #b9b08a;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(0deg,#fff4d8 0 23px,#e8d9ad 24px 26px);box-sizing:border-box; }
+.picnic-play>.picnic-own-cloth { z-index:0;inset:0;width:100%;height:100%;opacity:1; }
+.picnic-family,.picnic-table { position:relative;z-index:1; }
+.picnic-person { display:block;position:relative;grid-template-columns:none;grid-template-rows:none;gap:0;min-height:0; }
+.picnic-name-row { position:absolute;left:0;right:0;top:0;height:24px;align-items:center;z-index:4;justify-content:center; }
+.picnic-name { max-width:calc(100% - 48px);font-size:13px;line-height:16px;background:#fff8e9bB;border-radius:8px;padding:2px 5px; }
+.picnic-change-guest { position:absolute;right:1px;top:1px;width:44px;height:44px;padding:4px;background:#fffdf4bf; }
+.picnic-recipient { position:absolute;left:50%;top:24px;transform:translateX(-50%);width:var(--picnic-portrait-width,100px);height:var(--picnic-portrait-height,140px);min-height:44px;z-index:1; }
+.picnic-recipient:active { transform:translateX(-50%) translateY(2px); }
+.picnic-recipient>.picnic-portrait { object-position:top; }
+.picnic-plate { position:absolute;left:50%;bottom:16px;transform:translateX(-50%);width:var(--picnic-plate-size,148px);height:var(--picnic-plate-size,148px);min-width:0;min-height:0;z-index:2; }
+/* Overflow must begin at the scroll origin; centering a taller six-slot grid
+   above a small plate hides its first kept portion beyond the reachable area. */
+.picnic-plate-food { grid-template-columns:repeat(var(--picnic-plate-columns,3),44px);grid-auto-rows:44px;align-content:start;gap:2px;max-height:100%;overflow-y:auto;overflow-x:hidden; }
+.picnic-person>.picnic-portions { position:absolute;bottom:0;left:3px;right:3px;width:calc(100% - 6px);height:14px;max-width:100%; }
+.picnic-person.has-enjoyed>.picnic-portions { max-width:48%; }
+.picnic-held-fruit { width:30px!important;height:30px!important;right:24%;top:52%; }
+.picnic-enjoy-heart { right:12%;top:18%;width:24px;height:24px; }
+.picnic-enjoy-heart svg { width:24px;height:24px; }
+.picnic-has-selection .picnic-plate-target { outline:3px dashed #b29450;outline-offset:-8px;border-radius:50%;background:#fff0bc22; }
+.picnic-person.is-sharing-target .picnic-recipient { outline:4px solid #9672ba;outline-offset:2px;border-radius:22px;background:#fff7e8aa; }
+.picnic-person.is-ready-to-enjoy .picnic-recipient { outline:3px solid #75a875;outline-offset:2px;border-radius:22px; }
+.picnic-screen>.picnic-status { font-size:12px;line-height:12px;padding:0 5px;display:flex!important;align-items:center;justify-content:center; }
+.picnic-table { border:0;background:transparent;grid-template-rows:44px minmax(0,1fr) 14px;padding:2px 5px;gap:2px; }
+.picnic-board { display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:3px;position:relative;overflow:visible; }
+.picnic-food-tray { min-width:0;width:100%;border:2px solid #c6b083;border-radius:14px;background:#fffdf4aA;box-sizing:border-box; }
+.picnic-board>.picnic-next-fruit { width:44px;height:44px;min-width:44px;min-height:44px;padding:4px;background:#fffdf4bB;border-radius:13px; }
+.picnic-return-food { position:absolute;left:3px;top:48px;width:44px;height:44px;min-width:44px;min-height:44px;padding:5px;z-index:5; }
+.picnic-preparing { grid-template-columns:44px minmax(0,1fr) 44px;gap:2px; }
+.picnic-preparing>.picnic-cut { grid-column:1; }
+.picnic-preparing>.picnic-bowl { grid-column:2;grid-row:1; }
+.picnic-preparing>.picnic-mix { grid-column:3;grid-row:1; }
+.picnic-preparing>.picnic-button[hidden],.picnic-return-food[hidden] { display:none; }
+.picnic-bowl-info { height:14px;font-size:11px;line-height:14px; }
+.picnic-nav { justify-content:center;gap:8px; }
+.picnic-footer { gap:8px; }
+.picnic-footer>.picnic-tools img { max-width:40px;height:38px; }
+.picnic-tool-choice { width:min(140px,calc(50% - 6px));min-height:116px;display:flex;flex-direction:column;gap:6px; }
+.picnic-tool-choice>img,.picnic-tool-choice>svg { width:62px;height:62px;object-fit:contain; }
+.picnic-tool-choice>span { font-size:14px;line-height:18px; }
+.picnic-help-steps { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%; }
+.picnic-help-steps>div { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;text-align:center;font-size:13px; }
+.picnic-help-steps img { width:100%;max-width:100px;height:100px;object-fit:contain; }
+.picnic-screen[data-compact-friends=true] .picnic-recipient { left:0;top:24px;transform:none;clip-path:inset(0 0 34% 0); }
+.picnic-screen[data-compact-friends=true] .picnic-recipient>.picnic-portrait { object-position:top; }
+.picnic-screen[data-compact-friends=true] .picnic-recipient:active { transform:translateY(2px); }
+.picnic-screen[data-compact-friends=true] .picnic-plate { left:auto;right:0;transform:none; }
+.picnic-screen[data-compact-friends=true] .picnic-change-guest { top:auto;bottom:3px;left:2px;right:auto; }
+@media(max-height:430px) and (orientation:landscape) {
+  .picnic-play { border-width:2px;border-radius:20px; }
+  .picnic-name { font-size:11px;line-height:13px;padding:1px 3px; }
+  .picnic-change-guest { background:#fffdf466; }
+  .picnic-plate-food { align-content:start; }
+  .picnic-board { grid-template-columns:minmax(0,1fr) 44px; }
+  .picnic-preparing>.picnic-button { width:44px;height:44px;font-size:24px; }
+  .picnic-help-steps img { height:72px; }
+}
+.picnic-outing-play .picnic-play{display:block!important;position:relative;background:linear-gradient(#e7f0d5 0 32%,#d2e4be 32% 39%,#e0e5bf 39% 70%,#e8d9b7 70%);padding:0}.picnic-outing-stage{position:absolute;inset:0;overflow:hidden;isolation:isolate}
+.picnic-outing-table,.picnic-outing-person,.picnic-outing-plate,.picnic-outing-toy-target,.picnic-outing-letter{position:absolute;padding:0;border:0;background:transparent;box-shadow:none;min-width:44px;min-height:44px}
+.picnic-outing-table{z-index:2}.picnic-outing-table>img{width:100%;height:100%;max-width:none;max-height:none;object-fit:contain;pointer-events:none}
+.picnic-outing-person{z-index:1}.picnic-outing-person>.picnic-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center top;pointer-events:none}.picnic-has-selection .picnic-outing-person{outline:3px dashed #977fb2;outline-offset:1px;border-radius:15px}
+.picnic-outing-plate{z-index:4}.picnic-outing-plate>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none}.picnic-outing-portions{position:absolute;pointer-events:none}.picnic-outing-portions>.picnic-fruit-picture{position:absolute}
+.picnic-outing-portions>.picnic-fruit-picture.is-salad{display:block}
+.picnic-outing-portions .picnic-salad-bite{position:absolute;top:4%;left:0;width:82%;height:92%;transform:none}
+.picnic-outing-portions .picnic-salad-bite+.picnic-salad-bite{left:18%;transform:none}
+.picnic-outing-portions .picnic-salad-bite:only-child{inset:0;width:100%;height:100%;transform:none}
+.picnic-outing-toy-target{z-index:5;overflow:visible;touch-action:manipulation}.picnic-outing-toy-target[aria-pressed=true]{outline:3px dashed #977fb2;outline-offset:2px;border-radius:9px}.picnic-outing-toy{display:block;position:relative;width:100%;aspect-ratio:1/.72605893;pointer-events:none}.picnic-outing-toy-target>.picnic-outing-toy{position:absolute;left:0;top:0}
+.picnic-outing-float{position:absolute;left:0;top:54.09%;width:100%;height:auto;aspect-ratio:3/1;object-fit:contain}.picnic-outing-paper{position:absolute;left:25%;top:0;width:50%;height:68.865%;border:2px solid #e9d7b1;border-radius:4px;background:#fffcf2;overflow:hidden;z-index:1}.picnic-outing-paper>img,.picnic-outing-paper>svg{width:100%;height:100%;object-fit:contain;display:block;pointer-events:none}
+.picnic-outing-response{position:absolute;z-index:7;color:#b57489;font-size:24px;pointer-events:none}.picnic-outing-own-cloth{position:absolute;object-fit:contain;z-index:3;border:1px solid #b99e73;background:#fffcf2;pointer-events:none}.picnic-outing-letter{z-index:6}.picnic-outing-letter>img{width:100%;height:100%;object-fit:contain;background:#fffdf3;border:2px solid #bda57a}
+.picnic-outing-arrival-choice{width:140px;height:150px;display:flex;flex-direction:column;gap:6px}.picnic-outing-arrival-choice>.picnic-outing-toy{width:90px;flex:none}.picnic-outing-arrival-choice>.picnic-portrait{height:110px;width:80px}.picnic-arrival-preview{width:180px;flex:0 0 180px}.picnic-play-launcher>.picnic-outing-toy{width:39px}.picnic-preview-outing{position:absolute;left:35%;top:36%;width:30%;z-index:3}
+.picnic-screen:has(.picnic-play-launcher) .picnic-footer{gap:5px}.picnic-screen:has(.picnic-play-launcher) .picnic-footer>.picnic-button{width:44px;min-width:44px}
+@media(max-height:430px){.picnic-outing-arrival-choice{height:108px;width:120px}.picnic-outing-arrival-choice>.picnic-outing-toy{width:65px}.picnic-outing-arrival-choice>.picnic-portrait{height:70px}.picnic-arrival-preview{width:120px;flex-basis:120px}}
+.picnic-outing-toy{aspect-ratio:1/1.02605893}.picnic-outing-float{top:67.513237%}.picnic-outing-paper{left:10%;width:80%;height:77.968231%}.picnic-outing-toy-target[aria-pressed=false]{outline:2px dashed #a8947055;outline-offset:2px;border-radius:9px}
+.picnic-outing-table{pointer-events:none}.picnic-outing-table-return{position:absolute;z-index:7;width:44px;height:44px;min-width:44px;min-height:44px;padding:3px;border:2px dashed #9c8e6c;background:#fff8e6bb;border-radius:12px}
+/* A short landscape outing uses the height for the family and actual meal.
+   Tool rails remain reachable even below the height of their five buttons. */
+@media(max-height:430px) and (orientation:landscape) {
+  .picnic-outing-play { display:block; }
+  .picnic-outing-play .picnic-nav,
+  .picnic-outing-play .picnic-footer {
+    position:absolute;top:8px;bottom:8px;width:44px;height:auto;
+    display:flex;flex-direction:column;justify-content:flex-start;gap:6px;
+    overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;
+    background:transparent;padding:0;z-index:8;
+  }
+  .picnic-outing-play .picnic-nav { left:8px; }
+  .picnic-outing-play .picnic-footer { right:8px; }
+  .picnic-outing-play .picnic-nav>*,
+  .picnic-outing-play .picnic-footer>* { flex-shrink:0; }
+  .picnic-outing-play .picnic-play {
+    position:absolute;inset:8px 64px;width:auto;height:auto;
+  }
+  .picnic-outing-play .picnic-status {
+    position:absolute;left:68px;right:68px;bottom:10px;
+    height:auto;min-height:0;max-height:48px;overflow-y:auto;
+    background:#fffdf4ed;touch-action:pan-y;
+  }
+  .picnic-outing-play .picnic-status:empty { display:none!important; }
+}
+
+/* A brief, stationary invitation after an empty plate or bowl is tapped. */
+.picnic-fruit-hint { outline: 4px solid #776042; outline-offset: 3px; }
+
+/* The fruit pager points back only when its next tap returns to the start. */
+.picnic-next-fruit.is-wrap > svg { transform: none; }

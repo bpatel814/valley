@@ -1,0 +1,2290 @@
+{
+  "river-run/ba-greeting-v1": {
+    "png": "assets/art/final/river-run/ba-greeting-v1.png",
+    "w": 1086,
+    "h": 1448,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "river-run/ishan-greeting-v1": {
+    "png": "assets/art/final/river-run/ishan-greeting-v1.png",
+    "w": 1086,
+    "h": 1448,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "bg/discovery/layer1": {
+    "webp": "assets/art/final/bg/discovery/layer1.webp",
+    "png": "assets/art/final/bg/discovery/layer1.png",
+    "w": 1774,
+    "h": 887,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/garden/layer1": {
+    "webp": "assets/art/final/bg/garden/layer1.webp",
+    "png": "assets/art/final/bg/garden/layer1.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/garden/layer2": {
+    "webp": "assets/art/final/bg/garden/layer2.webp",
+    "png": "assets/art/final/bg/garden/layer2.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/map/layer1": {
+    "webp": "assets/art/final/bg/map/layer1.webp",
+    "png": "assets/art/final/bg/map/layer1.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/map/layer2": {
+    "webp": "assets/art/final/bg/map/layer2.webp",
+    "png": "assets/art/final/bg/map/layer2.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/meadow/layer1": {
+    "webp": "assets/art/final/bg/meadow/layer1.webp",
+    "png": "assets/art/final/bg/meadow/layer1.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/meadow/layer2": {
+    "webp": "assets/art/final/bg/meadow/layer2.webp",
+    "png": "assets/art/final/bg/meadow/layer2.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/shared/layer0": {
+    "webp": "assets/art/final/bg/shared/layer0.webp",
+    "png": "assets/art/final/bg/shared/layer0.png",
+    "w": 2048,
+    "h": 1024,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/stories/day": {
+    "webp": "assets/art/final/bg/stories/day.webp",
+    "png": "assets/art/final/bg/stories/day.png",
+    "w": 1586,
+    "h": 992,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "bg/stories/twilight": {
+    "webp": "assets/art/final/bg/stories/twilight.webp",
+    "png": "assets/art/final/bg/stories/twilight.png",
+    "w": 1586,
+    "h": 992,
+    "anchor": [
+      0.0,
+      0.0
+    ]
+  },
+  "characters/bridge_idle": {
+    "webp": "assets/art/final/characters/bridge_idle.webp",
+    "png": "assets/art/final/characters/bridge_idle.png",
+    "w": 712,
+    "h": 422,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/butterfly_closed": {
+    "webp": "assets/art/final/characters/butterfly_closed.webp",
+    "png": "assets/art/final/characters/butterfly_closed.png",
+    "w": 430,
+    "h": 666,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/butterfly_open": {
+    "webp": "assets/art/final/characters/butterfly_open.webp",
+    "png": "assets/art/final/characters/butterfly_open.png",
+    "w": 874,
+    "h": 629,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/caterpillar_cheer": {
+    "webp": "assets/art/final/characters/caterpillar_cheer.webp",
+    "png": "assets/art/final/characters/caterpillar_cheer.png",
+    "w": 351,
+    "h": 538,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/caterpillar_happy": {
+    "webp": "assets/art/final/characters/caterpillar_happy.webp",
+    "png": "assets/art/final/characters/caterpillar_happy.png",
+    "w": 375,
+    "h": 526,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/caterpillar_idle": {
+    "webp": "assets/art/final/characters/caterpillar_idle.webp",
+    "png": "assets/art/final/characters/caterpillar_idle.png",
+    "w": 367,
+    "h": 515,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/caterpillar_nibble": {
+    "webp": "assets/art/final/characters/caterpillar_nibble.webp",
+    "png": "assets/art/final/characters/caterpillar_nibble.png",
+    "w": 798,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/caterpillar_sleepy": {
+    "webp": "assets/art/final/characters/caterpillar_sleepy.webp",
+    "png": "assets/art/final/characters/caterpillar_sleepy.png",
+    "w": 382,
+    "h": 487,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/cocoon": {
+    "webp": "assets/art/final/characters/cocoon.webp",
+    "png": "assets/art/final/characters/cocoon.png",
+    "w": 337,
+    "h": 419,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/cocoon_open": {
+    "webp": "assets/art/final/characters/cocoon_open.webp",
+    "png": "assets/art/final/characters/cocoon_open.png",
+    "w": 337,
+    "h": 403,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/discovery_idle": {
+    "webp": "assets/art/final/characters/discovery_idle.webp",
+    "png": "assets/art/final/characters/discovery_idle.png",
+    "w": 632,
+    "h": 390,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_adult1_idle": {
+    "webp": "assets/art/final/characters/family_adult1_idle.webp",
+    "png": "assets/art/final/characters/family_adult1_idle.png",
+    "w": 504,
+    "h": 589,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_adult2_idle": {
+    "webp": "assets/art/final/characters/family_adult2_idle.webp",
+    "png": "assets/art/final/characters/family_adult2_idle.png",
+    "w": 503,
+    "h": 624,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_child1_idle": {
+    "webp": "assets/art/final/characters/family_child1_idle.webp",
+    "png": "assets/art/final/characters/family_child1_idle.png",
+    "w": 504,
+    "h": 469,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_child2_idle": {
+    "webp": "assets/art/final/characters/family_child2_idle.webp",
+    "png": "assets/art/final/characters/family_child2_idle.png",
+    "w": 504,
+    "h": 462,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_grandma_idle": {
+    "webp": "assets/art/final/characters/family_grandma_idle.webp",
+    "png": "assets/art/final/characters/family_grandma_idle.png",
+    "w": 480,
+    "h": 640,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_grandpa_idle": {
+    "webp": "assets/art/final/characters/family_grandpa_idle.webp",
+    "png": "assets/art/final/characters/family_grandpa_idle.png",
+    "w": 356,
+    "h": 672,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_ishan_idle": {
+    "webp": "assets/art/final/characters/family_ishan_idle.webp",
+    "png": "assets/art/final/characters/family_ishan_idle.png",
+    "w": 480,
+    "h": 640,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_veer_dad_idle": {
+    "webp": "assets/art/final/characters/family_veer_dad_idle.webp",
+    "png": "assets/art/final/characters/family_veer_dad_idle.png",
+    "w": 480,
+    "h": 640,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/family_veer_mom_idle": {
+    "webp": "assets/art/final/characters/family_veer_mom_idle.webp",
+    "png": "assets/art/final/characters/family_veer_mom_idle.png",
+    "w": 480,
+    "h": 640,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/grandma_cheer": {
+    "webp": "assets/art/final/characters/grandma_cheer.webp",
+    "png": "assets/art/final/characters/grandma_cheer.png",
+    "w": 480,
+    "h": 699,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/grandma_happy": {
+    "webp": "assets/art/final/characters/grandma_happy.webp",
+    "png": "assets/art/final/characters/grandma_happy.png",
+    "w": 385,
+    "h": 698,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/grandma_idle": {
+    "webp": "assets/art/final/characters/grandma_idle.webp",
+    "png": "assets/art/final/characters/grandma_idle.png",
+    "w": 381,
+    "h": 699,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/grandma_sleepy": {
+    "webp": "assets/art/final/characters/grandma_sleepy.webp",
+    "png": "assets/art/final/characters/grandma_sleepy.png",
+    "w": 404,
+    "h": 684,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_cheer": {
+    "webp": "assets/art/final/characters/pip_cheer.webp",
+    "png": "assets/art/final/characters/pip_cheer.png",
+    "w": 419,
+    "h": 441,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_fly_0": {
+    "webp": "assets/art/final/characters/pip_fly_0.webp",
+    "png": "assets/art/final/characters/pip_fly_0.png",
+    "w": 563,
+    "h": 490,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_fly_1": {
+    "webp": "assets/art/final/characters/pip_fly_1.webp",
+    "png": "assets/art/final/characters/pip_fly_1.png",
+    "w": 664,
+    "h": 480,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_fly_2": {
+    "webp": "assets/art/final/characters/pip_fly_2.webp",
+    "png": "assets/art/final/characters/pip_fly_2.png",
+    "w": 616,
+    "h": 507,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_happy": {
+    "webp": "assets/art/final/characters/pip_happy.webp",
+    "png": "assets/art/final/characters/pip_happy.png",
+    "w": 404,
+    "h": 427,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_idle": {
+    "webp": "assets/art/final/characters/pip_idle.webp",
+    "png": "assets/art/final/characters/pip_idle.png",
+    "w": 409,
+    "h": 425,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/pip_sleepy": {
+    "webp": "assets/art/final/characters/pip_sleepy.webp",
+    "png": "assets/art/final/characters/pip_sleepy.png",
+    "w": 397,
+    "h": 446,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_cheer": {
+    "webp": "assets/art/final/characters/unicorn_cheer.webp",
+    "png": "assets/art/final/characters/unicorn_cheer.png",
+    "w": 387,
+    "h": 553,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_cheer_grey": {
+    "webp": "assets/art/final/characters/unicorn_cheer_grey.webp",
+    "png": "assets/art/final/characters/unicorn_cheer_grey.png",
+    "w": 390,
+    "h": 558,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_happy": {
+    "webp": "assets/art/final/characters/unicorn_happy.webp",
+    "png": "assets/art/final/characters/unicorn_happy.png",
+    "w": 363,
+    "h": 550,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_happy_grey": {
+    "webp": "assets/art/final/characters/unicorn_happy_grey.webp",
+    "png": "assets/art/final/characters/unicorn_happy_grey.png",
+    "w": 367,
+    "h": 551,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_idle": {
+    "webp": "assets/art/final/characters/unicorn_idle.webp",
+    "png": "assets/art/final/characters/unicorn_idle.png",
+    "w": 374,
+    "h": 545,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_idle_grey": {
+    "webp": "assets/art/final/characters/unicorn_idle_grey.webp",
+    "png": "assets/art/final/characters/unicorn_idle_grey.png",
+    "w": 377,
+    "h": 549,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_sleepy": {
+    "webp": "assets/art/final/characters/unicorn_sleepy.webp",
+    "png": "assets/art/final/characters/unicorn_sleepy.png",
+    "w": 385,
+    "h": 518,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/unicorn_sleepy_grey": {
+    "webp": "assets/art/final/characters/unicorn_sleepy_grey.webp",
+    "png": "assets/art/final/characters/unicorn_sleepy_grey.png",
+    "w": 385,
+    "h": 522,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/veer_cheer": {
+    "webp": "assets/art/final/characters/veer_cheer.webp",
+    "png": "assets/art/final/characters/veer_cheer.png",
+    "w": 433,
+    "h": 648,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/veer_happy": {
+    "webp": "assets/art/final/characters/veer_happy.webp",
+    "png": "assets/art/final/characters/veer_happy.png",
+    "w": 385,
+    "h": 648,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/veer_idle": {
+    "webp": "assets/art/final/characters/veer_idle.webp",
+    "png": "assets/art/final/characters/veer_idle.png",
+    "w": 385,
+    "h": 648,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "characters/veer_sleepy": {
+    "webp": "assets/art/final/characters/veer_sleepy.webp",
+    "png": "assets/art/final/characters/veer_sleepy.png",
+    "w": 367,
+    "h": 615,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "models/draw_caterpillar": {
+    "webp": "assets/art/final/models/draw_caterpillar.webp",
+    "png": "assets/art/final/models/draw_caterpillar.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_unicorn": {
+    "webp": "assets/art/final/models/draw_unicorn.webp",
+    "png": "assets/art/final/models/draw_unicorn.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "places/art": {
+    "webp": "assets/art/final/places/art.webp",
+    "png": "assets/art/final/places/art.png",
+    "w": 900,
+    "h": 900,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "places/together": {
+    "webp": "assets/art/final/places/together.webp",
+    "png": "assets/art/final/places/together.png",
+    "w": 900,
+    "h": 900,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_backdrop": {
+    "webp": "assets/art/final/play-stage/play_stage_backdrop.webp",
+    "png": "assets/art/final/play-stage/play_stage_backdrop.png",
+    "w": 1000,
+    "h": 600,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_booth_front": {
+    "webp": "assets/art/final/play-stage/play_stage_booth_front.webp",
+    "png": "assets/art/final/play-stage/play_stage_booth_front.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_booth_rear": {
+    "webp": "assets/art/final/play-stage/play_stage_booth_rear.webp",
+    "png": "assets/art/final/play-stage/play_stage_booth_rear.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_curtain_left": {
+    "webp": "assets/art/final/play-stage/play_stage_curtain_left.webp",
+    "png": "assets/art/final/play-stage/play_stage_curtain_left.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_curtain_right": {
+    "webp": "assets/art/final/play-stage/play_stage_curtain_right.webp",
+    "png": "assets/art/final/play-stage/play_stage_curtain_right.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_foreground": {
+    "webp": "assets/art/final/play-stage/play_stage_foreground.webp",
+    "png": "assets/art/final/play-stage/play_stage_foreground.png",
+    "w": 1000,
+    "h": 600,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_pip_pouch": {
+    "webp": "assets/art/final/play-stage/play_stage_pip_pouch.webp",
+    "png": "assets/art/final/play-stage/play_stage_pip_pouch.png",
+    "w": 140,
+    "h": 165,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_pip_pouch_back": {
+    "webp": "assets/art/final/play-stage/play_stage_pip_pouch_back.webp",
+    "png": "assets/art/final/play-stage/play_stage_pip_pouch_back.png",
+    "w": 140,
+    "h": 165,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/play_stage_pip_pouch_rim": {
+    "webp": "assets/art/final/play-stage/play_stage_pip_pouch_rim.webp",
+    "png": "assets/art/final/play-stage/play_stage_pip_pouch_rim.png",
+    "w": 140,
+    "h": 165,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/bug_bed": {
+    "webp": "assets/art/final/props/bug_bed.webp",
+    "png": "assets/art/final/props/bug_bed.png",
+    "w": 1024,
+    "h": 663,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/fruit_bowl": {
+    "webp": "assets/art/final/props/fruit_bowl.webp",
+    "png": "assets/art/final/props/fruit_bowl.png",
+    "w": 1024,
+    "h": 465,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/rain_umbrella": {
+    "webp": "assets/art/final/props/rain_umbrella.webp",
+    "png": "assets/art/final/props/rain_umbrella.png",
+    "w": 1024,
+    "h": 990,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/strawberry": {
+    "webp": "assets/art/final/props/strawberry.webp",
+    "png": "assets/art/final/props/strawberry.png",
+    "w": 226,
+    "h": 256,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "stickers/draw_balloon": {
+    "webp": "assets/art/final/stickers/draw_balloon.webp",
+    "png": "assets/art/final/stickers/draw_balloon.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_butterfly": {
+    "webp": "assets/art/final/stickers/draw_butterfly.webp",
+    "png": "assets/art/final/stickers/draw_butterfly.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_cat": {
+    "webp": "assets/art/final/stickers/draw_cat.webp",
+    "png": "assets/art/final/stickers/draw_cat.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_caterpillar": {
+    "webp": "assets/art/final/stickers/draw_caterpillar.webp",
+    "png": "assets/art/final/stickers/draw_caterpillar.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_fish": {
+    "webp": "assets/art/final/stickers/draw_fish.webp",
+    "png": "assets/art/final/stickers/draw_fish.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_flower": {
+    "webp": "assets/art/final/stickers/draw_flower.webp",
+    "png": "assets/art/final/stickers/draw_flower.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_heart": {
+    "webp": "assets/art/final/stickers/draw_heart.webp",
+    "png": "assets/art/final/stickers/draw_heart.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_house": {
+    "webp": "assets/art/final/stickers/draw_house.webp",
+    "png": "assets/art/final/stickers/draw_house.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_icecream": {
+    "webp": "assets/art/final/stickers/draw_icecream.webp",
+    "png": "assets/art/final/stickers/draw_icecream.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_rainbow": {
+    "webp": "assets/art/final/stickers/draw_rainbow.webp",
+    "png": "assets/art/final/stickers/draw_rainbow.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_star": {
+    "webp": "assets/art/final/stickers/draw_star.webp",
+    "png": "assets/art/final/stickers/draw_star.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_sun": {
+    "webp": "assets/art/final/stickers/draw_sun.webp",
+    "png": "assets/art/final/stickers/draw_sun.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_tree": {
+    "webp": "assets/art/final/stickers/draw_tree.webp",
+    "png": "assets/art/final/stickers/draw_tree.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_unicorn": {
+    "webp": "assets/art/final/stickers/draw_unicorn.webp",
+    "png": "assets/art/final/stickers/draw_unicorn.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_veer": {
+    "webp": "assets/art/final/stickers/draw_veer.webp",
+    "png": "assets/art/final/stickers/draw_veer.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/meadow_bus": {
+    "webp": "assets/art/final/stickers/meadow_bus.webp",
+    "png": "assets/art/final/stickers/meadow_bus.png",
+    "w": 512,
+    "h": 512,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/meadow_cow": {
+    "webp": "assets/art/final/stickers/meadow_cow.webp",
+    "png": "assets/art/final/stickers/meadow_cow.png",
+    "w": 512,
+    "h": 512,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/meadow_dog": {
+    "webp": "assets/art/final/stickers/meadow_dog.webp",
+    "png": "assets/art/final/stickers/meadow_dog.png",
+    "w": 512,
+    "h": 512,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/meadow_pig": {
+    "webp": "assets/art/final/stickers/meadow_pig.webp",
+    "png": "assets/art/final/stickers/meadow_pig.png",
+    "w": 512,
+    "h": 512,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/ball": {
+    "webp": "assets/art/final/stories/ball.webp",
+    "png": "assets/art/final/stories/ball.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/basket": {
+    "webp": "assets/art/final/stories/basket.webp",
+    "png": "assets/art/final/stories/basket.png",
+    "w": 480,
+    "h": 443,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/bee": {
+    "webp": "assets/art/final/stories/bee.webp",
+    "png": "assets/art/final/stories/bee.png",
+    "w": 480,
+    "h": 413,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/blanket": {
+    "webp": "assets/art/final/stories/blanket.webp",
+    "png": "assets/art/final/stories/blanket.png",
+    "w": 480,
+    "h": 320,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/boat": {
+    "webp": "assets/art/final/stories/boat.webp",
+    "png": "assets/art/final/stories/boat.png",
+    "w": 480,
+    "h": 439,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/hat": {
+    "webp": "assets/art/final/stories/hat.webp",
+    "png": "assets/art/final/stories/hat.png",
+    "w": 480,
+    "h": 320,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/mailbox": {
+    "webp": "assets/art/final/stories/mailbox.webp",
+    "png": "assets/art/final/stories/mailbox.png",
+    "w": 456,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/moon": {
+    "webp": "assets/art/final/stories/moon.webp",
+    "png": "assets/art/final/stories/moon.png",
+    "w": 456,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/rabbit": {
+    "webp": "assets/art/final/stories/rabbit.webp",
+    "png": "assets/art/final/stories/rabbit.png",
+    "w": 400,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/raindrop": {
+    "webp": "assets/art/final/stories/raindrop.webp",
+    "png": "assets/art/final/stories/raindrop.png",
+    "w": 433,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/ribbon": {
+    "webp": "assets/art/final/stories/ribbon.webp",
+    "png": "assets/art/final/stories/ribbon.png",
+    "w": 480,
+    "h": 240,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/spoon": {
+    "webp": "assets/art/final/stories/spoon.webp",
+    "png": "assets/art/final/stories/spoon.png",
+    "w": 474,
+    "h": 480,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/arrow_left": {
+    "webp": "assets/art/final/ui/arrow_left.webp",
+    "png": "assets/art/final/ui/arrow_left.png",
+    "w": 230,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/arrow_right": {
+    "webp": "assets/art/final/ui/arrow_right.webp",
+    "png": "assets/art/final/ui/arrow_right.png",
+    "w": 231,
+    "h": 235,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/button_base": {
+    "webp": "assets/art/final/ui/button_base.webp",
+    "png": "assets/art/final/ui/button_base.png",
+    "w": 230,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/clear": {
+    "webp": "assets/art/final/ui/clear.webp",
+    "png": "assets/art/final/ui/clear.png",
+    "w": 230,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/hand": {
+    "webp": "assets/art/final/ui/hand.webp",
+    "png": "assets/art/final/ui/hand.png",
+    "w": 231,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/heart": {
+    "webp": "assets/art/final/ui/heart.webp",
+    "png": "assets/art/final/ui/heart.png",
+    "w": 230,
+    "h": 233,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/home": {
+    "webp": "assets/art/final/ui/home.webp",
+    "png": "assets/art/final/ui/home.png",
+    "w": 230,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/leaf_badge": {
+    "webp": "assets/art/final/ui/leaf_badge.webp",
+    "png": "assets/art/final/ui/leaf_badge.png",
+    "w": 318,
+    "h": 378,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/rayna-valley-logo": {
+    "webp": "assets/art/final/ui/rayna-valley-logo.webp",
+    "png": "assets/art/final/ui/rayna-valley-logo.png",
+    "w": 1671,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/raynas-valley-logo": {
+    "webp": "assets/art/final/ui/raynas-valley-logo.webp",
+    "png": "assets/art/final/ui/raynas-valley-logo.png",
+    "w": 1671,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/showme": {
+    "webp": "assets/art/final/ui/showme.webp",
+    "png": "assets/art/final/ui/showme.png",
+    "w": 231,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/sign": {
+    "webp": "assets/art/final/ui/sign.webp",
+    "png": "assets/art/final/ui/sign.png",
+    "w": 390,
+    "h": 384,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/sound_off": {
+    "webp": "assets/art/final/ui/sound_off.webp",
+    "png": "assets/art/final/ui/sound_off.png",
+    "w": 230,
+    "h": 233,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/sound_on": {
+    "webp": "assets/art/final/ui/sound_on.webp",
+    "png": "assets/art/final/ui/sound_on.png",
+    "w": 230,
+    "h": 233,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/sticker_frame": {
+    "webp": "assets/art/final/ui/sticker_frame.webp",
+    "png": "assets/art/final/ui/sticker_frame.png",
+    "w": 363,
+    "h": 357,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/stripes": {
+    "webp": "assets/art/final/ui/stripes.webp",
+    "png": "assets/art/final/ui/stripes.png",
+    "w": 300,
+    "h": 344,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/undo": {
+    "webp": "assets/art/final/ui/undo.webp",
+    "png": "assets/art/final/ui/undo.png",
+    "w": 230,
+    "h": 232,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/counting-flower": {
+    "webp": "assets/art/final/props/counting-flower.webp",
+    "png": "assets/art/final/props/counting-flower.png",
+    "w": 447,
+    "h": 512,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "props/counting-pot": {
+    "webp": "assets/art/final/props/counting-pot.webp",
+    "png": "assets/art/final/props/counting-pot.png",
+    "w": 512,
+    "h": 512,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "props/counting-apple": {
+    "png": "final/props/counting-apple.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/counting-leaf": {
+    "png": "final/props/counting-leaf.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/counting-star": {
+    "png": "final/props/counting-star.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/coat-spots": {
+    "png": "final/props/coat-spots.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/scarf-stripes": {
+    "png": "final/props/scarf-stripes.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "props/blanket-waves": {
+    "png": "final/props/blanket-waves.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "ui/veer-title": {
+    "webp": "final/ui/veer-title.webp",
+    "png": "final/ui/veer-title.png",
+    "w": 1024,
+    "h": 1536,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "ui/veers-valley-logo": {
+    "webp": "final/ui/veers-valley-logo.webp",
+    "png": "final/ui/veers-valley-logo.png",
+    "w": 1672,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stories/black-cat": {
+    "webp": "assets/art/final/stories/black-cat.webp",
+    "png": "assets/art/final/stories/black-cat.png",
+    "w": 1145,
+    "h": 1374,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/sorting-basket": {
+    "png": "assets/art/final/props/sorting-basket.png",
+    "w": 1312,
+    "h": 1199,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "play-stage/backdrop": {
+    "webp": "assets/art/final/play-stage/play_stage_backdrop.webp",
+    "png": "assets/art/final/play-stage/play_stage_backdrop.png",
+    "w": 1000,
+    "h": 600,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/booth_rear": {
+    "webp": "assets/art/final/play-stage/play_stage_booth_rear.webp",
+    "png": "assets/art/final/play-stage/play_stage_booth_rear.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/booth_front": {
+    "webp": "assets/art/final/play-stage/play_stage_booth_front.webp",
+    "png": "assets/art/final/play-stage/play_stage_booth_front.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/curtain_left": {
+    "webp": "assets/art/final/play-stage/play_stage_curtain_left.webp",
+    "png": "assets/art/final/play-stage/play_stage_curtain_left.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/curtain_right": {
+    "webp": "assets/art/final/play-stage/play_stage_curtain_right.webp",
+    "png": "assets/art/final/play-stage/play_stage_curtain_right.png",
+    "w": 320,
+    "h": 340,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/foreground": {
+    "webp": "assets/art/final/play-stage/play_stage_foreground.webp",
+    "png": "assets/art/final/play-stage/play_stage_foreground.png",
+    "w": 1000,
+    "h": 600,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/pip_pouch_back": {
+    "webp": "assets/art/final/play-stage/play_stage_pip_pouch_back.webp",
+    "png": "assets/art/final/play-stage/play_stage_pip_pouch_back.png",
+    "w": 140,
+    "h": 165,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "play-stage/pip_pouch_rim": {
+    "webp": "assets/art/final/play-stage/play_stage_pip_pouch_rim.webp",
+    "png": "assets/art/final/play-stage/play_stage_pip_pouch_rim.png",
+    "w": 140,
+    "h": 165,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-plate-v1": {
+    "png": "assets/art/final/props/picnic-plate-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-apple-v1": {
+    "png": "assets/art/final/props/picnic-apple-v1.png",
+    "w": 1312,
+    "h": 1199,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-apple-half-v1": {
+    "png": "assets/art/final/props/picnic-apple-half-v1.png",
+    "w": 1312,
+    "h": 1199,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-strawberry-half-v1": {
+    "png": "assets/art/final/props/picnic-strawberry-half-v1.png",
+    "w": 1178,
+    "h": 1335,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/wg-leafy-canopy": {
+    "png": "assets/art/final/props/wg-leafy-canopy.png",
+    "w": 1514,
+    "h": 1039,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/wg-sprout": {
+    "png": "assets/art/final/props/wg-sprout.png",
+    "w": 1349,
+    "h": 1166,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/envelope": {
+    "png": "assets/art/final/picture-post/envelope.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/mailbox": {
+    "png": "assets/art/final/picture-post/mailbox.png",
+    "w": 1333,
+    "h": 1180,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/picnic-stop": {
+    "png": "assets/art/final/picture-post/picnic-stop.png",
+    "w": 1024,
+    "h": 465,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/family-home": {
+    "png": "assets/art/final/picture-post/family-home.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/grandparents-home": {
+    "png": "assets/art/final/picture-post/grandparents-home.png",
+    "w": 480,
+    "h": 480,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-round-plate-v1": {
+    "png": "assets/art/final/props/picnic-round-plate-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/picnic-round-bowl-v1": {
+    "png": "assets/art/final/props/picnic-round-bowl-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/home-room-v1": {
+    "png": "assets/art/final/picture-post/home-room-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "props/wg-cat-resting-v1": {
+    "png": "assets/art/final/props/wg-cat-resting-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/family-home-v2": {
+    "png": "assets/art/final/picture-post/family-home-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/grandparents-home-v2": {
+    "png": "assets/art/final/picture-post/grandparents-home-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "picture-post/picnic-stop-v2": {
+    "png": "assets/art/final/picture-post/picnic-stop-v2.png",
+    "w": 1527,
+    "h": 1030,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "toy-workshop/wheels-v1": {
+    "png": "final/toy-workshop/wheels-v1.png",
+    "w": 2079,
+    "h": 756,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "rolling-run/ramp-v1": {
+    "png": "final/rolling-run/ramp-v1.png",
+    "w": 2172,
+    "h": 724,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "music-band/drum-v1": {
+    "png": "final/music-band/drum-v1.png",
+    "w": 1301,
+    "h": 1209,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "music-band/shaker-v1": {
+    "png": "final/music-band/shaker-v1.png",
+    "w": 1246,
+    "h": 1263,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "music-band/bell-v1": {
+    "png": "final/music-band/bell-v1.png",
+    "w": 1312,
+    "h": 1199,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "music-band/wood-v1": {
+    "png": "final/music-band/wood-v1.png",
+    "w": 1283,
+    "h": 1226,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/cozy-bed-v1": {
+    "png": "final/animal-friends/cozy-bed-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/hiding-basket-v1": {
+    "png": "final/animal-friends/hiding-basket-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/leafy-screen-v1": {
+    "png": "final/animal-friends/leafy-screen-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/blanket-shelter-v1": {
+    "png": "final/animal-friends/blanket-shelter-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/blanket-cover-v1": {
+    "png": "final/animal-friends/blanket-cover-v1.png",
+    "w": 1374,
+    "h": 1145,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "river-run/float-v1": {
+    "png": "final/river-run/float-v1.png",
+    "w": 2172,
+    "h": 724,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "river-run/dock-v1": {
+    "png": "final/river-run/dock-v1.png",
+    "w": 2172,
+    "h": 724,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "river-run/stone-v1": {
+    "png": "final/river-run/stone-v1.png",
+    "w": 1774,
+    "h": 887,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "toy-workshop/puppet-handle-v1": {
+    "png": "final/toy-workshop/puppet-handle-v1.png",
+    "w": 1024,
+    "h": 1536,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "props/picnic-empty-table-v1": {
+    "png": "final/props/picnic-empty-table-v1.png",
+    "w": 1527,
+    "h": 1030,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "garden-cafe/background-v1": {
+    "png": "assets/art/final/garden-cafe/background-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "garden-cafe/chair-v1": {
+    "png": "assets/art/final/garden-cafe/chair-v1.png",
+    "w": 1247,
+    "h": 1261,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "garden-cafe/table-v1": {
+    "png": "assets/art/final/garden-cafe/table-v1.png",
+    "w": 1312,
+    "h": 1199,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "animal-friends/shade-canopy-v1": {
+    "png": "final/animal-friends/shade-canopy-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      0.8203125
+    ]
+  },
+  "rolling-run/block-v1": {
+    "png": "final/rolling-run/block-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "rolling-run/landing-mat-v1": {
+    "png": "final/rolling-run/landing-mat-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "halloween/rayna-trex-idle-v2": {
+    "png": "assets/art/final/halloween/rayna-trex-source-head-v3-runtime.png",
+    "webp": "assets/art/final/halloween/rayna-trex-source-head-v3-runtime.webp",
+    "w": 632,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "halloween/boo-hollow-background-v1": {
+    "png": "assets/art/final/halloween/boo-hollow-background-v1-runtime.png",
+    "webp": "assets/art/final/halloween/boo-hollow-background-v1-runtime.webp",
+    "w": 1586,
+    "h": 992,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "halloween/boo-path-v1": {
+    "png": "assets/art/final/halloween/boo-path-v1-runtime.png",
+    "webp": "assets/art/final/halloween/boo-path-v1-runtime.webp",
+    "w": 1024,
+    "h": 981,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "halloween/door-ba-v1": {
+    "png": "assets/art/final/halloween/door-ba-v1-runtime.png",
+    "webp": "assets/art/final/halloween/door-ba-v1-runtime.webp",
+    "w": 988,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      1.0
+    ]
+  },
+  "halloween/treat-bucket-v1": {
+    "png": "assets/art/final/halloween/treat-bucket-v1-runtime.png",
+    "webp": "assets/art/final/halloween/treat-bucket-v1-runtime.webp",
+    "w": 968,
+    "h": 827,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "halloween/candy-v1": {
+    "png": "assets/art/final/halloween/candy-v1-runtime.png",
+    "webp": "assets/art/final/halloween/candy-v1-runtime.webp",
+    "w": 711,
+    "h": 362,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/pumpkin-paper-v1": {
+    "png": "assets/art/final/halloween/pumpkin-paper-v1-runtime.png",
+    "webp": "assets/art/final/halloween/pumpkin-paper-v1-runtime.webp",
+    "w": 1024,
+    "h": 873,
+    "anchor": [
+      0.5,
+      1
+    ]
+  },
+  "halloween/veer-iron-man-v1": {
+    "png": "final/halloween/veer-iron-man-v1.svg",
+    "w": 400,
+    "h": 660,
+    "anchor": [
+      0.5,
+      0.95
+    ]
+  },
+  "halloween/ishan-lion-v1": {
+    "png": "final/halloween/ishan-lion-v1.svg",
+    "w": 520,
+    "h": 650,
+    "anchor": [
+      0.5,
+      0.95
+    ]
+  },
+  "halloween/refresh/world": {
+    "png": "assets/art/final/halloween/refresh/world-v1.png",
+    "webp": "assets/art/final/halloween/refresh/world-v1.webp",
+    "w": 1672,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/pip": {
+    "png": "assets/art/final/halloween/refresh/pip-v1.png",
+    "webp": "assets/art/final/halloween/refresh/pip-v1.webp",
+    "w": 1230,
+    "h": 1278,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/caterpillar": {
+    "png": "assets/art/final/halloween/refresh/caterpillar-v1.png",
+    "webp": "assets/art/final/halloween/refresh/caterpillar-v1.webp",
+    "w": 1058,
+    "h": 1486,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/together": {
+    "png": "assets/art/final/halloween/refresh/together-v1.png",
+    "webp": "assets/art/final/halloween/refresh/together-v1.webp",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn": {
+    "png": "assets/art/final/halloween/refresh/unicorn-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/explore": {
+    "png": "assets/art/final/halloween/refresh/explore-v1.png",
+    "webp": "assets/art/final/halloween/refresh/explore-v1.webp",
+    "w": 1598,
+    "h": 984,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/art": {
+    "png": "assets/art/final/halloween/refresh/art-v1.png",
+    "webp": "assets/art/final/halloween/refresh/art-v1.webp",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/garden-background": {
+    "png": "assets/art/final/halloween/refresh/garden-background-v1.png",
+    "webp": "assets/art/final/halloween/refresh/garden-background-v1.webp",
+    "w": 1672,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/together-background": {
+    "png": "assets/art/final/halloween/refresh/together-background-v1.png",
+    "webp": "assets/art/final/halloween/refresh/together-background-v1.webp",
+    "w": 1672,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/meadow-background": {
+    "png": "assets/art/final/halloween/refresh/meadow-background-v1.png",
+    "webp": "assets/art/final/halloween/refresh/meadow-background-v1.webp",
+    "w": 1672,
+    "h": 941,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-grey": {
+    "png": "assets/art/final/halloween/refresh/unicorn-grey-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-grey-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/pip-happy": {
+    "png": "assets/art/final/halloween/refresh/pip-happy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/pip-happy-v1.webp",
+    "w": 1230,
+    "h": 1278,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/pip-cheer": {
+    "png": "assets/art/final/halloween/refresh/pip-cheer-v1.png",
+    "webp": "assets/art/final/halloween/refresh/pip-cheer-v1.webp",
+    "w": 1230,
+    "h": 1278,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/pip-sleepy": {
+    "png": "assets/art/final/halloween/refresh/pip-sleepy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/pip-sleepy-v1.webp",
+    "w": 1230,
+    "h": 1278,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/caterpillar-happy": {
+    "png": "assets/art/final/halloween/refresh/caterpillar-happy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/caterpillar-happy-v1.webp",
+    "w": 1058,
+    "h": 1486,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/caterpillar-cheer": {
+    "png": "assets/art/final/halloween/refresh/caterpillar-cheer-v1.png",
+    "webp": "assets/art/final/halloween/refresh/caterpillar-cheer-v1.webp",
+    "w": 1058,
+    "h": 1486,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/caterpillar-sleepy": {
+    "png": "assets/art/final/halloween/refresh/caterpillar-sleepy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/caterpillar-sleepy-v1.webp",
+    "w": 1058,
+    "h": 1486,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/cat": {
+    "png": "assets/art/final/halloween/refresh/cat-v1.png",
+    "webp": "assets/art/final/halloween/refresh/cat-v1.webp",
+    "w": 1145,
+    "h": 1374,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/butterfly-open": {
+    "png": "assets/art/final/halloween/refresh/butterfly-open-v1.png",
+    "webp": "assets/art/final/halloween/refresh/butterfly-open-v1.webp",
+    "w": 1479,
+    "h": 1063,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/butterfly-closed": {
+    "png": "assets/art/final/halloween/refresh/butterfly-closed-v1.png",
+    "webp": "assets/art/final/halloween/refresh/butterfly-closed-v1.webp",
+    "w": 1479,
+    "h": 1064,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-happy": {
+    "png": "assets/art/final/halloween/refresh/unicorn-happy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-happy-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-happy-grey": {
+    "png": "assets/art/final/halloween/refresh/unicorn-happy-grey-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-happy-grey-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-cheer": {
+    "png": "assets/art/final/halloween/refresh/unicorn-cheer-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-cheer-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-cheer-grey": {
+    "png": "assets/art/final/halloween/refresh/unicorn-cheer-grey-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-cheer-grey-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-sleepy": {
+    "png": "assets/art/final/halloween/refresh/unicorn-sleepy-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-sleepy-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/unicorn-sleepy-grey": {
+    "png": "assets/art/final/halloween/refresh/unicorn-sleepy-grey-v1.png",
+    "webp": "assets/art/final/halloween/refresh/unicorn-sleepy-grey-v1.webp",
+    "w": 1038,
+    "h": 1515,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "halloween/refresh/word-cat": {
+    "png": "assets/art/final/halloween/refresh/word-cat-rebuilt-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-cat-rebuilt-v1.webp"
+  },
+  "halloween/refresh/word-dog": {
+    "png": "assets/art/final/halloween/refresh/word-dog-rebuilt-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-dog-rebuilt-v1.webp"
+  },
+  "halloween/refresh/word-bug": {
+    "png": "assets/art/final/halloween/refresh/word-bug-rebuilt-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-bug-rebuilt-v1.webp"
+  },
+  "halloween/refresh/word-bee": {
+    "png": "assets/art/final/halloween/refresh/word-bee-rebuilt-v1.png",
+    "w": 1352,
+    "h": 1163,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-bee-rebuilt-v1.webp"
+  },
+  "halloween/refresh/word-pig": {
+    "png": "assets/art/final/halloween/refresh/word-pig-rebuilt-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-pig-rebuilt-v1.webp"
+  },
+  "halloween/refresh/word-cow": {
+    "png": "assets/art/final/halloween/refresh/word-cow-rebuilt-v1.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/word-cow-rebuilt-v1.webp"
+  },
+  "halloween/refresh/cat-resting": {
+    "png": "assets/art/final/halloween/refresh/cat-resting-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/cat-resting-v1.webp"
+  },
+  "halloween/refresh/caterpillar-nibble": {
+    "png": "assets/art/final/halloween/refresh/caterpillar-nibble-v1.png",
+    "w": 1107,
+    "h": 1421,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/caterpillar-nibble-v1.webp"
+  },
+  "halloween/refresh/play-stage-background": {
+    "png": "assets/art/final/halloween/refresh/play-stage-background-v1.png",
+    "w": 1536,
+    "h": 1024,
+    "anchor": [
+      0.5,
+      0.5
+    ],
+    "webp": "assets/art/final/halloween/refresh/play-stage-background-v1.webp"
+  },
+  "halloween/friendly-ghost-word": {
+    "png": "assets/art/final/stickers/draw_friendlyghost-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_friendlyghost": {
+    "png": "assets/art/final/stickers/draw_friendlyghost-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_friendlyghost": {
+    "png": "assets/art/final/stickers/draw_friendlyghost-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_spider": {
+    "png": "assets/art/final/stickers/draw_spider-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_spider": {
+    "png": "assets/art/final/stickers/draw_spider-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_pumpkin": {
+    "png": "assets/art/final/stickers/draw_pumpkin-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_pumpkin": {
+    "png": "assets/art/final/stickers/draw_pumpkin-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_skeleton": {
+    "png": "assets/art/final/stickers/draw_skeleton-v2.png",
+    "w": 1145,
+    "h": 1374,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_skeleton": {
+    "png": "assets/art/final/stickers/draw_skeleton-v2.png",
+    "w": 1145,
+    "h": 1374,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "stickers/draw_witchhat": {
+    "png": "assets/art/final/stickers/draw_witchhat-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  },
+  "models/draw_witchhat": {
+    "png": "assets/art/final/stickers/draw_witchhat-v2.png",
+    "w": 1254,
+    "h": 1254,
+    "anchor": [
+      0.5,
+      0.5
+    ]
+  }
+}

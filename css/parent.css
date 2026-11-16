@@ -1,0 +1,499 @@
+/* parent.css - the parent corner and the corner-hold gate. Scoped so it can never
+   touch the child UI. System UI font here only; the child never sees a font. */
+
+[data-screen="parent"] {
+  --paper: #fffdf8;
+  --ink: #4a3b34;
+  --pink: #ffb3c8;
+  --pink-deep: #f2799b;
+  --sky: #bfe3ff;
+  --sky-deep: #5aa9e6;
+  --mint: #b8f0d2;
+  --mint-deep: #4fc38a;
+  --lemon: #fff2a8;
+  --lilac: #d9c7ff;
+  --lilac-deep: #9a7fe0;
+  --grey: #dcd7d2;
+  --shadow: 0 4px 0 rgba(74, 59, 52, .18), 0 8px 18px rgba(74, 59, 52, .14);
+  --r: 28px;
+}
+
+.rv-parent {
+  position: absolute;
+  inset: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  background: linear-gradient(180deg, #e6f4ff 0%, #fff7fb 100%);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  padding: 16px 16px 64px;
+  box-sizing: border-box;
+}
+
+.rv-parent * { box-sizing: border-box; }
+
+/* ---------------------------------------------------------------- header */
+
+.rv-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 16px;
+}
+
+.rv-h1 { font-size: 32px; font-weight: 650; margin: 0; letter-spacing: .2px; }
+.rv-h2 { font-size: 24px; font-weight: 650; margin: 0 0 12px; }
+.rv-h3 { font-size: 20px; font-weight: 650; margin: 18px 0 8px; }
+
+.rv-back {
+  min-height: 64px;
+  padding: 0 24px;
+  border: 3px solid var(--ink);
+  border-radius: var(--r);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* ---------------------------------------------------------------- cards */
+
+/* Cards flow into columns so short cards never leave a hole beside a tall one. */
+.rv-grid { column-gap: 16px; }
+
+@media (min-width: 760px) { .rv-grid { column-count: 2; } }
+@media (min-width: 1280px) { .rv-grid { column-count: 3; } }
+
+/* One card may run the full width when its rows need the room (Voices). */
+.rv-card-wide { column-span: all; }
+
+.rv-card {
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin: 0 0 16px;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+.rv-note { font-size: 16px; margin: 10px 0 0; opacity: .82; }
+.rv-timer-presets { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+.rv-timer-presets .rv-btn { min-height: 48px; padding: 0 12px; }
+.rv-value { font-size: 20px; font-weight: 600; margin: 0 0 10px; }
+
+/* ---------------------------------------------------------------- buttons */
+
+.rv-btn {
+  min-height: 64px;
+  padding: 0 22px;
+  border: 3px solid var(--ink);
+  border-radius: var(--r);
+  background: var(--lemon);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  touch-action: manipulation;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.rv-btn:active { transform: scale(.96); box-shadow: 0 2px 0 rgba(74, 59, 52, .18); }
+.rv-btn:disabled { opacity: .45; box-shadow: none; cursor: default; }
+.rv-btn-soft { background: var(--paper); }
+.rv-btn-go { background: var(--mint); }
+.rv-btn-warn { background: var(--pink); }
+
+.rv-btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+.rv-confirm-text { font-size: 17px; font-weight: 600; width: 100%; }
+
+/* ---------------------------------------------------------------- rows, switches, segments */
+
+.rv-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 64px;
+  padding: 6px 14px;
+  border-radius: var(--r);
+  background: rgba(191, 227, 255, .22);
+  margin-bottom: 8px;
+}
+
+.rv-row-label { font-size: 18px; }
+
+.rv-switch {
+  flex: none;
+  width: 84px;
+  height: 48px;
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  background: var(--grey);
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: background 180ms ease-out;
+  touch-action: manipulation;
+}
+
+.rv-switch[aria-pressed="true"] { background: var(--mint); }
+
+.rv-switch-knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-sizing: border-box;
+  transition: transform 180ms cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.rv-switch[aria-pressed="true"] .rv-switch-knob { transform: translateX(36px); }
+
+.rv-seg { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.rv-seg-btn {
+  min-height: 64px;
+  padding: 0 20px;
+  border: 3px solid var(--ink);
+  border-radius: var(--r);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  touch-action: manipulation;
+  text-transform: none;
+}
+
+.rv-seg-btn[aria-pressed="true"] { background: var(--lilac); }
+
+/* ---------------------------------------------------------------- slider */
+
+.rv-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 24px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--lilac), var(--sky));
+  border: 3px solid var(--ink);
+  outline: none;
+  margin: 6px 0 4px;
+  touch-action: pan-y;
+}
+
+.rv-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.rv-slider::-moz-range-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--ink);
+  cursor: pointer;
+}
+
+.rv-volume-row { margin: 0 0 18px; }
+.rv-volume-label { display: flex; justify-content: space-between; gap: 12px; font-weight: 600; }
+.rv-volume-value { font-variant-numeric: tabular-nums; }
+
+.rv-file { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+
+/* ---------------------------------------------------------------- letter and word chips */
+
+.rv-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.rv-chip { width: 52px; height: 52px; }
+.rv-chip-svg { width: 100%; height: 100%; display: block; }
+
+.rv-chip-letter {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  fill: #4a3b34;
+}
+
+.rv-words { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.rv-word {
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 3px solid var(--grey);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: .7;
+}
+
+.rv-word.is-earned { opacity: 1; border-color: var(--ink); }
+
+/* ---------------------------------------------------------------- gallery */
+
+.rv-gallery { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.rv-thumb {
+  width: 104px;
+  height: 104px;
+  padding: 6px;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.rv-thumb img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.rv-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 59, 52, .5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 60;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--ink, #4a3b34);
+}
+
+.rv-overlay-card { max-width: 620px; width: 100%; max-height: 92vh; overflow: auto; }
+.rv-big-img { width: 100%; max-height: 58vh; object-fit: contain; background: #fffdf8; border-radius: 20px; }
+
+/* ---------------------------------------------------------------- voices */
+
+.rv-voice-rows {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+@media (min-width: 820px) { .rv-voice-rows { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1280px) { .rv-voice-rows { grid-template-columns: 1fr 1fr 1fr; } }
+
+.rv-voice-row {
+  padding: 12px 14px;
+  border-radius: var(--r);
+  background: rgba(217, 199, 255, .22);
+}
+
+.rv-voice-row .rv-btn { padding: 0 14px; font-size: 17px; gap: 8px; }
+.rv-voice-row .rv-btn-row { gap: 8px; flex-wrap: wrap; }
+.rv-voice-row .rv-btn-rec { flex: 1 1 auto; }
+.rv-voice-label { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.rv-voice-title { font-size: 18px; font-weight: 600; }
+.rv-voice-state { font-size: 15px; opacity: .7; }
+.rv-voice-state.is-saved { color: #2f8f66; opacity: 1; font-weight: 600; }
+
+.rv-rec-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--grey);
+  border: 2px solid var(--ink);
+  flex: none;
+}
+
+.rv-btn-rec.is-recording { background: var(--pink); }
+.rv-btn-rec.is-recording .rv-rec-dot { background: #e5405e; animation: rv-pulse 1200ms ease-in-out infinite; }
+
+@keyframes rv-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .35; }
+}
+
+/* ---------------------------------------------------------------- performance */
+
+.rv-stats { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.rv-stat {
+  flex: 1 1 140px;
+  padding: 14px;
+  border-radius: 22px;
+  background: rgba(184, 240, 210, .3);
+  text-align: center;
+}
+
+.rv-stat-value { display: block; font-size: 28px; font-weight: 700; }
+.rv-stat-label { display: block; font-size: 15px; opacity: .78; }
+
+/* ---------------------------------------------------------------- the gate */
+
+.rv-gate {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+}
+
+.rv-gate-zone {
+  position: absolute;
+  bottom: 0;
+  pointer-events: auto;
+  background: transparent;
+  touch-action: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.rv-gate-left { left: 0; }
+.rv-gate-right { right: 0; }
+
+.rv-gate-ring {
+  position: absolute;
+  inset: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  opacity: 0;
+  transition: opacity 320ms ease-out;
+  pointer-events: none;
+}
+
+.rv-gate-zone.is-holding .rv-gate-ring { opacity: 1; transition: opacity 120ms ease-out; }
+
+.rv-gate-track { fill: none; stroke: rgba(154, 127, 224, .25); stroke-width: 7; }
+.rv-gate-arc { fill: none; stroke: #9a7fe0; stroke-width: 7; stroke-linecap: round; }
+
+/* Discoverable one-pointer entry. The shell chooses its position; these rules only
+   provide a large target and immediate full-button press feedback. */
+.rv-parent-entry {
+  min-width: 64px;
+  min-height: 64px;
+  padding: 8px 14px;
+  border: 3px solid #4a3b34;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #4a3b34;
+  font: 600 16px/1.1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  position: relative;
+  z-index: 85;
+  overflow: hidden;
+}
+
+.rv-parent-entry:active { background: #dbc8f5; }
+.rv-parent-entry:focus-visible { outline: 4px solid #7559bd; outline-offset: 4px; }
+
+.rv-parent-entry.is-compact { width: 58px; min-width: 58px; min-height: 58px; padding: 6px; }
+.rv-parent-entry.is-compact .rv-parent-entry-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.rv-adult-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(44, 35, 31, .62);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #4a3b34;
+}
+
+.rv-adult-gate-card {
+  width: min(520px, 100%);
+  padding: 24px;
+  border: 3px solid #4a3b34;
+  border-radius: 28px;
+  background: #fffdf8;
+  box-shadow: 0 10px 30px rgba(44, 35, 31, .28);
+  text-align: center;
+}
+
+.rv-adult-gate-card h2 { margin: 0 0 8px; font-size: 28px; }
+.rv-adult-gate-card p { margin: 0 0 18px; font-size: 22px; font-weight: 600; }
+.rv-adult-choices { display: flex; justify-content: center; gap: 12px; }
+.rv-adult-choices button,
+.rv-adult-cancel {
+  min-width: 72px;
+  min-height: 64px;
+  border: 3px solid #4a3b34;
+  border-radius: 22px;
+  background: #fff2a8;
+  color: #4a3b34;
+  font: 700 22px system-ui, -apple-system, "Segoe UI", sans-serif;
+  touch-action: manipulation;
+}
+.rv-adult-cancel { display: block; width: 100%; margin-top: 14px; background: #e6f4ff; font-size: 17px; }
+
+@media (max-width: 420px) {
+  .rv-parent-entry-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+
+@media (max-width: 520px) {
+  .rv-parent { padding: 12px 12px 56px; }
+  .rv-h1 { font-size: 28px; }
+  .rv-grid { column-count: 1; }
+}
+
+/* Adult listening stays in the normal scroll flow, including short tablets. */
+.rv-listening-details summary {
+  min-height: 48px;
+  padding: 10px 0;
+  font-weight: 600;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.rv-listening-details summary:focus-visible { outline: 3px solid var(--lilac-deep); outline-offset: 3px; }
+.rv-listening-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 10px;
+  padding: 14px 0;
+  border-top: 1px solid var(--grey);
+}
+.rv-listening-copy { min-width: 0; overflow-wrap: anywhere; }
+.rv-listening-copy p { margin: 4px 0 0; font-size: 16px; }
+.rv-listening-play.rv-btn { min-width: 60px; min-height: 48px; padding: 8px 10px; border-radius: 18px; }
+.rv-listening-rows { margin-top: 12px; }
+
+.rv-share-links { margin-top: 22px; }
+.rv-share-link-row { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin-top: 14px; }
+.rv-share-link-row label { flex: 1 1 220px; min-width: 0; font-size: 16px; }
+.rv-share-link-row input { display: block; box-sizing: border-box; width: 100%; min-height: 44px; margin-top: 6px; padding: 10px; border: 2px solid #b3a1cb; border-radius: 10px; color: #49382f; background: #fffdf8; font-size: 16px; }
+.rv-share-link-row button { min-height: 44px; }

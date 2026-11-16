@@ -1,0 +1,250 @@
+/* base.css - reset, app shell, buttons. Nothing here knows about a screen. */
+
+/* Component display rules must never expose unavailable controls or file inputs. */
+[hidden] {
+  display: none !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--sky-bottom);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 18px;
+  line-height: 1.4;
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+/* No scrollbars anywhere in the child UI. */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+canvas {
+  touch-action: none;
+}
+
+/* ---- app shell -------------------------------------------------------- */
+
+:root {
+  /* vh works on older WebKit; svh keeps browser chrome out before JS boots. */
+  --app-width: 100vw;
+  --app-height: 100vh;
+}
+
+@supports (height: 100svh) {
+  :root { --app-height: 100svh; }
+}
+
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--app-width, 100vw);
+  height: var(--app-height, 100vh);
+  padding: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom)
+    env(safe-area-inset-left);
+  overflow: hidden;
+  background: var(--sky-gradient);
+  isolation: isolate;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  display: block;
+  opacity: 1;
+  will-change: opacity, transform;
+}
+
+.screen.is-entering,
+.screen.is-leaving {
+  pointer-events: none;
+}
+
+#fx {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  touch-action: none;
+}
+
+#pip-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#gate {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+/* ---- the one button in the whole app ---------------------------------- */
+
+.btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--btn);
+  height: var(--btn);
+  min-width: 80px;
+  min-height: 80px;
+  border-radius: var(--r-circle);
+  background: var(--paper);
+  box-shadow: var(--shadow-warm);
+  outline: var(--outline) solid var(--ink);
+  outline-offset: calc(var(--outline) * -1);
+  transform: scale(1);
+  transition: transform var(--t-release) var(--ease-overshoot),
+    box-shadow var(--t-release) var(--ease-overshoot);
+}
+
+.btn > svg {
+  width: var(--btn-icon);
+  height: var(--btn-icon);
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Same frame, on pointerdown: no transition on the way down. */
+.btn.is-down {
+  transform: scale(0.96);
+  box-shadow: var(--shadow-flat);
+  transition: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+}
+
+.btn--mint {
+  background: var(--mint);
+}
+.btn--lemon {
+  background: var(--lemon);
+}
+.btn--pink {
+  background: var(--pink);
+}
+.btn--sky {
+  background: var(--sky);
+}
+.btn--lilac {
+  background: var(--lilac);
+}
+
+/* Fixed chrome. Handedness swaps the home button to the far side so her
+   writing hand never covers it. */
+.mute {
+  position: absolute;
+  top: var(--gutter);
+  right: var(--gutter);
+  z-index: 20;
+}
+
+.home {
+  position: absolute;
+  top: var(--gutter);
+  left: var(--gutter);
+  z-index: 20;
+}
+
+html.hand-left .home {
+  left: auto;
+  right: calc(var(--gutter) * 2 + var(--btn));
+}
+
+/* ---- reduced motion ---------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .drift,
+  .pulse,
+  .shimmer,
+  .bob {
+    animation: none !important;
+  }
+  .btn {
+    transition: opacity var(--t-release) linear;
+  }
+  .btn.is-down {
+    transform: none;
+    opacity: 0.8;
+  }
+}
+
+html.reduced-motion .drift,
+html.reduced-motion .pulse,
+html.reduced-motion .shimmer,
+html.reduced-motion .bob {
+  animation: none !important;
+}
+
+html.reduced-motion .btn {
+  transition: opacity var(--t-release) linear;
+}
+
+html.reduced-motion .btn.is-down {
+  transform: none;
+  opacity: 0.8;
+}
+
+/* Familiar navigation combines a picture and a short caption in one target. */
+.home.btn, .mute.btn { grid-template-rows: minmax(0, 1fr) auto; padding: 4px; gap: 1px; }
+.home.btn > svg, .mute.btn > svg { width: min(var(--btn-icon), 42px); height: 100%; max-height: 42px; min-height: 0; max-width: 100%; }
+.control-caption { font-size: 11px; font-weight: 750; line-height: 1.1; text-align: center; pointer-events: none; }
+
+/* A still outline remains meaningful with reduced motion and muted sound. */
+.is-control-cued { outline: 4px solid #94734c !important; outline-offset: 3px !important; }
+
+/* A press gets an immediate, non-geometric response even on icon-only controls. */
+button:active:not(:disabled) { filter: brightness(.93); transition-duration: 0s; }

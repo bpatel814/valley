@@ -1,0 +1,108 @@
+/* A little instrument room: the touched prop and its authored note share art. */
+.music-band{box-sizing:border-box;display:flex;flex-direction:column;gap:5px;padding:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));height:100%;min-height:0;overflow:hidden;color:#715640;background:#f5edda;font-family:inherit}
+.music-band *{box-sizing:border-box}
+.band-header{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-shrink:0;min-height:48px}
+.band-header h1{font-size:clamp(16px,2.5vw,28px);margin:0}
+.band-header nav{display:flex;gap:6px}
+.band-header nav .home,.band-header nav .mute{position:static!important;transform:none!important;flex:none;margin:0;width:46px;height:46px;min-width:44px;min-height:44px}
+.band-header nav .btn,.band-header nav .band-button{width:46px;height:46px;min-width:46px;min-height:46px;padding:7px;border-radius:15px}
+.band-button{border:2px solid #b79b75;border-radius:18px;background:#fff9e9;color:#715640;min-height:46px;min-width:46px;padding:6px 9px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-family:inherit;font-size:13px;font-weight:700;line-height:1.12;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;box-shadow:0 3px 0 #c9ac85}
+.band-button svg{height:27px;width:27px;flex-shrink:0}
+.band-button.is-down{box-shadow:none;transform:translateY(2px)}
+.band-button:disabled{opacity:.48;cursor:default}
+.music-band button:focus-visible{outline:3px solid #497b8e;outline-offset:3px}
+.band-button[aria-pressed=true]{border-color:#497b8e;background:#e5f0e8;box-shadow:0 0 0 2px #9fbdae}
+.band-stage{flex:1;position:relative;min-height:0;border-radius:28px;background:radial-gradient(ellipse at 50% 36%,#fff7dc 0%,#fff7dc 22%,transparent 65%),linear-gradient(#d5e8d6 0 55%,#deb88b 56% 72%,#ce9e70 72%);overflow:hidden;border:3px solid #d0b38f}
+.band-stage:after{content:'';position:absolute;left:3%;right:3%;bottom:4px;height:132px;border-radius:50%;background:#ecd9af;box-shadow:0 0 0 3px #b99466;pointer-events:none;z-index:0}
+.band-canopy{position:absolute;top:0;left:0;right:0;height:20px;background:repeating-linear-gradient(90deg,#b5cbb0 0 40px,#eed793 40px 80px);border-radius:0 0 50% 50%;opacity:.8}
+.band-sign{position:absolute;top:36px;left:8%;width:clamp(80px,20%,190px);height:clamp(66px,24%,140px);padding:5px;background:#fffcf1;border:6px solid #bd9264;border-radius:12px;transform:rotate(-3deg);cursor:pointer;z-index:1;color:#ba9371;touch-action:manipulation}
+.band-sign img{height:100%;width:100%;object-fit:contain;display:block}
+.band-sign>span{font-size:55px;line-height:1}
+.band-family{position:absolute;top:26px;right:7%;display:flex;gap:8px;z-index:1}
+.band-family-member{position:relative;width:clamp(70px,11vw,130px);height:clamp(94px,21vh,190px);background:transparent;border-color:transparent;box-shadow:none;padding:2px}
+.band-family-member img{width:100%;height:calc(100% - 26px);object-fit:contain;object-position:center bottom;filter:drop-shadow(0 4px 2px #83624430)}
+.band-family-member>span{border-radius:14px;background:#fff6e1;min-height:22px;padding:4px 8px}
+.band-family-member.has-joined>span:after{content:' ♫';color:#557955}
+.band-result{position:absolute;top:52%;left:8%;right:8%;margin:0;z-index:1;text-align:center;font-size:14px;font-weight:700;color:#795838;pointer-events:none}
+.band-score{position:absolute;left:4%;right:4%;bottom:139px;display:flex;gap:5px;overflow-x:auto;overflow-y:hidden;padding:8px 4px 9px;border-radius:14px;background:#fff7dcde;min-height:65px;z-index:3;scrollbar-width:thin;touch-action:pan-x}
+.band-note{width:48px;min-width:48px;height:48px;min-height:48px;border-radius:12px;padding:4px;background:#fffdf4;box-shadow:0 2px 0 #c9ac85}
+.band-note .band-instrument-picture{width:36px;height:36px}
+.band-empty-score{display:flex;gap:12px;align-items:center;justify-content:center;flex:1;border:2px dashed #b39c72;border-radius:10px;min-height:44px;font-size:15px}
+.band-empty-score>span:first-child{font-size:30px;color:#639579}
+.band-instruments{position:absolute;left:4%;right:4%;bottom:14px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;z-index:2;align-items:end}
+.band-instruments>.band-button{position:relative;height:112px;min-width:0;padding:7px 4px;background:var(--band-color);border-color:#987953;border-radius:28px 28px 18px 18px;box-shadow:0 6px 0 #aa8157;flex-direction:column-reverse}
+.band-instruments>.band-button>span:not(.band-instrument-picture){position:absolute;bottom:7px;font-size:clamp(11px,1.7vw,17px);line-height:1.15}
+.band-instrument-picture{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;pointer-events:none;flex-shrink:0}
+.band-instrument-picture img,.band-instrument-picture svg{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 1px #83624430)}
+.band-instrument-picture img[hidden]{display:none}
+.band-status{flex-shrink:0;margin:0;height:38px;min-height:38px;max-height:38px;overflow:auto;text-align:center;font-size:13px;line-height:1.25;padding:2px 8px}
+.band-controls{display:flex;justify-content:center;gap:6px;flex-shrink:0}
+.band-controls .band-button{flex:1;max-width:110px;padding:4px 3px;min-width:44px;min-height:52px;border-radius:14px;font-size:11px}
+.band-controls .band-button svg{width:24px;height:24px}
+.band-controls [hidden]{display:none!important}
+.is-sounding{outline:4px solid #fff5ba!important;outline-offset:-4px;box-shadow:0 0 0 3px #5b927b!important}
+.band-invitation:after{content:'';position:absolute;inset:3px;border:3px dashed #fff4bd;border-radius:23px;pointer-events:none}
+.band-sheet{position:absolute;inset:8px max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));z-index:30;overflow:auto;overscroll-behavior:contain;background:#fff8e8;border:3px solid #b49c79;border-radius:24px;padding:12px;box-shadow:0 7px 32px #70513c55}
+.band-sheet[hidden]{display:none}
+.band-sheet>header{display:flex;gap:12px;justify-content:space-between;align-items:center;margin-bottom:12px}
+.band-sheet h2{font-size:clamp(17px,3vw,24px);margin:0}
+.band-sheet>header .band-button{min-width:54px}
+.band-sheet p{font-size:16px;line-height:1.4}
+.band-tool-options{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 14px;padding-bottom:14px;border-bottom:2px solid #ead7b8}
+.band-tool-options>.band-button{flex:1;min-width:76px;min-height:65px}
+.band-tool-options:last-child>.band-button{flex:1 1 40%}
+.band-pace-marks{font-size:23px;min-height:26px;color:#789a78;white-space:pre}
+.band-choice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.band-choice-grid .band-button{min-width:0;min-height:100px;overflow:hidden;padding:6px}
+.band-choice-picture{max-width:100%;height:100px;object-fit:contain;background:#fffdf8;border-radius:8px}
+.band-kept-preview{width:100%;display:flex;gap:2px;flex-wrap:wrap;justify-content:center}
+.band-kept-preview .band-instrument-picture{width:34px;height:34px}
+.band-pages{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px}
+.band-pattern-key{display:flex;gap:4px;justify-content:space-around;margin-bottom:12px}
+.band-pattern-key>span{display:flex;align-items:center;gap:3px;font-size:26px;font-weight:700}
+.band-pattern-key .band-instrument-picture{width:38px;height:38px}
+.band-map-coral{color:#d37d61}.band-map-mint{color:#688e67}.band-map-lilac{color:#987ab4}.band-map-sunshine{color:#c6a551}
+.band-toy-pattern{font-size:17px;letter-spacing:2px}
+@media(min-height:600px) and (min-width:600px){.band-instruments{left:12%;right:12%;gap:24px;bottom:24px}.band-instruments>.band-button{height:132px}.band-instrument-picture{width:95px;height:95px}.band-score{left:12%;right:12%;bottom:172px}.band-note{width:55px;height:55px}.band-note .band-instrument-picture{width:43px;height:43px}.band-stage:after{height:175px}.band-controls .band-button{min-height:62px;font-size:14px}.band-controls .band-button svg{width:29px;height:29px}.band-status{height:44px;min-height:44px;max-height:44px;font-size:16px}}
+@media(max-width:380px){.band-header{flex-wrap:wrap;justify-content:center;gap:4px}.band-header h1{font-size:20px}.band-instruments{gap:7px;left:3%;right:3%}.band-instrument-picture{width:60px;height:67px}.band-family{right:4%;gap:0}.band-family-member{width:63px;height:100px}.band-sign{left:5%;width:81px;height:77px}.band-controls{gap:4px}.band-controls .band-button{font-size:10px;padding:3px 1px}.band-choice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.band-pattern-key>span{font-size:22px;gap:0}.band-pattern-key .band-instrument-picture{width:29px;height:34px}}
+@media(max-height:440px){.music-band{padding-top:4px;gap:3px}.band-header{min-height:44px}.band-header nav .btn,.band-header nav .band-button{height:44px;width:44px;min-height:44px;min-width:44px}.band-header h1{font-size:17px}.band-status{height:30px;min-height:30px;max-height:30px;font-size:11px;line-height:1.1}.band-controls .band-button{min-height:45px;flex-direction:row;gap:3px;font-size:11px}.band-controls .band-button svg{width:21px;height:21px}.band-instruments{bottom:6px;left:19%;right:19%;gap:7px}.band-instruments>.band-button{height:58px;border-radius:17px;padding:1px}.band-instruments>.band-button>span:not(.band-instrument-picture){bottom:2px;font-size:9px}.band-instrument-picture{height:40px;width:44px;margin-bottom:8px}.band-score{bottom:73px;left:19%;right:19%;min-height:48px;padding:2px 3px 4px;gap:3px}.band-note{height:44px;width:44px;min-height:44px;min-width:44px;padding:4px}.band-note .band-instrument-picture{height:32px;width:32px;margin:0}.band-empty-score{min-height:42px;font-size:11px;gap:6px}.band-empty-score>span:first-child{font-size:24px}.band-family{top:7px;right:0;flex-direction:column;gap:4px;width:18%;height:calc(100% - 12px)}.band-family-member{width:100%;height:calc(50% - 2px);min-height:44px;min-width:44px;flex-direction:row;padding:0;gap:0}.band-family-member img{width:46%;height:100%}.band-family-member>span{font-size:9px;padding:3px 1px;min-height:16px}.band-sign{top:12px;left:2%;width:15%;height:calc(100% - 29px);min-height:44px;min-width:44px;border-width:4px;padding:3px}.band-sign>span{font-size:36px}.band-result{display:none}.band-stage:after{height:71px}.band-canopy{height:9px}.band-choice-picture{height:75px}.band-sheet>header{margin-bottom:9px}.band-tool-options{margin-bottom:9px;padding-bottom:9px}.band-tool-options>.band-button{min-height:54px}}
+@media(prefers-reduced-motion:reduce){.band-button.is-down{transform:none}}
+.band-reduced .band-button.is-down{transform:none}
+.band-header h1{min-width:0;white-space:nowrap}.band-header nav{flex-shrink:0}
+.band-show-choice{display:flex;flex-direction:column;gap:8px;min-width:0}.band-show-choice>.band-button{width:100%;min-height:46px}.band-show-choice>.band-button:first-child{flex:1}
+
+/* Keep Help recognizable within the navigation hit target. */
+.band-header nav [data-help],.band-header nav [data-back]{flex-direction:column;gap:0;padding:3px}.band-header nav [data-help] svg,.band-header nav [data-back] svg{height:23px;width:23px}.band-header nav [data-help]>span,.band-header nav [data-back]>span{display:block;font-size:11px;line-height:12px}
+.music-band.is-guided[data-guidance="living_music_intro"] [data-instrument],.music-band.is-guided[data-guidance="living_music_change"] .band-note,.music-band.is-guided[data-guidance="living_music_together"] .band-family-member{outline:3px solid #4f8c76;outline-offset:-3px}
+
+.band-arranger h3{margin:0 0 8px;font-size:18px;color:#66517b}
+.band-arrange-strip{display:flex;gap:7px;overflow-x:auto;padding:5px 4px 10px;margin-bottom:6px;touch-action:pan-x}
+.band-arrange-strip .band-note{flex:0 0 52px;width:52px;height:52px;min-width:52px;min-height:52px}
+.band-arrange-strip .band-instrument-picture{width:38px;height:38px;margin:0}
+.band-arrange-strip .band-note[aria-pressed="true"]{outline:3px solid #8e6ba6;outline-offset:-3px;background:#eee0f7}
+@media(max-height:440px) and (orientation:landscape){
+  .band-arranger{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 8px;margin-bottom:10px}
+  .band-arranger h3{grid-column:1 / -1;margin:0;font-size:16px}
+  .band-arranger .band-arrange-strip{margin:0;padding:4px;align-self:center}
+  .band-arranger .band-tool-options{margin:0;padding:4px 0;border:0;flex-wrap:wrap;gap:5px;align-items:center}
+  .band-arranger .band-tool-options>.band-button{min-width:52px;min-height:48px;padding:2px;font-size:11px}
+  .band-arranger [data-reverse-tune]{min-width:76px}
+}
+/* Five pictured choices keep captions clear, including the quiet beat. */
+.band-instruments .band-instrument-picture{max-width:100%;margin-bottom:22px}
+@media(max-height:440px){.band-instruments .band-instrument-picture{margin-bottom:15px;height:32px}}
+@media(max-height:300px){
+  .music-band{overflow-y:auto}
+  .band-stage{min-height:104px;flex-shrink:0}
+  .band-status{height:30px;min-height:30px;max-height:30px;padding:0 4px}
+  .band-instruments{bottom:4px;gap:5px}
+  .band-instruments>.band-button{height:44px}
+  .band-instruments .band-instrument-picture{height:25px;margin-bottom:12px}
+  .band-instruments>.band-button>span:not(.band-instrument-picture){font-size:8px;bottom:2px;white-space:nowrap}
+  .band-score{bottom:53px;min-height:46px;padding:0 2px 2px}
+}
+
+.band-pace-picture{display:block;width:44px;height:44px;flex:none;margin:auto}
+
+/* One pictured next action, without marking every instrument or note. */
+.music-band .band-idle-target{outline:3px solid #4f8c76;outline-offset:-3px}

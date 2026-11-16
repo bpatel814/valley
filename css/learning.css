@@ -1,0 +1,965 @@
+/* learning.css - the shared child-facing completion controls and the slightly roomier
+   Garden/Meadow work surfaces. Loaded after screens.css. */
+
+.learning-screen {
+  color-scheme: only light;
+}
+
+.learning-screen > :not(.scene-backdrop) {
+  z-index: 1;
+}
+
+.learning-picture-cue {
+  position: absolute;
+  left: clamp(8px, 1.4vmin, 18px);
+  top: clamp(8px, 1.4vmin, 18px);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: clamp(54px, 8vmin, 78px);
+  height: clamp(54px, 8vmin, 78px);
+  padding: 8px;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 4px 0 rgba(74, 59, 52, 0.16);
+  pointer-events: none;
+}
+
+.learning-picture-cue svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.learning-choice {
+  display: grid;
+  place-items: center;
+  min-width: clamp(82px, 12vmin, 112px);
+  min-height: clamp(82px, 12vmin, 112px);
+  padding: 8px;
+  color: var(--ink);
+  border: var(--outline) solid var(--ink);
+  border-radius: 30px;
+  background: var(--paper);
+  box-shadow: var(--shadow-warm);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.learning-choice__picture {
+  display: grid;
+  place-items: center;
+  width: clamp(50px, 7vmin, 70px);
+  height: clamp(50px, 7vmin, 70px);
+}
+
+.learning-choice__picture svg,
+.learning-retry > svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.learning-choice__arrow {
+  position: absolute;
+  right: -12px;
+  bottom: -12px;
+  width: clamp(42px, 6vmin, 58px);
+  height: clamp(42px, 6vmin, 58px);
+  padding: 8px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--lemon);
+}
+
+.learning-retry {
+  width: clamp(82px, 12vmin, 112px);
+  color: var(--ink);
+  background: var(--peach);
+}
+
+.garden.learning-screen {
+  grid-template-columns: minmax(112px, 18%) minmax(0, 1fr) minmax(86px, 12%);
+  gap: clamp(8px, 1.8vmin, 20px);
+}
+
+.garden.learning-screen .trace-box {
+  width: min(52vw, 88vh);
+  height: min(52vw, 88vh);
+}
+
+.garden.learning-screen .sticker-corner {
+  display: none;
+}
+
+.garden.learning-screen .garden-friend {
+  position: relative;
+}
+
+.garden.learning-screen .garden-friend .char {
+  --char-size: min(18vw, 47vh);
+}
+
+/* Explore marks do a small piece of work in the garden. Approved art marks the
+   beginning and destination while the centre stays clear for the child's hand. */
+.garden-action {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.garden-action::before {
+  content: "";
+  position: absolute;
+  inset: clamp(8px, 1.3vmin, 14px);
+  border: 3px solid rgba(127, 178, 116, 0.22);
+  border-radius: calc(var(--r-card) - 8px);
+}
+
+.garden-action__endpoint {
+  position: absolute;
+  left: var(--action-x);
+  top: var(--action-y);
+  display: grid;
+  place-items: center;
+  width: clamp(40px, 8vmin, 64px);
+  height: clamp(40px, 8vmin, 64px);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 3px 2px rgba(74, 59, 52, 0.16));
+}
+
+.garden-action__start-art,
+.garden-action__flower {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.garden-action__start {
+  padding: 3px;
+  border: 3px solid rgba(74, 59, 52, 0.58);
+  border-radius: 50%;
+  background: rgba(255, 247, 201, 0.9);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.garden-action--rain .garden-action__start {
+  background: rgba(224, 244, 255, 0.94);
+  width: clamp(44px, 8.5vmin, 68px);
+  height: clamp(44px, 8.5vmin, 68px);
+}
+
+.garden-action--rain {
+  z-index: 3;
+}
+
+.garden-action__rain-link {
+  position: absolute;
+  z-index: 0;
+  height: 5px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(90deg, rgba(91, 177, 220, 0.78) 0 9px, transparent 9px 15px);
+  transform-origin: 0 50%;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.72));
+}
+
+.garden-action__rain-link::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-right: 4px solid rgba(91, 177, 220, 0.88);
+  border-bottom: 4px solid rgba(91, 177, 220, 0.88);
+  transform: translateY(-50%) rotate(-45deg);
+}
+
+.garden-action__traveler {
+  position: absolute;
+  left: var(--rain-path-x, 50%);
+  top: var(--rain-start-y, 14%);
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  width: clamp(24px, 5.5vmin, 40px);
+  height: clamp(24px, 5.5vmin, 40px);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 3px 2px rgba(74, 59, 52, 0.2));
+}
+
+.garden-action__traveler-art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.garden-action--rain.is-carrying .garden-action__traveler {
+  opacity: 1;
+}
+
+.garden-action--rain.is-arrived .garden-action__traveler,
+.garden-action--rain.is-complete .garden-action__traveler {
+  left: var(--rain-path-x, 50%);
+  top: var(--rain-arrival-y, 84%);
+  opacity: 0.88;
+}
+
+.garden-action--rain .garden-action__goal {
+  width: 50px;
+  height: 50px;
+}
+
+.garden-action__goal {
+  border-radius: 50%;
+}
+
+.garden-action__bud {
+  position: absolute;
+  inset: 22%;
+  border: 3px solid var(--ink);
+  border-radius: 55% 55% 45% 45%;
+  background: var(--mint);
+  transform: rotate(-6deg);
+  transition: opacity 180ms ease, transform 240ms ease;
+}
+
+.garden-action__bud::after {
+  content: "";
+  position: absolute;
+  left: calc(50% - 2px);
+  top: 80%;
+  width: 4px;
+  height: 55%;
+  border-radius: 3px;
+  background: var(--ink);
+}
+
+.garden-action__bud i {
+  position: absolute;
+  top: 88%;
+  width: 45%;
+  height: 28%;
+  border-radius: 80% 10% 80% 10%;
+  background: var(--mint-deep);
+}
+
+.garden-action__bud i:first-child { right: 48%; transform: rotate(24deg); }
+.garden-action__bud i:last-child { left: 48%; transform: scaleX(-1) rotate(24deg); }
+
+.garden-action__flower {
+  opacity: 0;
+  transform: scale(0.38) rotate(-8deg);
+  transition: opacity 200ms ease, transform 420ms cubic-bezier(.2, 1.5, .42, 1);
+}
+
+.garden-action.is-complete .garden-action__start {
+  opacity: 0.35;
+  transform: translate(-50%, -50%) scale(0.82);
+}
+
+.garden-action.is-complete .garden-action__bud {
+  opacity: 0;
+  transform: scale(0.7) rotate(5deg);
+}
+
+.garden-action.is-complete .garden-action__flower {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.garden-action--rain.is-complete .garden-action__flower {
+  transform: scale(1.12) rotate(0deg);
+  transform-origin: 50% 0;
+  filter: drop-shadow(0 4px 4px rgba(74, 59, 52, 0.2));
+}
+
+.garden-action--rain.is-bloom-focus .garden-action__flower {
+  animation: garden-bloom-focus 780ms cubic-bezier(.2, 1.45, .35, 1) both;
+}
+
+@keyframes garden-bloom-focus {
+  0% { opacity: 0; transform: scale(.32) rotate(-8deg); }
+  58% { opacity: 1; transform: scale(1.38) rotate(2deg); }
+  100% { opacity: 1; transform: scale(1.12) rotate(0deg); }
+}
+
+.garden-action__art-fallback {
+  width: 70%;
+  height: 70%;
+  border: 3px solid var(--ink);
+  border-radius: 70% 20% 70% 20%;
+  background: var(--mint);
+  transform: rotate(-28deg);
+}
+
+.garden-action--rain .garden-action__art-fallback {
+  border-radius: 70% 45% 70% 45%;
+  background: #a9dcf3;
+  transform: rotate(45deg);
+}
+
+.garden.learning-screen .rv-tracer {
+  z-index: 1;
+}
+
+.garden-hatch {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.meadow.learning-screen {
+  grid-template-columns: minmax(112px, 18%) minmax(0, 1fr);
+  gap: clamp(8px, 1.8vmin, 20px);
+}
+
+.meadow.learning-screen .word-row-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(8px, 1.3vmin, 16px);
+  min-width: 0;
+}
+
+.meadow-current-word,
+.meadow-entry-choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meadow-current-word {
+  gap: clamp(8px, 1.3vmin, 16px);
+  min-width: 0;
+}
+
+.meadow-entry-choices {
+  gap: 8px;
+  flex: 0 1 auto;
+  max-width: min(32vw, 360px);
+  padding: 7px 8px 9px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  justify-content: flex-start;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+
+.meadow-entry-choices::-webkit-scrollbar { display: none; }
+
+.meadow-entry-choice {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(52px, 8vmin, 66px);
+  height: clamp(52px, 8vmin, 66px);
+  padding: 5px;
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: 0 4px 0 rgba(74, 59, 52, 0.16);
+  touch-action: manipulation;
+}
+
+.meadow-entry-choice__art {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meadow-entry-choice__initial {
+  position: absolute;
+  left: -6px;
+  top: -6px;
+  display: grid;
+  place-items: center;
+  width: 23px;
+  height: 23px;
+  padding: 2px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.meadow-entry-choice__initial svg {
+  width: 100%;
+  height: 100%;
+}
+
+.meadow-entry-choice.has-saved-label {
+  padding-bottom: 18px;
+}
+
+.meadow-entry-choice__saved-ink {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 2px;
+  height: 15px;
+  padding: 1px 2px;
+  border-radius: 6px;
+  background: rgba(255, 253, 248, 0.96);
+}
+
+.meadow-entry-choice__saved-ink canvas {
+  width: min(18%, 13px);
+  height: 13px;
+}
+
+.meadow.is-word-result .meadow-entry-choices {
+  display: none;
+}
+
+.meadow-subject-cue {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: clamp(54px, 8vmin, 74px);
+  height: clamp(54px, 8vmin, 74px);
+  flex: 0 0 auto;
+  border: 3px solid var(--ink);
+  border-radius: 22px;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 4px 0 rgba(74, 59, 52, 0.16);
+  overflow: hidden;
+}
+
+.meadow-subject-picture,
+.meadow-word-choice__art,
+.meadow-word-result__picture {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.meadow-subject-picture {
+  width: 90%;
+  height: 88%;
+}
+
+.meadow-subject-picture--fallback {
+  display: grid;
+  place-items: center;
+}
+
+.meadow-subject-picture--fallback > svg {
+  width: 80%;
+  height: 80%;
+}
+
+.meadow-ink-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.meadow-ink-label canvas {
+  display: block;
+  min-width: 0;
+  aspect-ratio: 1;
+}
+
+.meadow-ink-label--mini {
+  position: absolute;
+  left: 3px;
+  right: 3px;
+  bottom: 2px;
+  height: 18px;
+  padding: 1px 3px;
+  border-radius: 8px;
+  background: rgba(255, 253, 248, 0.94);
+}
+
+.meadow-ink-label--mini canvas {
+  width: min(18%, 18px);
+  height: 18px;
+}
+
+.meadow-word-result {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  place-items: center;
+  align-self: stretch;
+  width: min(48vw, 360px);
+  max-width: 72%;
+  min-height: 0;
+  padding: clamp(8px, 1.5vmin, 16px);
+  border: var(--outline) solid var(--ink);
+  border-radius: 30px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: var(--shadow-warm);
+}
+
+.meadow-word-result__picture {
+  min-height: 0;
+  max-width: 82%;
+}
+
+.meadow-ink-label--result {
+  width: 100%;
+  height: clamp(52px, 9vmin, 76px);
+  padding: 4px 8px;
+  border: 3px solid var(--mint-deep);
+  border-radius: 18px;
+  background: rgba(255, 253, 248, 0.97);
+}
+
+.meadow-ink-label--result canvas {
+  width: min(19%, 70px);
+  height: 100%;
+}
+
+.meadow.is-word-result .meadow-stage {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr);
+  gap: clamp(6px, 1vmin, 10px);
+}
+
+.meadow.is-word-result .meadow-word-result {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.meadow.is-word-result .meadow-subject-cue {
+  visibility: hidden;
+}
+
+.meadow.is-word-result .meadow-actions {
+  grid-column: 2;
+  grid-row: 1;
+  position: relative;
+  right: auto;
+  bottom: auto;
+  justify-self: center;
+  align-self: end;
+}
+
+.meadow-word-choice {
+  min-width: clamp(88px, 13vmin, 116px);
+  min-height: clamp(88px, 13vmin, 116px);
+}
+
+.meadow-word-choice__picture {
+  position: relative;
+  width: clamp(58px, 9vmin, 82px);
+  height: clamp(58px, 9vmin, 82px);
+}
+
+.meadow-word-choice__art {
+  display: block;
+}
+
+.meadow-word-choice__initial {
+  position: absolute;
+  left: -8px;
+  bottom: -7px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.meadow-word-choice__initial svg {
+  width: 100%;
+  height: 100%;
+}
+
+.meadow-rewrite-choice {
+  position: relative;
+  background: var(--peach);
+}
+
+.meadow-rewrite-choice__mark {
+  position: absolute;
+  right: -8px;
+  bottom: -8px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 7px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--sky);
+}
+
+.meadow-rewrite-choice__mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.meadow.learning-screen .meadow-unicorn .char {
+  --char-size: min(20vw, 50vh);
+}
+
+.meadow.learning-screen .meadow-stage .trace-box {
+  width: min(43vw, 86vh);
+  height: min(43vw, 86vh);
+}
+
+.meadow-actions {
+  position: absolute;
+  right: clamp(4px, 1vmin, 12px);
+  bottom: clamp(4px, 1vmin, 12px);
+  z-index: 5;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: clamp(10px, 1.6vmin, 18px);
+  pointer-events: none;
+}
+
+.meadow-actions > * {
+  pointer-events: auto;
+}
+
+@media (orientation: portrait) {
+  .garden.learning-screen,
+  .meadow.learning-screen {
+    grid-template-columns: 1fr;
+    gap: clamp(6px, 1.2vmin, 12px);
+  }
+
+  .garden.learning-screen {
+    grid-template-rows: minmax(100px, 18vh) minmax(0, 1fr) minmax(82px, 12vh);
+  }
+
+  .garden.learning-screen .trace-box {
+    width: min(90vw, 55vh);
+    height: min(90vw, 55vh);
+  }
+
+  .garden.learning-screen .garden-friend .char {
+    --char-size: min(38vw, 19vh);
+  }
+
+  .meadow.learning-screen {
+    grid-template-rows: minmax(100px, 18vh) auto minmax(0, 1fr);
+  }
+
+  .meadow.learning-screen .word-row-wrap {
+    width: min(96vw, 720px);
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .meadow-current-word {
+    width: 100%;
+  }
+
+  .meadow-entry-choices {
+    width: min(92vw, 420px);
+    max-width: min(92vw, 420px);
+  }
+
+  .meadow-word-result {
+    width: min(74vw, 390px);
+    max-width: 92%;
+  }
+
+  .meadow.learning-screen .meadow-unicorn .char {
+    --char-size: min(41vw, 20vh);
+  }
+
+  .meadow.learning-screen .meadow-stage .trace-box {
+    width: min(88vw, 53vh);
+    height: min(88vw, 53vh);
+  }
+
+  .learning-picture-cue {
+    width: clamp(50px, 13vw, 70px);
+    height: clamp(50px, 13vw, 70px);
+  }
+
+  .meadow-actions {
+    right: 4px;
+    bottom: 4px;
+  }
+
+  .meadow.is-word-result .meadow-actions {
+    grid-column: 1;
+    grid-row: 2;
+    right: auto;
+    bottom: auto;
+  }
+
+  .meadow.is-word-result .meadow-stage {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+  }
+
+  .meadow.is-word-result .meadow-word-result {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+/* On phone portrait the tracer tools form a bottom row. Lift only a bottom-centre
+   destination into the clear gap below the guide, keeping the tools fully tappable. */
+@media (orientation: portrait) and (max-width: 500px) {
+  .garden-action__endpoint--bottom-center {
+    --action-y: 74% !important;
+  }
+
+  /* The phone paper has only a narrow clear band between the rain line and tools.
+     A full-size bloom is already legible there, so keep its focus pulse inside that band. */
+  .garden-action--rain.is-complete .garden-action__flower {
+    transform: scale(1) rotate(0deg);
+  }
+
+  .garden-action--rain.is-bloom-focus .garden-action__flower {
+    animation-name: garden-bloom-focus-phone;
+  }
+}
+
+@keyframes garden-bloom-focus-phone {
+  0% { opacity: 0; transform: scale(.48) rotate(-5deg); }
+  58% { opacity: 1; transform: scale(1) rotate(1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@media (max-height: 470px) and (orientation: landscape) {
+  .learning-choice {
+    min-width: 80px;
+    min-height: 80px;
+  }
+
+  .garden.learning-screen .trace-box {
+    width: min(54vw, 90vh);
+    height: min(54vw, 90vh);
+  }
+
+  .meadow.learning-screen .meadow-stage .trace-box {
+    width: min(37vw, 88vh);
+    height: min(37vw, 88vh);
+  }
+
+  .meadow-word-result {
+    width: min(45vw, 320px);
+    padding: 6px;
+  }
+
+  .meadow-ink-label--result {
+    height: 52px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learning-choice {
+    transition: none;
+  }
+
+  .garden-action__start,
+  .garden-action__bud,
+  .garden-action__flower {
+    transition: none;
+  }
+
+  .garden-action--rain.is-bloom-focus .garden-action__flower {
+    animation: none;
+  }
+}
+
+/* Garden alone: a full measured paper, a small play partner and tools off the ink. */
+.garden.learning-screen { grid-template-columns:minmax(0,1fr);grid-template-rows:44px minmax(0,1fr) 54px;gap:6px;padding:max(8px,env(safe-area-inset-top)) max(10px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(10px,env(safe-area-inset-left));align-items:stretch;justify-items:stretch; }
+.garden.learning-screen .garden-header { grid-row:1;display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0; }
+.garden.learning-screen .garden-nav,.garden.learning-screen .garden-sound { display:flex;gap:6px; }
+.garden.learning-screen .garden-header .btn { position:static;inset:auto;transform:none;width:44px;height:44px;min-width:44px;min-height:44px;padding:6px; }
+.garden.learning-screen .garden-header .btn svg { width:100%;height:100%; }
+.garden.learning-screen .garden-current { display:flex;justify-content:center;min-width:0;max-width:80px; }
+.garden.learning-screen .learning-picture-cue { position:static;width:48px;height:44px;padding:5px;border-width:2px;border-radius:16px;box-shadow:none; }
+.garden.learning-screen .garden-play { grid-row:2;display:grid;grid-template-columns:100px minmax(0,1fr);gap:6px;align-items:stretch;justify-self:stretch;width:100%;min-width:0;min-height:0; }
+.garden.learning-screen .garden-friend { grid-column:1;grid-row:1;padding:0;min-width:0;min-height:0;align-self:center;width:100%; }
+.garden.learning-screen .garden-friend .char { --char-size:100px;max-width:100%;max-height:100%; }
+.garden.learning-screen .garden-stage { grid-column:2;grid-row:1;min-width:0;min-height:0;height:100%; }
+.garden.learning-screen .trace-box { min-width:0;min-height:0;max-width:100%;max-height:100%;width:min(100%,70vh);height:min(100%,70vh);border-radius:26px; }
+.garden.learning-screen .garden-dock { grid-row:3;display:flex;align-items:center;justify-content:center;gap:12px;min-width:0;min-height:0; }
+.garden.learning-screen .garden-tool-host { min-width:0;display:flex;align-items:center; }
+.garden.learning-screen .garden-tool-host .rv-tracer__tools { position:static;inset:auto;display:flex;flex-direction:row;gap:12px;padding:0; }
+.garden.learning-screen .garden-tool-host .rv-btn { width:52px;height:52px;min-width:44px;min-height:44px;border-radius:18px; }
+.garden.learning-screen .garden-next { position:static;min-width:0;min-height:0;padding:0;align-self:center;justify-self:center; }
+.garden.learning-screen .garden-next:empty { display:none; }
+.garden.learning-screen .garden-next .learning-choice { position:relative;width:52px;height:52px;min-width:44px;min-height:44px;padding:5px;border-radius:18px; }
+.garden.learning-screen .garden-next .learning-choice__picture { width:34px;height:34px; }
+.garden.learning-screen .garden-next .learning-choice__arrow { width:22px;height:22px;min-width:0;min-height:0;padding:2px;right:-3px;bottom:-3px;border-width:2px; }
+.garden.learning-screen .garden-action { z-index:3; }
+.garden.learning-screen .garden-action__start { width:54px;height:54px; }
+.garden.learning-screen .garden-action__start-art { width:36px;height:36px;justify-self:start;align-self:start; }
+.garden.learning-screen .garden-show-me { position:absolute;right:-5px;bottom:-5px;width:44px;height:44px;min-width:44px;min-height:44px;padding:2px;z-index:5;pointer-events:auto;border-radius:16px;box-shadow:0 2px 0 #84744333; }
+.garden.learning-screen .garden-show-me--letter { left:8px;top:8px;right:auto;bottom:auto; }
+.garden.learning-screen .garden-action.is-complete .garden-action__start { opacity:1;transform:translate(-50%,-50%); }
+.garden.learning-screen .garden-action.is-complete .garden-action__start-art { opacity:.35; }
+.garden.learning-screen .garden-action__endpoint--bottom-center { --action-y:93%!important; }
+.garden.learning-screen .garden-action--rain.is-arrived .garden-action__traveler,.garden.learning-screen .garden-action--rain.is-complete .garden-action__traveler { left:var(--rain-arrival-x,var(--rain-path-x,50%)); }
+.garden.learning-screen .model-letter { width:58px;height:58px;padding:4px;right:8px;bottom:8px; }
+@media(orientation:portrait) {
+  .garden.learning-screen .garden-play { grid-template-columns:minmax(0,1fr);grid-template-rows:64px minmax(0,1fr);gap:6px; }
+  .garden.learning-screen .garden-friend { grid-column:1;grid-row:1;height:64px;justify-self:center;width:120px; }
+  .garden.learning-screen .garden-friend .char { --char-size:110px; }
+  .garden.learning-screen .garden-stage { grid-column:1;grid-row:2; }
+}
+@media(max-height:440px) and (orientation:landscape) {
+  .garden.learning-screen { grid-template-rows:44px minmax(0,1fr) 44px;gap:4px;padding-top:6px;padding-bottom:6px; }
+  .garden.learning-screen .garden-play { grid-template-columns:76px minmax(0,1fr);gap:4px; }
+  .garden.learning-screen .garden-friend .char { --char-size:74px; }
+  .garden.learning-screen .garden-tool-host .rv-btn,.garden.learning-screen .garden-next .learning-choice { width:44px;height:44px; }
+  .garden.learning-screen .garden-next .learning-choice__picture { width:28px;height:28px; }
+  .garden.learning-screen .garden-action__endpoint { width:44px;height:44px; }
+  .garden.learning-screen .garden-action__start-art { width:30px;height:30px; }
+  .garden.learning-screen .garden-show-me { right:-8px;bottom:-8px; }
+}
+
+
+
+
+
+/* A storybook stays beside the Meadow friend, outside all writing paper. */
+.meadow.learning-screen .meadow-unicorn { position: relative; }
+.meadow-storybook { position: absolute; right: -4px; bottom: -12px; width: 68px; height: 68px; padding: 12px; border: 3px solid #74594c; border-radius: 24px; background: #ffefb9; box-shadow: 0 5px 0 #9b7c5b4a; color: #755199; z-index: 3; }
+.meadow-storybook svg { width: 100%; height: 100%; }
+@media (orientation: portrait) { .meadow-storybook { right: calc(50% - 140px); bottom: 5px; } }
+
+/* Meadow keeps its exact attempt on one measured paper, with tools in normal
+   flow outside the ink. These rules do not change Garden's retained layout. */
+.meadow.learning-screen { --meadow-choice-size:clamp(84px,10vmin,100px);grid-template-columns:minmax(208px,28%) minmax(0,1fr);grid-template-rows:minmax(0,1fr) 44px;gap:6px 8px;padding:58px 10px 8px;align-items:stretch;justify-items:stretch;min-width:0;min-height:0; }
+.meadow.learning-screen>.home,.meadow.learning-screen>.mute { top:8px;width:44px;height:44px;min-width:44px;min-height:44px;padding:7px; }
+.meadow.learning-screen>.home { left:10px; }
+.meadow.learning-screen>.mute { right:10px; }
+.meadow.learning-screen .word-row-wrap { grid-column:1;grid-row:1;display:grid;grid-template-columns:56px minmax(0,1fr);grid-template-rows:80px 34px minmax(0,1fr);gap:6px;min-width:0;min-height:0;width:100%;align-content:stretch; }
+.meadow.learning-screen .meadow-unicorn { grid-column:1;grid-row:1;min-width:0;min-height:0;width:56px;height:56px;padding:0; }
+.meadow.learning-screen .meadow-unicorn .char { --char-size:56px; }
+.meadow.learning-screen .meadow-current-word { display:contents; }
+.meadow.learning-screen .meadow-subject-cue { grid-column:2;grid-row:1;width:76px;height:76px;justify-self:center;padding:2px;border-radius:20px; }
+.meadow.learning-screen .meadow-subject-cue:disabled { opacity:1; }
+.meadow.learning-screen .word-row { grid-column:1 / -1;grid-row:2;--wbox:26px;gap:4px;min-width:0; }
+.meadow.learning-screen .word-row .wbox { flex:0 1 var(--wbox);min-width:0; }
+.meadow.learning-screen .meadow-entry-choices { grid-column:1 / -1;grid-row:3;display:flex;flex-wrap:wrap;width:100%;max-width:100%;height:100%;min-width:0;min-height:0;align-self:start;align-content:start;overflow-x:hidden;overflow-y:auto;padding:5px;gap:10px;touch-action:pan-y; }
+.meadow.learning-screen .meadow-entry-choice { width:var(--meadow-choice-size);height:calc(var(--meadow-choice-size) + 16px);min-width:var(--meadow-choice-size);min-height:calc(var(--meadow-choice-size) + 16px);flex:0 0 var(--meadow-choice-size);padding:5px 5px 20px;border-radius:20px; }
+.meadow.learning-screen .meadow-entry-choice__art { min-width:0;min-height:0; }
+.meadow.learning-screen .meadow-choice-name { position:absolute;left:3px;right:3px;bottom:3px;text-align:center;font-size:12px;line-height:15px;font-weight:800;letter-spacing:.02em;color:var(--ink); }
+.meadow.learning-screen .meadow-entry-choice.has-saved-label { padding-bottom:36px; }
+.meadow.learning-screen .meadow-entry-choice__saved-ink { bottom:19px; }
+.meadow.learning-screen.is-word-result .meadow-entry-choices { display:none; }
+.meadow.learning-screen .meadow-stage { grid-column:2;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:minmax(0,1fr);gap:8px;min-width:0;min-height:0;width:100%;height:100%;align-items:stretch;justify-items:stretch; }
+.meadow.learning-screen .meadow-paper-stage { grid-column:1;grid-row:1;display:grid;place-items:center;min-width:0;min-height:0;width:100%;height:100%;overflow:hidden; }
+.meadow.learning-screen .meadow-stage .trace-box { min-width:0;min-height:0;max-width:100%;max-height:100%;margin:0;flex:none; }
+.meadow.learning-screen .meadow-tool-host { grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0; }
+.meadow.learning-screen .rv-tracer__tools { flex-direction:column;--rv-tool-size:44px!important;--rv-tool-gap:8px!important; }
+.meadow.learning-screen .rv-btn { width:44px;height:44px;min-width:44px;min-height:44px; }
+.meadow.learning-screen .meadow-actions { position:static;grid-column:2;grid-row:1;min-width:0;min-height:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;pointer-events:auto; }
+.meadow.learning-screen .meadow-actions:empty { display:none; }
+.meadow.learning-screen .meadow-save-status { grid-column:1 / -1;grid-row:2;display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;min-height:0;padding:2px 4px;text-align:center;font-size:12px;line-height:14px;font-weight:700;color:#4a3b34; }
+.meadow.learning-screen .meadow-save-status>span { min-width:0;max-width:520px;padding:2px 8px;border:1px solid #cdbfae;border-radius:8px;background:#fffdf8; }
+.meadow.learning-screen .meadow-save-retry { display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;padding:7px;border:3px solid var(--ink);border-radius:15px;background:var(--mint); }
+.meadow.learning-screen .meadow-save-retry>svg { width:100%;height:100%; }
+.meadow.learning-screen [hidden] { display:none!important; }
+.meadow.learning-screen.is-word-result .meadow-stage { grid-template-columns:minmax(0,1fr) calc(var(--meadow-choice-size) + 12px);grid-template-rows:minmax(0,1fr); }
+.meadow.learning-screen.is-word-result .meadow-word-result { grid-column:1;grid-row:1;width:100%;max-width:100%;height:100%;padding:6px; }
+.meadow.learning-screen.is-word-result .meadow-actions { grid-column:2;grid-row:1;height:100%;overflow-y:auto;overflow-x:hidden;justify-content:flex-start;padding:3px; }
+.meadow.learning-screen .meadow-word-choice { position:relative;min-width:var(--meadow-choice-size);min-height:calc(var(--meadow-choice-size) + 16px);width:var(--meadow-choice-size);height:calc(var(--meadow-choice-size) + 16px);flex:0 0 var(--meadow-choice-size);padding:5px 5px 24px;border-radius:20px; }
+.meadow.learning-screen .meadow-word-choice__picture { width:calc(var(--meadow-choice-size) - 16px);height:calc(var(--meadow-choice-size) - 24px);min-height:0;max-height:100%; }
+.meadow.learning-screen .meadow-word-choice__initial { width:20px;height:20px;left:-4px;bottom:-3px;padding:2px; }
+.meadow.learning-screen .learning-choice__arrow,.meadow.learning-screen .meadow-rewrite-choice__mark { width:20px;height:20px;right:-4px;bottom:-4px;padding:3px;border-width:2px; }
+.meadow.learning-screen .meadow-storybook { position:absolute;left:calc(50% - 22px);top:8px;right:auto;bottom:auto;width:44px;height:44px;padding:7px;border-radius:16px; }
+@media(orientation:portrait) {
+  .meadow.learning-screen { --meadow-choice-size:84px;grid-template-columns:minmax(0,1fr);grid-template-rows:170px minmax(0,1fr) 32px;gap:6px; }
+  .meadow.learning-screen .word-row-wrap { grid-column:1;grid-row:1;grid-template-columns:48px minmax(0,1fr);grid-template-rows:58px 106px;gap:6px 8px; }
+  .meadow.learning-screen .meadow-unicorn { grid-column:1;grid-row:1;width:48px;height:48px; }
+  .meadow.learning-screen .meadow-unicorn .char { --char-size:48px; }
+  .meadow.learning-screen .meadow-current-word { grid-column:2;grid-row:1;display:flex;align-items:center;justify-content:center;gap:8px;min-width:0; }
+  .meadow.learning-screen .meadow-subject-cue { width:58px;height:58px;min-width:58px;flex:0 0 58px; }
+  .meadow.learning-screen .word-row { flex:0 1 auto; }
+  .meadow.learning-screen .word-row { --wbox:32px;gap:4px; }
+  .meadow.learning-screen .meadow-entry-choices { grid-column:1 / -1;grid-row:2;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;touch-action:pan-x; }
+  .meadow.learning-screen .meadow-stage { grid-column:1;grid-row:2;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 44px;gap:6px; }
+  .meadow.learning-screen .meadow-tool-host { grid-column:1;grid-row:2; }
+  .meadow.learning-screen .rv-tracer__tools { flex-direction:row; }
+  .meadow.learning-screen .meadow-save-status { grid-column:1;grid-row:3; }
+  .meadow.learning-screen.is-word-result .meadow-stage { grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 112px; }
+  .meadow.learning-screen.is-word-result { grid-template-rows:58px minmax(0,1fr) 32px; }
+  .meadow.learning-screen.is-word-result .word-row-wrap { grid-template-rows:58px; }
+  .meadow.learning-screen.is-word-result .meadow-actions { grid-column:1;grid-row:2;width:100%;height:112px;flex-direction:row;overflow-x:auto;overflow-y:hidden;justify-content:flex-start; }
+}
+@media (orientation:portrait) and (max-height:620px) {
+  .meadow.learning-screen { --meadow-choice-size:72px;grid-template-rows:148px minmax(0,1fr) 28px; }
+  .meadow.learning-screen .word-row-wrap { grid-template-rows:48px 94px; }
+  .meadow.learning-screen .meadow-subject-cue { width:48px;height:48px;min-width:48px;flex-basis:48px; }
+}
+@media (orientation:landscape) and (max-height:360px) {
+  .meadow.learning-screen { --meadow-choice-size:84px;grid-template-rows:minmax(0,1fr) 24px; }
+  /* The rail can use the status row while paper keeps its measured main row.
+     At740x360 this leaves220px for two complete84x100 cards and their gap. */
+  .meadow.learning-screen .word-row-wrap { grid-row:1 / -1;grid-template-rows:44px 26px minmax(0,1fr);gap:2px; }
+  .meadow.learning-screen .meadow-save-status { grid-column:2; }
+  .meadow.learning-screen .meadow-subject-cue { width:44px;height:44px; }
+  .meadow.learning-screen .meadow-unicorn,.meadow.learning-screen .meadow-unicorn .char { width:44px;height:44px;--char-size:44px; }
+}
+@media (min-width:760px) and (min-height:500px) {
+  .meadow.learning-screen { --meadow-choice-size:112px; }
+}
+@media (orientation:landscape) and (max-height:300px) {
+  .meadow.learning-screen { --meadow-choice-size:72px; }
+  .meadow.learning-screen .word-row-wrap { grid-template-rows:40px 24px minmax(0,1fr); }
+  .meadow.learning-screen .meadow-subject-cue { width:40px;height:40px; }
+  .meadow.learning-screen .meadow-unicorn,.meadow.learning-screen .meadow-unicorn .char { width:40px;height:40px;--char-size:40px; }
+}
+@media (orientation:portrait) and (min-width:760px) {
+  .meadow.learning-screen { grid-template-rows:212px minmax(0,1fr) 32px; }
+  .meadow.learning-screen .word-row-wrap { grid-template-rows:72px 134px; }
+  .meadow.learning-screen .meadow-subject-cue { width:72px;height:72px;min-width:72px;flex-basis:72px; }
+  .meadow.learning-screen.is-word-result { grid-template-rows:72px minmax(0,1fr) 32px; }
+  .meadow.learning-screen.is-word-result .word-row-wrap { grid-template-rows:72px; }
+  .meadow.learning-screen.is-word-result .meadow-stage { grid-template-rows:minmax(0,1fr) 140px; }
+  .meadow.learning-screen.is-word-result .meadow-actions { height:140px; }
+}
+/* Optional dark paper changes the work surface, never a child's original ink. */
+html.dark-paper .learning-screen .trace-box { background:#292d3c;outline-color:#a89bbe; }
+html.dark-paper .meadow.learning-screen .meadow-save-status>span { color:#f4edf9;background:#292d3c;border-color:#a89bbe; }
+/* The visitor occupies the existing picture slot; the child's ink stays below. */
+.meadow-word-friend { width:clamp(64px,30vmin,190px); height:clamp(64px,30vmin,190px); max-height:100%; min-width:64px; min-height:64px; background:#fff8ec; border:3px solid #705446; border-radius:28px; padding:3px; }
+.meadow-word-friend .char { width:100%; height:100%; pointer-events:none; }
+.meadow-word-friend:focus-visible { outline:4px solid #b38ed5; outline-offset:3px; }
+.meadow-family-word-friend > .meadow-word-result__picture { width:100%; height:100%; max-width:100%; max-height:100%; object-fit:contain; pointer-events:none; }
+.meadow-family-word-friend.is-greeted { border-color:#947149; background:#fff2d9; }
+.meadow-family-word-friend:active { outline:4px solid #e6b7cb; outline-offset:2px; }
+
+/* A failed Garden read must not look like a new, empty drawing. */
+.garden-load-recovery { max-width: 30rem; margin: auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.garden-load-recovery button { min-width: 9rem; min-height: 64px; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.bridge-load-recovery { max-width: 30rem; margin: 2rem auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.bridge-load-recovery button { min-width: 9rem; min-height: 64px; margin: .3rem; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.meadow-load-recovery { max-width: 30rem; margin: 2rem auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.meadow-load-recovery button { min-width: 9rem; min-height: 64px; margin: .3rem; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.wg-load-retry { position: absolute; z-index: 8; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 9rem; min-height: 64px; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.garden-load-recovery button,.bridge-load-recovery button,.meadow-load-recovery button,.wg-load-retry { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; }
+.load-recovery-icon { display: inline-flex; width: 2rem; height: 2rem; flex: 0 0 2rem; }
+.load-recovery-icon svg { width: 100%; height: 100%; }
+.build-load-recovery { max-width: 30rem; margin: 2rem auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.build-load-recovery button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 9rem; min-height: 64px; margin: .3rem; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.post-load-recovery { max-width: 30rem; margin: 2rem auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.post-load-recovery button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 9rem; min-height: 64px; margin: .3rem; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+.animal-load-retry { position: absolute; z-index: 8; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 9rem; min-height: 64px; }
+.workshop-load-retry { position: absolute; z-index: 8; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 9rem; min-height: 64px; }
+.river-load-retry { position: absolute; z-index: 8; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 9rem; min-height: 64px; }
+.band-load-retry { position: absolute; z-index: 8; left: 50%; top: 50%; transform: translate(-50%, -50%); min-width: 9rem; min-height: 64px; }
+.picnic-load-recovery { max-width: 30rem; margin: 2rem auto; padding: 1rem; border-radius: 1rem; background: #fffdf3; color: #263d32; font-size: 1.1rem; text-align: center; }
+.picnic-load-recovery button { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; min-width: 9rem; min-height: 64px; margin: .3rem; padding: .6rem 1rem; font: inherit; font-weight: 700; border: 2px solid #375e45; border-radius: .9rem; background: #e7f5d9; color: #203d2b; }
+
+.mural-load-recovery { max-width:30rem; margin:auto; padding:1rem; border-radius:1rem; background:#fffdf3; color:#263d32; font-size:1.1rem; text-align:center; }
+.mural-load-recovery button { display:inline-flex; align-items:center; justify-content:center; gap:.4rem; min-width:9rem; min-height:64px; padding:.6rem 1rem; font:inherit; font-weight:700; border:2px solid #375e45; border-radius:.9rem; background:#e7f5d9; color:#203d2b; }

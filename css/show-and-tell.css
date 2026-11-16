@@ -1,0 +1,104 @@
+/* Optional show-and-tell card. It is compact so a saved creation remains visible. */
+.show-and-tell {
+  position: absolute;
+  z-index: 28;
+  right: max(12px, env(safe-area-inset-right));
+  bottom: max(12px, env(safe-area-inset-bottom));
+  width: min(310px, calc(100vw - 24px));
+  color: #4a3b34;
+  pointer-events: none;
+}
+
+.show-and-tell__card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: 8px 10px;
+  align-items: center;
+  min-height: 138px;
+  padding: 10px;
+  border: 4px solid rgba(74, 59, 52, .86);
+  border-radius: 26px;
+  background: rgba(255, 253, 248, .97);
+  box-shadow: 0 6px 0 rgba(74, 59, 52, .16), 0 14px 28px rgba(74, 59, 52, .19);
+  pointer-events: auto;
+}
+
+.show-and-tell__prompt {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  min-width: 112px;
+  min-height: 108px;
+}
+
+.show-and-tell__art {
+  display: grid;
+  place-items: center;
+  width: 94px;
+  height: 94px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, #d9f4ef, #fff1b6);
+  box-shadow: inset 0 0 0 3px rgba(74, 59, 52, .12);
+}
+.show-and-tell__art svg { width: 73px; height: 73px; }
+
+.show-and-tell__dots { display: flex; gap: 4px; min-height: 8px; }
+.show-and-tell__dot { width: 7px; height: 7px; border-radius: 999px; background: #c9bbb7; }
+.show-and-tell__dot.is-current { width: 18px; background: #9a7fe0; }
+
+.show-and-tell__actions {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  gap: 6px;
+  justify-content: center;
+}
+
+.show-and-tell__control {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 3px solid rgba(74, 59, 52, .72);
+  border-radius: 18px;
+  color: #4a3b34;
+  background: #d9f4ef;
+  box-shadow: 0 3px 0 rgba(74, 59, 52, .17);
+}
+.show-and-tell__control:nth-child(2) { background: #fff1b6; }
+.show-and-tell__control:nth-child(3) { background: #ffd3df; }
+.show-and-tell__control svg { width: 32px; height: 32px; }
+.show-and-tell__control:disabled { opacity: .38; box-shadow: none; }
+.show-and-tell__control:focus-visible { outline: 4px solid #5f9fe0; outline-offset: 3px; }
+
+.show-and-tell__preview {
+  grid-row: 1 / span 2;
+  width: 76px;
+  height: 108px;
+  overflow: hidden;
+  border: 3px solid rgba(74, 59, 52, .58);
+  border-radius: 17px;
+  background: #e6f6ff;
+}
+.show-and-tell__preview > img,
+.show-and-tell__preview > canvas,
+.show-and-tell__preview > svg,
+.show-and-tell__preview > * { width: 100%; height: 100%; object-fit: contain; }
+.show-and-tell__preview + .show-and-tell__prompt { min-width: 88px; }
+
+@media (orientation: portrait) {
+  .show-and-tell { right: 50%; bottom: max(10px, env(safe-area-inset-bottom)); transform: translateX(50%); }
+  .show-and-tell__card { min-height: 126px; }
+  .show-and-tell__prompt { min-height: 96px; }
+  .show-and-tell__art { width: 82px; height: 82px; border-radius: 24px; }
+  .show-and-tell__art svg { width: 64px; height: 64px; }
+}
+
+@media (max-height: 460px) and (orientation: landscape) {
+  .show-and-tell { bottom: 8px; right: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .show-and-tell *, .show-and-tell *::before, .show-and-tell *::after { transition: none !important; animation: none !important; }
+}
+html.reduced-motion .show-and-tell *, html.reduced-motion .show-and-tell *::before, html.reduced-motion .show-and-tell *::after { transition: none !important; animation: none !important; }

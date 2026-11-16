@@ -1,0 +1,189 @@
+/* Recognizable places: a friend, its activity cue, and a single shared touch target. */
+.valley-map.valley-map--places .map-regions {
+  top: 24%; bottom: 5%; width: min(94%, 1240px); height: auto;
+  display: grid; grid-template-columns: repeat(var(--region-count), minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr); gap: 14px 3%; align-items: stretch;
+}
+.valley-map.valley-map--places .region {
+  height: 100%; min-height: 0; width: 100%; margin: 0; border-radius: 42%;
+  align-self: stretch; filter: drop-shadow(0 5px 1px #6f684013);
+}
+.valley-map.valley-map--places .region-friend { inset: 0 7% 50px; }
+.valley-map.valley-map--places .region-plinth {
+  bottom: 40px; width: 82%; height: 14%; background: #a5d89c;
+  border: 3px solid #74845b; opacity: .9; box-shadow: 0 5px 0 #7ba86b40;
+}
+.region-caption {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  min-width: 124px; max-width: 100%; height: 48px; padding: 5px 13px 5px 7px;
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  background: #fff5d9; border: 3px solid #826655; border-radius: 18px;
+  box-shadow: 0 4px 0 #87694b38; color: #604a43;
+  font-size: clamp(17px, 2.2vmin, 24px); font-weight: 750; line-height: 1;
+}
+.valley-map.valley-map--places .activity-symbol {
+  position: static; flex: 0 0 32px; width: 32px; height: 32px;
+  border: 0; border-radius: 0; padding: 0; background: none; box-shadow: none;
+}
+.valley-map.valley-map--places .activity-symbol > svg { width: 100%; height: 100%; }
+.valley-map.valley-map--places .region:hover .region-caption,
+.valley-map.valley-map--places .region:focus-visible .region-caption { background: #ffe7a4; }
+.valley-map.valley-map--places .region.is-down .region-caption { box-shadow: none; }
+.valley-map.valley-map--places .map-regions[data-count="5"] {
+  grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr));
+  width: min(94%, 1160px); column-gap: 2.5%; row-gap: 10px;
+}
+.valley-map.valley-map--places .map-regions[data-count="5"] .region { grid-column: span 2; height: 100%; min-height: 0; }
+.valley-map.valley-map--places .map-regions[data-count="5"] .region:nth-child(4) { grid-column: 2 / span 2; }
+.valley-map.valley-map--places .map-regions[data-count="5"] .region:nth-child(5) { grid-column: 4 / span 2; width: 100%; }
+.valley-map.valley-map--places .journey-bud { top: 4%; right: 13%; width: 74px; height: 86px; }
+@media (orientation: landscape) and (max-height: 600px) {
+  .valley-map.valley-map--places .map-regions,
+  .valley-map.valley-map--places .map-regions[data-count="5"] {
+    top: 36%; bottom: 6%; width: 96%; gap: 1%;
+    grid-template-columns: repeat(var(--region-count), minmax(0, 1fr)); grid-template-rows: minmax(0,1fr);
+  }
+  .valley-map.valley-map--places .map-regions[data-count="5"] .region:nth-child(n) { grid-column: auto; }
+  .valley-map.valley-map--places .region-friend { inset: 0 0 44px; }
+  .region-caption { min-width: 108px; height: 42px; padding: 3px 9px 3px 5px; gap: 5px; font-size: 17px; }
+  .valley-map.valley-map--places .activity-symbol { width: 28px; height: 28px; flex-basis: 28px; }
+  .valley-map.valley-map--places .region-plinth { bottom: 34px; }
+  .valley-map.valley-map--places .journey-bud { width: 62px; height: 72px; }
+}
+@media (orientation: portrait) {
+  .valley-map.valley-map--places .map-regions,
+  .valley-map.valley-map--places .map-regions[data-count="5"] {
+    top: 31%; bottom: 4%; width: 88%; height: auto; gap: 12px 4%;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; grid-auto-rows: minmax(0,1fr);
+  }
+  .valley-map.valley-map--places .map-regions[data-count="5"] .region:nth-child(n) { grid-column: auto; }
+  .valley-map.valley-map--places .map-regions[data-count="5"] .region:last-child { grid-column: 1 / -1; width: 48%; justify-self: center; }
+  .valley-map.valley-map--places .region-friend { inset: 0 2% 45px; }
+  .region-caption { min-width: 114px; height: 44px; padding: 3px 9px 3px 5px; font-size: clamp(17px, 2.6vw, 23px); }
+  .valley-map.valley-map--places .activity-symbol { width: 29px; height: 29px; flex-basis: 29px; }
+  .valley-map.valley-map--places .region-plinth { bottom: 34px; }
+  .valley-map.valley-map--places .journey-bud { top: 22%; right: 11%; width: min(17vw, 88px); height: min(21vw, 105px); }
+}
+
+/* Shared meadow paths put each illustrated destination on the same ground. */
+.map-trails { position: absolute; top: 24%; bottom: 5%; width: min(94%, 1160px); left: 50%; transform: translateX(-50%); pointer-events: none; }
+.map-trails[hidden] { display: none; }
+.map-trail { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.map-trail path { fill: none; stroke: #f4dda5; stroke-width: 5.5; stroke-linecap: round; opacity: .86; }
+.map-trail--tall,.map-trail--short { display: none; }
+.valley-map.valley-map--places .region-plinth { border: 0; background: #659757; opacity: .23; box-shadow: none; }
+@media (orientation: portrait) {
+  .valley-map.valley-map--places .valley-title { top: 3%; height: 18%; width: min(66vw, 370px); }
+  .valley-map.valley-map--places .creation-frame-mini { top: 22%; }
+  .map-trails { top: 31%; bottom: 4%; width: 88%; }
+  .map-trail--wide { display: none; }
+  .map-trail--tall { display: block; }
+  .map-trail path { stroke-width: 7; }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .map-trails { top: 36%; bottom: 6%; width: 96%; }
+  .map-trail--wide { display: none; }
+  .map-trail--short { display: block; }
+  .map-trail path { stroke-width: 12; }
+}
+
+/* Parent-selected smaller menus retain a composed scale and a nearby guide. */
+@media (orientation: landscape) and (min-height: 601px) {
+  .valley-map.valley-map--places .map-regions:not([data-count="5"]) { top: auto; bottom: 12%; height: min(50vh, 450px); }
+  .valley-map.valley-map--places .map-regions[data-count="1"] { width: min(60%, 450px); }
+  .valley-map.valley-map--places .map-regions[data-count="2"] { width: min(86%, 880px); }
+}
+@media (orientation: portrait) {
+  .valley-map.valley-map--places .map-regions[data-count="1"] { top: auto; bottom: 18%; width: 75%; height: min(65vw, 35vh); grid-template-columns: minmax(0,1fr); }
+  .valley-map.valley-map--places .map-regions[data-count="2"] { top: auto; bottom: 18%; width: 90%; height: min(45vw, 32vh); }
+  .valley-map.valley-map--places .map-regions[data-count="3"] .region:last-child { grid-column: 1 / -1; width: 48%; justify-self: center; }
+}
+
+.region-place { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; user-select: none; pointer-events: none; }
+/* Generated vignette canvases retain transparent padding; align their visible feet. */
+.valley-map .region--studio .region-place { transform: translateY(14%); }
+.valley-map .region--treehouse .region-place { transform: translateY(6%); }
+
+/* A child's construction is a separate target from the Explore caption. */
+.region-open { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 48px; padding: 0; border-radius: 18px; }
+.valley-map .map-owned-build { padding: 0; border-radius: 28%; z-index: 1; }
+.valley-map.valley-map--places .region--owned .map-owned-build { bottom: 52px; }
+.map-owned-build .discovery-owned-build { pointer-events: none; }
+.map-owned-build .discovery-built span { animation: none; }
+.map-owned-build:hover, .map-owned-build:focus-visible { background: #fff6d638; }
+.region--owned .region-open:hover .region-caption,
+.region--owned .region-open:focus-visible .region-caption { background: #ffe7a4; }
+
+/* The map and title share the child's 64px chrome target, even on short phones. */
+.valley-map > .mute, .welcome-world > .mute { min-width:64px; min-height:64px; }
+.valley-map.valley-map--places .journey-bud { min-width:64px; min-height:76px; }
+
+/* Five full illustrated places still fit a short phone. Keep captions inside
+   their own target; the large place artwork already supplies the picture cue. */
+@media (orientation:landscape) and (max-width:620px) {
+  .valley-map.valley-map--places .journey-bud { top:10px; right:calc(var(--gutter) + 72px); width:64px; height:76px; }
+  .valley-map.valley-map--places .creation-frame-mini { left:74px; top:10px; width:80px; height:76px; }
+  .valley-map.valley-map--places .valley-title { top:0; left:calc(50% - 21px); width:min(212px,calc(100% - 356px)); height:90px; }
+  .valley-map .valley-rayna, .valley-map .valley-veer { left:auto; right:154px; top:6px; height:68px; transform:none; }
+  .valley-map.valley-map--places .region-caption {
+    min-width:0; width:100%; max-width:100%; padding:4px;
+    border-width:2px; gap:0; font-size:14px; line-height:1.1; text-align:center;
+  }
+  .valley-map.valley-map--places .activity-symbol { display:none; }
+}
+
+/* Clear activity chooser: artwork and purpose belong to one obvious card.
+   Decorative paths and floating duplicate shortcuts no longer compete for taps. */
+.valley-map--clear .map-trails { display: none; }
+.valley-map.valley-map--clear .region {
+  border-radius: 24px; background: #fff8e9e8; border: 3px solid #9b8067;
+  box-shadow: 0 5px 0 #6f52372b; overflow: hidden;
+}
+.valley-map.valley-map--clear .region-plinth { display: none; }
+.valley-map.valley-map--clear .region-friend { inset: 8px 8px 66px; }
+.valley-map.valley-map--clear .region-caption {
+  width: 100%; min-width: 0; max-width: none; height: 64px;
+  border: 0; border-top: 2px solid #b29b76; border-radius: 0;
+  box-shadow: none; padding: 5px 8px; background: #fff1ce;
+}
+.region-words { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.region-action { font-size: 12px; font-weight: 600; line-height: 1.15; }
+.valley-map.valley-map--clear .region:hover,
+.valley-map.valley-map--clear .region:focus-visible { border-color: #7753a8; background: #fffdf5; }
+.valley-map.valley-map--clear .region:focus-visible { outline: 4px solid #7753a8; outline-offset: 3px; }
+@media (orientation: landscape) and (max-height: 600px) {
+  .valley-map.valley-map--clear .map-regions,
+  .valley-map.valley-map--clear .map-regions[data-count="5"] { top: 30%; bottom: 8%; }
+}
+@media (max-width: 620px) and (orientation: landscape) {
+  .valley-map.valley-map--clear .region-caption { height: 58px; padding: 3px; }
+  .valley-map.valley-map--clear .region-friend { bottom: 60px; }
+  .valley-map.valley-map--clear .region-name { font-size: 14px; }
+  .valley-map.valley-map--clear .region-action { font-size: 10px; }
+}
+@media (max-width: 620px) and (orientation: landscape) {
+  .valley-map.valley-map--clear .valley-title { left: 50%; top: 1%; width: 48%; height: 25%; }
+  .valley-map.valley-map--clear .valley-rayna,
+  .valley-map.valley-map--clear .valley-veer { display: none; }
+}
+
+/* A place opens one small, consistent set of pictured activities. */
+.map-group-panel { position:absolute; inset:0; z-index:19; display:grid; grid-template-rows:minmax(80px,auto) minmax(0,1fr); gap:12px; padding:24px; background:#f8efdceF; }
+.map-group-title { text-align:center; color:#594438; margin:0 90px; font-size:clamp(22px,4vmin,36px); }
+.map-group-back { position:absolute; top:24px; left:24px; min-width:80px; min-height:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; background:#d7efcf; border:3px solid #668457; border-radius:20px; font-size:12px; font-weight:750; }
+.map-group-back svg { width:30px; height:30px; }
+.map-group-options { min-height:0; display:grid; grid-template-columns:repeat(var(--items,5),minmax(0,1fr)); align-items:stretch; gap:12px; padding:12px 0 0; }
+.map-group-options[data-count="1"] { --items:1; }.map-group-options[data-count="2"] { --items:2; }.map-group-options[data-count="3"] { --items:3; }.map-group-options[data-count="4"] { --items:4; }.map-group-options[data-count="5"] { --items:5; }
+.map-group-choice { min-width:64px; min-height:80px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:10px 5px; border:3px solid #a0846a; border-radius:22px; background:#fffaf0; color:#594438; box-shadow:0 5px 0 #6f52372b; }
+.map-group-choice:focus-visible { outline:4px solid #7753a8; outline-offset:2px; }
+.map-group-picture { width:min(75%,100px); height:min(55%,100px); display:grid; place-items:center; }
+.map-group-picture svg { width:100%; height:100%; }
+.map-group-words { display:flex; flex-direction:column; align-items:center; gap:4px; font-size:clamp(12px,2vmin,18px); line-height:1.1; text-align:center; }
+.map-group-words strong { font-size:clamp(15px,2.3vmin,24px); }
+@media (orientation:portrait) { .map-group-options,.map-group-options[data-count] { grid-template-columns:repeat(2,minmax(0,1fr)); grid-auto-rows:minmax(80px,1fr); } }
+.map-group-picture img,.map-group-fallback { width:100%; height:100%; object-fit:contain; }
+.map-group-fallback[hidden],.map-group-picture img[hidden] { display:none; }
+.map-group-choice { position:relative; }
+.map-group-choice.is-suggested { outline:4px solid #d1974f; outline-offset:2px; }
+.map-group-invite { position:absolute; width:38px; height:38px; right:5px; top:5px; pointer-events:none; }
+.map-group-invite svg { width:100%; height:100%; }

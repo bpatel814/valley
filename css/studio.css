@@ -1,0 +1,497 @@
+/* Open Rainbow Studio keeps the paper dominant and every choice picture-led. */
+.studio {
+  --studio-ink: #4a3b34;
+  --studio-paper: #fffdf8;
+  --studio-shadow: 0 7px 0 rgba(102, 74, 54, .18), 0 14px 34px rgba(76, 50, 35, .18);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--studio-ink);
+  background: linear-gradient(180deg, rgba(214, 242, 255, .3), rgba(255, 241, 205, .42));
+}
+
+.studio-main {
+  position: absolute;
+  z-index: 3;
+  inset: 8px 10px;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr) 144px;
+  gap: 10px;
+  min-width: 0;
+  min-height: 0;
+}
+
+.studio-materials,
+.studio-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+}
+
+.studio-materials {
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 70px;
+}
+
+.studio-tools {
+  display: grid;
+  grid-template-columns: repeat(2, 56px);
+  gap: 6px;
+}
+
+.studio-tray {
+  display: grid;
+  grid-template-columns: repeat(2, 56px);
+  gap: 6px;
+  place-content: center;
+}
+
+.studio-paper {
+  position: relative;
+  align-self: stretch;
+  justify-self: stretch;
+  min-width: 0;
+  min-height: 0;
+  border: 6px solid rgba(255, 255, 255, .92);
+  border-radius: 25px;
+  overflow: hidden;
+  background: var(--studio-paper);
+  box-shadow: var(--studio-shadow);
+  isolation: isolate;
+}
+
+.studio-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 2px rgba(242, 165, 101, .14);
+}
+
+.studio-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+  touch-action: none;
+  min-width: 0;
+  min-height: 0;
+}
+
+.studio.is-stamp .studio-canvas { cursor: copy; }
+
+.studio-actions {
+  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 64px);
+  gap: 9px;
+  padding-top: 58px;
+}
+
+.studio-button,
+.studio-choice,
+.studio-picture {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 3px solid rgba(74, 59, 52, .3);
+  color: var(--studio-ink);
+  background: rgba(255, 253, 248, .96);
+  box-shadow: 0 4px 0 rgba(74, 59, 52, .18);
+  transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+}
+
+.studio-button {
+  width: 64px;
+  height: 64px;
+  padding: 8px;
+  border-radius: 20px;
+}
+
+.studio-button svg { width: 100%; height: 100%; display: block; }
+
+.studio-choice {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.studio-choice img,
+.studio-choice svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.studio-choice.is-selected,
+.studio-tool.is-selected {
+  border-color: #f2a565;
+  box-shadow: 0 0 0 3px #ffe98a, 0 4px 0 rgba(74, 59, 52, .18);
+}
+
+.studio-button.is-down,
+.studio-choice.is-down,
+.studio-picture.is-down {
+  transform: translateY(3px) scale(.98);
+  box-shadow: 0 1px 0 rgba(74, 59, 52, .16);
+}
+
+.studio-button:disabled {
+  opacity: .38;
+  box-shadow: none;
+}
+.studio-choice:disabled { opacity: .38; box-shadow: none; }
+
+.studio-swatch {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 3px solid rgba(255, 255, 255, .8);
+  border-radius: 50% 47% 52% 45%;
+  box-shadow: inset 0 -5px 0 rgba(74, 59, 52, .09);
+}
+
+.studio-page {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  padding: 8px;
+  background: #bfe3ff;
+}
+
+.studio-tool {
+  width: 56px;
+  height: 56px;
+  border-radius: 17px;
+  padding: 7px;
+}
+
+.studio-undo { background: #d9c7ff; }
+.studio-clear { background: #ffd3ab; }
+.studio-pictures { background: #bfe3ff; }
+.studio-save { background: #b8f0d2; }
+.studio-save.is-ready { box-shadow: 0 0 0 3px rgba(255, 233, 138, .85), 0 5px 0 rgba(74, 59, 52, .18); }
+.studio-guide { background: #fff2b6; grid-column: 1 / -1; justify-self: center; }
+
+.studio-overlay-host { position: absolute; inset: 0; z-index: 14; pointer-events: none; }
+.studio-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 74px 16px 16px;
+  background: rgba(75, 61, 51, .32);
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
+}
+
+.studio-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: min(620px, 88vw);
+  min-width: 0;
+  min-height: 154px;
+  max-height: calc(var(--app-height, 100vh) - 96px);
+  padding: 18px;
+  overflow: auto;
+  border: 7px solid #fff;
+  border-radius: 30px;
+  background: #fff8e6;
+  box-shadow: 0 12px 0 rgba(74, 59, 52, .2), 0 25px 55px rgba(74, 59, 52, .3);
+}
+
+.studio-dialog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.studio-dialog-actions .studio-button {
+  width: 78px;
+  height: 78px;
+  border-radius: 24px;
+}
+
+.studio-dialog-keep { background: #b8f0d2; }
+.studio-dialog-clear { background: #ffd3ab; }
+.studio-dialog-new { background: #fffdf8; }
+.studio-dialog-pictures, .studio-dialog-next { background: #bfe3ff; }
+.studio-dialog-talk { background: #fff2b6; }
+.studio-dialog-map { background: #b8f0d2; }
+.studio-dialog-map.is-pinned { box-shadow: 0 0 0 4px #ffe98a, 0 5px 0 rgba(74, 59, 52, .18); }
+.studio-dialog-toy { position: relative; background: #fff2b6; overflow: hidden; }
+.studio-dialog-toy img { position: absolute; object-fit: contain; pointer-events: none; }
+.studio-toy-picture { width: 64%; height: 51%; top: 12%; left: 18%; background: #fffdf8; border: 1px solid #b69269; }
+.studio-toy-wheels { width: 90%; height: 38%; bottom: 9%; left: 5%; }
+.studio-dialog-toy:not(.has-picture) .studio-toy-wheels { height: 65%; bottom: 17%; }
+
+.studio-saved-preview {
+  display: block;
+  width: min(380px, 72vw);
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: calc(var(--app-height, 100vh) * .46);
+  object-fit: contain;
+  border: 6px solid #fff;
+  border-radius: 22px;
+  background: var(--studio-paper);
+  box-shadow: 0 5px 0 rgba(74, 59, 52, .15);
+}
+
+.studio-picture-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+}
+
+.studio-picture,
+.studio-picture-empty {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.25;
+  min-height: 88px;
+  min-width: 0;
+  padding: 6px;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--studio-paper);
+}
+
+.studio-picture img,
+.studio-picture svg,
+.studio-picture-empty svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media (orientation: portrait), (max-aspect-ratio: 1.15) {
+  .studio-main {
+    inset: 8px;
+    padding-top: 78px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 120px minmax(0, 1fr) 82px;
+    gap: 9px;
+  }
+
+  .studio-materials {
+    flex-direction: row;
+    gap: 10px;
+    padding: 0;
+  }
+
+  .studio-tools { grid-template-columns: repeat(2, 58px); }
+  .studio-tool { width: 58px; height: 58px; }
+
+  .studio-tray {
+    grid-template-columns: repeat(3, 54px);
+    gap: 7px;
+    max-width: 184px;
+  }
+
+  .studio-choice,
+  .studio-page { width: 56px; height: 56px; }
+
+  .studio-paper {
+    width: 100%;
+    height: 100%;
+    border-radius: 23px;
+  }
+
+  .studio-actions {
+    display: flex;
+    gap: 7px;
+    padding: 0;
+  }
+
+  .studio-actions .studio-button {
+    width: 66px;
+    height: 66px;
+    flex: 0 0 66px;
+  }
+
+  .studio-guide { grid-column: auto; }
+  .studio-picture-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Keep all five actions and the paged materials inside a narrow phone. */
+@media (max-width: 380px) and (orientation: portrait) {
+  .studio-materials { gap: 12px; }
+  .studio-tools { grid-template-columns: 52px; }
+  .studio-tool { width: 52px; height: 52px; }
+  .studio-tray { grid-template-columns: repeat(3, 52px); gap: 6px; max-width: none; }
+  .studio-choice, .studio-page { width: 52px; height: 52px; }
+  .studio-actions { gap: 6px; }
+  .studio-actions .studio-button { width: 52px; height: 52px; flex-basis: 52px; }
+  .studio-dialog { padding: 10px; }
+  .studio-dialog-actions { gap: 10px; }
+  .studio-dialog-actions .studio-button { width: 64px; height: 64px; }
+}
+
+@media (max-height: 620px) and (orientation: portrait) {
+  .studio-main { padding-top: 68px; grid-template-rows: 112px minmax(0, 1fr) 64px; gap: 6px; }
+  .studio-actions .studio-button { width: 52px; height: 52px; flex-basis: 52px; }
+}
+
+@media (orientation: portrait) and (min-width: 600px) {
+  .studio-main {
+    grid-template-rows: 112px minmax(0, 1fr) 92px;
+    padding-top: 80px;
+  }
+  .studio-materials { gap: 24px; }
+  .studio-tray { grid-template-columns: repeat(5, 64px); max-width: none; }
+  .studio-choice, .studio-page { width: 64px; height: 64px; }
+  .studio-tools { grid-template-columns: repeat(2, 68px); }
+  .studio-tool { width: 68px; height: 68px; }
+  .studio-actions { gap: 15px; }
+  .studio-actions .studio-button { width: 76px; height: 76px; flex-basis: 76px; }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .studio-main { inset: 6px 8px; grid-template-columns: 128px minmax(0, 1fr) 142px; gap: 8px; }
+  .studio-materials { padding-top: 57px; gap: 5px; }
+  .studio-tools { grid-template-columns: repeat(2, 56px); gap: 5px; }
+  .studio-tool { width: 56px; height: 56px; }
+  .studio-tray { grid-template-columns: repeat(2, 56px); gap: 5px; }
+  .studio-choice, .studio-page { width: 56px; height: 56px; }
+  .studio-actions { padding-top: 54px; gap: 7px; grid-template-columns: repeat(2, 60px); }
+  .studio-actions .studio-button { width: 60px; height: 60px; }
+  .studio-paper { border-width: 5px; border-radius: 22px; }
+
+  /* Let the actual kept picture occupy a full frame. Five large actions in
+     stacked flex rows previously squeezed its preview down to a white strip. */
+  .studio-saved-dialog {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 184px;
+    align-items: center;
+    gap: 12px;
+    min-height: 0;
+    padding: 12px;
+  }
+  .studio-saved-dialog .studio-dialog-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 56px);
+    gap: 8px;
+  }
+  .studio-saved-dialog .studio-dialog-actions .studio-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 18px;
+  }
+  .studio-saved-dialog .studio-saved-preview {
+    width: 100%;
+    height: auto;
+    max-height: calc(var(--app-height, 100vh) - 136px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-button,
+  .studio-choice,
+  .studio-picture { transition: none; }
+}
+
+/* Capacity is a calm continuation invitation in its own row, outside the ink. */
+.studio-main.has-capacity-cue { grid-template-rows: minmax(0, 1fr) 48px; }
+.studio-capacity-cue {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  min-height: 0;
+  height: 48px;
+  padding: 2px 6px;
+  border-radius: 16px;
+  background: #fff2b6;
+  color: var(--studio-ink);
+}
+.studio-capacity-cue[hidden], .studio-capacity-keep[hidden] { display: none; }
+.studio-capacity-picture { flex: 0 0 40px; height: 40px; }
+.studio-capacity-picture > svg { display: block; width: 100%; height: 100%; }
+.studio-capacity-label { max-width: 330px; min-width: 0; font-size: 14px; line-height: 1.2; }
+.studio-capacity-keep { width: 44px; height: 44px; flex: 0 0 44px; padding: 5px; border-radius: 14px; background: #b8f0d2; }
+@media (orientation: portrait), (max-aspect-ratio: 1.15) {
+  .studio-main.has-capacity-cue { grid-template-rows: 120px minmax(0, 1fr) 82px 48px; }
+}
+@media (max-height: 620px) and (orientation: portrait) {
+  .studio-main.has-capacity-cue { grid-template-rows: 112px minmax(0, 1fr) 64px 48px; }
+}
+@media (orientation: portrait) and (min-width: 600px) {
+  .studio-main.has-capacity-cue { grid-template-rows: 112px minmax(0, 1fr) 92px 48px; }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  .studio-main.has-capacity-cue .studio-materials { padding-top: 42px; gap: 4px; }
+  .studio-main.has-capacity-cue .studio-tools,
+  .studio-main.has-capacity-cue .studio-tray { grid-template-columns: repeat(2, 44px); gap: 4px; }
+  .studio-main.has-capacity-cue .studio-tool,
+  .studio-main.has-capacity-cue .studio-choice,
+  .studio-main.has-capacity-cue .studio-page { width: 44px; height: 44px; }
+  .studio-main.has-capacity-cue .studio-actions { padding-top: 42px; grid-template-columns: repeat(2, 44px); gap: 4px; }
+  .studio-main.has-capacity-cue .studio-actions .studio-button { width: 44px; height: 44px; }
+}
+
+.studio-switch-dialog,.studio-save-problem { display:grid; grid-template-rows:minmax(0,1fr) auto; gap:12px; max-height:calc(var(--app-h,100vh) - 24px); }
+.studio-switch-previews { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; min-height:0; }
+.studio-switch-previews img { width:100%; height:100%; max-height:50vh; min-height:0; object-fit:contain; background:#fff; border:3px solid #765b54; border-radius:16px; }
+.studio-save-problem p { align-self:center; text-align:center; margin:0; }
+.studio-temporary-notice { flex:none; margin:0; padding:6px 10px; text-align:center; background:#fff8dcf2; border-radius:12px; font-size:13px; }
+.studio-switch-dialog .studio-dialog-actions,.studio-save-problem .studio-dialog-actions { flex-wrap:nowrap; justify-content:center; }
+@media (max-height:360px) and (orientation:landscape) {
+  .studio-saved-dialog.has-temporary-note .studio-temporary-notice { grid-column:1 / -1; grid-row:2; }
+  .studio-saved-dialog.has-temporary-note .studio-dialog-actions { grid-column:2; grid-row:1; }
+  .studio-switch-dialog { grid-template-columns:minmax(0,1fr) 116px; grid-template-rows:minmax(0,1fr); }
+  .studio-switch-dialog .studio-dialog-actions { display:grid; grid-template-columns:repeat(2,52px); align-content:center; gap:8px; }
+  .studio-switch-previews img { max-height:calc(var(--app-h,100vh) - 64px); }
+}
+
+/* The picture remains the primary cue; a short caption removes icon guessing. */
+.studio-button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; padding: 5px; }
+.studio-button > svg { width: 32px; height: 32px; flex: 0 1 32px; min-height: 0; }
+.studio-button-caption { font-size: 10px; font-weight: 750; line-height: 1.05; text-align: center; pointer-events: none; }
+.studio-save { background: #d8f2d0; border-color: #6e9c60; }
+.studio-start-cue { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; pointer-events: none; color: #796389; }
+.studio-start-cue[hidden] { display: none; }
+.studio-start-picture { width: min(45%, 160px); height: min(32%, 100px); opacity: .55; }
+.studio-start-picture > svg, .studio-start-picture > img { width: 100%; height: 100%; object-fit: contain; }
+.studio-start-caption { font-size: clamp(14px, 2vmin, 20px); font-weight: 650; }
+
+/* After keeping a picture, foreground the next playful action, not six equal exits. */
+.studio-extra-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; grid-column: 1 / -1; padding-top: 8px; border-top: 2px solid #e6d8ba; }
+.studio-extra-actions[hidden] { display: none; }
+.studio-toy-caption { position: absolute; left: 2px; right: 2px; bottom: 3px; background: #fff2b6; }
+.studio-dialog-toy .studio-toy-wheels { bottom: 19%; height: 30%; }
+.studio-dialog-toy .studio-toy-picture { height: 42%; top: 9%; }
+.studio-start-cue.is-guided .studio-start-picture { opacity: .9; }
+
+/* Keep action locations stable while the empty paper has no marks to undo or keep. */
+.studio-actions .studio-button[hidden] { display:flex!important; visibility:hidden; pointer-events:none; }
+
+/* Saved-paper read recovery: keep the actions legible and large on touch. */
+.studio-initial-recovery .studio-dialog-home,
+.studio-initial-recovery .studio-dialog-retry {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  min-width: 9rem; min-height: 64px; padding: .6rem 1rem;
+  border: 2px solid #375e45; border-radius: .9rem;
+  background: #e7f5d9; color: #203d2b; font: inherit; font-weight: 700;
+}
+.studio-initial-recovery .load-recovery-icon { display: inline-flex; width: 2rem; height: 2rem; flex: 0 0 2rem; }
+.studio-initial-recovery .load-recovery-icon svg { width: 100%; height: 100%; }

@@ -1,0 +1,878 @@
+/* Canonical 5:3 causal compositions for the five picture stories.
+   Live play and saved/retell cards share the same scene selectors. */
+
+/* Rayna's rainy R story ------------------------------------------------- */
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] {
+  background: url("../assets/art/final/bg/stories/day.webp") center / cover no-repeat;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-actor[data-actor-id="rayna"] {
+  left: 9%;
+  bottom: 8%;
+  width: 28.7%;
+  height: 69%;
+  aspect-ratio: 286 / 413;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* The approved Rayna source has transparent room on its left. Crop only the
+   transparent canvas so her real silhouette is large enough for hand contact. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-actor[data-actor-id="rayna"] .story-picture {
+  position: absolute;
+  left: -54.2%;
+  top: -7.02%;
+  width: 176.2%;
+  height: 113.56%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-actor[data-actor-id="rayna"] .story-picture__image {
+  object-fit: fill;
+}
+
+/* Companion: Rabbit grounds beside Rayna; Rainbow opens behind her. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-prop[data-slot="0"] {
+  left: 37%;
+  right: auto;
+  bottom: 8%;
+  width: 20%;
+  height: 62%;
+  min-width: 0;
+  min-height: 0;
+  z-index: 4;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-companion="rainbow"] .story-prop[data-slot="0"] {
+  left: 23%;
+  top: 1%;
+  bottom: auto;
+  width: 48%;
+  height: 44%;
+  z-index: 1;
+}
+
+/* Found object: Raindrop finishes on the ground near Rayna. Ribbon stays flat
+   beside her viewer-right free hand and never wraps around the character. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-prop[data-slot="1"] {
+  left: 33%;
+  right: auto;
+  top: auto;
+  bottom: 5%;
+  width: 14%;
+  height: 31%;
+  min-width: 0;
+  min-height: 0;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-found="ribbon"] .story-prop[data-slot="1"] {
+  left: 29%;
+  bottom: 39%;
+  width: 23%;
+  height: 13%;
+}
+
+/* Keep Rabbit's face below the ribbon Rayna holds, including both saved endings. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-companion="rabbit"][data-story-found="ribbon"] .story-prop[data-slot="0"] {
+  bottom: 1%;
+  width: 18%;
+  height: 47%;
+}
+
+/* Resting landmark: the group remains outside, in front of the authored tree
+   or closed house. These are settings, not inventory-sized third icons. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-prop[data-slot="2"] {
+  left: 8%;
+  right: auto;
+  bottom: 0;
+  width: 54%;
+  height: 94%;
+  min-width: 0;
+  min-height: 0;
+  z-index: 2;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="house"] .story-prop[data-slot="2"] {
+  left: 58%;
+  bottom: 7%;
+  width: 34%;
+  height: 65%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="tree"] .story-actor[data-actor-id="rayna"] {
+  left: 10%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="tree"][data-story-companion="rabbit"] .story-prop[data-slot="0"] {
+  left: 35%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="house"] .story-actor[data-actor-id="rayna"] {
+  left: 22%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="house"][data-story-companion="rabbit"] .story-prop[data-slot="0"] {
+  left: 42%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="house"][data-story-found="raindrop"] .story-prop[data-slot="1"] {
+  left: 38%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"][data-story-place="house"][data-story-found="ribbon"] .story-prop[data-slot="1"] {
+  left: 38%;
+}
+
+/* Authored actions. Every keyframe returns to the static canonical relation,
+   so replay, reduced motion and saved cards converge on the same composition. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="1"][data-story-companion="rabbit"] .story-prop[data-slot="0"] {
+  animation: story-five-rabbit-arrive 880ms cubic-bezier(.25,.78,.26,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="1"][data-story-companion="rainbow"] .story-prop[data-slot="0"] {
+  animation: story-five-rainbow-open 900ms cubic-bezier(.25,.78,.26,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="2"][data-story-found="raindrop"] .story-prop[data-slot="1"] {
+  animation: story-five-raindrop-gather 1000ms cubic-bezier(.28,.76,.23,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="2"][data-story-found="ribbon"] .story-prop[data-slot="1"] {
+  animation: story-five-ribbon-handoff 1000ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="3"] .story-prop[data-slot="2"] {
+  animation: story-five-place-grow 900ms cubic-bezier(.2,.78,.24,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="3"] .story-actor[data-actor-id="rayna"],
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="3"] .story-prop[data-slot="0"],
+:is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"].is-scene-acting[data-acting-beat="3"] .story-prop[data-slot="1"] {
+  animation: story-five-group-settle 900ms ease-in-out;
+}
+
+@keyframes story-five-rabbit-arrive {
+  0% { opacity: .35; transform: translateX(90%) translateY(8%) scale(.72); }
+  45% { transform: translateX(24%) translateY(-13%) scale(.9) rotate(-4deg); }
+  72% { transform: translateX(5%) translateY(-4%) scale(1.03) rotate(2deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-rainbow-open {
+  0% { opacity: .2; transform: scaleX(.12) scaleY(.7); }
+  68% { opacity: 1; transform: scaleX(1.06) scaleY(1.02); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-raindrop-gather {
+  0% { opacity: .35; transform: translate(170%,-95%) scale(.76); }
+  42% { transform: translate(125%,8%) scale(.9) rotate(8deg); }
+  72% { transform: translate(38%,2%) scale(.96) rotate(82deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-ribbon-handoff {
+  0% { opacity: .3; transform: translateX(150%) scale(.72); }
+  55% { opacity: 1; transform: translateX(18%) rotate(5deg); }
+  75% { transform: translateX(5%) rotate(-4deg); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-place-grow {
+  0% { opacity: .2; transform: translateY(18%) scale(.72); }
+  72% { opacity: 1; transform: translateY(-2%) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-group-settle {
+  0% { transform: translateX(-8%) scale(.96); }
+  70% { transform: translateX(2%) scale(1.01); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-actor,
+  :is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-prop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-actor,
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="rayna-rainy-r"] .story-prop {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Pip's bouncy B story -------------------------------------------------- */
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] {
+  background: url("../assets/art/final/bg/stories/day.webp") center / cover no-repeat;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-actor[data-actor-id="pip"] {
+  left: 8%;
+  bottom: 10%;
+  width: 28.8%;
+  height: 50%;
+  aspect-ratio: 393 / 409;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Keep square and near-square sources inside the shorter Boat and Blanket
+   boxes. Their whole artwork still fits through the shared contain rule. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop :is(.story-picture__image, .story-picture__svg, .story-picture > svg) {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Ball and Bee first meet Pip on open ground. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop[data-slot="0"] {
+  left: 36%;
+  right: auto;
+  top: auto;
+  bottom: 11%;
+  width: 18%;
+  height: 30%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-story-passenger="bee"] .story-prop[data-slot="0"] {
+  bottom: 27%;
+}
+
+/* The ride is deliberately larger than the passenger. Its opaque rim or hull
+   sits in front, while the passenger's upper half remains visible above it. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop[data-slot="1"] {
+  left: 45%;
+  right: auto;
+  top: auto;
+  bottom: 4%;
+  width: 31%;
+  height: 55%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop[data-slot="1"] .story-picture {
+  place-items: end center;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-story-ride="boat"] .story-prop[data-slot="1"] {
+  left: 43%;
+  bottom: 5%;
+  width: 36%;
+  height: 47%;
+  z-index: 3;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-boat-hull {
+  display: none;
+  pointer-events: none;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-story-ride="boat"] .story-boat-hull[data-slot="1"] {
+  display: block;
+  z-index: 5;
+  filter: none;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-boat-hull .story-picture {
+  clip-path: inset(66% 0 0);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-passenger-loaded="true"] .story-prop[data-slot="0"] {
+  left: 52%;
+  top: auto;
+  bottom: 31%;
+  width: 17%;
+  height: 30%;
+  z-index: 4;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-passenger-loaded="true"][data-story-ride="boat"] .story-prop[data-slot="0"] {
+  left: 51%;
+  bottom: 11%;
+  width: 17%;
+  height: 28%;
+}
+
+/* Sit on the basket opening rather than floating inside the handle. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-passenger-loaded="true"][data-story-ride="basket"] .story-prop[data-slot="0"] {
+  bottom: 25%;
+}
+
+/* Bee's face is on the right of its source image. Seat it on the open side
+   of the mast, above the hull, rather than losing its face behind the sail. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-passenger-loaded="true"][data-story-ride="boat"][data-story-passenger="bee"] .story-prop[data-slot="0"] {
+  left: 57%;
+  width: 18%;
+  height: 30%;
+}
+
+/* The ending joins the group without displacing Pip or unloading the ride. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop[data-slot="2"] {
+  left: 77%;
+  right: auto;
+  top: auto;
+  bottom: 21%;
+  width: 17%;
+  height: 32%;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"][data-story-finish="blanket"] .story-prop[data-slot="2"] {
+  left: 73%;
+  bottom: 5%;
+  width: 25%;
+  height: 25%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="1"][data-story-passenger="ball"] .story-prop[data-slot="0"] {
+  animation: story-five-ball-meet 820ms cubic-bezier(.25,.76,.28,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="1"][data-story-passenger="bee"] .story-prop[data-slot="0"] {
+  animation: story-five-bee-meet 940ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="2"] .story-prop[data-slot="1"] {
+  animation: story-five-ride-arrive 900ms cubic-bezier(.2,.78,.24,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="2"] .story-prop[data-slot="0"] {
+  animation: story-five-passenger-load 980ms cubic-bezier(.28,.74,.22,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="3"][data-story-finish="butterfly"] .story-prop[data-slot="2"] {
+  animation: story-five-butterfly-land 880ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"].is-scene-acting[data-acting-beat="3"][data-story-finish="blanket"] .story-prop[data-slot="2"] {
+  animation: story-five-blanket-place 820ms cubic-bezier(.25,.76,.28,1);
+}
+
+@keyframes story-five-ball-meet {
+  0% { opacity: .35; transform: translateX(150%) translateY(-10%) scale(.68); }
+  35% { transform: translateX(70%) translateY(-45%) scale(.85) rotate(80deg); }
+  68% { transform: translateX(18%) translateY(-12%) rotate(155deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-bee-meet {
+  0% { opacity: .3; transform: translate(120%,20%) scale(.7); }
+  38% { transform: translate(35%,-38%) rotate(14deg); }
+  70% { transform: translate(-18%,-8%) rotate(-9deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-ride-arrive {
+  0% { opacity: .25; transform: translateX(85%) scale(.72); }
+  72% { opacity: 1; transform: translateX(-3%) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-passenger-load {
+  0% { transform: translate(-90%,85%) scale(1.08); }
+  55% { transform: translate(-12%,-16%) scale(.92); }
+  78% { transform: translateY(-5%) scale(.98); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-butterfly-land {
+  0% { opacity: .3; transform: translate(65%,-80%) scale(.72) rotate(9deg); }
+  55% { transform: translate(-12%,-24%) scale(.94) rotate(-7deg); }
+  100% { opacity: 1; transform: none; }
+}
+
+@keyframes story-five-blanket-place {
+  0% { opacity: .25; transform: translateY(-85%) scale(.72) rotate(-4deg); }
+  75% { opacity: 1; transform: translateY(4%) scale(1.03); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-actor,
+  :is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-actor,
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="pip-bouncy-b"] .story-prop {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Cat's hat picnic ------------------------------------------------------ */
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] {
+  background: url("../assets/art/final/bg/stories/twilight.webp") center / cover no-repeat;
+}
+
+/* Full-body garden cat sits beside the basket; the hat rests on its crown. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-actor[data-actor-id="cat"] {
+  left: 17%;
+  bottom: 9%;
+  width: 25%;
+  height: 62%;
+  aspect-ratio: 1145 / 1374;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-actor[data-actor-id="picnic-basket"] {
+  left: 44%;
+  bottom: 5%;
+  width: 26%;
+  height: 42%;
+  aspect-ratio: 414 / 405;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-prop {
+  min-width: 0;
+  min-height: 0;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] :is(.story-actor, .story-prop) :is(.story-picture__image, .story-picture__svg, .story-picture > svg) {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* The Hat box has the source's full 3:2 shape, keeping its former visible
+   width after image containment and resting its brim on Cat's crown. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-picnic-start="hat"] .story-prop[data-slot="0"] {
+  left: 17.5%;
+  right: auto;
+  top: auto;
+  bottom: 45%;
+  width: 24%;
+  height: 28%;
+  z-index: 8;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-picnic-start="fish"] .story-prop[data-slot="0"] {
+  left: 2%;
+  right: auto;
+  top: auto;
+  bottom: 10%;
+  width: 20%;
+  height: 29%;
+  z-index: 6;
+}
+
+/* Moon occupies open sky. Spoon overlaps the basket edge so its tap has a
+   visible contact target while remaining an independent object. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-sound="moon"] .story-prop[data-slot="1"] {
+  left: 69%;
+  right: auto;
+  top: 3%;
+  bottom: auto;
+  width: 16%;
+  height: 34%;
+  z-index: 4;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-sound="spoon"] .story-prop[data-slot="1"] {
+  left: 40%;
+  right: auto;
+  top: auto;
+  bottom: 15%;
+  width: 18%;
+  height: 35%;
+  z-index: 8;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-finish="star"] .story-prop[data-slot="2"] {
+  left: 84%;
+  right: auto;
+  top: 8%;
+  bottom: auto;
+  width: 12%;
+  height: 24%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"][data-story-finish="heart"] .story-prop[data-slot="2"] {
+  left: 73%;
+  right: auto;
+  top: auto;
+  bottom: 11%;
+  width: 14%;
+  height: 25%;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="1"][data-story-picnic-start="hat"] .story-prop[data-slot="0"] {
+  animation: story-five-hat-settle 820ms cubic-bezier(.25,.76,.28,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="1"][data-story-picnic-start="fish"] .story-prop[data-slot="0"] {
+  animation: story-five-fish-arrive 850ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="2"][data-story-sound="moon"] .story-prop[data-slot="1"] {
+  animation: story-five-moon-rise 900ms cubic-bezier(.25,.76,.28,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="2"][data-story-sound="spoon"] .story-prop[data-slot="1"] {
+  animation: story-five-spoon-tap 760ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="3"][data-story-finish="star"] .story-prop[data-slot="2"] {
+  animation: story-five-picnic-star 820ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"].is-scene-acting[data-acting-beat="3"][data-story-finish="heart"] .story-prop[data-slot="2"] {
+  animation: story-five-picnic-heart 820ms ease-in-out;
+}
+
+@keyframes story-five-hat-settle {
+  0% { opacity: .3; transform: translateY(-100%) rotate(-7deg) scale(.78); }
+  68% { opacity: 1; transform: translateY(5%) rotate(3deg) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-fish-arrive {
+  0% { opacity: .3; transform: translateX(-110%) scale(.75); }
+  68% { opacity: 1; transform: translateX(8%) rotate(-4deg) scale(1.02); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-moon-rise {
+  0% { opacity: .25; transform: translateY(110%) scale(.7); }
+  72% { opacity: 1; transform: translateY(-4%) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-spoon-tap {
+  0%, 100% { transform: none; }
+  30% { transform: translate(8%,5%) rotate(10deg); }
+  52% { transform: translate(1%,1%) rotate(3deg); }
+  72% { transform: translate(8%,5%) rotate(10deg); }
+}
+
+@keyframes story-five-picnic-star {
+  0% { opacity: .2; transform: scale(.35) rotate(-16deg); }
+  62% { opacity: 1; transform: scale(1.16) rotate(8deg); filter: drop-shadow(0 0 15px #fff3a0); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-picnic-heart {
+  0% { opacity: .25; transform: translateY(-35%) scale(.7); }
+  58% { opacity: 1; transform: scale(1.14); filter: drop-shadow(0 0 15px #ffd3df); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-actor,
+  :is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-prop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-actor,
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="cat-hat-picnic"] .story-prop {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Moon's tune ----------------------------------------------------------- */
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] {
+  background: url("../assets/art/final/bg/stories/twilight.webp") center / cover no-repeat;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-actor[data-actor-id="moon"] {
+  left: 7%;
+  top: 5%;
+  bottom: auto;
+  width: 28%;
+  height: 48%;
+  aspect-ratio: 456 / 480;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* A square source image is a grid item inside a shorter place box. Its default
+   intrinsic minimum can otherwise stretch the image below the scene plane. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop :is(.story-picture__image, .story-picture__svg, .story-picture > svg),
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop :is(.story-picture__image, .story-picture__svg, .story-picture > svg) {
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* The first choice either keeps time below Moon or floats close beside it. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-friend="spoon"] .story-prop[data-slot="0"] {
+  left: 30%;
+  right: auto;
+  top: auto;
+  bottom: 9%;
+  width: 18%;
+  height: 38%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-friend="balloon"] .story-prop[data-slot="0"] {
+  left: 32%;
+  right: auto;
+  top: 11%;
+  bottom: auto;
+  width: 18%;
+  height: 48%;
+  z-index: 5;
+}
+
+/* Tree and House are exterior settings, large enough to be reached places. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop[data-slot="1"] {
+  left: 48%;
+  right: auto;
+  top: auto;
+  bottom: 0;
+  width: 46%;
+  height: 91%;
+  z-index: 2;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop[data-slot="1"] .story-picture__image {
+  object-position: center bottom;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-place="house"] .story-prop[data-slot="1"] {
+  left: 54%;
+  bottom: 5%;
+  width: 38%;
+  height: 68%;
+}
+
+/* The source House has one four-pane window. A warm overlay is pinned to that
+   window rather than implying an opening door or a changed character pose. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-place="house"] .story-prop[data-slot="1"]::after {
+  content: "";
+  position: absolute;
+  left: 22%;
+  top: 54%;
+  width: 22%;
+  height: 21%;
+  border-radius: 5px;
+  background: rgba(255, 238, 153, .58);
+  box-shadow: 0 0 16px 5px rgba(255, 231, 146, .42);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+/* Star is a separate high chime. Rainbow stretches across the open sky. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-finale="star"] .story-prop[data-slot="2"] {
+  left: 73%;
+  right: auto;
+  top: 4%;
+  bottom: auto;
+  width: 17%;
+  height: 29%;
+  z-index: 7;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"][data-story-finale="rainbow"] .story-prop[data-slot="2"] {
+  left: 43%;
+  right: auto;
+  top: 0;
+  bottom: auto;
+  width: 53%;
+  height: 43%;
+  z-index: 3;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"].is-scene-acting[data-acting-beat="1"][data-story-friend="spoon"] .story-prop[data-slot="0"] {
+  animation: story-five-tune-spoon 780ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"].is-scene-acting[data-acting-beat="1"][data-story-friend="balloon"] .story-prop[data-slot="0"] {
+  animation: story-five-tune-balloon 900ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"].is-scene-acting[data-acting-beat="2"] .story-prop[data-slot="1"] {
+  animation: story-five-place-grow 900ms cubic-bezier(.2,.78,.24,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"].is-scene-acting[data-acting-beat="3"][data-story-finale="star"] .story-prop[data-slot="2"] {
+  animation: story-five-tune-star 850ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"].is-scene-acting[data-acting-beat="3"][data-story-finale="rainbow"] .story-prop[data-slot="2"] {
+  animation: story-five-rainbow-open 900ms cubic-bezier(.25,.78,.26,1);
+}
+
+@keyframes story-five-tune-spoon {
+  0% { opacity: .3; transform: translateY(35%) scale(.78); }
+  34% { opacity: 1; transform: translateY(0) rotate(11deg); }
+  52% { transform: rotate(-8deg); }
+  71% { transform: rotate(11deg); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-tune-balloon {
+  0% { opacity: .3; transform: translate(38%,28%) scale(.72); }
+  48% { opacity: 1; transform: translate(-5%,-10%) rotate(-5deg); }
+  74% { transform: translate(3%,4%) rotate(3deg); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-tune-star {
+  0% { opacity: .2; transform: scale(.35) rotate(-14deg); }
+  65% { opacity: 1; transform: scale(1.15) rotate(7deg); filter: drop-shadow(0 0 16px #fff3a0); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-actor,
+  :is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-actor,
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="moon-tune"] .story-prop {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Cozy C sounds --------------------------------------------------------- */
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] {
+  background: url("../assets/art/final/bg/stories/day.webp") center / cover no-repeat;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Choice one is the only lead; both animals keep their complete silhouettes. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop[data-slot="0"] {
+  left: 14%;
+  right: auto;
+  top: auto;
+  bottom: 3%;
+  width: 32%;
+  height: 65%;
+  z-index: 6;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"][data-story-lead-choice="cat"] .story-prop[data-slot="0"] {
+  left: 17%;
+  bottom: 2%;
+  width: 30%;
+  height: 67%;
+}
+
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"][data-story-lead-choice="cat"][data-story-place="tree"] .story-prop[data-slot="0"] {
+  left: 8%;
+}
+
+/* The approved cocoon art includes its branch. The card is the visibly
+   addressed picture, resting nearby rather than held by either lead. */
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"][data-story-nearby="cocoon"] .story-prop[data-slot="1"] {
+  left: 42%;
+  right: auto;
+  top: auto;
+  bottom: 8%;
+  width: 28%;
+  height: 66%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"][data-story-nearby="card"] .story-prop[data-slot="1"] {
+  left: 46%;
+  right: auto;
+  top: auto;
+  bottom: 12%;
+  width: 23%;
+  height: 28%;
+  z-index: 5;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop[data-slot="2"] {
+  left: 7%;
+  right: auto;
+  top: auto;
+  bottom: 0;
+  width: 67%;
+  height: 96%;
+  z-index: 2;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop[data-slot="2"] .story-picture__image {
+  object-position: center bottom;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"][data-story-place="house"] .story-prop[data-slot="2"] {
+  left: 61%;
+  bottom: 5%;
+  width: 34%;
+  height: 66%;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"].is-scene-acting[data-acting-beat="1"] .story-prop[data-slot="0"] {
+  animation: story-five-cozy-arrive 850ms cubic-bezier(.25,.76,.28,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"].is-scene-acting[data-acting-beat="2"][data-story-nearby="cocoon"] .story-prop[data-slot="1"] {
+  animation: story-five-cozy-cocoon 850ms cubic-bezier(.25,.76,.28,1);
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"].is-scene-acting[data-acting-beat="2"][data-story-nearby="card"] .story-prop[data-slot="1"] {
+  animation: story-five-cozy-card 800ms ease-in-out;
+}
+
+:is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"].is-scene-acting[data-acting-beat="3"] .story-prop[data-slot="2"] {
+  animation: story-five-place-grow 900ms cubic-bezier(.2,.78,.24,1);
+}
+
+@keyframes story-five-cozy-arrive {
+  0% { opacity: .3; transform: translateX(-70%) scale(.75); }
+  70% { opacity: 1; transform: translateX(5%) scale(1.04); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-cozy-cocoon {
+  0% { opacity: .2; transform: translateX(60%) scale(.75); }
+  70% { opacity: 1; transform: translateX(-4%) scale(1.03); }
+  100% { transform: none; }
+}
+
+@keyframes story-five-cozy-card {
+  0% { opacity: .25; transform: translateY(-70%) rotate(-5deg) scale(.72); }
+  72% { opacity: 1; transform: translateY(4%) rotate(2deg) scale(1.03); }
+  100% { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+html.reduced-motion :is(.story-world, .story-keepsake__scene)[data-story-id="cozy-c-sounds"] .story-prop {
+  animation: none !important;
+  transition: none !important;
+}

@@ -1,0 +1,39 @@
+/* Modest seasonal props sit with scenery, below every paper and touch target. */
+.scene-seasonal-props { position:absolute; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+.scene-seasonal-pumpkin { position:absolute; bottom:1.5%; width:clamp(46px,9vmin,84px); height:auto; opacity:.94; filter:drop-shadow(0 2px 5px #f4c88755); }
+.scene-seasonal-pumpkin--left { left:1.5%; transform:rotate(-7deg); }
+.scene-seasonal-pumpkin--right { right:1.5%; transform:rotate(7deg); }
+html:not(.halloween-active) .scene-seasonal-props { display:none; }
+.halloween-active .welcome-pip::after,
+.halloween-active #pip-layer .pip::after { content:''; position:absolute; width:30%; aspect-ratio:968/827; bottom:9%; right:9%; background:url('../assets/art/final/halloween/treat-bucket-v1-runtime.webp') center/contain no-repeat; pointer-events:none; }
+#pip-layer .pip[role='button'] { min-width:64px; min-height:64px; }
+
+/* Keep authored cat/object contact geometry unchanged; theme only the backdrops. */
+.halloween-active .animal-friends { background:linear-gradient(#f3e6f8,#fff1d6); }
+.halloween-active .animal-board { background:#e8edcc url('../assets/art/final/halloween/refresh/animal-corner-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/animal-corner-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/animal-corner-background-v1.png') type('image/png')); border-color:#bb9dc2; }
+.halloween-active .animal-header h1 { color:#654d70; }
+.halloween-active .water-garden { background:linear-gradient(#f1e6f6,#fff0d4); }
+.halloween-active .wg-stage { background:#e6edc8 url('../assets/art/final/halloween/refresh/water-garden-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/water-garden-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/water-garden-background-v1.png') type('image/png')); }
+/* Activity shells only: preserve measured banks, water, ramps and paper layers. */
+.halloween-active .build-lab { background:#fff1dc url('../assets/art/final/halloween/refresh/build-lab-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/build-lab-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/build-lab-background-v1.png') type('image/png')); }
+.halloween-active .river-run { background:#fff1dc url('../assets/art/final/halloween/refresh/river-run-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/river-run-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/river-run-background-v1.png') type('image/png')); }
+.halloween-active .rolling-run { background:#fff1dc url('../assets/art/final/halloween/refresh/rolling-run-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/rolling-run-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/rolling-run-background-v1.png') type('image/png')); }
+.halloween-active :is(.build-header,.river-header,.rolling-header) { background:#fff9eeeb;border-radius:18px; }
+.halloween-active :is(.build-status,.river-status,.rolling-status) { background:#fff9eef2;border-radius:12px; }
+.halloween-active .rolling-board { background:#f5eddb url('../assets/art/final/halloween/refresh/rolling-run-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/rolling-run-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/rolling-run-background-v1.png') type('image/png')); }
+.halloween-active .build-bank { background:linear-gradient(#e6d6bb 0 57%,#c5a57c 57% 61%,#d8b18b 61%); }
+.halloween-active .river-board { background:linear-gradient(#e2d1bd 0 20%,#e5cdaa 20% 27%,#83c3cd 27% 84%,#dec5a5 84% 90%,#d6b590 90%); }
+.halloween-active .toy-workshop { background:#fff1dc url('../assets/art/final/halloween/refresh/toy-workshop-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/toy-workshop-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/toy-workshop-background-v1.png') type('image/png')); }
+.halloween-active .picture-post { background:#fff1dc url('../assets/art/final/halloween/refresh/picture-post-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/picture-post-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/picture-post-background-v1.png') type('image/png')); }
+.halloween-active .music-band,.halloween-active .band-stage { background:#fff1dc url('../assets/art/final/halloween/refresh/music-band-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/music-band-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/music-band-background-v1.png') type('image/png')); }
+.halloween-active .picnic-screen { background:#fff1dc url('../assets/art/final/halloween/refresh/picnic-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/picnic-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/picnic-background-v1.png') type('image/png')); }
+.halloween-active .play-stage { background:#f2e4f1 url('../assets/art/final/halloween/refresh/play-stage-background-v1.png') center/cover no-repeat;background-image:image-set(url('../assets/art/final/halloween/refresh/play-stage-background-v1.webp') type('image/webp'),url('../assets/art/final/halloween/refresh/play-stage-background-v1.png') type('image/png')); }
+.halloween-active :is(.workshop-header,.post-header,.band-header,.picnic-nav) { background:#fff9eeed;border-radius:16px; }
+.halloween-active :is(.workshop-status,.post-status,.band-status) { background:#fff9eef2;border-radius:12px; }
+/* On tall phones keep the illustrated corner motifs in view without stretching
+   them or cropping both edges away. The upper field stays calm for controls. */
+@media (orientation:portrait) {
+  .halloween-active :is(.toy-workshop,.picture-post,.music-band,.picnic-screen,.play-stage) {
+    background-size:100% auto;background-position:center bottom;background-color:#fff8ea;
+  }
+}

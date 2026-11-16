@@ -1,0 +1,99 @@
+/* theme.css - the only place raw colours, radii, easings and durations are written.
+   Source of truth: docs/STYLE_BIBLE.md. JS mirror: js/world/palette.js.
+   Nothing in this project uses pure black or pure white. */
+
+:root {
+  /* ---- palette ------------------------------------------------------- */
+  --paper: #fffdf8;
+  --ink: #4a3b34;
+  --ink-soft: rgba(74, 59, 52, 0.55);
+  --ink-faint: rgba(74, 59, 52, 0.16);
+
+  --pink: #ffb3c8;
+  --pink-deep: #f2799b;
+  --sky: #bfe3ff;
+  --sky-deep: #5aa9e6;
+  --mint: #b8f0d2;
+  --mint-deep: #4fc38a;
+  --lemon: #fff2a8;
+  --lemon-deep: #e8c73c;
+  --lilac: #d9c7ff;
+  --lilac-deep: #9a7fe0;
+  --peach: #ffd3ab;
+  --peach-deep: #f2a565;
+  --grey: #dcd7d2;
+
+  /* ---- rainbow (ROYGBIV softened) ------------------------------------ */
+  --rb-1: #ff9a9e;
+  --rb-2: #ffc287;
+  --rb-3: #ffe98a;
+  --rb-4: #a8e6a1;
+  --rb-5: #9fd0ff;
+  --rb-6: #b3aef0;
+  --rb-7: #dcaef0;
+
+  /* ---- sky ------------------------------------------------------------ */
+  --sky-top: #e6f4ff;
+  --sky-bottom: #fff7fb;
+  --sky-gradient: linear-gradient(180deg, var(--sky-top) 0%, #f2f9ff 46%, var(--sky-bottom) 100%);
+
+  /* ---- depth ---------------------------------------------------------- */
+  --shadow-warm: 0 4px 0 rgba(74, 59, 52, 0.18), 0 8px 18px rgba(74, 59, 52, 0.14);
+  --shadow-flat: 0 1px 0 rgba(74, 59, 52, 0.18), 0 2px 6px rgba(74, 59, 52, 0.12);
+  --shadow-lift: 0 6px 0 rgba(74, 59, 52, 0.18), 0 14px 26px rgba(74, 59, 52, 0.16);
+  --glow-due: 0 0 0 6px rgba(255, 242, 168, 0.85), 0 0 28px 10px rgba(232, 199, 60, 0.35);
+
+  /* ---- shape ---------------------------------------------------------- */
+  --r-card: 28px;
+  --r-small: 18px;
+  --r-pill: 999px;
+  --r-circle: 50%;
+  --outline: 4px;
+
+  /* ---- easing (motion table, docs/STYLE_BIBLE.md) --------------------- */
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-screen: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-in: cubic-bezier(0.55, 0.06, 0.68, 0.19);
+  --ease-breathe: ease-in-out;
+
+  /* ---- duration ------------------------------------------------------- */
+  --t-release: 180ms;
+  --t-screen: 420ms;
+  --t-breathe: 3000ms;
+  --t-blink: 120ms;
+  --t-look: 240ms;
+  --t-anticipate: 160ms;
+  --t-settle: 300ms;
+  --t-crossfade: 120ms;
+
+  /* ---- sizing --------------------------------------------------------- */
+  --btn: clamp(80px, 13vmin, 108px);
+  --btn-icon: calc(var(--btn) * 0.52);
+  --slide: 24px;
+  --gutter: clamp(12px, 2.4vmin, 24px);
+}
+
+/* Reduced motion replaces movement with brief fades. Character idle motion
+   also stops, whether the preference comes from the device or Parent Corner. */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --slide: 0px;
+    --t-screen: 220ms;
+    --t-release: 120ms;
+  }
+}
+
+html.reduced-motion {
+  --slide: 0px;
+  --t-screen: 220ms;
+  --t-release: 120ms;
+}
+
+/* Temporary drawing-only preview. Native disabled buttons block touch/keys. */
+.preview-disabled, .region.preview-disabled {
+  filter: grayscale(1);
+  opacity: .42;
+  cursor: default;
+}
+.preview-disabled .char { animation: none !important; }

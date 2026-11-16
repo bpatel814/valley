@@ -1,0 +1,154 @@
+/* The child's places are useful arrangements, not pictures flattened into a card. */
+.picnic-screen.picnic-cafe-play { background:#d6eecf; }
+.picnic-cafe-play>.picnic-play { display:grid!important;grid-template-columns:minmax(0,1fr)!important;grid-template-rows:minmax(0,1fr) 56px!important;gap:4px;background:#d8edc8;border:2px solid #8c9c72;border-radius:22px; }
+.garden-cafe-stage { position:relative;width:100%;height:100%;min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;touch-action:pan-y;isolation:isolate; }
+.garden-cafe-background { position:absolute;left:0;top:0;width:100%;height:max(100%,var(--cafe-canvas-height));object-fit:cover;object-position:center 65%;pointer-events:none;z-index:0; }
+.garden-cafe-place { position:absolute;transform:translate(-50%,-100%);pointer-events:none; }
+.garden-cafe-place>img,.garden-cafe-place>button,.garden-cafe-place>span { position:absolute; }
+.garden-cafe-chair { left:10%;top:23%;width:50%;height:72%;object-fit:contain;pointer-events:none; }
+.garden-cafe-person { left:9%;top:0;width:82%;height:68%;background:none;border:0;box-shadow:none;padding:0;pointer-events:auto; }
+.garden-cafe-person>.picnic-portrait { position:absolute;inset:0;width:100%;height:100%;min-height:0;object-fit:contain;object-position:top; }
+.garden-cafe-table { left:0;bottom:0;width:100%;height:68%;object-fit:contain;pointer-events:none; }
+.garden-cafe-own-cloth { left:18%;bottom:27%;width:64%;height:28%;object-fit:contain;pointer-events:none; }
+ .garden-cafe-plate { background:none;border:0;padding:0;box-shadow:none;pointer-events:auto; }
+.garden-cafe-plate>img { position:absolute;left:0;top:24%;width:100%;height:52%;object-fit:fill; }
+.garden-cafe-plate-food { position:absolute;inset:0;pointer-events:none; }
+.garden-cafe-plate-food>.picnic-fruit-picture { position:absolute;margin:0!important; }
+.garden-cafe-name { bottom:0;left:50%;transform:translateX(-50%);padding:2px 6px;border-radius:10px;background:#fff7e5ed;font-size:12px;font-weight:800;line-height:14px;color:#604936;white-space:nowrap; }
+.garden-cafe-enjoyed { right:8%;top:15%;font-size:28px;color:#c65b89;text-shadow:0 2px #fff8; }
+.garden-cafe-sign { position:absolute;transform:translate(-50%,-100%);border:0;background:none;box-shadow:none;padding:0; }
+.garden-cafe-sign>img { width:100%;height:100%;object-fit:contain; }
+.garden-cafe-sign>.garden-cafe-sign-paper { position:absolute;left:12%;top:15%;width:76%;height:47%;object-fit:contain; }
+.garden-cafe-arrival { position:sticky;float:right;top:5px;right:5px;width:52px;height:62px;margin:5px;z-index:102;border-radius:17px;background:#fff7e1eb; }
+.garden-cafe-arrival>.picnic-portrait { width:100%;height:100%;object-fit:contain; }
+.garden-cafe-arrival>span { position:absolute;right:0;bottom:0;background:#bde4ae;border-radius:50%;font-size:24px;line-height:25px;width:25px;height:25px; }
+.garden-cafe-actions { display:flex;gap:6px;justify-content:center;align-items:center;height:56px;min-width:0;background:#fff6e3ed;z-index:110; }
+.garden-cafe-actions>.picnic-button { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:50px;height:52px;padding:3px;border-radius:12px; }
+.garden-cafe-actions>.picnic-button>img,.garden-cafe-actions>.picnic-button>svg,.garden-cafe-actions>.picnic-button>.picnic-fruit-picture { width:30px;height:30px;object-fit:contain; }
+.garden-cafe-actions>.picnic-button>span:last-child { font-size:11px;line-height:12px;font-weight:800; }
+.garden-cafe-selected-food { background:#ffecad!important;outline:2px solid #ab76b8; }
+.garden-cafe-plate.is-share-target { outline:3px dashed #a275b5;border-radius:50%;background:#fff5c577; }
+.garden-cafe-actions [aria-pressed=true] { background:#ffe5ab;outline:3px solid #9865b8;outline-offset:-2px; }
+.cafe-arranging .garden-cafe-place,.garden-cafe-sign.is-moving { filter:drop-shadow(0 0 3px #ab71bd); }
+.garden-cafe-place.is-moving { outline:3px dashed #875e9e;border-radius:24px;background:#fff3d433; }
+.garden-cafe-place.is-performing .garden-cafe-person { filter:drop-shadow(0 0 5px #f5bd51); }
+.garden-cafe-score { flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:5px; }
+.garden-cafe-beat { width:44px;height:50px;min-width:44px;padding:3px; }
+.garden-cafe-beat>img { width:100%;height:100%;object-fit:contain; }
+.garden-cafe-beat.is-playing { outline:4px solid #cb9550;background:#ffecab; }
+.garden-cafe-role { display:flex;flex-direction:column;width:120px;height:130px;padding:4px;font-size:13px; }
+.garden-cafe-role>.picnic-portrait { min-height:0;flex:1;width:100%;object-fit:contain; }
+.garden-cafe-rest { font-size:28px;line-height:38px;color:#685675; }
+.garden-cafe-performance { width:100%;height:56px;display:flex;align-items:center;justify-content:center;gap:4px;padding:3px;background:#fff8e6;border:2px solid #bf9565;border-radius:12px; }
+.garden-cafe-players { display:flex;gap:4px;flex:0 0 100px;justify-content:center; }
+.garden-cafe-players>span { position:relative;display:block;width:48px;height:44px;border-radius:8px; }
+.garden-cafe-players .picnic-portrait { width:100%;height:32px;object-fit:contain; }
+.garden-cafe-players .garden-cafe-player-instrument { position:absolute;bottom:10px;right:1px;width:20px;height:20px;object-fit:contain; }
+.garden-cafe-player-label { position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:9px;line-height:11px;color:#604936;font-weight:800; }
+.garden-cafe-players>.is-playing { filter:drop-shadow(0 0 3px #e6b447); }
+.garden-cafe-players>[data-cafe-role=pulse].is-playing .garden-cafe-player-instrument { animation:cafe-pulse .22s ease-out; }
+.garden-cafe-players>[data-cafe-role=echo].is-playing .garden-cafe-player-instrument { animation:cafe-echo .22s ease-out; }
+@keyframes cafe-pulse { 50% { transform:translateY(5px); } }
+@keyframes cafe-echo { 50% { transform:rotate(12deg); } }
+@media(prefers-reduced-motion:reduce) { .garden-cafe-players .garden-cafe-player-instrument { animation:none!important; } }
+.garden-cafe-live-score { display:flex;align-items:center;flex:1;min-width:0;gap:1px; }
+.garden-cafe-live-beat { display:block;width:23px;height:32px;flex:1;min-width:0;border-radius:7px; }
+.garden-cafe-live-beat>img { width:100%;height:100%;object-fit:contain; }.garden-cafe-live-beat .garden-cafe-rest { font-size:13px; }
+.garden-cafe-performance>.picnic-button { width:44px;height:44px;flex:0 0 44px; }
+.garden-cafe-performance>.garden-cafe-next-beat{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;background:#ffecad;outline:2px solid #a578ae;padding:2px}
+.garden-cafe-next-beat>svg{width:26px;height:25px}.garden-cafe-next-beat>span{font-size:10px;font-weight:800;line-height:11px}
+.garden-cafe-performance .is-playing { background:#ffeaa7;outline:2px solid #c58e45; }
+.garden-cafe-preview { position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:14px;background:#e5eed1; }
+.garden-cafe-preview>img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
+.garden-cafe-preview-place { position:absolute;width:34%;height:65%;transform:translate(-50%,-100%); }
+.garden-cafe-preview-place>.picnic-portrait { position:absolute;left:22%;top:0;width:60%;height:72%;object-fit:contain; }
+.garden-cafe-preview-place>.garden-cafe-preview-table { position:absolute;bottom:0;left:0;width:100%;height:62%;object-fit:contain; }
+.garden-cafe-preview-place>.garden-cafe-preview-food { position:absolute;left:18%;right:18%;top:46%;height:20%;display:flex;justify-content:center;gap:0; }
+.garden-cafe-preview-food>.picnic-fruit-picture { width:16px;height:16px; }
+.garden-cafe-preview>.garden-cafe-preview-sign { position:absolute;inset:auto;width:23%;height:26%;object-fit:contain;transform:translate(-50%,-100%);background:#fff2dcbd; }
+
+.cafe-reduced-motion .garden-cafe-player-instrument { animation:none!important; }
+
+.garden-cafe-touch-invitation{position:absolute;right:-8px;top:-25px;display:flex;align-items:center;gap:1px;pointer-events:none;z-index:5;filter:drop-shadow(0 2px 2px #61493555)}
+.garden-cafe-touch-invitation>.picnic-fruit-picture,.garden-cafe-touch-invitation>img{width:32px;height:32px;object-fit:contain;opacity:.75}
+.garden-cafe-tap-hand{display:block;width:29px;height:34px;animation:cafe-tap-invitation 1s ease-in-out 2}
+.garden-cafe-tap-hand>svg{width:100%;height:100%}
+@keyframes cafe-tap-invitation{50%{transform:translateY(7px)}}
+.garden-cafe-musicians{position:absolute;inset:0;z-index:104;display:flex;align-items:center;justify-content:center;gap:5%;padding:12px;pointer-events:none;background:linear-gradient(transparent,#eaf2de22 30%,#eaf2dee6 75%)}
+.garden-cafe-musician{position:relative;flex:1;max-width:250px;height:min(86%,350px);margin:0;opacity:.68;filter:drop-shadow(0 4px 2px #6d625044)}
+.garden-cafe-musician>.picnic-portrait{position:absolute;inset:0 0 25px;width:100%;height:calc(100% - 25px);overflow:visible}
+.garden-cafe-musician-prop{pointer-events:none}
+.garden-cafe-rest-disc{fill:#fff7e5ed}
+.garden-cafe-rest-dots{fill:#614d76}
+.garden-cafe-musician>figcaption{position:absolute;left:0;right:0;bottom:0;text-align:center;color:#604936;background:#fff7e5ed;border-radius:14px;font-size:clamp(11px,2.4vw,17px);font-weight:800;line-height:1.2;padding:3px}
+.garden-cafe-musician.is-playing{opacity:1;filter:drop-shadow(0 0 7px #f4c46a)}
+.cafe-performing>.garden-cafe-sign,.cafe-performing>.garden-cafe-arrival{visibility:hidden}
+.cafe-performing>.garden-cafe-place{opacity:.35}
+.cafe-performing>.cafe-at-front>.garden-cafe-person{visibility:hidden}
+.cafe-reduced-motion .garden-cafe-tap-hand,.cafe-reduced-motion .garden-cafe-musician-prop{animation:none!important}
+@media(prefers-reduced-motion:reduce){.garden-cafe-tap-hand,.garden-cafe-musician-prop{animation:none!important}}
+
+/* Preserve the sign anchor while pressed, so its touch target cannot jump. */
+.garden-cafe-sign.is-down { transform:translate(-50%,calc(-100% + 2px)); }
+
+.garden-cafe-players>.is-rest .garden-cafe-player-instrument { animation:none!important; font-size:21px;line-height:30px;text-align:center; }
+.garden-cafe-sign-paper { background:#deebf5;border:1px solid #eee6d0;border-radius:2px; }
+.garden-cafe-person.is-share-target { filter:drop-shadow(0 0 4px #8a67a1); }
+.garden-cafe-footer-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;padding:2px}
+.picnic-cafe-play>.picnic-footer>.garden-cafe-footer-choice>img,.picnic-cafe-play>.picnic-footer>.garden-cafe-footer-choice>svg,.garden-cafe-footer-choice>.garden-cafe-preview{width:30px;height:28px;flex:0 0 28px}
+.garden-cafe-footer-choice>span:last-child{font-size:10px;font-weight:800;line-height:11px}
+.garden-cafe-food-heading{flex-basis:100%;display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:800;color:#604936}
+.garden-cafe-food-heading>img{width:40px;height:44px;object-fit:contain}
+.garden-cafe-taste-choice{position:relative;width:78px;height:70px;display:block}
+.garden-cafe-taste-choice>.picnic-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.garden-cafe-taste-choice>.picnic-fruit-picture{position:absolute;bottom:0;right:0;width:32px;height:32px}
+.garden-cafe-food-plate{position:relative;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;width:100%;height:70%;padding:12px}
+.garden-cafe-food-plate>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.garden-cafe-food-plate>.picnic-fruit-picture{position:relative;width:26px;height:26px;flex:0 0 26px;z-index:1}
+.picnic-ingredient-choice>.picnic-portrait{position:absolute;right:2px;bottom:2px;width:32px;height:40px;object-fit:contain;background:#fff8;border-radius:8px}
+.garden-cafe-picture-views{flex-basis:100%;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px}
+.garden-cafe-picture-choice{display:flex;flex-direction:column;align-items:center;justify-content:center;width:132px;height:144px;padding:8px;gap:5px}
+.garden-cafe-picture-choice>img,.garden-cafe-picture-choice>svg{width:100%;height:104px;object-fit:contain;background:#deebf5;border-radius:8px}
+.garden-cafe-picture-choice>span{font-size:14px;line-height:17px;font-weight:800}
+.garden-cafe-picture-choice[aria-pressed=true]{outline:3px solid #9b72b5;background:#f7ebff}
+.garden-cafe-picture-note{font-size:14px;line-height:18px;text-align:center;max-width:220px;color:#604936}
+.garden-cafe-original{flex-basis:100%;width:min(100%,640px);height:min(66vh,640px);object-fit:contain;background:#deebf5;border-radius:12px}
+.garden-cafe-dialog-caption{flex-basis:100%;max-width:540px;margin:0;text-align:center;font-size:17px;line-height:1.35;color:#59463e}
+.picnic-cafe-play>.picnic-picker{z-index:120}
+
+/* Short landscapes need the height for the actual family and meal. Two
+   reachable tool rails keep every pictured action available beside the scene. */
+@media(max-height:430px) and (orientation:landscape) {
+  .picnic-screen.picnic-cafe-play{display:block}
+  .picnic-cafe-play>.picnic-nav,.picnic-cafe-play>.picnic-footer{
+    position:absolute;top:8px;bottom:8px;width:44px;height:auto;
+    display:flex;flex-direction:column;justify-content:flex-start;gap:6px;
+    overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;
+    padding:0;background:transparent;z-index:111;
+  }
+  .picnic-cafe-play>.picnic-nav{left:8px}
+  .picnic-cafe-play>.picnic-footer{right:8px}
+  .picnic-cafe-play>.picnic-nav>*,.picnic-cafe-play>.picnic-footer>*{flex-shrink:0}
+  .picnic-cafe-play>.picnic-play{
+    position:absolute;inset:8px 114px 8px 64px;width:auto;height:auto;
+    display:block!important;overflow:visible;
+  }
+  .picnic-cafe-play .garden-cafe-stage{height:calc(100% - 28px);border-radius:18px}
+  .picnic-cafe-play .garden-cafe-actions{
+    position:absolute;left:calc(100% + 8px);top:0;bottom:0;width:44px;height:auto;
+    flex-direction:column;justify-content:flex-start;gap:6px;overflow-y:auto;
+    overflow-x:hidden;overscroll-behavior:contain;touch-action:pan-y;background:transparent;
+  }
+  .picnic-cafe-play .garden-cafe-actions>.picnic-button{width:44px;height:50px;flex:0 0 50px}
+  .picnic-cafe-play .garden-cafe-performance{flex-direction:column;justify-content:flex-start;width:44px;height:auto;min-height:100%;padding:2px;gap:3px;border:0}
+  .picnic-cafe-play .garden-cafe-performance>.picnic-button{order:-1;position:sticky;top:0;background:#fff1df;z-index:2}
+  .picnic-cafe-play .garden-cafe-players{flex-direction:column;flex:0 0 auto;gap:2px}
+  .picnic-cafe-play .garden-cafe-players>span{width:40px;height:39px}
+  .picnic-cafe-play .garden-cafe-players .picnic-portrait{height:28px}
+  .picnic-cafe-play .garden-cafe-live-score{flex-direction:column;flex:0 0 auto;gap:2px}
+  .picnic-cafe-play .garden-cafe-live-beat{height:18px;width:28px;flex:0 0 18px}
+  .picnic-cafe-play>.picnic-status{
+    position:absolute;left:68px;right:118px;bottom:8px;height:auto;min-height:0;
+    max-height:28px;margin:0;font-size:10px;line-height:12px;overflow-y:auto;touch-action:pan-y;
+  }
+}

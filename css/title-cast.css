@@ -1,0 +1,67 @@
+/* The approved Rayna canvas has transparent padding. Frame its visible silhouette
+   without altering the source artwork or placing decoration over touch targets. */
+.title-rayna { position: absolute; aspect-ratio: 286 / 413; overflow: hidden; pointer-events: none; }
+.title-rayna > img { position: absolute; width: 176.224%; height: 113.559%; max-width: none; left: -54.196%; top: -7.022%; user-select: none; }
+/* Costume reference has a different transparent canvas; keep the complete tail. */
+.title-rayna.title-costume { aspect-ratio: 632 / 1024; overflow: visible; }
+.title-rayna.title-costume > img { position: static; width: 100%; height: 100%; object-fit: contain; }
+/* Veer's approved title cutout already fills its canvas. Preserve the full art. */
+.title-veer { position: absolute; aspect-ratio: 2 / 3; pointer-events: none; }
+.title-veer > img { width: 100%; height: 100%; object-fit: contain; user-select: none; }
+.welcome-world .welcome-title { top: 3%; height: 34%; }
+.welcome-rayna, .welcome-veer { height: 38%; top: 36%; left: 50%; transform: translateX(-50%); }
+.welcome-world .welcome-unicorn { width: min(23vw, 36vh); height: min(23vw, 36vh); left: 19%; bottom: 26%; }
+.welcome-world .welcome-caterpillar { width: min(23vw, 34vh); height: min(23vw, 34vh); right: 18%; bottom: 26%; }
+.welcome-world .welcome-pip { top: 37%; right: 30%; width: min(9vw, 15vh); height: min(9vw, 15vh); }
+.welcome-world .welcome-play { top: 86%; z-index: 2; }
+.welcome-world .welcome-play-button { width: clamp(76px, 14vmin, 118px); height: clamp(76px, 14vmin, 118px); }
+.valley-rayna, .valley-veer { height: 20%; top: 3%; left: calc(50% + min(19vw, 174px)); }
+@media (orientation: portrait) {
+  .welcome-world .welcome-title { top: 8%; width: 83%; height: 26%; }
+  .welcome-rayna, .welcome-veer { top: 36%; height: 34%; }
+  .welcome-world .welcome-unicorn { left: 3%; bottom: 28%; width: 30vw; height: 30vw; }
+  .welcome-world .welcome-caterpillar { right: 2%; bottom: 28%; width: 30vw; height: 30vw; }
+  .welcome-world .welcome-pip { top: 38%; right: 8%; width: 18vw; height: 18vw; }
+  .welcome-world .welcome-play { top: 84%; }
+  .welcome-world .welcome-play-button { width: clamp(88px, 23vw, 128px); height: clamp(88px, 23vw, 128px); }
+  .valley-rayna, .valley-veer { height: 10%; top: 21%; left: 50%; transform: translateX(-50%); }
+}
+@media (orientation: landscape) and (max-height: 600px) {
+  .valley-rayna, .valley-veer { height: 27%; top: 5%; }
+}
+@media (orientation: landscape) and (max-height: 440px) {
+  .welcome-world .welcome-play {
+    top:auto;bottom:max(20px,calc(env(safe-area-inset-bottom) + 12px));
+    transform:translateX(-50%);
+  }
+  .welcome-rayna,.welcome-veer { height:28%; }
+}
+
+/* A single child-readable invitation, inside the existing hit target. */
+.welcome-world .welcome-play-button { position:relative; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; }
+.welcome-world .welcome-play-button > svg { width:42%; height:42%; flex-shrink:0; }
+.welcome-play-caption { font-size:clamp(12px,2.2vmin,18px); font-weight:800; line-height:1.15; color:#513c46; white-space:nowrap; }
+.welcome-tap-cue { position:absolute; right:-18px; bottom:0; width:38px; height:38px; pointer-events:none; }
+.welcome-tap-cue > svg { width:100%; height:100%; }
+.welcome-tap-cue[hidden] { display:none; }
+.welcome-play-button:disabled { cursor:wait; }
+.welcome-play > .sr-only { position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
+/* The visiting ghost is a separate, optional greeting, never the main Play target. */
+.welcome-world .welcome-ghost { position:absolute; left:6%; top:46%; width:clamp(64px,12vmin,100px); height:clamp(64px,13vmin,108px); padding:0; background:transparent; border:0; box-shadow:none; z-index:2; }
+.welcome-ghost .char { pointer-events:none; }
+.welcome-ghost:focus-visible { outline:3px solid #654f48; outline-offset:4px; border-radius:24px; }
+@media (orientation:portrait) { .welcome-world .welcome-ghost { left:4%; top:32%; } }
+@media (orientation:landscape) and (max-height:440px) { .welcome-world .welcome-ghost { top:30%; left:5%; width:64px; height:64px; } }
+
+/* Visit-local resume invitation. No animation or new saved preference. */
+.play-entry-cover { position:fixed; inset:0; z-index:900; display:grid; place-items:center; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); background:rgba(35,30,48,.58); overflow:auto; }
+.play-entry-panel { box-sizing:border-box; width:min(100%,360px); max-height:100%; overflow:auto; padding:20px; border-radius:24px; background:#fff9ef; color:#49382f; box-shadow:0 8px 32px #0003; text-align:center; font:600 17px/1.4 system-ui,sans-serif; }
+.play-entry-panel h2 { margin:0 0 8px; font-size:24px; }
+.play-entry-panel p { margin:0 0 16px; }
+.play-entry-panel button { display:block; width:100%; min-height:64px; padding:12px; border:2px solid transparent; border-radius:16px; cursor:pointer; font:700 17px/1.25 system-ui,sans-serif; }
+.play-entry-primary { background:#604296; color:#fff; }
+.play-entry-window { margin-top:8px; background:transparent; color:inherit; }
+.play-entry-panel button:focus-visible { outline:3px solid #3674b1; outline-offset:2px; }
+.dark-paper .play-entry-panel { background:#292d3c; color:#f6f3eb; }
+.dark-paper .play-entry-primary { background:#d5c0ff; color:#24193b; }
+@media (max-height:360px) { .play-entry-panel { padding:12px; } .play-entry-panel h2 { font-size:20px; margin-bottom:4px; } .play-entry-panel p { margin-bottom:8px; font-size:15px; } }

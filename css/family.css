@@ -1,0 +1,243 @@
+.family-screen{position:absolute;inset:0;overflow:hidden;background:linear-gradient(#cceeff,#f8e8b0)}.family-screen .scene-backdrop{opacity:.45}.family-book,.grandma-room{position:absolute;z-index:2}.family-book{inset:14px 96px;display:grid;grid-template-columns:minmax(0,1fr) 76px;gap:12px}.family-book-stage,.grandma-keepsakes{min-width:0;min-height:0;overflow:hidden;border:5px solid #765b54;border-radius:28px;background:#fffaf0;box-shadow:0 10px 24px #543d3138}.family-tabs{display:flex;flex-direction:column;justify-content:center;gap:8px}.family-tab,.family-round,.sticker-choice,.family-person,.family-empty-action,.grandma-action,.grandma-hug{display:grid;place-items:center;border:4px solid #765b54;background:#fffdf8;box-shadow:0 5px 0 #68493e47}.family-tab{width:64px;height:64px;border-radius:20px;font-size:28px}.family-tab.is-current,.sticker-choice.is-picked{background:#fff0a8}.family-tab--grandma{overflow:hidden;background:#f5e2ff}.family-tab--grandma>img,.family-tab--grandma>.family-friend-fallback{width:100%;height:100%;object-fit:contain}.family-page{width:100%;height:100%;padding:12px;overflow:hidden}.family-decorate{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(190px,.65fr);gap:12px}.scrapbook-paper{position:relative;min-width:0;min-height:0;overflow:hidden;border:4px dashed #de8fa2;border-radius:24px;background:#fffef9;touch-action:manipulation}.sticker-tray{min-width:0;display:grid;grid-template-rows:1fr auto;align-items:center;gap:7px}.sticker-choices{display:grid;grid-template-columns:repeat(2,minmax(64px,1fr));grid-template-rows:repeat(3,minmax(64px,1fr));gap:8px;min-height:0}.sticker-choice{min-width:64px;min-height:64px;border-radius:18px;overflow:hidden}.family-sticker{position:relative;display:grid;place-items:center;width:min(64px,12vmin);height:min(64px,12vmin);font-size:min(42px,8vmin);line-height:1;pointer-events:none}.family-sticker img,.family-sticker-svg{width:100%;height:100%;object-fit:contain;overflow:visible}.family-sticker b{position:absolute;inset:0;display:grid;place-items:center;font-size:.48em}.family-sticker--placed{position:absolute;width:clamp(54px,12vmin,92px);height:clamp(54px,12vmin,92px);transform:translate(-50%,-50%) rotate(var(--turn,0deg))}.family-pager,.grandma-choices{display:flex;justify-content:center;gap:18px}.family-round{width:64px;height:64px;border-radius:50%;font-size:50px;background:#d5f4e8}.family-drawings{display:grid;grid-template-rows:1fr auto;gap:8px}.drawing-pages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:10px;min-height:0}.drawing-frame,.today-drawing{display:grid;place-items:center;min-width:0;min-height:0;overflow:hidden;border:4px solid #765b54;border-radius:18px;background:#fff}.drawing-frame:only-child{grid-column:1/-1;grid-row:1/-1;width:65%;height:86%;justify-self:center}.drawing-frame img,.today-drawing img{width:100%;height:100%;object-fit:contain}.family-empty{width:100%;height:100%;display:grid;place-items:center}.family-empty-action{grid-auto-flow:column;gap:18px;width:min(320px,80%);min-height:118px;border-radius:30px;background:#fff0a8;font-size:58px}.family-showcase{position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto;place-items:center;gap:6px}.family-people{display:grid;grid-template-columns:repeat(5,minmax(76px,1fr));gap:clamp(8px,1.5vw,18px);width:min(100%,830px);align-items:end}.family-person{height:min(245px,61vh);min-width:72px;border-radius:28px;overflow:hidden;background:linear-gradient(#e8f8ff,#fff2cf)}.family-person>img,.family-friend-fallback,.family-veer,.family-person .char{width:100%;height:100%;object-fit:contain}.family-veer{display:block}.family-reaction,.grandma-heart{position:absolute;z-index:5;opacity:0;pointer-events:none;font-size:clamp(58px,12vmin,110px)}.family-reaction.is-showing,.grandma-heart.is-showing{animation:family-love 900ms}@keyframes family-love{30%,75%{opacity:1;transform:scale(1.1)}100%{opacity:0;transform:translateY(-24px)}}.grandma-room{inset:10px 94px;display:grid;grid-template-columns:minmax(170px,.65fr) minmax(0,1.35fr);gap:16px}.grandma-character{position:relative;display:grid;place-items:end center;min-height:0}.grandma-hug{width:min(100%,290px);height:min(100%,390px);min-height:200px;border-radius:40% 40% 26px 26px;overflow:hidden}.grandma-hug>span,.grandma-hug .char{display:block;width:100%;height:100%}.grandma-heart{top:12%;right:0}.grandma-keepsakes{padding:12px;display:grid;grid-template-rows:auto 1fr auto;gap:10px}.today-rewards{display:flex;justify-content:center;flex-wrap:wrap}.today-reward{display:grid;place-items:center;width:clamp(46px,8vmin,70px);height:clamp(46px,8vmin,70px)}.today-reward svg{width:100%;height:100%;overflow:visible}.today-drawings{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;min-height:0}.today-drawing:only-child{grid-column:1/-1;width:65%;justify-self:center}.grandma-action{min-width:80px;min-height:80px;padding:8px 14px;border-radius:24px;font-size:43px}.grandma-book,.grandma-make{background:#fff0a8}.grandma-home{background:#e1f7e8}.grandma-make{align-self:center;justify-self:center;width:min(320px,90%);min-height:120px;font-size:56px}@media (orientation:portrait){.family-book{inset:94px 12px 12px;grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 64px}.family-tabs{flex-direction:row}.family-decorate{grid-template-columns:1fr;grid-template-rows:minmax(0,1.2fr) minmax(210px,.8fr)}.sticker-tray{grid-template-columns:1fr auto;grid-template-rows:1fr}.sticker-choices{grid-template-columns:repeat(3,minmax(64px,1fr));grid-template-rows:repeat(2,minmax(64px,1fr))}.family-pager{flex-direction:column}.family-people{grid-template-columns:repeat(3,minmax(72px,1fr));grid-template-rows:repeat(2,minmax(0,1fr));height:100%;align-items:stretch}.family-person{height:100%}.family-person--veer{grid-column:3;width:100%;justify-self:stretch}.grandma-room{inset:94px 12px 12px;grid-template-columns:1fr;grid-template-rows:minmax(180px,.68fr) minmax(0,1.32fr);gap:10px}.grandma-hug{width:min(240px,64vw);height:100%;min-height:170px}}@media (prefers-reduced-motion:reduce){.family-reaction.is-showing,.grandma-heart.is-showing{animation:none;opacity:1}}
+
+
+
+
+
+/* Together Mural */
+.mural-page{position:relative;padding:10px;background:linear-gradient(145deg,#fff8e6,#ffe9f0);container-type:size}.mural-picker,.mural-handoff,.mural-finish,.mural-name-picker,.mural-saved{width:100%;height:100%;display:grid;place-items:center;min-width:0;min-height:0}.mural-picker{grid-template-rows:minmax(0,1fr) auto;gap:8px}.mural-people{display:grid;grid-template-columns:repeat(5,minmax(72px,1fr));align-items:stretch;gap:clamp(7px,1.2vw,14px);width:min(100%,900px);height:min(100%,310px)}.mural-person,.mural-prompt,.mural-icon,.mural-tool,.mural-ready,.mural-finish-button,.mural-name-choice{border:4px solid #765b54;background:#fffdf8;box-shadow:0 5px 0 #68493e47;border-radius:24px;display:grid;place-items:center;overflow:hidden}.mural-person{min-width:72px;min-height:104px;background:linear-gradient(#dbf3ff,#fff0cf)}.mural-portrait{display:block;width:100%;height:100%;min-width:58px;min-height:58px;position:relative;border-bottom:8px solid var(--ink,transparent)}.mural-portrait>img{width:100%;height:100%;object-fit:contain;display:block}.mural-mini-nav{display:flex;gap:18px}.mural-icon{width:64px;height:64px;font-size:46px;background:#dcf5e9}.mural-pair{display:flex;align-items:center;justify-content:center;gap:8px;height:clamp(70px,22cqh,120px);font-size:42px}.mural-pair .mural-portrait{width:100px;height:100%;border:0}.mural-prompts{display:grid;grid-template-columns:repeat(4,minmax(72px,1fr));gap:clamp(8px,2vw,20px);width:min(100%,700px);height:min(230px,52cqh)}.mural-prompt{min-height:80px;font-size:clamp(38px,8vmin,70px);background:#fff8ce}.mural-studio{width:100%;height:100%;display:grid;grid-template-columns:minmax(0,1fr) 76px;gap:9px;min-height:0}.mural-board{position:relative;overflow:hidden;border:4px solid #765b54;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 5px #ffffffaa;min-width:0;min-height:0}.mural-canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}.mural-name-guide{position:absolute;left:6%;right:6%;bottom:8%;height:25%;display:flex;justify-content:center;gap:2px;opacity:.17;pointer-events:none}.mural-name-guide svg{height:100%;width:min(14%,82px)}.mural-tools{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:8px;min-height:0}.mural-tools>.mural-portrait{height:min(112px,28cqh);border-radius:18px;overflow:hidden;background:#e8f6ff;border-bottom-width:8px}.mural-tool{width:68px;height:68px;font-size:38px;flex:0 0 auto}.mural-done{background:#d7f3df;font-size:44px}.mural-handoff{grid-template-columns:minmax(150px,280px) minmax(150px,330px);justify-content:center;gap:clamp(16px,5vw,60px)}.mural-handoff>.mural-portrait{height:min(330px,78cqh);border-radius:36px;background:#e7f6ff;overflow:hidden}.mural-ready{min-width:160px;min-height:130px;padding:18px;grid-auto-flow:column;gap:12px;background:#fff0aa;font-size:clamp(44px,10vmin,82px)}.mural-finish{grid-template-columns:minmax(0,1fr) minmax(76px,112px);gap:10px}.mural-preview{width:100%;height:100%;object-fit:contain;border:4px solid #765b54;border-radius:20px;background:#fff;min-width:0;min-height:0}.mural-finish-actions{height:100%;display:flex;flex-direction:column;justify-content:center;gap:9px}.mural-finish-button{width:100%;min-width:72px;min-height:72px;font-size:clamp(27px,5.5vmin,48px);background:#fff7c7}.mural-save{background:#d7f3df}.mural-name-picker{grid-template-columns:repeat(2,minmax(0,300px));justify-content:center;gap:clamp(12px,4vw,44px)}.mural-name-choice{height:min(330px,84cqh);background:linear-gradient(#e9f7ff,#fff2d6)}.mural-name-choice-inner{width:100%;height:100%;display:grid;grid-template-rows:minmax(0,1fr) 70px}.mural-name-choice-inner>.mural-portrait{min-height:0;border:0}.mural-name-letters{display:flex;justify-content:center;gap:0;padding:4px}.mural-name-letters svg{min-width:0;width:44px;height:58px}.mural-saved{grid-template-columns:minmax(0,1fr) minmax(150px,280px);gap:20px}.mural-saved>img{width:100%;height:100%;object-fit:contain;border:5px solid #765b54;border-radius:24px;background:#fff}
+@media (orientation:portrait){.mural-page{padding:8px}.mural-picker{grid-template-rows:minmax(0,1fr) auto}.mural-people{grid-template-columns:repeat(3,minmax(72px,1fr));grid-auto-rows:minmax(100px,1fr);height:100%;width:100%}.mural-prompts{grid-template-columns:repeat(2,minmax(90px,1fr));grid-template-rows:repeat(2,minmax(80px,1fr));height:100%}.mural-pair{height:90px}.mural-studio{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 72px}.mural-tools{flex-direction:row;justify-content:center}.mural-tools>.mural-portrait{height:68px;width:82px}.mural-tool{width:68px;height:68px}.mural-handoff{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 116px;gap:9px}.mural-handoff>.mural-portrait{height:100%;width:min(72vw,300px);justify-self:center}.mural-ready{min-height:106px;width:min(88%,330px)}.mural-finish{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 80px}.mural-finish-actions{flex-direction:row;height:80px}.mural-finish-button{height:72px;font-size:29px}.mural-name-picker{grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr));gap:8px}.mural-name-choice{width:min(100%,330px);height:100%}.mural-name-choice-inner{grid-template-columns:minmax(0,1fr) minmax(100px,1fr);grid-template-rows:1fr}.mural-name-letters{align-items:center;flex-wrap:wrap}.mural-name-letters svg{width:29px;height:48px}.mural-saved{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 112px}.mural-saved>.mural-ready{min-height:92px}}
+@media (max-height:470px) and (orientation:landscape){.mural-page{padding:7px}.mural-people{height:100%}.mural-person{min-height:80px}.mural-pair{height:70px}.mural-prompts{height:220px}.mural-tool{width:64px;height:64px}.mural-tools>.mural-portrait{height:78px}}
+@media (prefers-reduced-motion:reduce){.mural-person,.mural-prompt,.mural-icon,.mural-tool,.mural-ready,.mural-finish-button,.mural-name-choice{transition:none!important}}
+.family-tab>svg{width:44px;height:44px;overflow:visible}.family-reaction svg{width:1em;height:1em;overflow:visible}.family-empty-picture{width:82px;height:82px}.mural-prompt-art{position:relative;display:flex;align-items:center;justify-content:center;width:90%;height:90%;gap:0}.mural-prompt-art>img{width:58%;height:88%;object-fit:contain;margin-inline:-7%}.mural-prompt-art>img:nth-child(3){width:45%}.mural-prompt-art>svg{width:76%;height:76%}.mural-tool>svg{width:46px;height:46px}.mural-ready>svg,.mural-finish-button>svg{width:58px;height:58px}.mural-pass-picture{display:flex;align-items:center;justify-content:center}.mural-pass-picture>svg{width:82px;height:82px}.mural-save{grid-auto-flow:column}.mural-save>svg{width:45px;height:45px}.mural-saved>.mural-ready{grid-auto-flow:column}.mural-saved>.mural-ready>svg{width:54px;height:54px}
+@media (orientation:portrait){.mural-prompt-picker{grid-template-rows:clamp(100px,18cqh,180px) minmax(0,1fr)}.mural-prompt-picker .mural-pair{height:100%}}
+/* Stable upright 3:2 mural paper in every orientation. The canvas itself is the fitted
+   paper, so pointer input has no clickable letterbox and saved/live ink share one space. */
+.mural-studio{align-items:center}.mural-board{aspect-ratio:3/2;width:100%;height:auto;max-height:100%;justify-self:center;align-self:center}.mural-canvas{inset:0;width:100%;height:100%;transform:none}
+@media (orientation:portrait){.mural-studio{grid-template-rows:auto 72px;align-content:center}.mural-board{aspect-ratio:3/2;width:100%;height:auto;max-height:none}.mural-canvas{inset:0;width:100%;height:100%;transform:none}}
+.mural-board{border:0;box-shadow:0 5px 0 #68493e47}.mural-board::after{content:"";position:absolute;z-index:3;inset:0;border:4px solid #765b54;border-radius:22px;box-shadow:inset 0 0 0 5px #ffffffaa;pointer-events:none;box-sizing:border-box}
+.family-empty--passive{min-height:118px}.family-empty-still{display:grid;place-items:center;width:min(230px,75%);height:118px;border:4px dashed #d8a1af;border-radius:28px;background:#fff8dc}.mural-saved-actions{display:flex;flex-direction:column;justify-content:center;gap:12px;min-width:0}.mural-saved-actions>.mural-ready{width:100%;min-width:0}.mural-saved-actions>.mural-ready>svg{width:54px;height:54px}
+@media (orientation:portrait){.mural-saved-actions{flex-direction:row;align-items:center}.mural-saved-actions>.mural-ready{min-height:96px;height:96px;padding:8px}}
+
+/* Clean-profile scrapbook: an intentional blank album and one clear first action. */
+.treehouse .family-empty-page{display:block;padding:clamp(8px,1.5vw,16px)}
+.treehouse .family-empty--album{width:100%;height:100%;display:grid;grid-template-rows:minmax(0,1fr) auto;place-items:center;gap:clamp(6px,1vh,12px);padding:clamp(10px,2.2vmin,22px);overflow:hidden;border:0;border-radius:24px;background:radial-gradient(circle at 50% 42%,#fffdf2 0 38%,#f8e7c8 78%,#e5c49c 100%)}
+.treehouse .family-empty-album-art{display:grid;place-items:center;width:min(92%,820px);height:100%;min-height:0;filter:drop-shadow(0 9px 0 #6b4c3b20)}
+.treehouse .family-empty-album-art>svg{display:block;width:100%;height:100%;max-height:520px;overflow:visible}
+.treehouse .family-empty-primary{display:grid;place-items:center;width:clamp(92px,12vmin,124px);height:clamp(92px,12vmin,124px);padding:12px;border:5px solid #765b54;border-radius:34px;background:#dff3e4;box-shadow:0 7px 0 #68493e47}
+.treehouse .family-empty-primary>svg{width:100%;height:100%;max-width:88px;max-height:88px}
+.treehouse .family-empty-primary:focus-visible{outline:5px solid #7656a8;outline-offset:3px}
+@media (orientation:portrait){.treehouse .family-empty-page{display:block}.treehouse .family-empty--album{grid-template-rows:auto auto;align-content:center;gap:clamp(24px,5vh,46px);padding:14px 8px 10px}.treehouse .family-empty-album-art{width:100%;height:auto;aspect-ratio:620/350}.treehouse .family-empty-primary{width:104px;height:104px}}
+@media (orientation:landscape) and (max-height:470px){.treehouse .family-empty--album{grid-template-columns:minmax(0,1fr) 86px;grid-template-rows:1fr;gap:8px;padding:8px}.treehouse .family-empty-album-art{width:100%;height:100%}.treehouse .family-empty-primary{width:76px;height:76px;padding:8px;border-radius:24px}.treehouse .family-empty-primary>svg{max-width:58px;max-height:58px}}
+
+/* Saved gallery pages size their rows from the number of real pictures. Replaced
+   elements are explicitly shrinkable so square Studio PNGs cannot overflow a frame. */
+.treehouse .drawing-pages[data-count="2"]{grid-template-rows:minmax(0,1fr)}
+.treehouse .drawing-frame{position:relative;width:100%;height:100%;padding:0;cursor:pointer}
+.treehouse .drawing-frame img{display:block;width:100%;height:100%;min-width:0;min-height:0;max-width:100%;max-height:100%;object-fit:contain}
+.treehouse .drawing-frame-play{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:clamp(48px,8vmin,68px);height:clamp(48px,8vmin,68px);padding:10px;border:4px solid #765b54;border-radius:50%;background:#fff0a8;color:#4f3d38;box-shadow:0 4px 0 #68493e47;pointer-events:none}
+.treehouse .drawing-frame-play>svg{width:100%;height:100%}
+.treehouse .family-tabs.has-play-stage{gap:6px}
+.treehouse .family-tabs.has-play-stage .family-tab{width:56px;height:56px;border-radius:18px}
+.treehouse .family-tabs{min-height:0;overflow-y:auto;justify-content:flex-start;padding:5px;scrollbar-width:thin;overscroll-behavior:contain}
+.treehouse .family-tab{flex-shrink:0}
+@media (orientation:portrait){.treehouse .family-tabs{overflow-y:hidden;overflow-x:auto;justify-content:flex-start;min-width:0;scroll-snap-type:x proximity}.treehouse .family-tab{scroll-snap-align:start}}
+.treehouse .family-tab--play-stage{position:relative;overflow:hidden;padding:0;background:#dcefd7}
+.treehouse .family-stage-entry-picture{position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none}
+.treehouse .family-stage-entry-picture>img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.treehouse .family-picture-view{width:100%;height:100%;min-width:0;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 86px;align-items:center;gap:12px;padding:4px}
+.treehouse .family-picture-view>img{display:block;width:100%;height:100%;min-width:0;min-height:0;object-fit:contain;border:4px solid #765b54;border-radius:20px;background:#fff}
+.treehouse .family-picture-back{display:grid;place-items:center;width:78px;height:78px;padding:10px;border:4px solid #765b54;border-radius:24px;background:#dff3e4;box-shadow:0 5px 0 #68493e47;color:#4f3d38}
+.treehouse .family-picture-back>svg{width:100%;height:100%}
+@media (orientation:portrait){.treehouse .drawing-pages[data-count="2"]{grid-template-columns:1fr;grid-template-rows:repeat(2,minmax(0,1fr))}.treehouse .family-picture-view{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 82px;justify-items:center;gap:8px}.treehouse .family-picture-back{width:78px;height:78px}}
+
+/* A fitted board must never become its grid column's intrinsic minimum after
+   shrinking. The controller contains one upright paper inside this fixed cell. */
+.mural-page, .mural-studio, .mural-tools, .mural-people, .mural-prompts,
+.mural-name-choice, .mural-name-choice-inner, .mural-saved-actions {
+  min-width: 0;
+  min-height: 0;
+}
+.mural-studio { grid-template-rows: minmax(0, 1fr); }
+.mural-prompt-picker { grid-template-rows: 100px minmax(0, 1fr); }
+.mural-prompts { height: 100%; }
+.mural-name-choice { height: min(100%, 330px); }
+.mural-board { max-width: 100%; max-height: 100%; }
+.mural-tools > .mural-portrait {
+  height: 112px;
+  max-height: 28%;
+  min-height: 44px;
+  flex: 0 1 112px;
+}
+.mural-person, .mural-prompt { min-height: 44px; min-width: 0; }
+.mural-tool:disabled, .mural-finish-button:disabled { opacity: .38; box-shadow: none; }
+.mural-saved > img {
+  display: block;
+  min-width: 0;
+  min-height: 0;
+  max-width: 100%;
+  max-height: 100%;
+}
+@media (orientation: portrait) {
+  .treehouse .family-book { grid-template-columns: minmax(0, 1fr); }
+  .mural-studio { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) 72px; }
+  .mural-board { max-height: 100%; }
+  .mural-tools > .mural-portrait { height: 68px; max-height: none; flex: 0 0 82px; }
+  .mural-people { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); }
+  .mural-name-choice { height: 100%; }
+  .mural-prompts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .mural-handoff, .mural-finish, .mural-saved { grid-template-columns: minmax(0, 1fr); }
+  .mural-saved-actions > .mural-ready { gap: 6px; }
+  .mural-saved-actions > .mural-ready > svg { width: 48px; height: 48px; }
+}
+@media (orientation: landscape) and (max-width: 700px) {
+  .mural-people { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: minmax(0, 1fr); }
+  .mural-prompt-picker { grid-template-rows: 70px minmax(0, 1fr); }
+  .mural-prompts { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); height: 100%; }
+  .mural-handoff { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; }
+  .mural-ready { min-width: 0; padding: 8px; }
+  .mural-pass-picture > svg { width: 48px; height: 48px; }
+  .mural-saved { grid-template-columns: minmax(0, 1fr) 100px; gap: 8px; }
+  .mural-saved-actions > .mural-ready { padding: 6px; min-height: 80px; gap: 2px; }
+  .mural-saved-actions > .mural-ready > svg { width: 34px; height: 44px; }
+}
+@media (orientation: portrait) and (max-width: 380px) {
+  .mural-save > svg { width: 32px; height: 44px; }
+}
+
+.mural-studio.has-capacity-cue,
+.mural-finish.has-capacity-cue { grid-template-rows: minmax(0, 1fr) 48px; }
+.mural-capacity-cue {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 48px;
+  min-width: 0;
+  min-height: 0;
+  padding: 2px 4px;
+  border-radius: 14px;
+  background: #fff2b6;
+  color: #4f3d38;
+}
+.mural-capacity-cue[hidden], .mural-capacity-keep[hidden] { display: none; }
+.mural-capacity-picture { flex: 0 0 38px; height: 38px; }
+.mural-capacity-picture > svg { display: block; width: 100%; height: 100%; }
+.mural-capacity-label { min-width: 0; max-width: 330px; font-size: 14px; line-height: 1.2; }
+.mural-capacity-keep { display: grid; place-items: center; width: 44px; height: 44px; flex: 0 0 44px; padding: 4px; border: 3px solid #765b54; border-radius: 14px; background: #d7f3df; }
+.mural-capacity-keep > svg { width: 100%; height: 100%; }
+.mural-capacity-keep:disabled { opacity: .38; }
+
+/* The decorate pane alone gives the owned paper its available scene area. */
+.treehouse.is-decorating>.home,.treehouse.is-decorating>.mute { top:8px;width:44px;height:44px;min-width:44px;min-height:44px; }
+.treehouse.is-decorating>.home { left:10px; }
+.treehouse.is-decorating>.mute { right:10px; }
+.treehouse.is-decorating>.home svg,.treehouse.is-decorating>.mute svg { width:27px;height:27px; }
+.treehouse .family-book.is-decorating { inset:60px 10px 8px;gap:8px; }
+.treehouse .family-decorate { display:grid;grid-template-columns:minmax(0,1fr) 76px;grid-template-rows:minmax(0,1fr) 44px 36px;gap:6px;padding:6px;min-width:0;min-height:0; }
+.treehouse .family-decorate .scrapbook-paper { grid-column:1;grid-row:1;min-width:0;min-height:0;width:100%;height:100%;border-radius:22px;box-sizing:border-box;touch-action:none; }
+.treehouse .family-decorate .scrapbook-paper[data-ready=true] { border-color:#c29338;border-style:solid;box-shadow:inset 0 0 0 4px #fff0bc; }
+.treehouse .family-decorate .scrapbook-marks { position:absolute;inset:0;pointer-events:none; }
+.treehouse .family-decorate .scrapbook-placement-guide { position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;pointer-events:none;text-align:center;color:#6d5149;font-size:15px;font-weight:700;padding:8px; }
+.treehouse .family-decorate .scrapbook-placement-guide>.family-sticker { width:76px;height:76px;filter:drop-shadow(0 3px 0 #765b5420); }
+.treehouse .family-decorate .scrapbook-placement-guide>.family-empty { pointer-events:none; }
+.treehouse .family-decorate .family-empty-primary { pointer-events:auto; }
+.treehouse .family-decorate .sticker-tray { grid-column:2;grid-row:1 / -1;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:4px;min-width:0;min-height:0; }
+.treehouse .family-decorate .sticker-tray.has-pages { grid-template-rows:44px minmax(0,1fr) 44px; }
+.treehouse .family-decorate .sticker-choices { display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;min-height:0;overflow-y:auto;overflow-x:hidden;padding:3px;touch-action:pan-y;overscroll-behavior:contain; }
+.treehouse .family-decorate .sticker-choice { width:52px;height:52px;min-width:52px;min-height:52px;flex:0 0 52px;border-width:3px;border-radius:17px;padding:3px; }
+.treehouse .family-decorate .sticker-choice>.family-sticker { width:40px;height:40px; }
+.treehouse .family-decorate .scrapbook-actions { grid-column:1;grid-row:2;display:flex;justify-content:center;align-items:center;gap:14px;min-width:0; }
+.treehouse .family-decorate .scrapbook-actions>button,.treehouse .family-decorate .sticker-tray>button { position:relative;display:grid;place-items:center;min-width:44px;min-height:44px;width:44px;height:44px;padding:5px;border:3px solid #765b54;border-radius:15px;background:#dff3e4;color:#4f3d38;box-shadow:0 3px 0 #68493e47;justify-self:center; }
+.treehouse .family-decorate .scrapbook-actions>button>svg,.treehouse .family-decorate .sticker-tray>button>svg { width:100%;height:100%; }
+.treehouse .family-decorate .scrapbook-place { background:#fff0bc!important; }
+.treehouse .family-decorate .scrapbook-place>.family-sticker { width:31px;height:31px; }
+.treehouse .family-decorate .scrapbook-place-arrow { position:absolute;right:-4px;bottom:-4px;display:grid;place-items:center;width:20px;height:20px;border:2px solid #765b54;border-radius:50%;background:#dff3e4;pointer-events:none; }
+.treehouse .family-decorate .scrapbook-place-arrow>svg { width:100%;height:100%; }
+.treehouse .family-decorate button:disabled { opacity:.4;box-shadow:none; }
+.treehouse .family-decorate button:focus-visible { outline:4px solid #7656a8;outline-offset:2px; }
+.treehouse .family-decorate .scrapbook-notice { grid-column:1;grid-row:3;min-width:0;height:36px;max-height:36px;overflow:hidden;text-align:center;font-size:11.5px;line-height:12px;padding:2px; }
+.treehouse .family-decorate [hidden] { display:none!important; }
+@media(orientation:portrait) {
+  .treehouse .family-book.is-decorating { grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 64px; }
+  .treehouse .family-decorate { grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) 60px 44px 36px; }
+  .treehouse .family-decorate .sticker-tray { grid-column:1;grid-row:2;grid-template-columns:minmax(0,1fr);grid-template-rows:60px; }
+  .treehouse .family-decorate .sticker-tray.has-pages { grid-template-columns:44px minmax(0,1fr) 44px;grid-template-rows:60px; }
+  .treehouse .family-decorate .sticker-choices { flex-direction:row;align-items:center;overflow-x:auto;overflow-y:hidden;touch-action:pan-x; }
+  .treehouse .family-decorate .scrapbook-actions { grid-column:1;grid-row:3; }
+  .treehouse .family-decorate .scrapbook-notice { grid-column:1;grid-row:4; }
+}
+@media (orientation: portrait) {
+  .mural-studio.has-capacity-cue { grid-template-rows: minmax(0, 1fr) 72px 48px; }
+  .mural-finish.has-capacity-cue { grid-template-rows: minmax(0, 1fr) 80px 48px; }
+}
+/* The map owns destination shortcuts; Treehouse keeps four roomy local pages. */
+.treehouse .family-tab[hidden] { display:none !important; }
+.treehouse .family-tabs { gap:12px; }
+.treehouse .family-tabs .family-tab:not([hidden]) { width:80px; height:80px; min-width:80px; min-height:80px; }
+.treehouse .family-book { grid-template-columns:minmax(0,1fr) 90px; }
+@media (orientation:portrait) { .treehouse .family-book { grid-template-columns:1fr; grid-template-rows:minmax(0,1fr) 90px; } }
+@media (orientation:landscape) and (max-height:500px) { .treehouse .family-tabs .family-tab:not([hidden]) { width:64px;height:64px;min-width:64px;min-height:64px; } .treehouse .family-book { grid-template-columns:minmax(0,1fr) 74px; } }
+/* Preserve the system-gesture margin while four local-page choices stay reachable. */
+.treehouse .family-book { inset:24px 96px; }
+@media (orientation:portrait) {
+  .treehouse .family-book { inset:100px 24px 24px; }
+  .treehouse .family-tabs .family-tab:not([hidden]) { width:clamp(64px,calc((100vw - 94px)/4),80px); height:clamp(64px,calc((100vw - 94px)/4),80px); min-width:64px; min-height:64px; }
+}
+.treehouse .family-tabs.has-play-stage { gap:12px; }
+@media (orientation:portrait) { .treehouse .family-book.is-decorating { grid-template-rows:minmax(0,1fr) 90px; } }
+
+/* Keep the decorate controls away from system-gesture edges without erasing paper. */
+.treehouse.is-decorating>.home,.treehouse.is-decorating>.mute { top:24px; width:64px; height:64px; min-width:64px; min-height:64px; }
+.treehouse.is-decorating>.home { left:24px; }
+.treehouse.is-decorating>.mute { right:24px; }
+html.hand-left .treehouse.is-decorating>.home { left:auto; right:100px; }
+.treehouse .family-book.is-decorating { inset:100px 24px 24px; }
+@media (orientation:landscape) and (min-height:371px) and (max-height:500px) {
+  .treehouse .family-book.is-decorating { inset:88px 100px 24px; }
+  html.hand-left .treehouse .family-book.is-decorating { right:176px; }
+  .treehouse .family-tabs { padding:4px; }
+}
+@media (orientation:landscape) and (max-height:370px) {
+  /* Preserve useful paper space on very short screens; these controls remain below the target size. */
+  .treehouse.is-decorating>.home,.treehouse.is-decorating>.mute { top:8px; width:44px; height:44px; min-width:44px; min-height:44px; }
+  .treehouse.is-decorating>.home { left:10px; }
+  .treehouse.is-decorating>.mute { right:10px; }
+  html.hand-left .treehouse.is-decorating>.home { left:auto; right:64px; }
+  .treehouse .family-book.is-decorating { inset:60px 10px 8px; grid-template-columns:minmax(0,1fr) 74px; grid-template-rows:1fr; }
+}
+@media (orientation:landscape) and (max-height:370px) {
+  .treehouse.is-decorating>.home svg,.treehouse.is-decorating>.mute svg { width:24px; height:24px; }
+}
+/* Two large sticker choices and one cycling More control keep the tray simple. */
+.treehouse .family-decorate .sticker-choice { width:64px;height:64px;min-width:64px;min-height:64px;flex:0 0 64px; }
+.treehouse .family-decorate .sticker-choice>.family-sticker { width:50px;height:50px; }
+.treehouse .family-decorate .scrapbook-actions>button,.treehouse .family-decorate .sticker-tray>button { width:64px;height:64px;min-width:64px;min-height:64px; }
+.treehouse .family-decorate .sticker-choices { gap:12px;justify-content:center; }
+.treehouse .family-decorate .sticker-tray.has-pages { grid-template-rows:minmax(0,1fr) 64px;gap:12px; }
+.treehouse .family-decorate { grid-template-rows:minmax(0,1fr) 64px 36px; }
+@media (orientation:portrait) {
+  .treehouse .family-decorate { grid-template-rows:minmax(0,1fr) 64px 64px 36px; }
+  .treehouse .family-decorate .sticker-tray { grid-template-rows:64px; }
+  .treehouse .family-decorate .sticker-tray.has-pages { grid-template-columns:minmax(0,1fr) 64px;grid-template-rows:64px; }
+}
+
+/* A failed/temporary gallery is not an empty album. */
+.treehouse .family-gallery-warning{margin:4px auto;max-width:36rem;padding:6px 10px;text-align:center;font-size:clamp(12px,1.7vw,16px);line-height:1.2;background:#fff8d7;border-radius:12px}
+.treehouse .family-gallery-retry{min-width:64px;min-height:64px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin:4px auto}
+.treehouse .family-gallery-retry svg{width:30px;height:30px}.treehouse .family-gallery-retry span{font-size:11px}
+
+/* Keep scrapbook pages available without crowding the decorating tray. */
+.treehouse .family-tab--pages,.treehouse .family-tab--local{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;padding:4px}
+.treehouse .family-tab--pages>svg{width:36px;height:36px;min-height:0}
+.treehouse .family-tab--local>svg{width:32px;height:32px;min-height:0}
+.treehouse .family-tab--pages>span,.treehouse .family-tab-caption{display:block;font-size:10px;font-weight:700;line-height:11px;text-align:center}
+
+.treehouse .scrapbook-idle-target{outline:3px solid #4f8c76;outline-offset:3px}
+.treehouse .scrapbook-idle-hand{position:absolute;left:58%;top:48%;width:42px;height:42px;pointer-events:none;z-index:8}.treehouse .scrapbook-idle-hand svg{width:100%;height:100%}
+
+/* Keep an unsaved family drawing visible while offering an explicit retry. */
+.mural-save-recovery{position:absolute;z-index:8;left:50%;bottom:8px;transform:translateX(-50%);display:flex;align-items:center;justify-content:center;gap:8px;width:min(94%,620px);padding:8px;border:2px solid #795b6e;border-radius:16px;background:#fff8e9;color:#493a45;box-shadow:0 4px 12px #543d3130}
+.mural-save-recovery p{margin:0;font-size:14px;line-height:1.2}.mural-save-recovery button{display:inline-flex;align-items:center;justify-content:center;gap:4px;min-width:90px;min-height:64px;padding:6px 10px;border:2px solid #375e45;border-radius:12px;background:#e7f5d9;color:#203d2b;font:inherit;font-weight:700}
