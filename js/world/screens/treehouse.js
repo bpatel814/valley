@@ -234,6 +234,8 @@ export function makeDecoratePage(myVisit, isCurrent = () => myVisit === visit) {
     else if (!loaded) notice.textContent = 'Opening your stickers…';
     else if (!db.status().persistent) notice.textContent = 'Only here while the app is open. Ask a grownup to keep a backup.';
     else notice.textContent = saving ? 'Keeping your sticker…' : selected ? 'Tap the paper, or the pictured place button.' : 'Choose a sticker.';
+    // Routine prompts are for screen readers only; warnings stay visible for a grown-up (work order item 7).
+    notice.classList.toggle('is-routine-note', !issue && loaded && db.status().persistent);
   };
   const paint = () => {
     marks.replaceChildren();

@@ -246,3 +246,19 @@
   .wg-decorchoices img,.wg-decorchoices svg{max-height:26px}
   .wg-decorchoices .wg-tool-caption{font-size:9px}
 }
+
+/* Work order item 7 (V07): phone controls are 64 px. The header and footer rows
+   grow to fit them; the garden keeps the middle. */
+@media(max-height:540px) and (orientation:landscape){
+  .water-garden{grid-template-columns:auto minmax(0,1fr);grid-template-rows:64px minmax(0,1fr) 64px;gap:4px 6px}
+  .wg-nav .wg-button,.wg-keepsakes .wg-button,.wg-sound .btn{width:64px;height:64px;flex-basis:64px;min-width:64px;min-height:64px;padding:8px}
+  .wg-seedchoices .wg-button{width:64px;height:64px;flex-basis:64px}
+  .wg-segments{grid-template-columns:repeat(2,64px);gap:6px}
+  .wg-segments button{width:64px;height:64px}
+  .wg-decorchoices{grid-template-columns:64px 64px;gap:6px}
+  .wg-decorchoices .wg-button{width:64px;height:64px}
+  .wg-decorchoices .wg-button:last-child{width:134px}
+  .wg-pour{width:64px;height:64px}
+  .wg-pour>svg{width:34px;height:34px}
+  .wg-status{width:calc(100% - 230px)}
+}

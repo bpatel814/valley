@@ -588,7 +588,7 @@ export const discovery = {
       dots.appendChild(dot);
     }
     const pageHint = document.createElement("small");
-    pageHint.className = "discovery-page-hint";
+    pageHint.className = "discovery-page-hint is-routine-note"; // the dots already show the page
     pageHint.textContent = `More puzzles · ${page + 1} of ${pageCount}`;
     dots.appendChild(pageHint);
 

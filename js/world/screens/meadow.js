@@ -396,6 +396,8 @@ export const meadow = {
       : this._persistent === false || !db.status().persistent
         ? 'Only here while the app is open. Ask a grownup to keep a backup.'
         : this._savingCount ? 'Keeping your word…' : 'Your word is kept.';
+    // Routine saves are for screen readers only; a child cannot read them (work order item 7).
+    this.notice.classList.toggle('is-routine-note', !failed && this._persistent !== false && db.status().persistent);
     this.saveRetry.hidden = !failed; this.saveRetry.disabled = !!(this._savingCount || this._held() || this._moving || this._checkpointing);
   },
 

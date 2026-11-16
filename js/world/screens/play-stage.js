@@ -317,11 +317,15 @@ export function playStageChromeLayout(width, height) {
   const portrait = w <= h;
   const controls = {}, cast = [];
   const rect = (x, y, size) => ({ x, y, width: size, height: size });
+  // Work order item 7 (Nov 16 2026): Back went to the same place as Home, so it
+  // is no longer shown (it keeps Home's slot for code that reads it), and every
+  // control is 64 px whenever the screen is at least 282 px tall.
   if (portrait) {
-    const names = ["back", "home", "undo", "keep", "mute", "shows"];
+    const names = ["home", "undo", "keep", "mute", "shows"];
     const size = Math.max(44, Math.min(64, Math.floor((w - 16 - 30) / 6)));
-    const start = (w - 6 * size - 30) / 2;
-    names.forEach((name, i) => { controls[name] = rect(start + i * (size + 6), 8, size); });
+    const topStart = (w - 5 * size - 24) / 2, start = (w - 6 * size - 30) / 2;
+    names.forEach((name, i) => { controls[name] = rect(topStart + i * (size + 6), 8, size); });
+    controls.back = { ...controls.home };
     const top = size + 20, bottomSize = size, y = h - size - 8;
     controls.basket = rect(start, y, bottomSize); controls.people = rect(start + size + 6, y, bottomSize);
     for (let i = 0; i < 3; i++) cast.push(rect(start + (i + 2) * (size + 6), y, size));
@@ -330,11 +334,13 @@ export function playStageChromeLayout(width, height) {
     return { profile: "portrait", width: w, height: h, controls, cast, surface,
       performance: { x: cast[0].x, y, width: 3 * size + 12, height: size, buttonSize: size, rail: true } };
   }
-  const compact = h < 440, size = h < 280 ? 44 : h < 480 ? 48 : 64, gap = h < 280 ? 2 : 8, side = size + 24;
-  ["back", "home", "undo", "mute"].forEach((name, i) => { controls[name] = rect(8, 8 + i * (size + gap), size); });
-  ["keep", "shows", "actions", ...(compact ? ["basket", "people"] : [])].forEach((name, i) => {
-    controls[name] = rect(w - size - 8, compact ? Math.max(4, (h - 5 * size - 4 * gap) / 2) + i * (size + gap) : 8 + i * (size + gap), size);
-  });
+  const compact = h < 440, size = h < 282 ? 44 : 64, gap = h < 282 ? 2 : 6, side = size + 24;
+  const left = compact ? ["home", "undo", "mute", "keep"] : ["home", "undo", "mute"];
+  const right = compact ? ["shows", "actions", "basket", "people"] : ["keep", "shows", "actions"];
+  const columnTop = count => compact ? Math.max(4, (h - count * size - (count - 1) * gap) / 2) : 8;
+  left.forEach((name, i) => { controls[name] = rect(8, columnTop(left.length) + i * (size + gap), size); });
+  right.forEach((name, i) => { controls[name] = rect(w - size - 8, columnTop(right.length) + i * (size + gap), size); });
+  controls.back = { ...controls.home };
   const available = w - 2 * side;
   if (compact) return { profile: "landscape", compact, width: w, height: h, controls, cast,
     surface: { x: side, y: 8, width: available, height: h - 16 },
@@ -1075,6 +1081,7 @@ export class PlayStageController {
 
     this.home = button("home", "home", "play-stage-home", () => this._goHome());
     this.back = button("back", this.enteredFromMap ? "back to the valley" : "back to the Treehouse", "play-stage-back", () => this._goBack());
+    this.back.hidden = true; // Home already goes back to the valley; one way out is clearer.
     this.undo = button("undo", "undo", "play-stage-undo", () => this._undo());
     this.keep = button("keep", "keep this story", "play-stage-keep", () => this._keep());
     this.mute = muteButton(); this.mute.classList.add("play-stage-mute");

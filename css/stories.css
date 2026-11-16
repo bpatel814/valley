@@ -1012,3 +1012,9 @@ html.reduced-motion .story-lead { animation: none !important; transition: none !
 
 /* Equal, quiet picture hints never choose an answer on the child's behalf. */
 .stories .is-story-idle-cue { outline: 6px solid #edb44a; outline-offset: 4px; }
+
+/* Narrow phones: the 132 px minimum made each 4:3 cover 176 px wide, wider than its
+   column, so neighbours overlapped. The column width wins; covers stay well over 64 px. */
+@media (max-height: 460px) and (orientation: landscape) and (max-width: 840px) {
+  .story-cover { min-height: 0; width: 100%; }
+}

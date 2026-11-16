@@ -64,8 +64,8 @@ button:focus-visible { outline: 5px solid #7459a2; outline-offset: 5px; }
   .welcome-play-button { width: clamp(100px, 26vw, 152px); height: clamp(100px, 26vw, 152px); }
 }
 @media (max-height: 390px) and (orientation: landscape) {
-  :root { --btn: 60px; --gutter: 10px; }
-  .btn { min-width: 60px; min-height: 60px; }
+  :root { --btn: 64px; --gutter: 10px; }
+  .btn { min-width: 64px; min-height: 64px; }
   .valley-map .region { min-height: 110px; }
   .valley-title { height: 29%; }
   .parent-entry-button { width: 54px; height: 54px; min-width: 54px; min-height: 54px; }

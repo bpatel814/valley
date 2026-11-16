@@ -88,7 +88,9 @@ export const waterGarden = {
     host.append(this.root);
     this.checkpointInput = event => { if (!this.alive || this.visit !== visit || this.checkpointing || this.returning) { event.preventDefault(); event.stopImmediatePropagation(); } };
     for (const type of ['pointerdown', 'click', 'keydown']) this.root.addEventListener(type, this.checkpointInput, true);
-    this.root.querySelector('.wg-nav').append(button('back', this.enteredFromMap ? 'Back to the valley' : 'Back to Explore activities', () => this.onBack()), button('home', 'Home: return to the valley', () => this.leave('map')), button('help', 'Show how to plant and connect water', () => this.help()));
+    const back = button('back', this.enteredFromMap ? 'Back to the valley' : 'Back to Explore activities', () => this.onBack());
+    back.hidden = this.enteredFromMap; // Home already goes to the valley (work order item 7).
+    this.root.querySelector('.wg-nav').append(back, button('home', 'Home: return to the valley', () => this.leave('map')), button('help', 'Show how to plant and connect water', () => this.help()));
     this.mute = muteButton(); this.root.querySelector('.wg-sound').append(this.mute);
     this.canvas = this.root.querySelector('canvas'); this.stage = this.root.querySelector('.wg-stage');
     this.canopies = document.createElement('div'); this.canopies.className = 'wg-canopies'; this.stage.insertBefore(this.canopies, this.canvas);

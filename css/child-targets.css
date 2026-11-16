@@ -1,0 +1,27 @@
+/* Every control a child touches is at least 64 x 64 CSS px (work order item 7,
+   backlog V07; the project's own bar). Loaded last so it wins over the older
+   per-screen rules that shrank Home, Sound and tools to 44-60 px on phones.
+   Grown-up controls (the gear, the parent screen) are not covered here. */
+#app .btn.home, #app .btn.mute, #app .home, #app .mute,
+#app .play-stage-button, #app .wg-button, #app .wg-friend,
+#app .meadow.learning-screen .rv-btn, #app .garden.learning-screen .rv-btn,
+#app .garden.learning-screen .garden-next .learning-choice,
+#app .studio-button, #app .studio-choice,
+#app .bridge-page, #app .bridge-action {
+  min-width: 64px !important; min-height: 64px !important;
+}
+
+/* Routine sentences (save confirmations, "choose a sticker", page counts) stay for screen
+   readers but are not shown: she cannot read them. Warnings for a grown-up stay visible. */
+.is-routine-note { position: absolute !important; width: 1px !important; height: 1px !important; margin: -1px !important; padding: 0 !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; border: 0 !important; }
+/* Write a name: the picture-story door and the picture cue are child targets too. */
+#app .meadow-storybook, #app .meadow-subject-cue { min-width: 64px !important; min-height: 64px !important; }
+/* Short phones: the scrapbook's tab column starts below Sound instead of under it. */
+@media (orientation: landscape) and (max-height: 360px) {
+  .treehouse .family-tabs { padding-top: 64px; }
+}
+/* Play stage's first tip keeps its moving hand; the sentence is for screen readers. */
+#app .play-stage-guide-words { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* Water garden's routine status line is not shown; save feedback for a grown-up still is. */
+#app .water-garden:not([data-keep-feedback="true"]) .wg-status { position: absolute !important; width: 1px !important; height: 1px !important; overflow: hidden !important; clip-path: inset(50%) !important; white-space: nowrap !important; }
+#app .wg-header h1 { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
