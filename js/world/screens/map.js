@@ -16,7 +16,7 @@ import speech from '../../audio/speech.js';
 import { valleyProfile } from '../../data/valley-profiles.js';
 import { halloweenActive, seasonHero } from '../../data/season.js';
 import db from '../../state/db.js';
-import { VALLEY_THINGS, valleyLayout } from '../valley-places.js';
+import { VALLEY_DOORS, VALLEY_THINGS, valleyLayout } from '../valley-places.js';
 
 export function poolFor(kind) {
   if (kind === 'all') return [...UPPER, ...LOWER, ...DIGITS];
@@ -163,7 +163,7 @@ export const map = {
     this.root = root;
 
     const registered = new Set(router.registered());
-    const isOpen = route => registered.has(route) && isPreviewRouteEnabled(route) && settings.isActivityEnabled(route);
+    const isOpen = route => VALLEY_DOORS.includes(route) || (registered.has(route) && isPreviewRouteEnabled(route) && settings.isActivityEnabled(route));
     const places = valleyLayout(isOpen);
     const meadow = root.querySelector('.valley-places');
     meadow.dataset.count = String(places.length);
@@ -286,6 +286,7 @@ export const map = {
       answer();
       this._leaving = true;
       this._hero?.animate?.([{ translate: '0 0' }, { translate: '0 -6%' }, { translate: '0 0' }], { duration: 380 });
+      if (spec.href) { this._timers.push(setTimeout(() => { window.location.assign(spec.href); }, reducedMotion() ? 60 : 300)); return; }
       const destination = resolvePlayDestination(route);
       const params = { ...mapEntryParams(destination.route), ...destination.params };
       this._timers.push(setTimeout(async () => {

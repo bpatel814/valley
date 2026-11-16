@@ -2,6 +2,8 @@
 // Nov 16 2026). Each place has one big thing that opens its best activity in a
 // single tap, and its other activities stand beside it as smaller pictures, also
 // one tap. No menus, no words. A parent's switches decide what stands there.
+// `piano` is not a Valley route: it is a door to the separate Birthday Piano game.
+export const VALLEY_DOORS = Object.freeze(['piano']);
 
 export const VALLEY_PLACES = Object.freeze([
   { id: 'garden', label: 'Caterpillar garden', sound: 'nibble',
@@ -11,7 +13,7 @@ export const VALLEY_PLACES = Object.freeze([
   { id: 'art', label: 'Art corner', sound: 'pop',
     routes: ['studio', 'bridge', 'picture-post', 'toy-workshop'] },
   { id: 'toys', label: 'Toy glade', sound: 'chime',
-    routes: ['discovery', 'town-tracks', 'build-lab', 'music-band'] },
+    routes: ['discovery', 'piano', 'town-tracks', 'build-lab', 'music-band'] },
   { id: 'family', label: 'Family treehouse', sound: 'chime',
     routes: ['treehouse', 'grandma', 'play-stage', 'picnic'] },
 ].map(place => Object.freeze({ ...place, routes: Object.freeze(place.routes) })));
@@ -39,6 +41,8 @@ export const VALLEY_THINGS = Object.freeze({
   'toy-workshop': { art: 'assets/art/final/toy-workshop/wheels-v1.png', label: 'Toy workshop' },
   'build-lab': { art: 'assets/art/final/characters/discovery_idle.webp', label: 'Build a bridge' },
   'music-band': { art: 'assets/art/final/music-band/drum-v1.png', label: 'Music' },
+  // A door out of the Valley to the Birthday Piano (work order item 9, Nov 16 2026).
+  piano: { art: 'assets/art/final/doors/birthday-piano-door.webp', label: 'Play the Birthday Piano', href: 'https://bpatel814.github.io/piano/' },
   picnic: { art: 'assets/art/final/garden-cafe/table-v1.png', label: 'Café and picnic' },
 });
 

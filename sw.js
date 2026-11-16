@@ -11,7 +11,7 @@
  * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "b602f39ea753";
+const CACHE_VERSION = "79835673bfac";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -130,6 +130,7 @@ const PRECACHE = [
   "./assets/art/final/characters/veer_idle.webp",
   "./assets/art/final/characters/veer_sleepy.png",
   "./assets/art/final/characters/veer_sleepy.webp",
+  "./assets/art/final/doors/birthday-piano-door.webp",
   "./assets/art/final/garden-cafe/background-v1.png",
   "./assets/art/final/garden-cafe/chair-v1.png",
   "./assets/art/final/garden-cafe/table-v1.png",
@@ -1457,6 +1458,7 @@ const PRECACHE_REVISIONS = {
   "./assets/art/final/characters/veer_idle.webp": "7ccad9c8f6dd",
   "./assets/art/final/characters/veer_sleepy.png": "7c1c481b90fe",
   "./assets/art/final/characters/veer_sleepy.webp": "a8380cc2b41f",
+  "./assets/art/final/doors/birthday-piano-door.webp": "42ac2b64b366",
   "./assets/art/final/garden-cafe/background-v1.png": "e9ef69443ed8",
   "./assets/art/final/garden-cafe/chair-v1.png": "21144ca98573",
   "./assets/art/final/garden-cafe/table-v1.png": "797c0dd2d409",
@@ -2518,8 +2520,8 @@ const PRECACHE_REVISIONS = {
   "./css/valley-home.css": "73a1ca335a3e",
   "./css/valley.css": "ef35f13d0aaf",
   "./css/water-garden.css": "d3fe8dce39f5",
-  "./demo.html": "4ccc9817c54f",
-  "./index.html": "688e2d744595",
+  "./demo.html": "a985b12502ce",
+  "./index.html": "51418442c92b",
   "./js/app.js": "c3bd446da443",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
@@ -2612,7 +2614,7 @@ const PRECACHE_REVISIONS = {
   "./js/state/rolling-run.js": "f571f86292c7",
   "./js/state/saved-world.js": "77d3fb96fbf4",
   "./js/state/session.js": "6ac8bd9618f0",
-  "./js/state/settings.js": "090df479c197",
+  "./js/state/settings.js": "87b72862c0d1",
   "./js/state/stories.js": "73ddde825030",
   "./js/state/studio.js": "4a0833480e93",
   "./js/state/town-tracks.js": "8c87372d3c92",
@@ -2647,7 +2649,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/garden.js": "059228df918a",
   "./js/world/screens/grandma.js": "f607ea38006c",
   "./js/world/screens/mama-break.js": "56944871ea03",
-  "./js/world/screens/map.js": "388bc6c0b023",
+  "./js/world/screens/map.js": "df1552bf4c42",
   "./js/world/screens/meadow.js": "4c77eb82d2c9",
   "./js/world/screens/music-band.js": "16e2ddfd2d8c",
   "./js/world/screens/picnic.js": "a07903695658",
@@ -2663,7 +2665,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/water-garden.js": "e4946cc4977d",
   "./js/world/screens/welcome.js": "f394db1e5074",
   "./js/world/show-and-tell.js": "a44fde3ac8d4",
-  "./js/world/valley-places.js": "31a13e95e633",
+  "./js/world/valley-places.js": "95b678b9be4f",
   "./js/world/welcome-entry.js": "a460adeec00f",
   "./js/world/word-friend.js": "2751be5ccc76",
   "./js/world/world-unlock-watch.js": "859dc63d0d7f",

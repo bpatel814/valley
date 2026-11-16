@@ -45,8 +45,10 @@ export const ACTIVITY_SWITCHES = [
   "animal-friends", "rolling-run", "river-run", "toy-workshop", "build-lab",
   "picnic", "music-band", "picture-post", "boo-hollow",
 ];
+// Nov 16 2026 pruning rule (Balk): Town and Water garden would need a rebuild to be
+// good, so they are off by default too; the code and saves stay for a parent's switch.
 export const ACTIVITIES_OFF_BY_DEFAULT = [
-  "rolling-run", "river-run", "toy-workshop", "build-lab",
+  "town-tracks", "water-garden", "rolling-run", "river-run", "toy-workshop", "build-lab",
   "picnic", "music-band", "picture-post", "boo-hollow",
 ];
 export function defaultActivities() {
