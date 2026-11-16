@@ -790,7 +790,7 @@ export const stories = {
       this._button("show and tell this story", SHOW_AND_TELL_ICON, "story-show-and-tell", () => this._openShowAndTell(card)),
     );
     actions.appendChild(this._button("change the ending", iconSVG("next"), "story-change-ending", () => this._changeEnding(card)));
-    if (item.extension && settings.isRegionEnabled(item.extension.route)) {
+    if (item.extension && settings.isActivityEnabled(item.extension.route)) {
       const extension = document.createElement("button");
       extension.type = "button";
       extension.className = "story-extension tap";

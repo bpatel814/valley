@@ -35,6 +35,23 @@ export const DEFAULTS = {
 export const REGIONS = [
   "garden", "meadow", "stories", "bridge", "studio", "treehouse", "grandma", "discovery",
 ];
+// Activities inside a place that a parent can switch on or off one by one.
+// Until a parent touches one of these switches nothing is stored and the curated
+// default below applies, so existing saves stay byte-equivalent (work order item 5,
+// Nov 16 2026). The ones off by default are being rebuilt as toys; each returns to
+// the default set when it passes.
+export const ACTIVITY_SWITCHES = [
+  "town-tracks", "water-garden", "play-stage",
+  "animal-friends", "rolling-run", "river-run", "toy-workshop", "build-lab",
+  "picnic", "music-band", "picture-post", "boo-hollow",
+];
+export const ACTIVITIES_OFF_BY_DEFAULT = [
+  "animal-friends", "rolling-run", "river-run", "toy-workshop", "build-lab",
+  "picnic", "music-band", "picture-post", "boo-hollow",
+];
+export function defaultActivities() {
+  return Object.fromEntries(ACTIVITY_SWITCHES.map((id) => [id, !ACTIVITIES_OFF_BY_DEFAULT.includes(id)]));
+}
 export const POOLS = ["upper", "upper+lower", "all"];
 export const LEARNING_LEVELS = ["explore", "grow", "challenge"];
 
@@ -67,6 +84,12 @@ function sanitise(s) {
   // Do not add a field to untouched v8 settings; old backups stay byte-equivalent.
   if (Object.hasOwn(out, 'halloweenOff')) out.halloweenOff = out.halloweenOff === true;
   out.playStageInviteSeen = !!out.playStageInviteSeen;
+  // Only an explicit parent choice adds this field (see ACTIVITY_SWITCHES).
+  if (Object.hasOwn(out, "activities")) {
+    const chosen = out.activities && typeof out.activities === "object" && !Array.isArray(out.activities) ? out.activities : {};
+    out.activities = Object.fromEntries(Object.entries(defaultActivities())
+      .map(([id, on]) => [id, typeof chosen[id] === "boolean" ? chosen[id] : on]));
+  }
   const volume = (value, fallback) => {
     const n = Number(value);
     return Number.isFinite(n) ? Math.max(0, Math.min(1, n)) : fallback;
@@ -112,10 +135,13 @@ export function get() { return state; }
 
 export function isLoaded() { return loaded; }
 
-/** Deep merges `regions` and `voices`; everything else is replaced. Saves immediately. */
+/** Deep merges `regions`, `voices` and `activities`; everything else is replaced. Saves immediately. */
 export async function set(patch) {
   const wasMuted = state.muted;
   const chosen = { ...(patch || {}) };
+  // The first switch a parent touches fixes the whole current set, so later
+  // changes to the curated default never flip their other choices.
+  if (chosen.activities && !state.activities) chosen.activities = { ...defaultActivities(), ...chosen.activities };
   // Choosing a duration is explicit parent opt-in; unrelated settings never enable it.
   if (Object.hasOwn(chosen, "sessionMinutes") && !Object.hasOwn(chosen, "timerEnabled")) chosen.timerEnabled = Number(chosen.sessionMinutes) > 0;
   state = sanitise(merge(state, chosen));
@@ -145,17 +171,30 @@ export function activityRegion(route) {
   return route;
 }
 
+/** The parent's per-activity choices, or the curated default if never changed. */
+export function activityChoices() {
+  return state.activities ? { ...state.activities } : defaultActivities();
+}
+
+/** A route is open when its place is on and, for switchable activities, its own switch is on. */
+export function isActivityEnabled(route) {
+  const region = activityRegion(route);
+  if (REGIONS.includes(region) && !isRegionEnabled(region)) return false;
+  return !ACTIVITY_SWITCHES.includes(route) || activityChoices()[route] !== false;
+}
+
 export function enabledActivities() {
   const routes = enabledRegions();
   if (isRegionEnabled("treehouse")) routes.push("play-stage");
   if (isRegionEnabled("treehouse")) routes.push("picnic", "picture-post", "music-band");
-  if (isRegionEnabled("discovery")) routes.push("build-lab", "water-garden", "rolling-run", "animal-friends", "river-run", "boo-hollow");
+  if (isRegionEnabled("discovery")) routes.push("town-tracks", "build-lab", "water-garden", "rolling-run", "animal-friends", "river-run", "boo-hollow");
   if (isRegionEnabled("studio")) routes.push("toy-workshop");
-  return routes;
+  return routes.filter(isActivityEnabled);
 }
 
 export const settings = {
   load, get, set, reset, isLoaded, enabledRegions, isRegionEnabled, activityRegion, enabledActivities,
+  isActivityEnabled, activityChoices, defaultActivities, ACTIVITY_SWITCHES, ACTIVITIES_OFF_BY_DEFAULT,
   normaliseSettings, DEFAULTS, REGIONS, POOLS, LEARNING_LEVELS,
 };
 export default settings;

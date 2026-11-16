@@ -227,7 +227,7 @@ async function keep() {
   finally { if (visit.valid(token)) { saving = false; paint(); } }
 }
 async function takeToyToPlace(route, region, place) {
-  if (saving || !view?.draft.assembled || !router.registered().includes(route) || !settings.isRegionEnabled(region)) return;
+  if (saving || !view?.draft.assembled || !router.registered().includes(route) || !settings.isActivityEnabled(route)) return;
   const token = visit.serial;
   cancelTransient(); saving = true; paint(); message(`Keeping this picture toy for ${place}…`);
   try {
@@ -289,14 +289,14 @@ function paintBasket() {
     }); open.setAttribute('aria-description', WORKSHOP_PARTS[item.behavior].name); open.append(toyPicture(asset.png, item.pattern, true, item.behavior)); grid.append(open);
   }); sheet.append(grid);
   const part = WORKSHOP_PARTS[snapshot.draft.behavior];
-  if (snapshot.draft.assembled && router.registered().includes(part.route) && settings.isRegionEnabled(part.region)) {
+  if (snapshot.draft.assembled && router.registered().includes(part.route) && settings.isActivityEnabled(part.route)) {
     const take = button(`Keep this exact picture toy and take it to ${part.place}`, `Take this toy to ${part.place}`, () => takeToyToPlace(part.route, part.region, part.place));
     take.classList.add('workshop-take-to-hill');
     const destination = partImage(snapshot.draft.behavior);
     if (snapshot.draft.behavior === 'rolling') destination.src = 'assets/art/final/rolling-run/ramp-v1.png';
     take.prepend(destination); sheet.append(take);
   }
-  if (snapshot.draft.assembled && router.registered().includes('music-band') && settings.isRegionEnabled('treehouse')) {
+  if (snapshot.draft.assembled && router.registered().includes('music-band') && settings.isActivityEnabled('music-band')) {
     const take = button('Keep this exact picture toy and play its pattern with the Music Band', 'Play this toy’s pattern', () => takeToyToPlace('music-band', 'treehouse', 'the band'));
     take.classList.add('workshop-take-to-hill');
     const drum = document.createElement('img'); drum.src = 'assets/art/final/music-band/drum-v1.png'; drum.alt = ''; drum.draggable = false;

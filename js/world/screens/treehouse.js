@@ -85,7 +85,7 @@ function playStageTabPicture() {
 }
 
 function playStageAvailable() {
-  return settings.isRegionEnabled("treehouse") && router.registered().includes("play-stage") &&
+  return settings.isActivityEnabled("play-stage") && router.registered().includes("play-stage") &&
     art.has("play-stage/backdrop") && art.has("play-stage/booth_front");
 }
 
@@ -369,8 +369,8 @@ export function makeDrawingPage(rows, initialPage = 0, { unavailable = false, te
     grid.dataset.count = String(visible.length);
     for (const row of visible) {
       const isPlayStage = row.kind === "play-stage" && row.key;
-      const canReopenPost = row.kind === "picture-post" && row.key && router.registered().includes("picture-post");
-      const canReopenBuild = row.kind === "build-lab" && row.key && router.registered().includes("build-lab") && settings.isRegionEnabled("discovery");
+      const canReopenPost = row.kind === "picture-post" && row.key && router.registered().includes("picture-post") && settings.isActivityEnabled("picture-post");
+      const canReopenBuild = row.kind === "build-lab" && row.key && router.registered().includes("build-lab") && settings.isActivityEnabled("build-lab");
       const canReopenStage = isPlayStage && playStageAvailable();
       const label = isPlayStage
         ? (canReopenStage ? "open this kept story" : "view full kept story")
@@ -553,9 +553,9 @@ export async function mount(el, params = {}) {
     ["family", "show my scrapbook"],
   ];
   if (playStageAvailable()) tabData.splice(3, 0, ["play-stage", "continue my current story room"]);
-  if (router.registered().includes("picnic")) tabData.splice(3, 0, ["picnic", "prepare and share our family picnic"], ["garden-cafe", "arrange and play in Our Garden Café"]);
-  if (router.registered().includes("picture-post")) tabData.splice(3, 0, ["picture-post", "make and deliver a picture message"]);
-  if (router.registered().includes("music-band")) tabData.splice(3, 0, ["music-band", "make a music pattern with Mama and Veer"]);
+  if (router.registered().includes("picnic") && settings.isActivityEnabled("picnic")) tabData.splice(3, 0, ["picnic", "prepare and share our family picnic"], ["garden-cafe", "arrange and play in Our Garden Café"]);
+  if (router.registered().includes("picture-post") && settings.isActivityEnabled("picture-post")) tabData.splice(3, 0, ["picture-post", "make and deliver a picture message"]);
+  if (router.registered().includes("music-band") && settings.isActivityEnabled("music-band")) tabData.splice(3, 0, ["music-band", "make a music pattern with Mama and Veer"]);
   const regions = (settings.get() && settings.get().regions) || {};
   if (regions.grandma !== false) tabData.push(["grandma", "visit Ba for storytime", ""]);
   for (const [kind, label] of tabData) {

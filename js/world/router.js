@@ -56,7 +56,7 @@ export async function go(id, params = {}, opts = {}) {
   const region = settings.activityRegion(id);
   const isActivity = settings.REGIONS.includes(region);
   const calmRecap = id === 'grandma' && params?.sessionEnd === true;
-  if (isActivity && !settings.isRegionEnabled(region) && !calmRecap) return false;
+  if (isActivity && !settings.isActivityEnabled(id) && !calmRecap) return false;
   const screen = screens.get(id);
   if (!screen || (entry?.id === id && !opts.force)) return false;
   const parent = root || init();

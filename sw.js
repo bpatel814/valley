@@ -11,7 +11,7 @@
  * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "c08a333acd63";
+const CACHE_VERSION = "8fa289644779";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -2510,8 +2510,8 @@ const PRECACHE_REVISIONS = {
   "./css/toy-workshop.css": "0dfa3247b909",
   "./css/valley.css": "09d4f74bd2a5",
   "./css/water-garden.css": "edcd41fefe91",
-  "./demo.html": "f2fae468f299",
-  "./index.html": "0ba90b39aaa5",
+  "./demo.html": "d0e428c6fe44",
+  "./index.html": "fa6db2363d0d",
   "./js/app.js": "c3bd446da443",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
@@ -2574,7 +2574,7 @@ const PRECACHE_REVISIONS = {
   "./js/engine/scorer.js": "d03fe84829be",
   "./js/engine/tracer.js": "1a82373ac4f9",
   "./js/engine/viewport.js": "4b130b3aff52",
-  "./js/parent/corner.js": "a2a2ac4a6f85",
+  "./js/parent/corner.js": "e456e133a3ff",
   "./js/parent/gallery.js": "1955737d133b",
   "./js/parent/gate.js": "ba8900832e82",
   "./js/parent/narration-review.js": "92f65e54ce78",
@@ -2604,7 +2604,7 @@ const PRECACHE_REVISIONS = {
   "./js/state/rolling-run.js": "f571f86292c7",
   "./js/state/saved-world.js": "77d3fb96fbf4",
   "./js/state/session.js": "6ac8bd9618f0",
-  "./js/state/settings.js": "be58bebb1a89",
+  "./js/state/settings.js": "83c5ae86216e",
   "./js/state/stories.js": "73ddde825030",
   "./js/state/studio.js": "4a0833480e93",
   "./js/state/town-tracks.js": "8c87372d3c92",
@@ -2627,7 +2627,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/picture-view.js": "60448bd37230",
   "./js/world/pip.js": "6081d01a3de4",
   "./js/world/play-invitation.js": "8c1f1bd8a634",
-  "./js/world/router.js": "8c8a6fea41fd",
+  "./js/world/router.js": "7deff8afb2fa",
   "./js/world/scene.js": "961054ae744f",
   "./js/world/scrapbook.js": "163ec81bac10",
   "./js/world/screens/animal-friends.js": "29c72c9a2ab9",
@@ -2638,7 +2638,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/garden.js": "059228df918a",
   "./js/world/screens/grandma.js": "f607ea38006c",
   "./js/world/screens/mama-break.js": "56944871ea03",
-  "./js/world/screens/map.js": "d9362082baf5",
+  "./js/world/screens/map.js": "21b30623bfb6",
   "./js/world/screens/meadow.js": "d904e05b11d1",
   "./js/world/screens/music-band.js": "16e2ddfd2d8c",
   "./js/world/screens/picnic.js": "a07903695658",
@@ -2646,11 +2646,11 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/play-stage.js": "862904c8886d",
   "./js/world/screens/river-run.js": "46d8e28964f0",
   "./js/world/screens/rolling-run.js": "afcabda61551",
-  "./js/world/screens/stories.js": "9967a1c4a04e",
-  "./js/world/screens/studio.js": "bf9aa1587875",
+  "./js/world/screens/stories.js": "2c1b511220cf",
+  "./js/world/screens/studio.js": "740bd68a708d",
   "./js/world/screens/town-tracks.js": "d754d1e50ceb",
-  "./js/world/screens/toy-workshop.js": "30460c070d01",
-  "./js/world/screens/treehouse.js": "96f863e11d28",
+  "./js/world/screens/toy-workshop.js": "0bbdbdb8adb1",
+  "./js/world/screens/treehouse.js": "24bd174e0335",
   "./js/world/screens/water-garden.js": "13790e0670b2",
   "./js/world/screens/welcome.js": "f394db1e5074",
   "./js/world/show-and-tell.js": "a44fde3ac8d4",

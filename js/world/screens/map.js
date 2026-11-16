@@ -72,7 +72,8 @@ export const MAP_ROUTE_PICTURES = Object.freeze({
   "play-stage": "assets/art/final/play-stage/play_stage_backdrop.webp"
 });
 export function mapChoices(regions, registered) {
-  const groups = availablePlayGroups(registered, regions, settings.activityRegion, isPreviewRouteEnabled);
+  const groups = availablePlayGroups(registered, regions, settings.activityRegion,
+    route => isPreviewRouteEnabled(route) && settings.isActivityEnabled(route));
   return REGIONS.flatMap(region => {
     const group = groups.find(item => item.id === region.id);
     return group ? [{...region, routes:group.routes, route:group.routes[0]}] : [];

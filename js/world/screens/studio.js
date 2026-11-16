@@ -740,11 +740,12 @@ export const studio = {
       more.querySelector('.studio-button-caption').textContent = extras.hidden ? 'More' : 'Less';
     });
     more.setAttribute('aria-expanded', 'false');
-    actions.append(keep, this._workshopButton(png, saved.key), fresh, more);
+    actions.append(...[keep, this._workshopButton(png, saved.key), fresh, more].filter(Boolean));
     overlay.append(extras);
   },
 
   _workshopButton(png = "", sourceKey = "") {
+    if (!settings.isActivityEnabled("toy-workshop")) return null;
     const button = this._button("pictures", "make a picture toy in the Toy Workshop", "studio-dialog-toy", () => {
       if (!this._alive || this._loading || this._saving || this.pen?.drawing) return;
       this._closeOverlay();
@@ -851,7 +852,7 @@ export const studio = {
     }
     const actions = overlay.querySelector(".studio-dialog-actions");
     const close = this._button("back", "back to my paper", "studio-dialog-keep", () => this._closeOverlay());
-    actions.append(close, this._workshopButton());
+    actions.append(...[close, this._workshopButton()].filter(Boolean));
     if (rows.length > 4) {
       const next = this._button("next", "more pictures", "studio-dialog-next", () => {
         const pages = Math.ceil(rows.length / 4);

@@ -827,6 +827,23 @@ function playSection() {
     regionRows.push({ key, row });
     return row;
   });
+  // One switch per activity inside a place (work order item 5, Nov 16 2026).
+  const activityChoices = settings.activityChoices();
+  const activities = [
+    ["town-tracks", "Town (trains and roads)"],
+    ["water-garden", "Water garden"],
+    ["play-stage", "Play stage"],
+    ["animal-friends", "Cat friend"],
+    ["rolling-run", "Rolling hill"],
+    ["river-run", "River"],
+    ["toy-workshop", "Toy workshop"],
+    ["build-lab", "Build a bridge"],
+    ["picnic", "Café and picnic"],
+    ["music-band", "Music"],
+    ["picture-post", "Picture mail"],
+    ["boo-hollow", "Ghost friends"],
+  ].map(([key, label]) => toggle(label, activityChoices[key] !== false,
+    (v) => settings.set({ activities: { [key]: v } })));
 
   return card("Play", [
     h("h3", { class: "rv-h3", text: "Saved worlds" }),
@@ -854,6 +871,9 @@ function playSection() {
     note("Explore gives the most modeling. Grow fades help gradually. Challenge offers less help, while the guide still stays warm and available."),
     h("h3", { class: "rv-h3", text: "Places to visit" }),
   ].concat(regions).concat([
+    h("h3", { class: "rv-h3", text: "Activities" }),
+    note("Some activities start switched off while they are rebuilt as simpler toys. Switch any of them back on here; an activity also needs its place switched on above."),
+  ]).concat(activities).concat([
     h("h3", { class: "rv-h3", text: "Letters to practise" }),
     segmented([
       { value: "upper", label: "capitals" },
