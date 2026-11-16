@@ -1,0 +1,107 @@
+/* Home is the valley itself (work order item 6, Nov 16 2026). Five places stand
+   on the meadow; each big thing opens its best activity in one tap and its small
+   neighbours open the others. Everything a child touches is picture art, at
+   least 64 px, with room between. Sizes come from two variables so the same
+   scene fits a phone on its side (844x390, 800x340) and a tablet. */
+.valley-home {
+  --place-w: min(18.4vw, 41vh);
+  --thing-s: max(64px, min(calc(var(--place-w) / 2 - 5px), 21vh));
+  --ground: max(2vh, 8px);
+}
+.valley-home .valley-places {
+  position: absolute; z-index: 2;
+  left: max(6px, env(safe-area-inset-left)); right: max(6px, env(safe-area-inset-right));
+  bottom: var(--ground); top: 0;
+  display: flex; align-items: flex-end; justify-content: space-evenly;
+  pointer-events: none;
+}
+.valley-home .valley-place {
+  position: relative; flex: 0 0 var(--place-w); width: var(--place-w);
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+}
+.valley-home .valley-extras {
+  display: flex; flex-wrap: wrap-reverse; justify-content: center; align-items: flex-end;
+  gap: 8px; width: max(calc(var(--place-w) + 16px), calc(2 * var(--thing-s) + 8px)); margin-bottom: 2px;
+}
+.valley-home .valley-thing {
+  position: relative; display: block; padding: 0; margin: 0; border: 0; background: transparent;
+  box-shadow: none; pointer-events: auto; cursor: pointer;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none;
+}
+.valley-home .valley-thing--big { width: var(--place-w); height: var(--place-w); }
+.valley-home .valley-thing--small { width: var(--thing-s); height: var(--thing-s); }
+.valley-home .valley-thing-body {
+  position: absolute; inset: 0; display: block; transform-origin: 50% 100%;
+}
+.valley-home .valley-thing-body > img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+  filter: drop-shadow(0 5px 3px rgba(80, 98, 62, .28)); pointer-events: none;
+}
+/* A soft patch of shade on the grass under each big thing grounds it in the scene. */
+.valley-home .valley-thing--big::after {
+  content: ""; position: absolute; z-index: -1; left: 14%; right: 14%; bottom: -3%; height: 9%;
+  border-radius: 50%; background: radial-gradient(closest-side, rgba(73, 112, 61, .30), rgba(73, 112, 61, 0));
+}
+.valley-home .valley-thing.is-down .valley-thing-body { transform: scale(1.06, .93); transition: transform 80ms ease-out; }
+.valley-home .valley-thing:focus-visible { outline: 4px solid #3674b1; outline-offset: 2px; border-radius: 24px; }
+.valley-home .valley-thing .char { position: absolute; inset: 0; width: 100%; height: 100%; --char-size: var(--place-w); }
+.valley-home .valley-thing-fallback { position: absolute; inset: 18%; }
+.valley-home .valley-thing-fallback > svg { width: 100%; height: 100%; }
+/* Her latest picture hangs on the easel's paper (places/art.webp: paper at 38-66% x, 24-50% y). */
+.valley-home .valley-easel-canvas {
+  position: absolute; left: 39.5%; top: 25%; width: 25.5%; height: 23.5%; overflow: hidden; border-radius: 2px;
+}
+.valley-home .valley-easel-canvas > img { width: 100%; height: 100%; object-fit: contain; background: #fffdf7; }
+
+/* Rayna stands at the top of the valley, watching; she is decoration, not a target. */
+.valley-home .valley-home-hero {
+  z-index: 1; top: 2%; left: 50%; height: min(30%, 34vh); transform: translateX(-50%);
+}
+.valley-home .valley-grown { z-index: 1; }
+
+/* Little screens: the big things share the width; the small ones keep 64 px. */
+@media (orientation: landscape) and (max-height: 440px) {
+  .valley-home { --place-w: min(18.2vw, 39vh); --thing-s: max(64px, min(calc(var(--place-w) / 2 - 5px), 20vh)); }
+  .valley-home .valley-home-hero { height: 28%; top: 3%; }
+}
+/* When a parent switches many activities on, three small things share a place. */
+.valley-home .valley-places[data-extras="3"] .valley-place { --place-w: min(17vw, 36vh); }
+@media (orientation: landscape) and (max-height: 440px) {
+  .valley-home .valley-places[data-extras="3"] .valley-place { --place-w: min(17vw, 28vh); }
+  .valley-home .valley-places[data-extras="3"] ~ .valley-home-hero,
+  .valley-home:has(.valley-places[data-extras="3"]) .valley-home-hero { display: none; }
+}
+/* Portrait comes last: places wrap into two rows. */
+@media (orientation: portrait) {
+  .valley-home { --place-w: min(30vw, 21vh); --thing-s: max(64px, min(calc(var(--place-w) / 2 - 5px), 11vh)); }
+  .valley-home .valley-places { flex-wrap: wrap; align-content: flex-end; row-gap: 2vh; top: 24%; }
+  .valley-home .valley-home-hero { height: 18%; top: 4%; }
+}
+
+/* Small things stand on the hill behind their big friend: a little shade grounds them. */
+.valley-home .valley-thing--small::after {
+  content: ""; position: absolute; z-index: -1; left: 18%; right: 18%; bottom: -4%; height: 10%;
+  border-radius: 50%; background: radial-gradient(closest-side, rgba(73, 112, 61, .26), rgba(73, 112, 61, 0));
+}
+
+/* Tablets and other tall screens: a valley with depth. Three places stand near
+   (garden, art corner, treehouse) and two farther up the hill (meadow, toys),
+   so the whole screen is valley instead of a strip of things under a big sky. */
+@media (orientation: landscape) and (max-aspect-ratio: 7/4) {
+  .valley-home { --place-w: min(24vw, 27vh); --thing-s: max(64px, min(calc(var(--place-w) / 2 - 5px), 15vh)); }
+  .valley-home .valley-places[data-count="5"] {
+    display: grid; top: 16%; bottom: var(--ground);
+    grid-template-columns: repeat(6, 1fr); grid-template-rows: 1fr 1fr; justify-items: center; align-items: end;
+  }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(1) { grid-area: 2 / 1 / 3 / 3; }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(2) { grid-area: 1 / 2 / 2 / 4; --place-w: min(21vw, 24vh); }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(3) { grid-area: 2 / 3 / 3 / 5; }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(4) { grid-area: 1 / 4 / 2 / 6; --place-w: min(21vw, 24vh); }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(5) { grid-area: 2 / 5 / 3 / 7; }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(2n) { --thing-s: max(64px, min(calc(var(--place-w) / 2 - 5px), 13vh)); }
+  /* Small things stand beside their big friend on the same ground, not above it. */
+  .valley-home .valley-places[data-count="5"] .valley-place { flex-direction: row; align-items: flex-end; width: auto; flex-basis: auto; gap: 6px; }
+  .valley-home .valley-places[data-count="5"] .valley-extras { order: 2; flex-direction: column-reverse; flex-wrap: nowrap; width: auto; margin: 0; gap: 6px; }
+  .valley-home .valley-places[data-count="5"] .valley-place:nth-child(1) .valley-extras { order: 0; }
+  .valley-home .valley-home-hero { height: min(16%, 140px); top: 34%; left: 49%; }
+}

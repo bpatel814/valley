@@ -11,7 +11,7 @@
  * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "8fa289644779";
+const CACHE_VERSION = "bed8c7e47602";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -1186,6 +1186,7 @@ const PRECACHE = [
   "./css/title-cast.css",
   "./css/town-tracks.css",
   "./css/toy-workshop.css",
+  "./css/valley-home.css",
   "./css/valley.css",
   "./css/water-garden.css",
   "./demo.html",
@@ -1332,6 +1333,7 @@ const PRECACHE = [
   "./js/world/screens/water-garden.js",
   "./js/world/screens/welcome.js",
   "./js/world/show-and-tell.js",
+  "./js/world/valley-places.js",
   "./js/world/welcome-entry.js",
   "./js/world/word-friend.js",
   "./js/world/world-unlock-watch.js",
@@ -2508,10 +2510,11 @@ const PRECACHE_REVISIONS = {
   "./css/title-cast.css": "386b2b853829",
   "./css/town-tracks.css": "03ff92e0e904",
   "./css/toy-workshop.css": "0dfa3247b909",
+  "./css/valley-home.css": "73a1ca335a3e",
   "./css/valley.css": "09d4f74bd2a5",
   "./css/water-garden.css": "edcd41fefe91",
-  "./demo.html": "d0e428c6fe44",
-  "./index.html": "fa6db2363d0d",
+  "./demo.html": "643972c71bf3",
+  "./index.html": "d8ceda2abe32",
   "./js/app.js": "c3bd446da443",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
@@ -2638,7 +2641,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/garden.js": "059228df918a",
   "./js/world/screens/grandma.js": "f607ea38006c",
   "./js/world/screens/mama-break.js": "56944871ea03",
-  "./js/world/screens/map.js": "21b30623bfb6",
+  "./js/world/screens/map.js": "388bc6c0b023",
   "./js/world/screens/meadow.js": "d904e05b11d1",
   "./js/world/screens/music-band.js": "16e2ddfd2d8c",
   "./js/world/screens/picnic.js": "a07903695658",
@@ -2654,6 +2657,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/water-garden.js": "13790e0670b2",
   "./js/world/screens/welcome.js": "f394db1e5074",
   "./js/world/show-and-tell.js": "a44fde3ac8d4",
+  "./js/world/valley-places.js": "31a13e95e633",
   "./js/world/welcome-entry.js": "a460adeec00f",
   "./js/world/word-friend.js": "2751be5ccc76",
   "./js/world/world-unlock-watch.js": "859dc63d0d7f",

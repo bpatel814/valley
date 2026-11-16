@@ -1,4 +1,4 @@
-// The valley is a place to choose a friend, see what grew, and return to a creation.
+// Home: the valley itself. Five places, one tap to play, no words (see valley-places.js).
 import { Character, glyphSVG } from '../characters.js';
 import router, { tapify, muteButton, iconSVG } from '../router.js';
 import { addScenery, picture } from '../scene.js';
@@ -12,10 +12,11 @@ import pip from '../pip.js';
 import { isPreviewRouteEnabled } from '../../data/preview-access.js';
 import { availablePlayGroups, resolvePlayDestination } from '../../data/play-catalog.js';
 import { installIdleHelp } from '../idle-help.js';
-import { installControlCue } from '../control-cue.js';
 import speech from '../../audio/speech.js';
 import { valleyProfile } from '../../data/valley-profiles.js';
-import { halloweenActive, seasonHero, seasonLogo, seasonLogoFallback } from '../../data/season.js';
+import { halloweenActive, seasonHero } from '../../data/season.js';
+import db from '../../state/db.js';
+import { VALLEY_THINGS, valleyLayout } from '../valley-places.js';
 
 export function poolFor(kind) {
   if (kind === 'all') return [...UPPER, ...LOWER, ...DIGITS];
@@ -88,7 +89,7 @@ export function mapEntryParams(route) {
 }
 
 export function mapIdleTarget(screen) {
-  return screen._groupPanel?.querySelector('.map-group-choice') || screen._due || null;
+  return screen._due || null;
 }
 
 function cue(kind) {
@@ -105,92 +106,91 @@ function flowerSVG(lit = 3, variant = 0) {
   return `<svg viewBox="0 0 100 118" aria-hidden="true"><path d="M50 61v50M50 99q-24 2-27-18 25-4 27 18m0-3q23-1 26-21-24 0-26 21" fill="#9ad7ad" stroke="#627754" stroke-width="4" stroke-linejoin="round"/>${[0, 120, 240].map((angle, i) => `<ellipse cx="50" cy="30" rx="19" ry="26" transform="rotate(${angle} 50 48)" fill="${i < lit ? color : '#f6edea'}" stroke="${i < lit ? '#86645e' : '#c5b7bd'}" stroke-width="3"/>`).join('')}<circle cx="50" cy="49" r="16" fill="#ffe29a" stroke="#86645e" stroke-width="3"/><circle cx="45" cy="47" r="2" fill="#5c4941"/><circle cx="56" cy="47" r="2" fill="#5c4941"/><path d="M45 54q5 5 10 0" fill="none" stroke="#5c4941" stroke-width="2.5" stroke-linecap="round"/></svg>`;
 }
 
+// The valley itself is home (work order item 6, Nov 16 2026): five places stand
+// in the meadow; one tap on anything there goes straight into play. The old
+// two-level word menus are gone. Places and things come from valley-places.js.
+const WIGGLE_MS = 4200;
+
+function reducedMotion() {
+  return settings.get().reducedMotion || document.documentElement.classList.contains('reduced-motion')
+    || window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+}
+
+async function latestCreation() {
+  // Something she made last time hangs on the easel. Reads only; never writes.
+  try {
+    const rows = await db.entries('gallery');
+    let best = null;
+    for (const [, row] of rows || []) {
+      const png = row?.png;
+      const usable = (typeof png === 'string' && png.startsWith('data:image/')) || (typeof Blob !== 'undefined' && png instanceof Blob);
+      if (usable && Number.isFinite(row.at) && (!best || row.at > best.at)) best = row;
+    }
+    return best;
+  } catch (_) { return null; }
+}
+
 export const map = {
   id: 'map',
   async mount(host) {
     this._alive = true;
+    this._leaving = false;
     const profile = valleyProfile(settings.get().valleyProfile);
     document.title = profile.title;
     host.setAttribute('aria-label', profile.title);
     this._chars = [];
     this._offs = [];
     this._timers = [];
+    this._urls = [];
     const root = document.createElement('div');
-    root.className = 'map valley-map valley-map--places valley-map--clear';
-    const scenery = addScenery(root, 'map');
-    const meadow = (halloweenActive(settings.get()) && picture('halloween/boo-hollow-background-v1', { className: 'scene-layer' })) || picture('bg/stories/day', { className: 'scene-layer' });
-    if (meadow) scenery.replaceChildren(meadow);
-    root.insertAdjacentHTML('beforeend', '<div class="map-trails" aria-hidden="true"><svg class="map-trail map-trail--wide" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M17 43C28 28 40 55 50 43S75 31 83 43S80 74 67 91S42 77 33 91"/></svg><svg class="map-trail map-trail--tall" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M24 27C38 20 65 22 76 27S70 46 76 59S34 49 24 59S28 89 50 94"/></svg><svg class="map-trail map-trail--short" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M10 83Q20 68 30 83T50 83T70 83T90 83"/></svg></div>');
-    root.insertAdjacentHTML('beforeend', `<div class="valley-title" aria-label="${profile.title}"><img src="${seasonLogo(profile, settings.get())}" data-fallback="${seasonLogoFallback(profile, settings.get())}" alt="${profile.title}" draggable="false"/><span class="title-fallback" aria-hidden="true">${profile.possessive}<span>Valley</span></span></div><div class="map-regions"></div><div class="valley-grown" aria-hidden="true"></div>`);
-    const logo = root.querySelector('.valley-title img');
-    logo.addEventListener('load', () => logo.parentElement.classList.add('has-logo'));
-    logo.addEventListener('error', () => {
-      const fallback = logo.dataset.fallback;
-      if (fallback) { delete logo.dataset.fallback; logo.src = fallback; }
-      else logo.remove();
-    });
-    if (logo.complete && logo.naturalWidth) logo.parentElement.classList.add('has-logo');
+    root.className = 'map valley-map valley-home';
+    // Plain hills behind the places: the places are the scene, the backdrop stays quiet.
+    const scenery = addScenery(root, 'map', { foreground: false });
+    const backdrop = (halloweenActive(settings.get()) && picture('halloween/boo-hollow-background-v1', { className: 'scene-layer' }))
+      || picture('bg/stories/day', { className: 'scene-layer' });
+    if (backdrop && scenery) scenery.replaceChildren(backdrop);
     const heroLook = seasonHero(profile, settings.get());
     const child = picture(heroLook.art, { alt: heroLook.alt }) || picture(profile.heroArt, { alt: profile.heroAlt });
     if (child) {
       const hero = document.createElement('div');
-      hero.className = `title-${profile.id} valley-${profile.id}`;
+      hero.className = `title-${profile.id} valley-${profile.id} valley-home-hero`;
       hero.classList.toggle('title-costume', heroLook.costume && child.alt === heroLook.alt);
       hero.append(child); root.append(hero);
+      this._hero = hero;
     }
+    root.insertAdjacentHTML('beforeend', '<div class="valley-grown" aria-hidden="true"></div><div class="valley-places"></div>');
     host.append(root);
     this.root = root;
-    // Saved creations remain in Our pictures; the start screen has one target per destination.
-    const state = progress.get();
-    const regions = settings.get().regions || {};
+
     const registered = new Set(router.registered());
-    const choices = mapChoices(regions, registered, halloweenActive(settings.get()));
-    const playable = choices.filter(region => isPreviewRouteEnabled(region.route));
-    const suggested = playable[(state.journey?.plays || 0) % Math.max(1, playable.length)];
-    const row = root.querySelector('.map-regions');
-    row.dataset.count = String(choices.length);
-    root.querySelector('.map-trails').hidden = choices.length !== 5;
-    row.style.setProperty('--region-count', choices.length);
-    for (const region of choices) {
-      const paused = !isPreviewRouteEnabled(region.route);
-      const tile = document.createElement('button');
-      tile.className = `region region--${region.id} tap`;
-      tile.classList.toggle('preview-disabled', paused);
-      tile.dataset.region = region.route;
-      tile.dataset.place = region.id;
-      tile.dataset.group = region.id;
-      const button = tile;
-      button.type = 'button';
-      button.disabled = paused;
-      button.setAttribute('aria-label', region.label);
-      button.innerHTML = '<span class="region-plinth"></span><span class="region-friend"></span><span class="region-caption" aria-hidden="true"><span class="activity-symbol"></span><span class="region-words"><span class="region-name"></span><span class="region-action"></span></span></span>';
-      const place = region.place && picture(region.place, { className: 'region-place' });
-      if (place) button.querySelector('.region-friend').append(place);
-      else {
-        const character = new Character(button.querySelector('.region-friend'), {
-          name: region.art, art: true, follow: true,
-          letter: region.id === 'garden' && settings.get().learningLevel !== 'explore' ? 'R' : '',
-          stripes: state.unicorn?.stripes || 0,
-        });
-        this._chars.push(character);
-      }
-      button.querySelector('.activity-symbol').innerHTML = cue(region.cue);
-      button.querySelector('.region-name').textContent = region.title;
-      button.querySelector('.region-action').textContent = region.action;
-      installControlCue(button, {phraseKey:MAP_GROUP_VOICES[region.id] || '', isActive: () => this._alive && !this._groupPanel && !router.isMoving()});
-      tapify(button, () => {
-        if (!this._alive || router.isMoving()) return;
-        sfx.play('tap');
-        this.openGroup(region, button);
-      });
-      row.append(tile);
-      if (region === suggested) { tile.classList.add('is-suggested'); this._due = tile; }
-    }
+    const isOpen = route => registered.has(route) && isPreviewRouteEnabled(route) && settings.isActivityEnabled(route);
+    const places = valleyLayout(isOpen);
+    const meadow = root.querySelector('.valley-places');
+    meadow.dataset.count = String(places.length);
+    meadow.dataset.extras = String(Math.max(0, ...places.map(place => place.extras.length)));
+    this._bigs = [];
+    places.forEach((place, index) => {
+      const spot = document.createElement('div');
+      spot.className = `valley-place valley-place--${place.id}`;
+      spot.style.setProperty('--i', index);
+      spot.dataset.place = place.id;
+      const extras = document.createElement('div');
+      extras.className = 'valley-extras';
+      for (const route of place.extras) extras.append(this.thing(route, place, false));
+      const big = this.thing(place.main, place, true);
+      spot.append(extras, big);
+      meadow.append(spot);
+      this._bigs.push(big);
+    });
+    const journey = progress.get().journey || {};
+    const suggested = this._bigs[(journey.plays || 0) % Math.max(1, this._bigs.length)] || null;
+    if (suggested) { suggested.classList.add('is-suggested'); this._due = suggested; }
+
     this._mute = muteButton();
     root.append(this._mute);
     const paintJourney = () => {
-      const journey = progress.get().journey || {};
-      root.querySelector('.valley-grown').innerHTML = Array.from({ length: Math.min(10, journey.flowers || 0) }, (_, i) => `<span class="grown-flower" style="--flower-i:${i};--flower-tilt:${(i % 3 - 1) * 7}deg">${flowerSVG(3, i)}</span>`).join('');
+      const grown = progress.get().journey || {};
+      root.querySelector('.valley-grown').innerHTML = Array.from({ length: Math.min(10, grown.flowers || 0) }, (_, i) => `<span class="grown-flower" style="--flower-i:${i};--flower-tilt:${(i % 3 - 1) * 7}deg">${flowerSVG(3, i)}</span>`).join('');
     };
     paintJourney();
     this._offs.push(bus.on('progress:changed', paintJourney));
@@ -199,16 +199,37 @@ export const map = {
       const target = mapIdleTarget(this);
       if (this._alive && target && !pip.isOnboarding()) pip.rest(target, { dx: .32, dy: -.4 });
     }, 350));
+    // The places breathe: one gentle sway at a time, never all at once.
+    let last = -1;
+    this._wiggle = setInterval(() => {
+      if (!this._alive || this._leaving || router.isMoving() || document.hidden || reducedMotion() || !this._bigs.length) return;
+      let pick = Math.floor(Math.random() * this._bigs.length);
+      if (pick === last && this._bigs.length > 1) pick = (pick + 1) % this._bigs.length;
+      last = pick;
+      this._bigs[pick].querySelector('.valley-thing-body')?.animate?.([
+        { transform: 'rotate(0deg)' }, { transform: 'rotate(-2.5deg)' }, { transform: 'rotate(2deg)' }, { transform: 'rotate(0deg)' },
+      ], { duration: 1100, easing: 'ease-in-out' });
+    }, WIGGLE_MS);
+    // Her latest creation on the easel, after the scene is already up.
+    latestCreation().then(row => {
+      const canvas = this.root?.querySelector('.valley-easel-canvas');
+      if (!row || !canvas || !this._alive) return;
+      const img = document.createElement('img');
+      img.alt = ''; img.draggable = false;
+      if (typeof row.png === 'string') img.src = row.png;
+      else { const url = URL.createObjectURL(row.png); this._urls.push(url); img.src = url; }
+      img.addEventListener('error', () => img.remove());
+      canvas.append(img); canvas.classList.add('has-picture');
+    });
     this._offs.push(bus.on('settings:changed', () => { if (settings.get().reducedMotion) { this._idleMotion?.cancel?.(); this._idleMotion = null; } }));
     this._idleHelp = installIdleHelp(root, {
       active: () => this._alive && router.current() === 'map' && !router.isMoving() && !session.isBreakLocked() && !pip.isOnboarding() && !speech.isSpeaking() && !!mapIdleTarget(this),
       demonstrate: () => {
         const target = mapIdleTarget(this); if (!target) return null; target.classList.add('is-control-cued');
-        const reduced = settings.get().reducedMotion || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const motion = !reduced && target.animate?.([{translate:'0 0'},{translate:'0 -3px'},{translate:'0 0'}],{duration:1200,iterations:1,easing:'ease-in-out'});
-        this._idleMotion = motion || null; motion?.finished?.catch?.(()=>{});
+        const motion = !reducedMotion() && target.querySelector('.valley-thing-body')?.animate?.([{ translate: '0 0' }, { translate: '0 -6%' }, { translate: '0 0' }], { duration: 1200, iterations: 1, easing: 'ease-in-out' });
+        this._idleMotion = motion || null; motion?.finished?.catch?.(() => {});
         let voiceOwned = !settings.get().muted && speech.isUnlocked();
-        if (voiceOwned) Promise.resolve(speech.say(this._groupPanel ? 'discovery_welcome' : 'ui_map_invite')).then(() => { voiceOwned = false; }, () => { voiceOwned = false; });
+        if (voiceOwned) Promise.resolve(speech.say('ui_map_invite')).then(() => { voiceOwned = false; }, () => { voiceOwned = false; });
         let visualDone = false;
         const clearVisual = () => { if (visualDone) return; visualDone = true; motion?.cancel?.(); if (this._idleMotion === motion) this._idleMotion = null; target.classList.remove('is-control-cued'); };
         const visualTimer = setTimeout(clearVisual, 2400);
@@ -216,70 +237,78 @@ export const map = {
       },
     });
   },
-  openGroup(group, returnFocus) {
-    if (!this._alive || this._groupPanel) return;
-    const row = this.root.querySelector('.map-regions'); row.inert = true;
-    const panel = document.createElement('section'); panel.className = 'map-group-panel';
-    panel.setAttribute('role','region'); panel.setAttribute('aria-label',group.label);
-    const title=document.createElement('h1'); title.className='map-group-title'; title.textContent=group.title;
-    const back=document.createElement('button'); back.type='button'; back.className='map-group-back tap';
-    back.dataset.control='home'; back.setAttribute('aria-label','Back to the valley choices'); back.innerHTML=iconSVG('home')+'<span>Home</span>';
-    const options=document.createElement('div'); options.className='map-group-options';
-    options.dataset.count=String(group.routes.length);
-    const close=()=>{
-      if (this._groupPanel!==panel) return;
-      panel.remove(); row.inert=false; this._groupPanel=null; document.documentElement.classList.remove('map-chooser-open'); returnFocus?.focus();
-    };
-    tapify(back,close);
-    for (const route of group.routes) {
-      const [name, action, symbol] = ROUTE_LABELS[route];
-      const button=document.createElement('button'); button.type='button'; button.className='map-group-choice tap';
-      button.dataset.destination=route; button.setAttribute('aria-label',name+': '+action);
-      const picture=document.createElement('span'); picture.className='map-group-picture';
-      const fallback=document.createElement('span'); fallback.className='map-group-fallback'; fallback.innerHTML=cue(symbol); fallback.hidden=true;
-      const image=document.createElement('img'); image.src=MAP_ROUTE_PICTURES[route]; image.alt=''; image.draggable=false;
-      image.addEventListener('error',()=>{ image.hidden=true; fallback.hidden=false; });
-      picture.append(image,fallback);
-      const words=document.createElement('span'); words.className='map-group-words';
-      const nameEl=document.createElement('strong'); nameEl.textContent=name;
-      const actionEl=document.createElement('span'); actionEl.textContent=action; words.append(nameEl,actionEl);
-      button.append(picture,words);
-      const phraseKey = MAP_ROUTE_VOICES[route] || '';
-      installControlCue(button,{phraseKey,isActive:()=>this._alive && this._groupPanel===panel && !router.isMoving()});
-      tapify(button,()=>{
-        if (!this._alive || this._groupPanel!==panel || router.isMoving()) return;
-        const destination=resolvePlayDestination(route);
-        const params={...mapEntryParams(destination.route),...destination.params};
-        sfx.play('tap'); void router.go(destination.route,params,{dir:'left'});
+  /** One thing standing in the valley: a friend or a picture she can touch. */
+  thing(route, place, big) {
+    const spec = VALLEY_THINGS[route] || { art: MAP_ROUTE_PICTURES[route] || '', label: ROUTE_LABELS[route]?.[0] || route };
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `valley-thing valley-thing--${big ? 'big' : 'small'} tap`;
+    button.dataset.destination = route;
+    button.dataset.region = route;
+    button.setAttribute('aria-label', spec.label);
+    const body = document.createElement('span');
+    body.className = 'valley-thing-body';
+    let character = null;
+    if (spec.friend) {
+      const state = progress.get();
+      character = new Character(body, {
+        name: spec.friend, art: true, follow: true,
+        letter: spec.friend === 'caterpillar' && settings.get().learningLevel !== 'explore' ? 'R' : '',
+        stripes: state.unicorn?.stripes || 0,
       });
-      options.append(button);
+      this._chars.push(character);
+    } else {
+      const img = document.createElement('img');
+      img.src = spec.art; img.alt = ''; img.draggable = false;
+      img.addEventListener('error', () => { img.hidden = true; body.insertAdjacentHTML('beforeend', `<span class="valley-thing-fallback">${cue(ROUTE_LABELS[route]?.[2] || 'shapes')}</span>`); });
+      body.append(img);
+      for (const layer of spec.layers || []) { const extra = document.createElement('img'); extra.src = layer; extra.alt = ''; extra.draggable = false; body.append(extra); }
+      if (spec.easel && big) { const canvas = document.createElement('span'); canvas.className = 'valley-easel-canvas'; body.append(canvas); }
     }
-    const first=options.children[0];
-    if (first) {
-      first.classList.add('is-suggested');
-      const hand=document.createElement('span'); hand.className='map-group-invite'; hand.setAttribute('aria-hidden','true');
-      hand.innerHTML='<svg viewBox="0 0 80 80"><path d="M27 43V20Q27 10 35 13Q39 14 39 21V32Q43 25 49 30Q57 27 60 35Q69 34 69 43L62 65Q45 77 29 65L15 49Q11 43 16 39Q20 37 27 43Z" fill="#ffe1bd" stroke="#805f52" stroke-width="4" stroke-linejoin="round"/></svg>';
-      first.append(hand);
-    }
-    panel.append(back,title,options); this.root.append(panel); this._groupPanel=panel; this._groupClose=close;
-    // Home owns the top-left corner of a chooser; the grown-up gear steps aside until
-    // the chooser closes (it stays on the home screen and the title screen).
-    document.documentElement.classList.add('map-chooser-open');
-    back.focus();
+    button.append(body);
+    let answered = false;
+    // Touch answers at once: sound and a squash on the finger going down.
+    const answer = () => {
+      if (answered || !this._alive || this._leaving) return;
+      answered = true;
+      sfx.play(place.sound || 'tap');
+      character?.set('cheer');
+      if (!reducedMotion()) {
+        body.animate?.([
+          { transform: 'translateY(0) scale(1,1)' }, { transform: 'translateY(0) scale(1.07,.9)', offset: .25 },
+          { transform: 'translateY(-10%) scale(.96,1.06)', offset: .62 }, { transform: 'translateY(0) scale(1,1)' },
+        ], { duration: 420, easing: 'cubic-bezier(.34,1.4,.64,1)' });
+      }
+    };
+    button.addEventListener('pointerdown', event => { if (event.button === 0) answer(); });
+    tapify(button, () => {
+      if (!this._alive || this._leaving || router.isMoving()) return;
+      answer();
+      this._leaving = true;
+      this._hero?.animate?.([{ translate: '0 0' }, { translate: '0 -6%' }, { translate: '0 0' }], { duration: 380 });
+      const destination = resolvePlayDestination(route);
+      const params = { ...mapEntryParams(destination.route), ...destination.params };
+      this._timers.push(setTimeout(async () => {
+        const moved = await router.go(destination.route, params, { dir: 'left' });
+        if (!moved && this._alive) { this._leaving = false; answered = false; character?.set('idle'); }
+      }, reducedMotion() ? 60 : 300));
+    });
+    button.addEventListener('pointercancel', () => { if (!this._leaving) { answered = false; character?.set('idle'); } });
+    return button;
   },
   busy() { return false; },
-  onBack() { this._groupClose?.(); },
+  onBack() {},
   unmount() {
     this._alive = false;
-    this._idleHelp?.(); this._idleHelp=null; this._idleMotion?.cancel?.(); this._idleMotion=null;
-    this._groupPanel?.remove(); this._groupPanel=null; this._groupClose=null;
-    document.documentElement.classList.remove('map-chooser-open');
+    clearInterval(this._wiggle); this._wiggle = null;
+    this._idleHelp?.(); this._idleHelp = null; this._idleMotion?.cancel?.(); this._idleMotion = null;
     this._timers?.forEach(clearTimeout);
     this._offs?.forEach(off => off());
     this._chars?.forEach(character => character.destroy());
+    this._urls?.forEach(url => URL.revokeObjectURL(url));
     this._mute?.destroy?.();
-    this._chars = []; this._offs = []; this._timers = [];
-    this._due = null; this.root = null;
+    this._chars = []; this._offs = []; this._timers = []; this._urls = []; this._bigs = [];
+    this._due = null; this.root = null; this._hero = null;
   },
 };
 export default map;
