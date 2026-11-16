@@ -328,3 +328,15 @@ html.reduced-motion .region.is-suggested::after { animation: none; opacity: .65;
 @media(orientation:portrait){.grandma-house .grandma-room{grid-template-rows:minmax(0,.72fr) minmax(0,1.12fr) 78px}}
 @media(orientation:landscape) and (max-height:520px){.grandma-house .grandma-room{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);grid-template-rows:minmax(0,1fr) 70px}.grandma-house .grandma-hearth{grid-row:1}.grandma-house .grandma-choices{grid-column:1/-1;grid-row:2}}
 .grandma-season-friends{height:42%}.grandma-season-friends img:only-child{width:100%}
+
+/* V03: the whole logo always shows, in the band above the cards. The image is
+   fitted to its box instead of growing past it behind the cards. */
+.valley-title > img { position:absolute; inset:0; }
+@media (orientation:landscape) and (min-height:601px) {
+  .valley-map .valley-title { top:2.5%; height:min(186px, calc(24% - 2.5% - 8px)); }
+}
+@media (orientation:landscape) and (max-height:600px) {
+  .valley-map .valley-title { top:1.5%; height:calc(30% - 1.5% - 6px); }
+  .valley-map .valley-rayna, .valley-map .valley-veer { height:23%; }
+}
+

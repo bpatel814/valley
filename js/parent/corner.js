@@ -768,6 +768,8 @@ function sessionSection() {
   return card("Session", [
     value, slider, presets, start, fullScreenStart, exitFullScreen, immersiveStatus,
     note("Full screen hides browser controls where supported. It does not lock the device's Home button, system gestures or app switching. Grown-up settings includes Leave full screen; Esc also exits where supported."),
+    note("Coming back to the game in a browser tab shows one big Play button over Rayna's place. One tap continues and asks for full screen; if the browser says no, play simply carries on in the window."),
+    note("Keep just one game tab open so your saved play stays protected. A second tab waits on a cover until the first one is closed. While the game is opening you see the butterfly; a slow or failed start retries by itself, and a round arrow appears after about 10 seconds if you want to retry sooner."),
     h("details", { class: "rv-device-help" }, [
       h("summary", { text: "Keep play in one app: parent device setup" }),
       note("iPad: Settings → Accessibility → Guided Access. Set a parent passcode, open the game, then triple-click the top button or the older iPad's Home button and choose Start. Keep Touch enabled. End through the button shortcut and parent authentication. Apple says iPadOS18 and earlier uses a double-click for pausing; button/options wording varies by version."),

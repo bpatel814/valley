@@ -22,6 +22,9 @@ import pip from "../pip.js";
 import { poolFor } from "./map.js";
 
 const NAME_LETTERS = ["R", "A", "Y", "N"];
+// After a finished mark has been celebrated, the bloom stays this long before the
+// next mark slides in by itself. A tap anywhere (except the tools) skips ahead.
+export const FLOW_HOLD_MS = 1500;
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const copy = value => JSON.parse(JSON.stringify(value));
 
@@ -221,6 +224,7 @@ export const garden = {
       this._turnDone = true;
       this._completed = true;
       if (this.actionContext) this.actionContext.classList.add("is-arrived", "is-complete");
+      this._bloom(2, { still: true });
       this._offerNext(true);
     }
     await this._saveResume(completed);
@@ -264,6 +268,9 @@ export const garden = {
   _load(item, traceSnapshot, strokes, savedAttemptId, stored = null) {
     const turn = this._resolve(item);
     if (!turn.glyph) return;
+    this._disarmFlow();
+    this._cheer(false);
+    this._bloomEl = null;
     this.item = turn.id;
     this.kind = turn.kind;
     this.char = turn.char;
@@ -369,11 +376,11 @@ export const garden = {
     if (!tracer?.tools) return;
     const show = tracer.tools.querySelector('.rv-btn--show');
     if (show) {
+      // Show-direction lives in the dock, first in the row before Undo and Start
+      // again, never on the paper beside the start dot or under her finger.
       show.classList.add('garden-show-me');
       show.setAttribute('aria-label', this.kind === 'prewriting' ? 'Show the direction of this garden path' : 'Show this letter stroke');
-      const start = this.actionContext?.querySelector('.garden-action__start');
-      if (start) start.append(show);
-      else { show.classList.add('garden-show-me--letter'); this.box.append(show); }
+      if (tracer.tools.firstElementChild !== show) tracer.tools.prepend?.(show);
     }
     for (const button of [show, ...tracer.tools.querySelectorAll('.rv-btn')].filter(Boolean)) {
       const guard = event => {
@@ -460,6 +467,9 @@ export const garden = {
       // that visual response, then recognize the edited paper again on this lift.
       // Keep its attempt identity so polishing one letter cannot credit it twice.
       this.tracer?.continueDrawing?.();
+      this._disarmFlow();
+      this._unbloom();
+      this._cheer(false);
       this.nextHost.innerHTML = "";
       if (this.actionContext) this.actionContext.classList.remove("is-complete", "is-arrived", "is-carrying", "is-bloom-focus");
     }
@@ -608,12 +618,16 @@ export const garden = {
     this._saveResume(true);
 
     if (!(await this._revealActionConsequence(visit, item))) return;
+    this._bloom(tier);
+    this._cheer(true);
 
     if (this.cat) {
       await waitForVisual(this.cat.anticipate(), 900);
       if (!this._active(visit, item)) return;
       const petals = (progress.get().journey || {}).petals || 0;
+      const before = (this.cat.o && this.cat.o.segments) | 0;
       this.cat.setSegments(this.mode === "explore" ? petals * 2 : Math.round((letterState(char).fed || 0) * 6));
+      this._popSegments(before, (this.cat.o && this.cat.o.segments) | 0);
     }
     speech.praise(tier);
     await celebrate(tier, this.cat, null);
@@ -625,7 +639,78 @@ export const garden = {
       return;
     }
     this._celebrating = false;
-    this._offerNext(true);
+    this._offerNext(true, { flow: true });
+  },
+
+  // The finished mark becomes a big flower behind her own line: the reward fills
+  // the paper instead of a 30 px bud at the edge. Removed on any edit or new mark.
+  _bloom(tier, { still = false } = {}) {
+    if (!this._alive || !this.box?.appendChild) return;
+    this._unbloom();
+    const bloom = document.createElement("div");
+    bloom.className = "garden-bloom garden-bloom--tier" + Math.max(1, Math.min(3, tier | 0)) + (still || reduced() ? " is-still" : "");
+    bloom.setAttribute("aria-hidden", "true");
+    bloom.appendChild(actionArt("stickers/draw_flower", "garden-bloom__flower"));
+    this.box.appendChild(bloom);
+    this._bloomEl = bloom;
+  },
+
+  _unbloom() {
+    this._bloomEl?.remove?.();
+    this._bloomEl = null;
+  },
+
+  // The caterpillar steps forward and grows while it celebrates with her.
+  _cheer(on) {
+    this.friendHost?.classList?.toggle?.("garden-friend--cheer", !!on);
+  },
+
+  // Each newly earned stripe pops so she can see the caterpillar grow.
+  _popSegments(before, after) {
+    if (reduced() || !this.cat?.progressEl?.querySelector || after <= before) return;
+    for (let i = before; i < after; i++) {
+      const dot = this.cat.progressEl.querySelector(`[data-progress-i="${i}"]`);
+      dot?.animate?.([
+        { transform: "scale(.4)" },
+        { transform: "scale(1.9)", offset: 0.5 },
+        { transform: "scale(1)" },
+      ], { duration: 900, delay: (i - before) * 180, easing: "cubic-bezier(.34,1.56,.64,1)", fill: "backwards" });
+    }
+  },
+
+  // Keep the flow going: after the celebration the next mark arrives by itself,
+  // and a tap anywhere outside the tools skips straight to it. Undo, Start again
+  // and Show stay usable (any edit cancels the move), so she can repeat a mark.
+  _armFlow(next) {
+    this._disarmFlow();
+    if (!this._alive || !this.root?.addEventListener) return;
+    const visit = this._visit, item = this.item;
+    const ready = () => this._active(visit, item) && this._turnDone && this._completed && !this._moving &&
+      !this._hatching && !this._checkpointing && !this._penDown && !this.tracer?.pen?.drawing;
+    const go = () => {
+      this._disarmFlow();
+      if (!ready()) return;
+      try { Promise.resolve(this._advance(next)).catch(() => {}); } catch (_) {}
+    };
+    const skip = (event) => {
+      if (!ready() || (event.button !== undefined && event.button !== 0)) return;
+      if (event.target?.closest?.(".garden-header, .garden-tool-host, .garden-next")) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      go();
+    };
+    this.root.addEventListener("pointerdown", skip, true);
+    const timer = setTimeout(go, FLOW_HOLD_MS);
+    this._timers.push(timer);
+    this._flow = { skip, timer, root: this.root };
+  },
+
+  _disarmFlow() {
+    const flow = this._flow;
+    this._flow = null;
+    if (!flow) return;
+    clearTimeout(flow.timer);
+    flow.root?.removeEventListener?.("pointerdown", flow.skip, true);
   },
 
   _active(visit, item) {
@@ -741,6 +826,7 @@ export const garden = {
 
   _offerRetry() {
     if (!this._alive) return;
+    this._disarmFlow();
     const button = document.createElement("button");
     button.type = "button";
     button.className = "learning-choice learning-retry tap glow";
@@ -761,7 +847,7 @@ export const garden = {
     this.nextHost.appendChild(button);
   },
 
-  _offerNext(glow) {
+  _offerNext(glow, { flow = false } = {}) {
     if (!this._alive) return;
     const next = this._pick(this.item);
     const nextTurn = this._resolve(next);
@@ -775,9 +861,11 @@ export const garden = {
       '<span class="learning-choice__picture">' +
       (nextTurn.kind === "trace" ? glyphSVG(nextTurn.char, P.lilacDeep) : preview(nextTurn.glyph)) +
       '</span><svg class="learning-choice__arrow" viewBox="0 0 64 64" aria-hidden="true"><path d="M13 32 H49 M37 18 L51 32 L37 46" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-    tapify(button, () => this._advance(next));
+    tapify(button, () => { this._disarmFlow(); return this._advance(next); });
     this.nextHost.innerHTML = "";
     this.nextHost.appendChild(button);
+    // In the flow the next mark comes by itself, so no "choose the next one" prompt.
+    if (flow) { this._armFlow(next); return; }
     if (!pip.isOnboarding()) pip.flyTo(button, { dy: -0.7 });
     speech.say("ui_choose_next");
   },
@@ -807,6 +895,7 @@ export const garden = {
       this._turnDone = true;
       this._completed = true;
       this.actionContext?.classList.add('is-arrived', 'is-complete');
+      this._bloom(2, { still: true });
       this._offerNext(true);
     }
     await this._saveResume(!!stored?.completed).catch(() => {});
@@ -855,7 +944,7 @@ export const garden = {
     if (!this._active(visit, item)) return;
     if (this.cat) this.cat.setSegments(0);
     this._hatching = false;
-    this._offerNext(true);
+    this._offerNext(true, { flow: true });
   },
 
   busy() {
@@ -867,6 +956,8 @@ export const garden = {
   },
 
   unmount() {
+    this._disarmFlow();
+    this._unbloom();
     this._alive = false;
     this._visit = null;
     for (const timer of this._timers) clearTimeout(timer);

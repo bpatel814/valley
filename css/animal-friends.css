@@ -24,3 +24,10 @@
 
 /* Equal cues on all unopened places preserve the child's choice and the secret. */
 .animal-friends .animal-idle-target{outline:3px solid #4f8d7470;outline-offset:3px}
+/* V04: Home sits in the header's left corner and Sound at the far right; the Garden
+   slot is reserved while hidden so finding the cat moves nothing. */
+.animal-header>.home{position:static!important;transform:none!important;width:48px;height:48px;min-width:44px;min-height:44px;flex:none}
+.animal-header>h1{flex:1 1 auto;min-width:0}
+.animal-navigation [data-garden][hidden]{display:flex!important;visibility:hidden;pointer-events:none}
+@media(orientation:landscape) and (max-height:420px){.animal-header>.home{width:44px;height:44px}}
+@media(max-width:360px){.animal-header>.home{width:44px;min-width:44px;padding:3px}}

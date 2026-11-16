@@ -280,7 +280,8 @@ async function boot() {
 
 boot().catch(error => {
   console.error('[app] boot', error);
-  window.dispatchEvent(new Event('valley:boot-failed'));
+  // The code lets the loader tell "open in another tab" (not a failure) from a real one.
+  window.dispatchEvent(new CustomEvent('valley:boot-failed', { detail: { code: error?.code || '' } }));
   if (error?.code === 'saved-world-busy') { showWorldInUse(); return; }
   if (document.getElementById('boot-recovery')) return;
   const cover = document.getElementById('boot-cover');

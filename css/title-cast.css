@@ -53,15 +53,11 @@
 @media (orientation:portrait) { .welcome-world .welcome-ghost { left:4%; top:32%; } }
 @media (orientation:landscape) and (max-height:440px) { .welcome-world .welcome-ghost { top:30%; left:5%; width:64px; height:64px; } }
 
-/* Visit-local resume invitation. No animation or new saved preference. */
-.play-entry-cover { position:fixed; inset:0; z-index:900; display:grid; place-items:center; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); background:rgba(35,30,48,.58); overflow:auto; }
-.play-entry-panel { box-sizing:border-box; width:min(100%,360px); max-height:100%; overflow:auto; padding:20px; border-radius:24px; background:#fff9ef; color:#49382f; box-shadow:0 8px 32px #0003; text-align:center; font:600 17px/1.4 system-ui,sans-serif; }
-.play-entry-panel h2 { margin:0 0 8px; font-size:24px; }
-.play-entry-panel p { margin:0 0 16px; }
-.play-entry-panel button { display:block; width:100%; min-height:64px; padding:12px; border:2px solid transparent; border-radius:16px; cursor:pointer; font:700 17px/1.25 system-ui,sans-serif; }
-.play-entry-primary { background:#604296; color:#fff; }
-.play-entry-window { margin-top:8px; background:transparent; color:inherit; }
-.play-entry-panel button:focus-visible { outline:3px solid #3674b1; outline-offset:2px; }
-.dark-paper .play-entry-panel { background:#292d3c; color:#f6f3eb; }
-.dark-paper .play-entry-primary { background:#d5c0ff; color:#24193b; }
-@media (max-height:360px) { .play-entry-panel { padding:12px; } .play-entry-panel h2 { font-size:20px; margin-bottom:4px; } .play-entry-panel p { margin-bottom:8px; font-size:15px; } }
+/* Visit-local resume invitation: one big picture Play over her own scene.
+   No panel, no words, no colour wash; the whole cover takes the tap. */
+.play-entry-cover { position:fixed; inset:0; z-index:900; display:grid; place-items:center; padding:max(12px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(12px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left)); background:transparent; cursor:pointer; -webkit-tap-highlight-color:transparent; touch-action:manipulation; }
+.play-entry-cover .play-entry-play { position:relative; display:grid; place-items:center; width:clamp(112px,30vmin,168px); height:clamp(112px,30vmin,168px); }
+.play-entry-cover .play-entry-play > svg { width:52%; height:52%; }
+.play-entry-cover .welcome-tap-cue { right:-14px; bottom:-4px; width:clamp(38px,9vmin,54px); height:clamp(38px,9vmin,54px); }
+.play-entry-cover .play-entry-play:disabled { opacity:1; cursor:wait; }
+.play-entry-cover .play-entry-play:focus-visible { outline:4px solid #3674b1; outline-offset:4px; }

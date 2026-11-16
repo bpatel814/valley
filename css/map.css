@@ -187,3 +187,27 @@
 .map-group-choice.is-suggested { outline:4px solid #d1974f; outline-offset:2px; }
 .map-group-invite { position:absolute; width:38px; height:38px; right:5px; top:5px; pointer-events:none; }
 .map-group-invite svg { width:100%; height:100%; }
+
+/* V03: fixed controls and pictures that never cover their words.
+   Chooser Home sits exactly where Home sits in the activities (the .home corner),
+   at the same size as Sound; the gear is hidden while a chooser is open. */
+html.map-chooser-open #parent-entry { display:none; }
+.map-group-back { top:max(var(--gutter),env(safe-area-inset-top)); left:max(var(--gutter),env(safe-area-inset-left)); width:var(--btn); height:var(--btn); min-width:64px; min-height:64px; padding:4px; gap:1px; }
+.map-group-back svg { width:min(var(--btn-icon),34px); height:min(var(--btn-icon),34px); }
+.map-group-panel { padding-top:max(var(--gutter),env(safe-area-inset-top)); grid-template-rows:minmax(64px,auto) minmax(0,1fr); }
+.map-group-title { align-self:center; margin:0 calc(var(--btn) + 24px); }
+/* The card picture takes all the height its words leave, and scales with the card. */
+.map-group-choice { justify-content:flex-start; overflow:hidden; padding:10px 8px 12px; gap:6px; }
+.map-group-picture { position:relative; flex:1 1 0; width:100%; height:auto; min-height:0; }
+.map-group-picture img, .map-group-fallback { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.map-group-words { flex:none; }
+@media (orientation:landscape) and (max-height:440px) {
+  .map-group-panel { gap:6px; padding:max(var(--gutter),env(safe-area-inset-top)) 16px 12px; }
+  .map-group-options { padding-top:4px; gap:10px; }
+  .map-group-choice { padding:6px 6px 8px; gap:4px; }
+}
+@media (orientation:landscape) and (min-height:601px) {
+  /* Tall tablets: cards keep a picture-book shape instead of 668 px towers. */
+  .map-group-options { align-self:center; height:min(100%,520px); }
+}
+

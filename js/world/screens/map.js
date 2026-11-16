@@ -227,7 +227,7 @@ export const map = {
     options.dataset.count=String(group.routes.length);
     const close=()=>{
       if (this._groupPanel!==panel) return;
-      panel.remove(); row.inert=false; this._groupPanel=null; returnFocus?.focus();
+      panel.remove(); row.inert=false; this._groupPanel=null; document.documentElement.classList.remove('map-chooser-open'); returnFocus?.focus();
     };
     tapify(back,close);
     for (const route of group.routes) {
@@ -261,6 +261,9 @@ export const map = {
       first.append(hand);
     }
     panel.append(back,title,options); this.root.append(panel); this._groupPanel=panel; this._groupClose=close;
+    // Home owns the top-left corner of a chooser; the grown-up gear steps aside until
+    // the chooser closes (it stays on the home screen and the title screen).
+    document.documentElement.classList.add('map-chooser-open');
     back.focus();
   },
   busy() { return false; },
@@ -269,6 +272,7 @@ export const map = {
     this._alive = false;
     this._idleHelp?.(); this._idleHelp=null; this._idleMotion?.cancel?.(); this._idleMotion=null;
     this._groupPanel?.remove(); this._groupPanel=null; this._groupClose=null;
+    document.documentElement.classList.remove('map-chooser-open');
     this._timers?.forEach(clearTimeout);
     this._offs?.forEach(off => off());
     this._chars?.forEach(character => character.destroy());
