@@ -6,11 +6,12 @@
  *      decides when it is safe to swap (never mid-stroke).
  *   3. Nothing here ever fails loudly. A miss falls back, it does not throw.
  *
- * Source template for serve.py --build-sw. Edit this file, not generated sw.js.
- * The worker policy and app bytes both contribute to its cache version.
+ * This file is the worker source. Edit it directly, then run
+ * `python tools/build_precache.py`, which rewrites only the PRECACHE block and
+ * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "b1ab38892b75";
+const CACHE_VERSION = "c08a333acd63";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -2488,43 +2489,43 @@ const PRECACHE_REVISIONS = {
   "./css/family.css": "fa8d28f7726c",
   "./css/garden-cafe.css": "2b894647a81d",
   "./css/learning.css": "581909a1ad7a",
-  "./css/mama-break.css": "c42ecea588d7",
+  "./css/mama-break.css": "0cebb2c5e6c1",
   "./css/map.css": "e21bfd0b5fc9",
   "./css/music-band.css": "403e79e386f1",
   "./css/parent.css": "a96f501a1d28",
   "./css/picnic.css": "5a5f6dd9f06d",
   "./css/picture-post.css": "f6c30cb69577",
   "./css/play-stage.css": "4c87b9591165",
-  "./css/river-run.css": "b1dab95f2d1f",
+  "./css/river-run.css": "7a03de8cd33f",
   "./css/rolling-run.css": "87e46eb94533",
   "./css/screens.css": "04e28ad1c318",
   "./css/season.css": "9089590cabbd",
   "./css/show-and-tell.css": "447d99d8a0f0",
   "./css/stories.css": "bfac53c761a5",
-  "./css/story-scenes-five.css": "faf6e1373ee5",
+  "./css/story-scenes-five.css": "8153f0a08dc5",
   "./css/studio.css": "bda6cba6a76a",
-  "./css/theme.css": "2be9e321cba6",
+  "./css/theme.css": "57638b59a1aa",
   "./css/title-cast.css": "386b2b853829",
   "./css/town-tracks.css": "03ff92e0e904",
   "./css/toy-workshop.css": "0dfa3247b909",
   "./css/valley.css": "09d4f74bd2a5",
   "./css/water-garden.css": "edcd41fefe91",
-  "./demo.html": "ee723d81f163",
-  "./index.html": "622ffe2d2fd2",
-  "./js/app.js": "4271329533cc",
+  "./demo.html": "f2fae468f299",
+  "./index.html": "0ba90b39aaa5",
+  "./js/app.js": "c3bd446da443",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
-  "./js/audio/sfx.js": "cc29bee6be35",
+  "./js/audio/sfx.js": "5120228c0504",
   "./js/audio/speech.js": "33216c09abe9",
   "./js/data/animal-friends.js": "eb7d8d366f87",
-  "./js/data/boo-hollow.js": "621034d06f8b",
+  "./js/data/boo-hollow.js": "5d060d1f71e5",
   "./js/data/build-lab.js": "2f19e98ed9ff",
   "./js/data/cat-corner-day.js": "a428e67981ee",
   "./js/data/cat-roll-day-phrases.js": "c860361f1954",
   "./js/data/discovery-phrases.js": "3b3c24d6b468",
   "./js/data/discovery.js": "605d227ff6f3",
   "./js/data/drawings.js": "3668533ebade",
-  "./js/data/garden-cafe-phrases.js": "7eb0ba2069cb",
+  "./js/data/garden-cafe-phrases.js": "e4b5ab0aa6ea",
   "./js/data/garden-cafe.js": "6246489c9edb",
   "./js/data/halloween-phrases.js": "a90e641b2327",
   "./js/data/letters.js": "3468d49e7108",
@@ -2540,7 +2541,7 @@ const PRECACHE_REVISIONS = {
   "./js/data/play-catalog.js": "62c8de94575d",
   "./js/data/play-stage-performances.js": "0036640232d4",
   "./js/data/play-stage-phrases.js": "1c6da402b76b",
-  "./js/data/preview-access.js": "9b553dad8c99",
+  "./js/data/preview-access.js": "670d80c3faf5",
   "./js/data/prewriting.js": "0343b0297dcc",
   "./js/data/river-day-phrases.js": "b1b36d66186b",
   "./js/data/river-day.js": "491c43fd1894",
@@ -2550,10 +2551,10 @@ const PRECACHE_REVISIONS = {
   "./js/data/season.js": "dc871a32a775",
   "./js/data/show-and-tell-phrases.js": "ed90fb7dea15",
   "./js/data/show-and-tell.js": "1cab1ac26822",
-  "./js/data/stage-story-day.js": "908805199cc8",
+  "./js/data/stage-story-day.js": "c7fdc169cfdd",
   "./js/data/stickers.js": "49739897eeee",
-  "./js/data/stories.js": "efa132d330aa",
-  "./js/data/story-phrases.js": "e2028dbbd7e9",
+  "./js/data/stories.js": "0b82b92c9611",
+  "./js/data/story-phrases.js": "c5a4bdd2d32a",
   "./js/data/studio-phrases.js": "64826772aa3d",
   "./js/data/studio.js": "cf2a934d2cd2",
   "./js/data/town-buildings.js": "e09eb4a30a75",
@@ -2575,7 +2576,7 @@ const PRECACHE_REVISIONS = {
   "./js/engine/viewport.js": "4b130b3aff52",
   "./js/parent/corner.js": "a2a2ac4a6f85",
   "./js/parent/gallery.js": "1955737d133b",
-  "./js/parent/gate.js": "02e06b258a8f",
+  "./js/parent/gate.js": "ba8900832e82",
   "./js/parent/narration-review.js": "92f65e54ce78",
   "./js/parent/play-start.js": "8cd159ec6d93",
   "./js/parent/recording-hold.js": "c5d2e222d47c",
@@ -2635,8 +2636,8 @@ const PRECACHE_REVISIONS = {
   "./js/world/screens/build-lab.js": "b22fd4587112",
   "./js/world/screens/discovery.js": "02d9616cd76a",
   "./js/world/screens/garden.js": "059228df918a",
-  "./js/world/screens/grandma.js": "5f6885024564",
-  "./js/world/screens/mama-break.js": "bb303abf34b5",
+  "./js/world/screens/grandma.js": "f607ea38006c",
+  "./js/world/screens/mama-break.js": "56944871ea03",
   "./js/world/screens/map.js": "d9362082baf5",
   "./js/world/screens/meadow.js": "d904e05b11d1",
   "./js/world/screens/music-band.js": "16e2ddfd2d8c",
@@ -2657,8 +2658,8 @@ const PRECACHE_REVISIONS = {
   "./js/world/word-friend.js": "2751be5ccc76",
   "./js/world/world-unlock-watch.js": "859dc63d0d7f",
   "./manifest.webmanifest": "4574736dd8ef",
-  "./rayna/index.html": "857368e321d7",
-  "./veer/index.html": "d360b1773ec8"
+  "./rayna/index.html": "4fbdfb52a111",
+  "./veer/index.html": "4c92d7779e3c"
 };
 /* PRECACHE-END */
 
@@ -2798,17 +2799,51 @@ function previousActiveVersion() {
   });
 }
 
+// An update must not make a phone download all 200+ MB again. A file whose bytes
+// an earlier build already verified (same revision hash) is copied from that
+// build's cache; only changed or new files touch the network. The bytes are
+// re-hashed here, so a damaged old entry is simply fetched again.
+async function earlierCopy(path, revision, names) {
+  for (const name of names) {
+    try {
+      const hit = await caches.match(path, { cacheName: name });
+      if (hit?.ok && await responseRevision(hit) === revision) return hit;
+    } catch (_) {}
+  }
+  return null;
+}
+
+// One dropped request on home wifi must not throw away a 1,300-file install.
+async function fetchWithRetry(path, tries = 3) {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      const res = await fetch(new Request(path, { cache: "reload" }));
+      if (res?.ok || attempt >= tries || (res && res.status < 500 && res.status !== 408 && res.status !== 429)) return res;
+    } catch (error) {
+      if (attempt >= tries) throw error;
+    }
+    await new Promise((resolve) => setTimeout(resolve, 400 * attempt));
+  }
+}
+
 async function cacheDeclared(cache, paths, concurrency = 6) {
   const missing = [];
   let cursor = 0;
+  let earlier = [];
+  try {
+    const rank = (n) => (n.startsWith("rv-precache-") ? 0 : 1);
+    earlier = (await caches.keys())
+      .filter((n) => n !== PRECACHE_NAME && /^rv-(?:precache|runtime)-/.test(n))
+      .sort((a, b) => rank(a) - rank(b));
+  } catch (_) {}
   async function worker() {
     while (cursor < paths.length) {
       const path = paths[cursor++];
       try {
-        const req = new Request(path, { cache: "reload" });
-        const res = await fetch(req);
         const revision = PRECACHE_REVISIONS[path];
-        if (!res?.ok || !revision || await responseRevision(res) !== revision) {
+        const reused = revision && earlier.length ? await earlierCopy(path, revision, earlier) : null;
+        const res = reused || await fetchWithRetry(path);
+        if (!res?.ok || !revision || (!reused && await responseRevision(res) !== revision)) {
           missing.push(path);
           continue;
         }
@@ -3042,8 +3077,12 @@ async function handleNavigate(request, resultingClientId = "") {
 
 // Do not borrow another version's shell when the storage lease fails.
 // A retry makes an ordinary new navigation and does not clear saved data.
+// The child sees only the butterfly (as on the normal splash) and a wordless
+// retry arrow; the page reloads by itself up to three times per two minutes.
 function navigationRecovery() {
-  return new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rayna's Valley needs a moment</title><style>body{font:18px system-ui,sans-serif;background:#fff7e9;color:#503d38;margin:0;padding:32px;line-height:1.5}main{max-width:36rem;margin:auto}a{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;min-width:160px;min-height:80px;padding:14px 22px;border-radius:16px;background:#d8efdd;color:#294d3c;font-weight:700}</style></head><body><main><h1>Rayna's Valley needs a moment</h1><p>The game could not open its offline files. This screen does not erase saved creations.</p><p><a href="">Try again</a></p><p>If it keeps happening, ask a grown-up for help. Do not clear the site's data.</p></main></body></html>`, {
+  const scope = new URL("./", self.location).href;
+  const pip = new URL("assets/art/final/characters/pip_idle.webp", self.location).href;
+  return new Response(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Rayna's Valley</title><style>html,body{height:100%;margin:0;background:#eef7ff}body{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px}img{width:min(38vmin,220px);height:auto;animation:float 3.2s ease-in-out infinite}@keyframes float{50%{transform:translateY(-8px)}}@media (prefers-reduced-motion:reduce){img{animation:none}}a{display:grid;place-items:center;width:96px;height:96px;box-sizing:border-box;border:3px solid #655044;border-radius:50%;background:#ffdfaa;touch-action:manipulation}</style></head><body><img src="${pip}" alt="" onerror="this.remove()"><a href="${scope}" aria-label="Try again"><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#49382f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 19a23 23 0 1 1-5 26M14 6v17H2"/></svg></a><script>(function(){var k="valley-recovery-retry",r=null,s=null;try{s=window.sessionStorage;r=JSON.parse(s.getItem(k)||"null")}catch(e){}if(!r||Date.now()-r.at>120000)r={count:0,at:Date.now()};if(!s||r.count>=3)return;r.count++;try{s.setItem(k,JSON.stringify(r))}catch(e){return}setTimeout(function(){location.reload()},[2000,6000,15000][r.count-1])})();</script></body></html>`, {
     status: 503, statusText: "Game storage unavailable",
     headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" },
   });

@@ -64,15 +64,23 @@ function showWorldInUse() {
   cover.classList.remove('is-ready');
   cover.setAttribute('role', 'alertdialog');
   cover.setAttribute('aria-label', `${savedWorld.label} is already open`);
-  cover.style.cssText = 'position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px;background:var(--paper,#eef7ff);color:var(--ink,#49382f);text-align:center;font:18px/1.5 system-ui';
-  const message = document.createElement('p');
-  message.textContent = `${savedWorld.label} is open in another tab. Close the other tab, then reopen this one. Your saved play was kept.`;
-  message.style.maxWidth = '34ch';
+  // The child sees the butterfly and a wordless reopen arrow, never a paragraph.
+  // The page reopens by itself as soon as the other tab lets go (watcher below).
+  // One small line stays for a grown-up; the child does not need it.
+  cover.style.cssText = 'position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;background:#eef7ff;color:#6b5a50;text-align:center;font:14px/1.4 system-ui';
+  const pip = document.createElement('img');
+  pip.src = 'assets/art/final/characters/pip_idle.webp'; pip.alt = '';
+  pip.style.cssText = 'width:min(34vmin,200px);height:auto';
+  pip.addEventListener('error', () => pip.remove());
   const retry = document.createElement('button');
-  retry.type = 'button'; retry.textContent = 'Reopen this world';
-  retry.style.cssText = 'box-sizing:border-box;width:auto;max-width:100%;height:auto;min-height:56px;padding:14px 24px;border:3px solid #655044;border-radius:24px;background:#ffdfaa;color:#49382f;font:700 20px/1.3 system-ui;white-space:normal;overflow-wrap:anywhere;cursor:pointer';
+  retry.type = 'button'; retry.setAttribute('aria-label', 'Reopen this world');
+  retry.innerHTML = '<svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="#49382f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 19a23 23 0 1 1-5 26M14 6v17H2"/></svg>';
+  retry.style.cssText = 'display:grid;place-items:center;box-sizing:border-box;width:96px;height:96px;padding:0;border:3px solid #655044;border-radius:50%;background:#ffdfaa;cursor:pointer;touch-action:manipulation';
   retry.addEventListener('click', () => { worldUnlockStop?.(); worldUnlockStop = null; window.location.reload(); });
-  cover.replaceChildren(message, retry); retry.focus();
+  const note = document.createElement('p');
+  note.textContent = 'Open in another tab. Saved play is safe.';
+  note.style.cssText = 'margin:0;max-width:30ch;opacity:.75';
+  cover.replaceChildren(pip, retry, note); retry.focus();
   if (db.writerGuardKind() === 'lock' && typeof navigator.locks?.query === 'function') {
     worldUnlockStop = watchWorldUnlock({ query: () => navigator.locks.query(),
       lockName: `rayna-valley:${savedWorld.database}:writer`, reload: () => window.location.reload() });
