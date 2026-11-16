@@ -11,7 +11,7 @@
  * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "7d1f9a5aa80c";
+const CACHE_VERSION = "b602f39ea753";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -1161,6 +1161,7 @@ const PRECACHE = [
   "./css/boo-hollow.css",
   "./css/bridge.css",
   "./css/build-lab.css",
+  "./css/cat-toy.css",
   "./css/characters-art.css",
   "./css/child-targets.css",
   "./css/creation-frame.css",
@@ -1314,6 +1315,7 @@ const PRECACHE = [
   "./js/world/screens/boo-hollow.js",
   "./js/world/screens/bridge.js",
   "./js/world/screens/build-lab.js",
+  "./js/world/screens/cat-toy.js",
   "./js/world/screens/discovery.js",
   "./js/world/screens/garden.js",
   "./js/world/screens/grandma.js",
@@ -2486,6 +2488,7 @@ const PRECACHE_REVISIONS = {
   "./css/boo-hollow.css": "2e84f0d7371b",
   "./css/bridge.css": "295d11a0a54c",
   "./css/build-lab.css": "6450c79ca992",
+  "./css/cat-toy.css": "162823f4a071",
   "./css/characters-art.css": "790280a93b49",
   "./css/child-targets.css": "4f6c2b7defc6",
   "./css/creation-frame.css": "62fbc224412a",
@@ -2515,8 +2518,8 @@ const PRECACHE_REVISIONS = {
   "./css/valley-home.css": "73a1ca335a3e",
   "./css/valley.css": "ef35f13d0aaf",
   "./css/water-garden.css": "d3fe8dce39f5",
-  "./demo.html": "24de0211b4f2",
-  "./index.html": "d27fb587cb51",
+  "./demo.html": "4ccc9817c54f",
+  "./index.html": "688e2d744595",
   "./js/app.js": "c3bd446da443",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
@@ -2579,7 +2582,7 @@ const PRECACHE_REVISIONS = {
   "./js/engine/scorer.js": "d03fe84829be",
   "./js/engine/tracer.js": "1a82373ac4f9",
   "./js/engine/viewport.js": "4b130b3aff52",
-  "./js/parent/corner.js": "e456e133a3ff",
+  "./js/parent/corner.js": "7c461a51ff24",
   "./js/parent/gallery.js": "1955737d133b",
   "./js/parent/gate.js": "ba8900832e82",
   "./js/parent/narration-review.js": "92f65e54ce78",
@@ -2609,7 +2612,7 @@ const PRECACHE_REVISIONS = {
   "./js/state/rolling-run.js": "f571f86292c7",
   "./js/state/saved-world.js": "77d3fb96fbf4",
   "./js/state/session.js": "6ac8bd9618f0",
-  "./js/state/settings.js": "83c5ae86216e",
+  "./js/state/settings.js": "090df479c197",
   "./js/state/stories.js": "73ddde825030",
   "./js/state/studio.js": "4a0833480e93",
   "./js/state/town-tracks.js": "8c87372d3c92",
@@ -2635,10 +2638,11 @@ const PRECACHE_REVISIONS = {
   "./js/world/router.js": "7deff8afb2fa",
   "./js/world/scene.js": "961054ae744f",
   "./js/world/scrapbook.js": "163ec81bac10",
-  "./js/world/screens/animal-friends.js": "29c72c9a2ab9",
+  "./js/world/screens/animal-friends.js": "b81c55d8eab2",
   "./js/world/screens/boo-hollow.js": "a796a7ad2790",
   "./js/world/screens/bridge.js": "ee987c5f30fa",
   "./js/world/screens/build-lab.js": "b22fd4587112",
+  "./js/world/screens/cat-toy.js": "b8b0acc0ec8b",
   "./js/world/screens/discovery.js": "61596cf8673c",
   "./js/world/screens/garden.js": "059228df918a",
   "./js/world/screens/grandma.js": "f607ea38006c",

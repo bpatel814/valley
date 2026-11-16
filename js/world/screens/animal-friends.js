@@ -1,4 +1,5 @@
 import { installIdleHelp } from '../idle-help.js';
+import catToy from './cat-toy.js';
 import speech from '../../audio/speech.js';
 import router, { homeButton, muteButton, iconSVG, tapify } from '../router.js';
 import art from '../art.js';
@@ -463,7 +464,10 @@ async function openSavedAnimal(params, token, retryWrites = false) {
   } catch { if (visit.valid(token)) { message('Your corner could not open. Try again or return Home.'); if (!view && !animalLoadRetry) { const retry=button('Try opening your cat corner again', 'Try again', () => { void openSavedAnimal(params,token,true); }, iconSVG('replay')); retry.classList.add('animal-load-retry'); board.append(retry); animalLoadRetry=retry; } } }
   finally { if (visit.valid(token)) { openingAnimal=false; if (animalLoadRetry) animalLoadRetry.disabled=false; } }
 }
-export default {
+// The older full corner (moving things, kept corners, pictures, garden visits).
+// Since Nov 16 2026 the child screen is the cat toy (cat-toy.js); this one opens for
+// a returning garden outing, or when a grown-up switches the full corner on.
+export const legacyAnimalFriends = {
   id: 'animal-friends',
   async mount(el, params = {}) {
     enteredFromMap = params.fromMap === true;
@@ -522,4 +526,23 @@ export default {
   beforeLeave: checkpointAnimals,
   beforeBreak: checkpointAnimals,
   unmount() { animalLoadRetry?.remove(); animalLoadRetry=null; openingAnimal=false; idleHelp?.();idleHelp=null;guidance?.dispose(); guidance = null; visit.end(); checkpointing = false; stopHint(); cancelTransient(); listeners.forEach(off => off()); listeners = []; observer?.disconnect(); observer = null; offSettings?.(); mute?.destroy?.(); void flushAnimalFriends().catch(() => {}); host = board = scene = status = controls = sheet = view = null; sheetKind = null; saving = false; },
+};
+
+// Work order item 8: the route opens the toy unless the older corner is needed.
+export function usesFullCorner(params = {}, preferences = settings.get()) {
+  return !!(params.returnedOutingId || params.sourceKey || preferences?.catCornerFull === true);
+}
+let activeAnimalScreen = null;
+export default {
+  id: 'animal-friends',
+  async mount(el, params = {}) {
+    activeAnimalScreen = usesFullCorner(params) ? legacyAnimalFriends : catToy;
+    return activeAnimalScreen.mount(el, params);
+  },
+  busy() { return activeAnimalScreen?.busy?.() || false; },
+  breakBusy() { return activeAnimalScreen?.breakBusy?.() || false; },
+  onBack() { return activeAnimalScreen?.onBack?.(); },
+  beforeLeave(...args) { return activeAnimalScreen?.beforeLeave ? activeAnimalScreen.beforeLeave(...args) : true; },
+  beforeBreak(...args) { return activeAnimalScreen?.beforeBreak ? activeAnimalScreen.beforeBreak(...args) : true; },
+  unmount() { const screen = activeAnimalScreen; activeAnimalScreen = null; return screen?.unmount?.(); },
 };

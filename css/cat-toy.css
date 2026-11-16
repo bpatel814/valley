@@ -1,0 +1,49 @@
+/* Cat friend as a toy (work order item 8). Three big hiding places across the
+   meadow; the cat sits behind one (--slot 0..2) and springs up when found. */
+.cat-toy { position: absolute; inset: 0; overflow: hidden; }
+.cat-toy-scene { position: absolute; inset: 0; }
+.cat-toy-stage {
+  --place-w: min(29vw, 52vh);
+  position: absolute; left: 0; right: 0; bottom: 3%; height: 78%;
+}
+.cat-toy-place, .cat-toy-cat {
+  position: absolute; padding: 0; margin: 0; border: 0; background: transparent; box-shadow: none;
+  touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; cursor: pointer;
+}
+/* Slot centres at 18%, 50% and 82% of the width. */
+.cat-toy-place {
+  z-index: 3; bottom: 0; width: var(--place-w); height: calc(var(--place-w) * .667);
+  left: calc(18% + var(--slot) * 32% - var(--place-w) / 2);
+}
+.cat-toy-place-art {
+  width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block;
+  transform-origin: 50% 100%; filter: drop-shadow(0 6px 4px rgba(80, 98, 62, .28)); pointer-events: none;
+}
+.cat-toy-place:focus-visible, .cat-toy-cat:focus-visible { outline: 4px solid #3674b1; outline-offset: 2px; border-radius: 24px; }
+
+/* Hidden: tucked low behind its place. Found: springs up in front, above it. */
+.cat-toy-cat {
+  z-index: 2; width: calc(var(--place-w) * .58); height: calc(var(--place-w) * .7);
+  left: calc(18% + var(--slot) * 32% - var(--place-w) * .29);
+  bottom: calc(var(--place-w) * .667 * .25);
+  opacity: 0; transform: translateY(45%) scale(.7); pointer-events: none;
+  transition: transform 420ms cubic-bezier(.34, 1.5, .64, 1), opacity 260ms ease-out;
+}
+.cat-toy-cat.is-out {
+  z-index: 4; opacity: 1; transform: translateY(-28%) scale(1); pointer-events: auto;
+}
+.cat-toy-cat.is-resting { transform: translateY(-6%) scale(1.05); }
+.cat-toy-cat-art { width: 100%; height: 100%; object-fit: contain; object-position: center bottom; display: block; pointer-events: none; transform-origin: 50% 100%; }
+.cat-toy-surprise {
+  position: absolute; z-index: 5; pointer-events: none;
+  width: calc(var(--place-w) * .42); height: calc(var(--place-w) * .42); object-fit: contain;
+  left: calc(18% + var(--slot) * 32%); bottom: calc(var(--place-w) * .4); transform: translate(-50%, 0); opacity: 0;
+}
+.cat-toy-heart { position: absolute; z-index: 6; width: 34px; height: 32px; pointer-events: none; transform: translate(-50%, 0); opacity: 0; }
+.cat-toy-heart > svg { width: 100%; height: 100%; display: block; }
+
+@media (prefers-reduced-motion: reduce) { .cat-toy-cat { transition: none; } }
+html.reduced-motion .cat-toy-cat { transition: none; }
+@media (orientation: portrait) {
+  .cat-toy-stage { --place-w: 30vw; height: 60%; bottom: 8%; }
+}

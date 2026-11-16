@@ -844,6 +844,8 @@ function playSection() {
     ["boo-hollow", "Ghost friends"],
   ].map(([key, label]) => toggle(label, activityChoices[key] !== false,
     (v) => settings.set({ activities: { [key]: v } })));
+  activities.push(toggle("Cat friend: the older full corner (move things, keep corners, garden visits) instead of hide and seek",
+    s.catCornerFull === true, (v) => settings.set({ catCornerFull: v })));
 
   return card("Play", [
     h("h3", { class: "rv-h3", text: "Saved worlds" }),

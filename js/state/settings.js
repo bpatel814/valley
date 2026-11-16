@@ -46,7 +46,7 @@ export const ACTIVITY_SWITCHES = [
   "picnic", "music-band", "picture-post", "boo-hollow",
 ];
 export const ACTIVITIES_OFF_BY_DEFAULT = [
-  "animal-friends", "rolling-run", "river-run", "toy-workshop", "build-lab",
+  "rolling-run", "river-run", "toy-workshop", "build-lab",
   "picnic", "music-band", "picture-post", "boo-hollow",
 ];
 export function defaultActivities() {
@@ -84,6 +84,8 @@ function sanitise(s) {
   // Do not add a field to untouched v8 settings; old backups stay byte-equivalent.
   if (Object.hasOwn(out, 'halloweenOff')) out.halloweenOff = out.halloweenOff === true;
   out.playStageInviteSeen = !!out.playStageInviteSeen;
+  // Grown-up choice: Cat friend opens the older full corner instead of the toy.
+  if (Object.hasOwn(out, "catCornerFull")) out.catCornerFull = out.catCornerFull === true;
   // Only an explicit parent choice adds this field (see ACTIVITY_SWITCHES).
   if (Object.hasOwn(out, "activities")) {
     const chosen = out.activities && typeof out.activities === "object" && !Array.isArray(out.activities) ? out.activities : {};
