@@ -11,7 +11,7 @@
  * CACHE_VERSION. The worker policy and app bytes both contribute to the version.
  */
 
-const CACHE_VERSION = "79835673bfac";
+const CACHE_VERSION = "cffd14ae4d83";
 const PRECACHE_NAME = `rv-precache-${CACHE_VERSION}`;
 const RUNTIME_NAME = `rv-runtime-${CACHE_VERSION}`;
 const RUNTIME_MAX = 60; // LRU cap on lazily fetched voices and art
@@ -1304,6 +1304,7 @@ const PRECACHE = [
   "./js/world/fx.js",
   "./js/world/garden-cafe.js",
   "./js/world/idle-help.js",
+  "./js/world/lazy-screen.js",
   "./js/world/living-guidance.js",
   "./js/world/palette.js",
   "./js/world/picture-view.js",
@@ -2520,9 +2521,9 @@ const PRECACHE_REVISIONS = {
   "./css/valley-home.css": "73a1ca335a3e",
   "./css/valley.css": "ef35f13d0aaf",
   "./css/water-garden.css": "d3fe8dce39f5",
-  "./demo.html": "a985b12502ce",
-  "./index.html": "51418442c92b",
-  "./js/app.js": "c3bd446da443",
+  "./demo.html": "ae3b820a89a4",
+  "./index.html": "e25e10fa598a",
+  "./js/app.js": "7d10e9930108",
   "./js/audio/music.js": "e6c90b48637f",
   "./js/audio/recorder.js": "772f7771a61d",
   "./js/audio/sfx.js": "5120228c0504",
@@ -2621,7 +2622,7 @@ const PRECACHE_REVISIONS = {
   "./js/state/toy-photos.js": "0cf94c301f0f",
   "./js/state/toy-workshop.js": "292c2d0004e6",
   "./js/state/water-garden.js": "05fbd210fc35",
-  "./js/world/art.js": "02fb71157f9c",
+  "./js/world/art.js": "ebb1b2127457",
   "./js/world/bus.js": "87a7141da6c6",
   "./js/world/characters.js": "f261569c5849",
   "./js/world/control-cue.js": "e862f6f15de5",
@@ -2632,6 +2633,7 @@ const PRECACHE_REVISIONS = {
   "./js/world/fx.js": "3ba6a4e3e070",
   "./js/world/garden-cafe.js": "6f8c6c1c6c8d",
   "./js/world/idle-help.js": "21de222bd116",
+  "./js/world/lazy-screen.js": "8647303991a8",
   "./js/world/living-guidance.js": "585e2d8d73b1",
   "./js/world/palette.js": "face2cb20a96",
   "./js/world/picture-view.js": "60448bd37230",

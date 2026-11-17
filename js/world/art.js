@@ -238,6 +238,11 @@ export function routeKeys(route) {
     selected.delete('ui/veer-title');
     selected.delete('ui/veers-valley-logo');
   }
+  // Seasonal art waits for its season: outside Halloween the title and home
+  // never show it, and it was about 40% of the image bytes before the title.
+  if (['welcome', 'map'].includes(String(route)) && !halloweenActive(settings.get())) {
+    for (const key of [...selected]) if (key.startsWith('halloween/')) selected.delete(key);
+  }
   return [...selected];
 }
 

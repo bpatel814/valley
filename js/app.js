@@ -7,26 +7,6 @@ import { Particles } from './world/fx.js';
 import pip from './world/pip.js';
 import welcome from './world/screens/welcome.js';
 import map from './world/screens/map.js';
-import garden from './world/screens/garden.js';
-import meadow from './world/screens/meadow.js';
-import bridge from './world/screens/bridge.js';
-import studio from './world/screens/studio.js';
-import stories from './world/screens/stories.js';
-import discovery from './world/screens/discovery.js';
-import treehouse from './world/screens/treehouse.js';
-import playStage from './world/screens/play-stage.js';
-import picnic from './world/screens/picnic.js';
-import buildLab from './world/screens/build-lab.js';
-import waterGarden from './world/screens/water-garden.js';
-import picturePost from './world/screens/picture-post.js';
-import toyWorkshop from './world/screens/toy-workshop.js';
-import rollingRun from './world/screens/rolling-run.js';
-import townTracks from './world/screens/town-tracks.js';
-import musicBand from './world/screens/music-band.js';
-import animalFriends from './world/screens/animal-friends.js';
-import riverRun from './world/screens/river-run.js';
-import booHollow from './world/screens/boo-hollow.js';
-import grandma from './world/screens/grandma.js';
 import mamaBreak from './world/screens/mama-break.js';
 import parent, { install as installParent } from './parent/corner.js';
 import { installParentEntry, uninstallParentEntry } from './parent/gate.js';
@@ -44,6 +24,32 @@ import { savedWorld, temporaryDemo } from './state/saved-world.js';
 import { halloweenActive } from './data/season.js';
 import { mountPlayInvitation } from './world/play-invitation.js';
 import { watchWorldUnlock } from './world/world-unlock-watch.js';
+import { lazyScreen, preloadScreens } from './world/lazy-screen.js';
+// Activities load on first use (work order item 10, Nov 16 2026): the title and
+// home no longer wait for every activity's code. They are fetched in the
+// background once home is showing, and the offline cache still holds them all.
+const garden = lazyScreen('garden', () => import('./world/screens/garden.js'));
+const meadow = lazyScreen('meadow', () => import('./world/screens/meadow.js'));
+const bridge = lazyScreen('bridge', () => import('./world/screens/bridge.js'));
+const studio = lazyScreen('studio', () => import('./world/screens/studio.js'));
+const stories = lazyScreen('stories', () => import('./world/screens/stories.js'));
+const discovery = lazyScreen('discovery', () => import('./world/screens/discovery.js'));
+const treehouse = lazyScreen('treehouse', () => import('./world/screens/treehouse.js'));
+const playStage = lazyScreen('play-stage', () => import('./world/screens/play-stage.js'));
+const picnic = lazyScreen('picnic', () => import('./world/screens/picnic.js'));
+const buildLab = lazyScreen('build-lab', () => import('./world/screens/build-lab.js'));
+const waterGarden = lazyScreen('water-garden', () => import('./world/screens/water-garden.js'));
+const picturePost = lazyScreen('picture-post', () => import('./world/screens/picture-post.js'));
+const toyWorkshop = lazyScreen('toy-workshop', () => import('./world/screens/toy-workshop.js'));
+const rollingRun = lazyScreen('rolling-run', () => import('./world/screens/rolling-run.js'));
+const townTracks = lazyScreen('town-tracks', () => import('./world/screens/town-tracks.js'));
+const musicBand = lazyScreen('music-band', () => import('./world/screens/music-band.js'));
+const animalFriends = lazyScreen('animal-friends', () => import('./world/screens/animal-friends.js'));
+const riverRun = lazyScreen('river-run', () => import('./world/screens/river-run.js'));
+const booHollow = lazyScreen('boo-hollow', () => import('./world/screens/boo-hollow.js'));
+const grandma = lazyScreen('grandma', () => import('./world/screens/grandma.js'));
+const LAZY_ACTIVITIES = [garden, meadow, bridge, studio, stories, discovery, treehouse, playStage, animalFriends, grandma,
+  picnic, buildLab, waterGarden, picturePost, toyWorkshop, rollingRun, townTracks, musicBand, riverRun, booHollow];
 
 let sessionStarted = false;
 let recapDue = false;
@@ -275,6 +281,13 @@ async function boot() {
   // The first usable scene wins the network. Service-worker installation can
   // cache the full offline game after that scene is decoded and mounted.
   void pwa.init({ initialScreen: router.current() });
+  // Fetch the open activities' code quietly once the first scene is up, so the
+  // first tap from home does not wait (work order item 10).
+  setTimeout(() => {
+    const open = new Set(settings.enabledActivities());
+    const later = () => void preloadScreens(LAZY_ACTIVITIES.filter(screen => open.has(screen.id)));
+    if (typeof requestIdleCallback === 'function') requestIdleCallback(later, { timeout: 4000 }); else later();
+  }, 1500);
   if (router.current() === 'welcome') art.warmRoute('map');
   if (!db.hasWriteAccess()) throw Object.assign(new Error('Saved-world ownership ended during startup'), { code: 'saved-world-busy' });
   window.dispatchEvent(new Event('valley:ready'));
